@@ -1,0 +1,5 @@
+
+      [paste.paster_create_template]
+      basic_zope = zopeskel:BasicZope
+      basic_namespacepackage = zopeskel:BasicNamespaced
+      

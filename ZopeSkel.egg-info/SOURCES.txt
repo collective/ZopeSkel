@@ -1,0 +1,12 @@
+setup.cfg
+setup.py
+ZopeSkel.egg-info/PKG-INFO
+ZopeSkel.egg-info/SOURCES.txt
+ZopeSkel.egg-info/entry_points.txt
+ZopeSkel.egg-info/not-zip-safe
+ZopeSkel.egg-info/paster_plugins.txt
+ZopeSkel.egg-info/requires.txt
+ZopeSkel.egg-info/top_level.txt
+zopeskel/__init__.py
+zopeskel/templates/basic_zope/+project+-configure.zcml_tmpl
+zopeskel/templates/basic_zope/+package+/configure.zcml
