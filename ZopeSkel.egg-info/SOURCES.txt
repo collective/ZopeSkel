@@ -8,5 +8,9 @@ ZopeSkel.egg-info/paster_plugins.txt
 ZopeSkel.egg-info/requires.txt
 ZopeSkel.egg-info/top_level.txt
 zopeskel/__init__.py
+zopeskel/templates/basic_namespacepackage/setup.cfg
+zopeskel/templates/basic_namespacepackage/setup.py_tmpl
+zopeskel/templates/basic_namespacepackage/+namespace_package+/__init__.py
+zopeskel/templates/basic_namespacepackage/+namespace_package+/+package+/__init__.py
 zopeskel/templates/basic_zope/+project+-configure.zcml_tmpl
 zopeskel/templates/basic_zope/+package+/configure.zcml

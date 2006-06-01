@@ -42,5 +42,6 @@ breed' file layouts for starting Zope projects.
       [paste.paster_create_template]
       basic_zope = zopeskel:BasicZope
       basic_namespacepackage = zopeskel:BasicNamespaced
+      basic_plonecore = zopeskel:BasicPloneCore
       """,
       )
