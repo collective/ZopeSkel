@@ -1,0 +1,9 @@
+Changelog for ${project}
+
+    (name of developer listed in brackets)
+
+${project} - ${version|"0.1"} Unreleased
+
+    - Initial package structure.
+      [zopeskel]
+
