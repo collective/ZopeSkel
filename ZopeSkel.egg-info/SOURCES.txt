@@ -12,5 +12,15 @@ zopeskel/templates/basic_namespacepackage/setup.cfg
 zopeskel/templates/basic_namespacepackage/setup.py_tmpl
 zopeskel/templates/basic_namespacepackage/+namespace_package+/__init__.py
 zopeskel/templates/basic_namespacepackage/+namespace_package+/+package+/__init__.py
+zopeskel/templates/basic_plonecore/setup.cfg
+zopeskel/templates/basic_plonecore/setup.py_tmpl
+zopeskel/templates/basic_plonecore/+namespace_package+/__init__.py
+zopeskel/templates/basic_plonecore/+namespace_package+/+package+/HISTORY.txt_tmpl
+zopeskel/templates/basic_plonecore/+namespace_package+/+package+/LICENSE.GPL
+zopeskel/templates/basic_plonecore/+namespace_package+/+package+/LICENSE.txt_tmpl
+zopeskel/templates/basic_plonecore/+namespace_package+/+package+/README.txt_tmpl
+zopeskel/templates/basic_plonecore/+namespace_package+/+package+/__init__.py
+zopeskel/templates/basic_plonecore/+namespace_package+/+package+/configure.zcml
+zopeskel/templates/basic_plonecore/+namespace_package+/+package+/version.txt_tmpl
 zopeskel/templates/basic_zope/+project+-configure.zcml_tmpl
 zopeskel/templates/basic_zope/+package+/configure.zcml
