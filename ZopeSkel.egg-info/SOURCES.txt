@@ -7,6 +7,8 @@ ZopeSkel.egg-info/not-zip-safe
 ZopeSkel.egg-info/paster_plugins.txt
 ZopeSkel.egg-info/requires.txt
 ZopeSkel.egg-info/top_level.txt
+ez_setup/README.txt
+ez_setup/__init__.py
 zopeskel/__init__.py
 zopeskel/templates/basic_zope/+project+-configure.zcml_tmpl
 zopeskel/templates/basic_zope/+package+/configure.zcml
