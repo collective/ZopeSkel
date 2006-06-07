@@ -16,9 +16,9 @@ zopeskel/templates/plone_core/setup.cfg
 zopeskel/templates/plone_core/setup.py_tmpl
 zopeskel/templates/plone_core/+namespace_package+/__init__.py_tmpl
 zopeskel/templates/plone_core/+namespace_package+/+package+/HISTORY.txt_tmpl
+zopeskel/templates/plone_core/+namespace_package+/+package+/INSTALL.txt_tmpl
 zopeskel/templates/plone_core/+namespace_package+/+package+/LICENSE.GPL
 zopeskel/templates/plone_core/+namespace_package+/+package+/LICENSE.txt_tmpl
 zopeskel/templates/plone_core/+namespace_package+/+package+/README.txt_tmpl
 zopeskel/templates/plone_core/+namespace_package+/+package+/__init__.py_tmpl
-zopeskel/templates/plone_core/+namespace_package+/+package+/configure.zcml
-zopeskel/templates/plone_core/+namespace_package+/+package+/version.txt_tmpl
+zopeskel/templates/plone_core/+namespace_package+/+package+/configure.zcml_tmpl

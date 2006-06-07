@@ -4,5 +4,4 @@ ${project} Package Readme
 Overview
 --------
 
-${description|project}
-
+$description
