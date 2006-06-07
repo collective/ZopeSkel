@@ -21,7 +21,7 @@ layout.
 The latest version is available in a `Subversion repository
 <http://svn.plone.org/svn/collective/ZopeSkel/trunk#egg=ZopeSkel-dev>`_.
 
-Please contribute by submitting patches to what we consider 'best of
+Please contribute by submitting patches for what you consider 'best of
 breed' file layouts for starting Zope projects.
 """,
       classifiers=[
