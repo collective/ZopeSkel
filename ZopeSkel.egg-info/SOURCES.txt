@@ -1,4 +1,4 @@
-setup.cfg
+README.txt
 setup.py
 ZopeSkel.egg-info/PKG-INFO
 ZopeSkel.egg-info/SOURCES.txt
