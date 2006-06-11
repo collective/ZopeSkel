@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: ZopeSkel
-Version: 0.1dev-r24498
+Version: 0.2dev-r24721
 Summary: A collection of skeletons for quickstarting Zope projects.
 Home-page: UNKNOWN
 Author: Daniel Nouri
@@ -18,7 +18,7 @@ Description:
         The latest version is available in a `Subversion repository
         <http://svn.plone.org/svn/collective/ZopeSkel/trunk#egg=ZopeSkel-dev>`_.
         
-        Please contribute by submitting patches to what we consider 'best of
+        Please contribute by submitting patches for what you consider 'best of
         breed' file layouts for starting Zope projects.
         
 Keywords: web zope command-line skeleton project
