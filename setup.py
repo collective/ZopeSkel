@@ -45,5 +45,6 @@ breed' file layouts for starting Zope projects.
       [paste.paster_create_template]
       basic_zope = zopeskel:BasicZope
       plone_core = zopeskel:PloneCore
+      plone2_theme = zopeskel:Plone2Theme
       """,
       )
