@@ -39,7 +39,7 @@ class PloneCore(templates.Template):
 
 class Plone2Theme(templates.Template):
     _template_dir = 'templates/plone2_theme'
-    summary = "A Theme for Plone 2.x.x"
+    summary = "A Theme for Plone 2.1 & Plone 2.5"
     required_templates = []
     use_cheetah = True
     vars = [
