@@ -1,6 +1,6 @@
 
       [paste.paster_create_template]
-      basic_zope = zopeskel:BasicZope
+      basic_namespace = zopeskel:Namespace
       plone_core = zopeskel:PloneCore
       plone2_theme = zopeskel:Plone2Theme
       

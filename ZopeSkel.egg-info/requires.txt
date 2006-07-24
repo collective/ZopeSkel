@@ -1,1 +1,1 @@
-PasteScript>=0.5.2dev-r5180,==dev
+PasteScript>=0.9.1dev-r5487,==dev

@@ -40,10 +40,10 @@ breed' file layouts for starting Zope projects.
       packages=find_packages(exclude=['ez_setup']),
       include_package_data=True,
       zip_safe=False,
-      install_requires=["PasteScript>=0.5.2dev-r5180,==dev"],
+      install_requires=["PasteScript>=0.9.1dev-r5487,==dev"],
       entry_points="""
       [paste.paster_create_template]
-      basic_zope = zopeskel:BasicZope
+      basic_namespace = zopeskel:Namespace
       plone_core = zopeskel:PloneCore
       plone2_theme = zopeskel:Plone2Theme
       """,
