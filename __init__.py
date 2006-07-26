@@ -49,7 +49,7 @@ class PloneCore(Namespace):
     get_var(vars, 'package').default = 'example'
     vars.insert(2,
                 var(
-        'pythonproducts', 'Are you making a productsless Zope 2 Product?',
+        'zope2product', 'Are you creating a Zope 2 Product?',
         default=False))
     get_var(vars, 'author').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.i18n'
@@ -62,7 +62,7 @@ class Plone2Theme(Namespace):
     
     vars = copy.deepcopy(PloneCore.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
-    get_var(vars, 'pythonproducts').default = True
+    get_var(vars, 'zope2product').default = True
     vars = vars[:2] + [
         var('skinname',
             "Name of the skin selection that will be added to 'portal_skins'",
