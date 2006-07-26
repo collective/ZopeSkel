@@ -6,7 +6,7 @@ ${project} Installation
    (and EasyInstall) here:
    http://peak.telecommunity.com/DevCenter/EasyInstall
 
-#if $pythonproducts
+#if $zope2product
  * Get `pythonproducts`_ and install it via::
 
        python setup.py install --home /path/to/instance
@@ -20,6 +20,6 @@ ${project} Installation
 
        <include package="${namespace_package}.${package}" />
 
-#if $pythonproducts
+#if $zope2product
 .. _pythonproducts: http://plone.org/products/pythonproducts
 #end if
