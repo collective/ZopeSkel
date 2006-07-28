@@ -19,7 +19,7 @@ class Namespace(templates.Template):
     
     vars = [
         var('namespace_package', 'Namespace package (like plone)'),
-        var('package', 'The package contained namespace package (like i18n)'),
+        var('package', 'The package contained namespace package (like example)'),
         var('version', 'Version', default='0.1'),
         var('description', 'One-line description of the package'),
         var('long_description', 'Multi-line description (in reST)'),
@@ -38,6 +38,20 @@ class Namespace(templates.Template):
             command._deleted_once = True
         return super(Namespace, self).check_vars(vars, command)
 
+class NestedNamespace(Namespace):
+    _template_dir = 'templates/nested_namespace'
+    summary = "A project with two nested namespaces."
+    required_templates = []
+    use_cheetah = True
+
+    vars = copy.deepcopy(Namespace.vars)
+    get_var(vars, 'namespace_package').default = 'plone'
+    vars.insert(1,
+                var(
+        'namespace_package2', 'Nested namespace package (like app)',
+        default='app'))
+    get_var(vars, 'package').default = 'example'
+
 class PloneCore(Namespace):
     _template_dir = 'templates/plone_core'
     summary = "A Plone Core project"
@@ -51,8 +65,24 @@ class PloneCore(Namespace):
                 var(
         'zope2product', 'Are you creating a Zope 2 Product?',
         default=False))
-    get_var(vars, 'author').default = 'plone-developers@lists.sourceforge.net'
-    get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.i18n'
+    get_var(vars, 'author').default = 'Plone Foundation'
+    get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
+    get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.example'
+
+class PloneApp(NestedNamespace):
+    _template_dir = 'templates/plone_app'
+    summary = "A Plone App project"
+    required_templates = ['nested_namespace']
+    use_cheetah = True
+
+    vars = copy.deepcopy(NestedNamespace.vars)
+    vars.insert(3,
+                var(
+        'zope2product', 'Are you creating a Zope 2 Product?',
+        default=True))
+    get_var(vars, 'author').default = 'Plone Foundation'
+    get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
+    get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
 
 class Plone2Theme(Namespace):
     _template_dir = 'templates/plone2_theme'
