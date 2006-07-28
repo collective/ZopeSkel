@@ -1,0 +1,25 @@
+${project} Installation
+=======================
+
+ * When you're reading this you have probably already run 
+   ``easy_install ${project}``. Find out how to install setuptools
+   (and EasyInstall) here:
+   http://peak.telecommunity.com/DevCenter/EasyInstall
+
+#if $zope2product
+ * Get `pythonproducts`_ and install it via::
+
+       python setup.py install --home /path/to/instance
+
+   into your Zope instance.
+
+#end if
+ * Create a file called ``${project}-configure.zcml`` in the
+   ``/path/to/instance/etc/package-includes`` directory.  The file
+   should only contain this::
+
+       <include package="${namespace_package}.${namespace_package}.${package}" />
+
+#if $zope2product
+.. _pythonproducts: http://plone.org/products/pythonproducts
+#end if
