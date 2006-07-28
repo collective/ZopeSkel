@@ -52,9 +52,9 @@ class NestedNamespace(Namespace):
         default='app'))
     get_var(vars, 'package').default = 'example'
 
-class PloneCore(Namespace):
-    _template_dir = 'templates/plone_core'
-    summary = "A Plone Core project"
+class Plone(Namespace):
+    _template_dir = 'templates/plone'
+    summary = "A Plone project"
     required_templates = ['basic_namespace']
     use_cheetah = True
 
@@ -87,10 +87,10 @@ class PloneApp(NestedNamespace):
 class Plone2Theme(Namespace):
     _template_dir = 'templates/plone2_theme'
     summary = "A Theme for Plone 2.1 & Plone 2.5"
-    required_templates = ['plone_core']
+    required_templates = ['plone']
     use_cheetah = True
     
-    vars = copy.deepcopy(PloneCore.vars)
+    vars = copy.deepcopy(Plone.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'zope2product').default = True
     vars = vars[:2] + [
