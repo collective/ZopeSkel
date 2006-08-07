@@ -128,6 +128,8 @@ def resetResources(self, out, toolname, resources):
     # Revert resource customizations
     tool = getToolByName(self, toolname)
     for resource in [tool.getResource(r['id']) for r in resources]:
+        if resource is None:
+            continue
         for key in resource._data.keys():
             originalkey = 'original_'+key
             if resource._data.has_key(originalkey):
