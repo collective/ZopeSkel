@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: ZopeSkel
-Version: 0.2dev-r26878
+Version: 0.3dev-r27063
 Summary: A collection of skeletons for quickstarting Zope projects.
 Home-page: UNKNOWN
 Author: Daniel Nouri
@@ -24,6 +24,8 @@ Description:
 Keywords: web zope command-line skeleton project
 Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Zope2
+Classifier: Framework :: Zope3
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python

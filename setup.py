@@ -26,6 +26,8 @@ breed' file layouts for starting Zope projects.
 """,
       classifiers=[
         "Development Status :: 3 - Alpha",
+        "Framework :: Zope2",
+        "Framework :: Zope3",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
