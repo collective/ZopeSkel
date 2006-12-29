@@ -3,8 +3,6 @@ import unittest
 from zope.testing import doctestunit
 from zope.component import testing
 from Testing import ZopeTestCase as ztc
-#from Products.PloneTestCase import PloneTestCase as ptc
-#ptc.setupPloneSite()
 
 def test_suite():
     return unittest.TestSuite([
@@ -22,11 +20,10 @@ def test_suite():
         # Integration tests that use ZopeTestCase
         #ztc.ZopeDocFileSuite(
         #    'README.txt', package='${namespace_package}.${namespace_package2}.${package}',
-        #    test_class=ptc.PloneTestCase),
+        #    setUp=testing.setUp, tearDown=testing.tearDown),
 
         #ztc.FunctionalDocFileSuite(
-        #    'browser.txt', package='${namespace_package}.${namespace_package2}.${package}',
-        #    test_class=ptc.PloneTestCase),
+        #    'browser.txt', package='${namespace_package}.${namespace_package2}.${package}'),
         
         ])
 
