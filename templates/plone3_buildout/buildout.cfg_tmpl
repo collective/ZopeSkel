@@ -1,0 +1,97 @@
+[buildout]
+eggs-directory = lib/python
+develop-eggs-directory = lib/python
+
+parts =
+#if not $zope2_install
+    zope2
+#end if
+    productdistros
+    plonebundle
+    instance
+    test
+
+find-links =
+    http://download.zope.org/distribution/
+    http://effbot.org/downloads
+
+\# Add additional eggs here
+eggs =
+    elementtree
+    python-yadis
+    python-openid
+    python-urljr
+    
+\# Reference any eggs you are developing here, one per line
+\# e.g.: develop = src/my.package
+develop =
+
+#if not $zope2_install
+[zope2]
+recipe = z2c.recipe.zope2install
+url = http://www.zope.org/Products/Zope/2.10.2/Zope-2.10.2.tgz
+#end if
+
+[plonebundle]
+recipe = z2c.recipe.bundlecheckout
+url = http://svn.plone.org/svn/plone/bundles/3.0
+
+[productdistros]
+recipe = z2c.recipe.distros
+\# Add any additional tarballs you wish to download and use as products here
+urls =
+    http://www.dieter.handshake.de/pyprojects/zope/AdvancedQuery.tgz
+    http://antiloop.plone.org/download/ZopeVersionControl-0.3.3.tar.gz
+    http://plone.org/products/external-editor/releases/0.9.3/ExternalEditor-0.9.3-src.tgz
+    http://plone.org/products/i18ntestcase/releases/1.1/i18ntestcase-1.1.tar.gz
+
+[instance]
+recipe = z2c.recipe.zope2instance
+#if $zope2_install
+zope2-location = ${zope2_install}
+#else
+zope2-location = \${zope2:location}
+#end if
+user = ${zope_user}:${zope_password}
+#if $debug_mode == 'on'
+debug-mode = on
+#end if
+#if $verbose_security == 'on'
+verbose-security = on
+#end if
+
+\# If you want Zope to know about any additional eggs, list them here.
+\# This should include any development eggs you listed in develop-eggs above,
+\# e.g. eggs = \${buildout:eggs} my.package
+eggs =
+    \${buildout:eggs}
+
+\# If you want to register ZCML slugs for any packages, list them here.
+\# e.g. zcml = my.package my.other.package
+zcml = 
+
+products =
+    \${buildout:directory}/products
+    \${productdistros:location}
+    \${plonebundle:location}
+
+[test]
+recipe = zc.recipe.testrunner
+eggs =
+    \${instance:eggs}
+
+#if $zope2_install
+extra-paths =
+    ${zope2_install}/lib/python
+
+defaults = ['--test-path', '${zope2_install}/lib/python',
+            '-v'
+           ]
+#else
+extra-paths =
+    \${zope2:location}/lib/python
+
+defaults = ['--test-path', '\${zope2:location}/lib/python',
+            '-v'
+           ]
+#end if
