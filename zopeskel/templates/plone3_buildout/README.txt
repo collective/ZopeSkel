@@ -31,7 +31,7 @@ or, to run in foreground mode:
  
 To run unit tests, you can use:
 
- $ bin/test -m my.package
+ $ bin/instance test -s my.package
  
 Changing buildout.cfg
 ----------------------
@@ -152,8 +152,7 @@ and cvs is also supported:
     plonebundle
     myproduct
     instance
-    test
-    
+
 Note that "myproduct" comes before the "instance" part. You then
 need to add a new section to buildout.cfg:
 
