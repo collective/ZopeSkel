@@ -1,19 +1,50 @@
 [buildout]
-eggs-directory = lib/python
-develop-eggs-directory = lib/python
+
+# XXX: Because there is no Plone release yet, we track svn. This means
+# (a) using the plonebundle (if applicable) rather than a tarball in
+# productdistros, and (b) having lots of random find-links to point to
+# plone svn. When eggs are in the cheese shop, all the find-links to plone
+# svn can go away, and we can use just a tarball for Plone download.
 
 parts =
 #if not $zope2_install
     zope2
 #end if
-    productdistros
+#if not $plone_products_install
     plonebundle
+    productdistros
+#end if
     instance
-    test
+    zopepy
 
 find-links =
     http://download.zope.org/distribution/
     http://effbot.org/downloads
+    
+    http://codespeak.net/svn/kukit/kss.core/trunk#egg=kss.core-0.1dev
+    http://svn.plone.org/svn/collective/wicked/branches/1.1#egg=wicked-1.0.1dev
+    http://svn.plone.org/svn/collective/txtfilter/trunk#egg=txtfilter-1.0.1dev
+    
+    http://svn.plone.org/svn/archetypes/archetypes.kss/trunk#egg=archetypes.kss-0.1dev
+
+    http://svn.plone.org/svn/plone/plone.locking/trunk#egg=plone.locking-0.1dev
+    http://svn.plone.org/svn/plone/plone.portlets/trunk#egg=plone.portlets-0.1dev
+    http://svn.plone.org/svn/plone/plone.memoize/trunk#egg=plone.memoize-0.1dev
+    http://svn.plone.org/svn/plone/plone.contentrules/trunk#egg=plone.contentrules-0.1dev
+    http://svn.plone.org/svn/plone/plone.session/trunk#egg=plone.session-0.1dev
+    http://svn.plone.org/svn/plone/plone.openid/trunk#egg=plone.openid-0.1dev
+
+    http://svn.plone.org/svn/plone/plone.app.contentmenu/trunk#egg=plone.app.contentmenu-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.contentrules/trunk#egg=plone.app.contentrules-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.controlpanel/trunk#egg=plone.app.controlpanel-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.kss/trunk#egg=plone.app.kss-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.layout/trunk#egg=plone.app.layout-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.linkintegrity/trunk#egg=plone.app.linkintegrity-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.portlets/trunk#egg=plone.app.portlets-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.redirector/trunk#egg=plone.app.redirector-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.vocabularies/trunk#egg=plone.app.vocabularies-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.workflow/trunk#egg=plone.app.workflow-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.openid/trunk#egg=plone.app.openid-0.1dev
 
 \# Add additional eggs here
 eggs =
@@ -21,6 +52,27 @@ eggs =
     python-yadis
     python-openid
     python-urljr
+    archetypes.kss
+    kss.core
+    plone.app.contentmenu
+    plone.app.contentrules
+    plone.app.controlpanel
+    plone.app.kss
+    plone.app.layout
+    plone.app.linkintegrity
+    plone.app.openid
+    plone.app.portlets
+    plone.app.redirector
+    plone.app.vocabularies
+    plone.app.workflow
+    plone.contentrules
+    plone.locking
+    plone.memoize
+    plone.openid
+    plone.portlets
+    plone.session
+    txtfilter
+    wicked
     
 \# Reference any eggs you are developing here, one per line
 \# e.g.: develop = src/my.package
@@ -32,6 +84,7 @@ recipe = z2c.recipe.zope2install
 url = http://www.zope.org/Products/Zope/2.10.2/Zope-2.10.2.tgz
 #end if
 
+#if not $plone_products_install
 [plonebundle]
 recipe = z2c.recipe.bundlecheckout
 url = http://svn.plone.org/svn/plone/bundles/3.0
@@ -44,6 +97,7 @@ urls =
     http://antiloop.plone.org/download/ZopeVersionControl-0.3.3.tar.gz
     http://plone.org/products/external-editor/releases/0.9.3/ExternalEditor-0.9.3-src.tgz
     http://plone.org/products/i18ntestcase/releases/1.1/i18ntestcase-1.1.tar.gz
+#end if
 
 [instance]
 recipe = z2c.recipe.zope2instance
@@ -72,26 +126,20 @@ zcml =
 
 products =
     \${buildout:directory}/products
+#if not $plone_products_install
     \${productdistros:location}
     \${plonebundle:location}
-
-[test]
-recipe = zc.recipe.testrunner
-eggs =
-    \${instance:eggs}
-
-#if $zope2_install
-extra-paths =
-    ${zope2_install}/lib/python
-
-defaults = ['--test-path', '${zope2_install}/lib/python',
-            '-v'
-           ]
 #else
-extra-paths =
-    \${zope2:location}/lib/python
-
-defaults = ['--test-path', '\${zope2:location}/lib/python',
-            '-v'
-           ]
+    ${plone_products_install}
 #end if
+
+[zopepy]
+recipe = zc.recipe.egg
+eggs = \${instance:eggs}
+interpreter = zopepy
+#if $zope2_install
+extra-paths = ${zope2_install}/lib/python
+#else
+extra-paths = \${zope2:location}/lib/python
+#end if
+scripts = zopepy
