@@ -107,11 +107,16 @@ zope2-location = ${zope2_install}
 zope2-location = \${zope2:location}
 #end if
 user = ${zope_user}:${zope_password}
+http-port = ${http_port}
 #if $debug_mode == 'on'
 debug-mode = on
+#else
+\#debug-mode = on
 #end if
 #if $verbose_security == 'on'
 verbose-security = on
+#else
+\#verbose-security = on
 #end if
 
 \# If you want Zope to know about any additional eggs, list them here.
