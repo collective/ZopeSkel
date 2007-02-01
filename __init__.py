@@ -113,6 +113,7 @@ class Plone3Buildout(templates.Template):
         var('plone_products_install', 'Path to directory containing Plone products; leave blank to fetch one', default=''),
         var('zope_user', 'Zope root admin user', default='admin'),
         var('zope_password', 'Zope root admin password'),
+        var('http_port', 'HTTP port', default=8080),
         var('debug_mode', 'Should debug mode be "on" or "off"?', default='off'),
         var('verbose_security', 'Should verbose security be "on" or "off"?', default='off'),
         ]
