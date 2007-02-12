@@ -5,3 +5,10 @@ Overview
 --------
 
 $description
+
+
+Your tests here
+---------------
+
+    >>> 1 + 1
+    3

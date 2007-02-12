@@ -7,10 +7,10 @@ from Testing import ZopeTestCase as ztc
 def test_suite():
     return unittest.TestSuite([
 
-        # Unit tests
-        #doctestunit.DocFileSuite(
-        #    'README.txt', package='${namespace_package}.${package}',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
+        # Unit tests for your API
+        doctestunit.DocFileSuite(
+            'README.txt', package='${namespace_package}.${package}',
+            setUp=testing.setUp, tearDown=testing.tearDown),
 
         #doctestunit.DocTestSuite(
         #    module='${namespace_package}.${package}.mymodule',
