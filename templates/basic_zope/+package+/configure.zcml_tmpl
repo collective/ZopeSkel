@@ -1,9 +1,0 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five">
-
-#if $zope2product
-    <five:registerPackage package="." initialize=".initialize" />
-#end if
-
-</configure>
