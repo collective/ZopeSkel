@@ -11,6 +11,7 @@ def get_var(vars, name):
     else:
         raise ValueError("No such var: %r" % name)
 
+
 class Namespace(templates.Template):
     _template_dir = 'templates/basic_namespace'
     summary = "A project with a namespace package"
@@ -38,6 +39,7 @@ class Namespace(templates.Template):
             command._deleted_once = True
         return super(Namespace, self).check_vars(vars, command)
 
+
 class NestedNamespace(Namespace):
     _template_dir = 'templates/nested_namespace'
     summary = "A project with two nested namespaces."
@@ -51,6 +53,22 @@ class NestedNamespace(Namespace):
         'namespace_package2', 'Nested namespace package (like app)',
         default='app'))
     get_var(vars, 'package').default = 'example'
+
+
+class BasicZope(Namespace):
+    _template_dir = 'templates/basic_zope'
+    summary = "A Zope project"
+    required_templates = ['basic_namespace']
+    use_cheetah = True
+
+    vars = copy.deepcopy(Namespace.vars)
+    get_var(vars, 'namespace_package').default = 'myzopelib'
+    get_var(vars, 'package').default = 'example'
+    vars.insert(2,
+                var(
+        'zope2product', 'Are you creating a Zope 2 Product?',
+        default=False))
+
 
 class Plone(Namespace):
     _template_dir = 'templates/plone'
@@ -69,6 +87,7 @@ class Plone(Namespace):
     get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.example'
 
+
 class PloneApp(NestedNamespace):
     _template_dir = 'templates/plone_app'
     summary = "A Plone App project"
@@ -83,6 +102,7 @@ class PloneApp(NestedNamespace):
     get_var(vars, 'author').default = 'Plone Foundation'
     get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
+
 
 class Plone2Theme(Namespace):
     _template_dir = 'templates/plone2_theme'
@@ -101,6 +121,7 @@ class Plone2Theme(Namespace):
             'Name of the skin selection the new one will be copied from',
             default='Plone Default'),
         ] + vars[2:]
+
 
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'

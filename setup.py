@@ -47,6 +47,7 @@ breed' file layouts for starting Zope projects.
       [paste.paster_create_template]
       basic_namespace = zopeskel:Namespace
       nested_namespace = zopeskel:NestedNamespace
+      basic_zope = zopeskel:BasicZope
       plone = zopeskel:Plone
       plone_app = zopeskel:PloneApp
       plone2_theme = zopeskel:Plone2Theme
