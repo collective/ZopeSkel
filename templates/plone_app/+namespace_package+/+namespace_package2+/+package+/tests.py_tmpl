@@ -3,8 +3,24 @@ import unittest
 from zope.testing import doctestunit
 from zope.component import testing
 from Testing import ZopeTestCase as ztc
-\#from Products.PloneTestCase import PloneTestCase as ptc
-\#ptc.setupPloneSite()
+
+from Products.Five import zcml
+from Products.Five import fiveconfigure
+from Products.PloneTestCase import PloneTestCase as ptc
+from Products.PloneTestCase.layer import PloneSite
+ptc.setupPloneSite()
+
+import ${namespace_package}.${namespace_package2}
+
+class TestCase(ptc.PloneTestCase):
+    class layer(PloneSite):
+        @classmethod
+        def setUp(cls):
+            fiveconfigure.debug_mode = True
+            zcml.load_config('configure.zcml',
+                             ${namespace_package}.${namespace_package2})
+            fiveconfigure.debug_mode = False
+    
 
 def test_suite():
     return unittest.TestSuite([
@@ -22,11 +38,11 @@ def test_suite():
         \# Integration tests that use ZopeTestCase
         \#ztc.ZopeDocFileSuite(
         \#    'README.txt', package='${namespace_package}.${namespace_package2}.${package}',
-        \#    test_class=ptc.PloneTestCase),
+        \#    test_class=TestCase),
 
         \#ztc.FunctionalDocFileSuite(
         \#    'browser.txt', package='${namespace_package}.${namespace_package2}.${package}',
-        \#    test_class=ptc.PloneTestCase),
+        \#    test_class=TestCase),
         
         ])
 
