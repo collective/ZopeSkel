@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool" allow_any="False"
+   cookie_persistence="False" default_skin="$skinname"
+   request_varname="plone_skin">
+ <object name="${package}_base_images"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_base_images"/>
+ <object name="${package}_base_styles"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_base_styles"/>
+ <object name="${package}_base_templates"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_base_templates"/>
+ <skin-path name="$skinname" based-on="$skinbase">
+  <layer name="${package}_base_styles"
+     insert-after="custom"/>
+  <layer name="${package}_base_images"
+     insert-after="${package}_base_styles"/>
+  <layer name="${package}_base_templates"
+     insert-after="${package}_base_images"/>
+ </skin-path>
+</object>
+

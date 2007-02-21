@@ -122,6 +122,24 @@ class Plone2Theme(Namespace):
             default='Plone Default'),
         ] + vars[2:]
 
+class Plone3Theme(Namespace):
+    _template_dir = 'templates/plone3_theme'
+    summary = "A Theme for Plone 2.5 & Plone 3.0"
+    required_templates = ['plone']
+    use_cheetah = True
+    
+    vars = copy.deepcopy(Plone.vars)
+    get_var(vars, 'namespace_package').default = 'plonetheme'
+    get_var(vars, 'zope2product').default = True
+    vars = vars[:2] + [
+        var('skinname',
+            "Name of the skin selection that will be added to 'portal_skins'",
+            default="Example Plone Theme"),
+        var('skinbase',
+            'Name of the skin selection the new one will be copied from',
+            default='Plone Default'),
+        ] + vars[2:]
+
 
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'

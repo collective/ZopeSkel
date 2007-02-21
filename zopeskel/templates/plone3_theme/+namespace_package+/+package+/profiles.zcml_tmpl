@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="$package">
+
+  <genericsetup:registerProfile
+      name="$package"
+      title="$skinname"
+      directory="profiles/default"
+      description="Extension profile for ${skinname} Product."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>

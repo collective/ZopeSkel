@@ -51,6 +51,7 @@ breed' file layouts for starting Zope projects.
       plone = zopeskel:Plone
       plone_app = zopeskel:PloneApp
       plone2_theme = zopeskel:Plone2Theme
+      plone3_theme = zopeskel:Plone3Theme
       plone3_buildout = zopeskel:Plone3Buildout
       """,
       )
