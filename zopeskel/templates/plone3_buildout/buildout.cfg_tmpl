@@ -24,27 +24,32 @@ find-links =
     http://codespeak.net/svn/kukit/kss.core/trunk#egg=kss.core-0.1dev
     http://svn.plone.org/svn/collective/wicked/branches/1.1#egg=wicked-1.0.1dev
     http://svn.plone.org/svn/collective/txtfilter/trunk#egg=txtfilter-1.0.1dev
-    
     http://svn.plone.org/svn/archetypes/archetypes.kss/trunk#egg=archetypes.kss-0.1dev
-
-    http://svn.plone.org/svn/plone/plone.locking/trunk#egg=plone.locking-0.1dev
-    http://svn.plone.org/svn/plone/plone.portlets/trunk#egg=plone.portlets-0.1dev
-    http://svn.plone.org/svn/plone/plone.memoize/trunk#egg=plone.memoize-0.1dev
-    http://svn.plone.org/svn/plone/plone.contentrules/trunk#egg=plone.contentrules-0.1dev
-    http://svn.plone.org/svn/plone/plone.session/trunk#egg=plone.session-0.1dev
-    http://svn.plone.org/svn/plone/plone.openid/trunk#egg=plone.openid-0.1dev
-
+    svn://svn.zope.org/repos/main/five.customerize/branches/plone-3.0-branch#egg=five.customerize-0.1dev
+   
     http://svn.plone.org/svn/plone/plone.app.contentmenu/trunk#egg=plone.app.contentmenu-0.1dev
     http://svn.plone.org/svn/plone/plone.app.contentrules/trunk#egg=plone.app.contentrules-0.1dev
     http://svn.plone.org/svn/plone/plone.app.controlpanel/trunk#egg=plone.app.controlpanel-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.customerize/trunk#egg=plone.app.customerize-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.form/branches/plone-3.0#egg=plone.app.form-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.i18n/trunk#egg=plone.app.i18n-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.iterate/trunk#egg=plone.app.iterate-0.1dev
     http://svn.plone.org/svn/plone/plone.app.kss/trunk#egg=plone.app.kss-0.1dev
     http://svn.plone.org/svn/plone/plone.app.layout/trunk#egg=plone.app.layout-0.1dev
     http://svn.plone.org/svn/plone/plone.app.linkintegrity/trunk#egg=plone.app.linkintegrity-0.1dev
+    http://svn.plone.org/svn/plone/plone.app.openid/trunk#egg=plone.app.openid-0.1dev
     http://svn.plone.org/svn/plone/plone.app.portlets/trunk#egg=plone.app.portlets-0.1dev
     http://svn.plone.org/svn/plone/plone.app.redirector/trunk#egg=plone.app.redirector-0.1dev
     http://svn.plone.org/svn/plone/plone.app.vocabularies/trunk#egg=plone.app.vocabularies-0.1dev
     http://svn.plone.org/svn/plone/plone.app.workflow/trunk#egg=plone.app.workflow-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.openid/trunk#egg=plone.app.openid-0.1dev
+    http://svn.plone.org/svn/plone/plone.contentrules/trunk#egg=plone/plone.contentrules-0.1dev
+    http://svn.plone.org/svn/plone/plone.fieldsets/trunk#egg=plone.fieldsets-0.1dev
+    http://svn.plone.org/svn/plone/plone.i18n/trunk#egg=plone.i18n-0.1dev
+    http://svn.plone.org/svn/plone/plone.locking/trunk#egg=plone.locking-0.1dev
+    http://svn.plone.org/svn/plone/plone.memoize/trunk#egg=plone.memoize-0.1dev
+    http://svn.plone.org/svn/plone/plone.openid/trunk#egg=plone.openid-0.1dev
+    http://svn.plone.org/svn/plone/plone.portlets/trunk#egg=plone.portlets-0.1dev
+    http://svn.plone.org/svn/plone/plone.session/trunk#egg=plone.session-0.1dev
 
 \# Add additional eggs here
 eggs =
@@ -57,6 +62,10 @@ eggs =
     plone.app.contentmenu
     plone.app.contentrules
     plone.app.controlpanel
+    plone.app.customerize
+    plone.app.form
+    plone.app.i18n
+    plone.app.iterate
     plone.app.kss
     plone.app.layout
     plone.app.linkintegrity
@@ -66,6 +75,8 @@ eggs =
     plone.app.vocabularies
     plone.app.workflow
     plone.contentrules
+    plone.fieldsets
+    plone.i18n
     plone.locking
     plone.memoize
     plone.openid
@@ -73,6 +84,7 @@ eggs =
     plone.session
     txtfilter
     wicked
+    five.customerize
     
 \# Reference any eggs you are developing here, one per line
 \# e.g.: develop = src/my.package
