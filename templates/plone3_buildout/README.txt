@@ -157,7 +157,7 @@ Note that "myproduct" comes before the "instance" part. You then
 need to add a new section to buildout.cfg:
 
  [myproduct]
- recipe = z2c.recipe.bundlecheckout
+ recipe = plone.recipe.bundlecheckout
  url = http://svn.plone.org/svn/collective/myproduct/trunk
  
 Finally, you need to tell Zope to find this new checkout and add it to its
