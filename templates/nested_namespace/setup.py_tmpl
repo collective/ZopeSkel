@@ -26,6 +26,7 @@ ${long_description or None}""",
       include_package_data=True,
       zip_safe=${repr(bool($zip_safe)) or False},
       install_requires=[
+          'setuptools',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
