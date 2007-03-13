@@ -148,7 +148,7 @@ class Plone3Theme(Namespace):
     
     vars = copy.deepcopy(Plone.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
-    get_var(vars, 'zope2product').default = True
+    get_var(vars, 'zope2product').default = False
     vars = vars[:2] + [
         var('skinname',
             "Name of the skin selection that will be added to 'portal_skins'",
