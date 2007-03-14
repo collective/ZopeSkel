@@ -39,7 +39,7 @@
   <layer name="plone_wysiwyg"/>
   <layer name="plone_prefs"/>
   <layer name="plone_portlets"/>
-#if $skinbase is "Plone Tableless"
+#if $skinbase == "Plone Tableless"
   <layer name="plone_tableless"/>
 #end if
   <layer name="plone_templates"/>
