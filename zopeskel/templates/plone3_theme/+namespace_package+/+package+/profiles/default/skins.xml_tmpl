@@ -5,22 +5,22 @@
 #if $zope2product
  <object name="${package}_images"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_images"/>
+    directory="Products.${package}:skins/${package}_images"/>
  <object name="${package}_custom_images"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_custom_images"/>
+    directory="Products.${package}:skins/${package}_custom_images"/>
  <object name="${package}_styles"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_styles"/>
+    directory="Products.${package}:skins/${package}_styles"/>
  <object name="${package}_custom_styles"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_custom_styles"/>
+    directory="Products.${package}:skins/${package}_custom_styles"/>
  <object name="${package}_templates"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_templates"/>
+    directory="Products.${package}:skins/${package}_templates"/>
  <object name="${package}_custom_templates"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_custom_templates"/>
+    directory="Products.${package}:skins/${package}_custom_templates"/>
 #else
  <object name="${package}_images"
     meta_type="Filesystem Directory View"
