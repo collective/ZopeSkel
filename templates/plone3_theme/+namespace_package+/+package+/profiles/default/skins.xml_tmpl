@@ -2,6 +2,7 @@
 <object name="portal_skins" allow_any="False" cookie_persistence="False"
    default_skin="$skinname">
 
+#if $zope2product
  <object name="${package}_images"
     meta_type="Filesystem Directory View"
     directory="${package}/skins/${package}_images"/>
@@ -20,6 +21,26 @@
  <object name="${package}_custom_templates"
     meta_type="Filesystem Directory View"
     directory="${package}/skins/${package}_custom_templates"/>
+#else
+ <object name="${package}_images"
+    meta_type="Filesystem Directory View"
+    directory="$namespace_package.${package}:skins/${package}_images"/>
+ <object name="${package}_custom_images"
+    meta_type="Filesystem Directory View"
+    directory="$namespace_package.${package}:skins/${package}_custom_images"/>
+ <object name="${package}_styles"
+    meta_type="Filesystem Directory View"
+    directory="$namespace_package.${package}:skins/${package}_styles"/>
+ <object name="${package}_custom_styles"
+    meta_type="Filesystem Directory View"
+    directory="$namespace_package.${package}:skins/${package}_custom_styles"/>
+ <object name="${package}_templates"
+    meta_type="Filesystem Directory View"
+    directory="$namespace_package.${package}:skins/${package}_templates"/>
+ <object name="${package}_custom_templates"
+    meta_type="Filesystem Directory View"
+    directory="$namespace_package.${package}:skins/${package}_custom_templates"/>
+#end if
 
  <skin-path name="*">
   <layer name="${package}_images"
