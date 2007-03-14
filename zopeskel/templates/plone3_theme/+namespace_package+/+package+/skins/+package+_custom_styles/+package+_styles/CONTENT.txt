@@ -1,3 +1,0 @@
-This folder holds CSS and Filesystem Properties Object (commonly
-'base_properties.props') files that are registered for the
-'$skinname' Skin Selection only.
