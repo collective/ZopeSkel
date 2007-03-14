@@ -21,6 +21,40 @@
     meta_type="Filesystem Directory View"
     directory="${package}/skins/${package}_custom_templates"/>
 
+ <skin-path name="${skinname}">
+  <layer name="custom"/>
+  <layer name="${package}_styles"/>
+  <layer name="kupu_tests"/>
+  <layer name="CMFPlacefulWorkflow"/>
+  <layer name="PasswordReset"/>
+  <layer name="kupu_plone"/>
+  <layer name="kupu"/>
+  <layer name="ATContentTypes"/>
+  <layer name="ATReferenceBrowserWidget"/>
+  <layer name="archetypes"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="ResourceRegistries"/>
+  <layer name="gruf"/>
+  <layer name="plone_ecmascript"/>
+  <layer name="plone_wysiwyg"/>
+  <layer name="plone_prefs"/>
+  <layer name="plone_portlets"/>
+#if $skinbase is "Plone Tableless"
+  <layer name="plone_tableless"/>
+#end if
+  <layer name="plone_templates"/>
+  <layer name="plone_styles"/>
+  <layer name="plone_form_scripts"/>
+  <layer name="plone_scripts"/>
+  <layer name="plone_forms"/>
+  <layer name="plone_images"/>
+  <layer name="plone_content"/>
+  <layer name="plone_login"/>
+  <layer name="plone_deprecated"/>
+  <layer name="plone_3rdParty"/>
+  <layer name="cmf_legacy"/>
+ </skin-path>
+
  <skin-path name="*">
   <layer name="${package}_images"
      insert-after="custom"/>
@@ -28,15 +62,13 @@
      insert-after="${package}_styles"/>
  </skin-path>
 
- <skin-path name="${skinname}" based-on="${skinbase}">
+ <skin-path name="*">
   <layer name="${package}_custom_images"
-     insert-before="${package}_images"/>
-  <layer name="${package}_styles"
-     insert-after="${package}_images"/>
-  <layer name="${package}_custom_styles"
-     insert-before="${package}_styles"/>
+      insert-before="${package}_images"/>
   <layer name="${package}_custom_templates"
-     insert-before="${package}_templates"/>
+      insert-after="${package}_custom_images"/>
+  <layer name="${package}_custom_styles"
+      insert-after="${package}_custom_templates"/>
  </skin-path>
 
 </object>
