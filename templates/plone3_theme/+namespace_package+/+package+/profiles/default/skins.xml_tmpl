@@ -11,6 +11,9 @@
  <object name="${package}_styles"
     meta_type="Filesystem Directory View"
     directory="${package}/skins/${package}_styles"/>
+ <object name="${package}_custom_styles"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_custom_styles"/>
  <object name="${package}_templates"
     meta_type="Filesystem Directory View"
     directory="${package}/skins/${package}_templates"/>
@@ -21,15 +24,17 @@
  <skin-path name="*">
   <layer name="${package}_images"
      insert-after="custom"/>
-  <layer name="${package}_templates"
+  <layer name="${package}_styles"
      insert-after="${package}_images"/>
+  <layer name="${package}_templates"
+     insert-after="${package}_styles"/>
  </skin-path>
 
  <skin-path name="$skinname" based-on="$skinbase">
-  <layer name="${package}_styles"
-     insert-after="custom"/>
   <layer name="${package}_custom_images"
      insert-before="${package}_images"/>
+  <layer name="${package}_custom_styles"
+     insert-before="${package}_styles"/>
   <layer name="${package}_custom_templates"
      insert-before="${package}_templates"/>
  </skin-path>
