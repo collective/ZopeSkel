@@ -3,9 +3,9 @@
 
 DEPRECATED:string=This approach is deprecated and will be phased out in Plone 2.2 or 2.3
 
-title:string=$skinname's color, font, logo and border defaults
+title:string=${skinname}'s color, font, logo and border defaults
 
-plone_skin:string=$skinname
+plone_skin:string=${skinname}
 
 logoName:string=logo.jpg
 
