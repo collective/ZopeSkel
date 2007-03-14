@@ -59,10 +59,10 @@
   <layer name="${package}_images"
      insert-after="custom"/>
   <layer name="${package}_templates"
-     insert-after="${package}_styles"/>
+     insert-after="${package}_images"/>
  </skin-path>
 
- <skin-path name="*">
+ <skin-path name="${skinname}">
   <layer name="${package}_custom_images"
       insert-before="${package}_images"/>
   <layer name="${package}_custom_templates"
