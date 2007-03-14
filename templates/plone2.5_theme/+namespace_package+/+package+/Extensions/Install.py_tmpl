@@ -1,23 +1,9 @@
-from cStringIO import StringIO
+from Products.CMFCore.utils import getToolByName
 
-from ${project}.Extensions.utils import *
-from ${project}.config import *
-
-def install(self):
-    out = StringIO()
-
-    setupSkins(self, out, GLOBALS, SKINSELECTIONS, SELECTSKIN, DEFAULTSKIN,
-                          ALLOWSELECTION, PERSISTENTCOOKIE)
-    registerResources(self, out, 'portal_css', STYLESHEETS)
-    registerResources(self, out, 'portal_javascripts', JAVASCRIPTS)
-
-    print >> out, "Installation completed."
-    return out.getvalue()
-
-
-def uninstall(self):
-    out = StringIO()
-
-    removeSkins(self, out, SKINSELECTIONS, DEFAULTSKIN, RESETSKINTOOL)
-    resetResources(self, out, 'portal_css', STYLESHEETS)
-    resetResources(self, out, 'portal_javascripts', JAVASCRIPTS)
+def install(portal):
+    setup_tool = getToolByName(portal, 'portal_setup')
+    originalContext = setup_tool.getImportContextID()
+    setup_tool.setImportContext('profile-Products.${package}:default')
+    setup_tool.runAllImportSteps()
+    setup_tool.setImportContext(originalContext)
+    return "Ran all import steps."
