@@ -24,8 +24,6 @@
  <skin-path name="*">
   <layer name="${package}_images"
      insert-after="custom"/>
-  <layer name="${package}_styles"
-     insert-after="${package}_images"/>
   <layer name="${package}_templates"
      insert-after="${package}_styles"/>
  </skin-path>
@@ -33,6 +31,8 @@
  <skin-path name="${skinname}" based-on="${skinbase}">
   <layer name="${package}_custom_images"
      insert-before="${package}_images"/>
+  <layer name="${package}_styles"
+     insert-after="${package}_images"/>
   <layer name="${package}_custom_styles"
      insert-before="${package}_styles"/>
   <layer name="${package}_custom_templates"
