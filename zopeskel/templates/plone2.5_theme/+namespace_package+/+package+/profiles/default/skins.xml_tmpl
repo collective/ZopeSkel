@@ -1,23 +1,43 @@
 <?xml version="1.0"?>
-<object name="portal_skins" meta_type="Plone Skins Tool" allow_any="False"
-   cookie_persistence="False" default_skin="$skinname"
-   request_varname="plone_skin">
- <object name="${package}_base_images"
+<object name="portal_skins" allow_any="False" cookie_persistence="False"
+   default_skin="$skinname">
+
+ <object name="${package}_images"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_base_images"/>
- <object name="${package}_base_styles"
+    directory="${package}/skins/${package}_images"/>
+ <object name="${package}_custom_images"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_base_styles"/>
- <object name="${package}_base_templates"
+    directory="${package}/skins/${package}_custom_images"/>
+ <object name="${package}_styles"
     meta_type="Filesystem Directory View"
-    directory="${package}/skins/${package}_base_templates"/>
- <skin-path name="$skinname" based-on="$skinbase">
-  <layer name="${package}_base_styles"
+    directory="${package}/skins/${package}_styles"/>
+ <object name="${package}_custom_styles"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_custom_styles"/>
+ <object name="${package}_templates"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_templates"/>
+ <object name="${package}_custom_templates"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_custom_templates"/>
+
+ <skin-path name="*">
+  <layer name="${package}_images"
      insert-after="custom"/>
-  <layer name="${package}_base_images"
-     insert-after="${package}_base_styles"/>
-  <layer name="${package}_base_templates"
-     insert-after="${package}_base_images"/>
+  <layer name="${package}_styles"
+     insert-after="${package}_images"/>
+  <layer name="${package}_templates"
+     insert-after="${package}_styles"/>
  </skin-path>
+
+ <skin-path name="$skinname" based-on="$skinbase">
+  <layer name="${package}_custom_images"
+     insert-before="${package}_images"/>
+  <layer name="${package}_custom_styles"
+     insert-before="${package}_styles"/>
+  <layer name="${package}_custom_templates"
+     insert-before="${package}_templates"/>
+ </skin-path>
+
 </object>
 
