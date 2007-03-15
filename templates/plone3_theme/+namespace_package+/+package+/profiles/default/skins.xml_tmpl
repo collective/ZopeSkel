@@ -57,7 +57,7 @@
   <layer name="${package}_custom_templates"
      insert-after="${package}_custom_styles"/>
   <layer name="${package}_styles"
-     insert-after="${package}_templates"/>
+     insert-after="${package}_images"/>
  </skin-path>
 
 </object>
