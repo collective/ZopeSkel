@@ -53,9 +53,9 @@
   <layer name="${package}_custom_images"
      insert-before="${package}_images"/>
   <layer name="${package}_custom_styles"
-     insert-before="${package}_styles"/>
+     insert-after="${package}_custom_images"/>
   <layer name="${package}_custom_templates"
-     insert-before="${package}_templates"/>
+     insert-after="${package}_custom_styles"/>
   <layer name="${package}_styles"
      insert-after="${package}_templates"/>
  </skin-path>
