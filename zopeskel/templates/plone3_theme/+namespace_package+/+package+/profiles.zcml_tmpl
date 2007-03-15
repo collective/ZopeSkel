@@ -4,7 +4,7 @@
     i18n_domain="$package">
 
   <genericsetup:registerProfile
-      name="$package"
+      name="default"
       title="$skinname"
       directory="profiles/default"
       description="Extension profile for ${skinname} Product."
