@@ -113,10 +113,13 @@ class Plone2Theme(Namespace):
     vars = copy.deepcopy(Plone.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'zope2product').default = True
+    get_var(vars, 'author').default = 'Plone Community Member'
+    get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
+    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
     vars = vars[:2] + [
         var('skinname',
             "Name of the skin selection that will be added to 'portal_skins'",
-            default="Example Plone Theme"),
+            default="Custom theme for Plone 2.1"),
         var('skinbase',
             'Name of the skin selection the new one will be copied from',
             default='Plone Default'),
@@ -124,17 +127,20 @@ class Plone2Theme(Namespace):
 
 class Plone25Theme(Namespace):
     _template_dir = 'templates/plone2.5_theme'
-    summary = "A Theme for Plone 2.5 & Plone 3.0"
+    summary = "A Theme for Plone 2.5"
     required_templates = ['plone']
     use_cheetah = True
     
     vars = copy.deepcopy(Plone.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'zope2product').default = True
+    get_var(vars, 'author').default = 'Plone Community Member'
+    get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
+    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
     vars = vars[:2] + [
         var('skinname',
             "Name of the skin selection that will be added to 'portal_skins'",
-            default="Example Plone Theme"),
+            default="Custom theme for Plone 2.5"),
         var('skinbase',
             'Name of the skin selection the new one will be copied from',
             default='Plone Default'),
@@ -149,10 +155,13 @@ class Plone3Theme(Namespace):
     vars = copy.deepcopy(Plone.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'zope2product').default = True
+    get_var(vars, 'author').default = 'Plone Community Member'
+    get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
+    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
     vars = vars[:2] + [
         var('skinname',
             "Name of the skin selection that will be added to 'portal_skins'",
-            default="Example Plone Theme"),
+            default="Custom theme for Plone 3.0"),
         var('skinbase',
             'Name of the skin selection the new one will be copied from',
             default='Plone Default'),
