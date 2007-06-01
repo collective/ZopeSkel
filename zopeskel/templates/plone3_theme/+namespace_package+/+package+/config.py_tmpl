@@ -1,1 +1,3 @@
 GLOBALS = globals()
+
+DESIGNER = "$author"
