@@ -35,7 +35,7 @@ def test_suite():
         \#    setUp=testing.setUp, tearDown=testing.tearDown),
 
 
-        \# Integration tests that use ZopeTestCase
+        \# Integration tests that use PloneTestCase
         \#ztc.ZopeDocFileSuite(
         \#    'README.txt', package='${namespace_package}.${namespace_package2}.${package}',
         \#    test_class=TestCase),
