@@ -3,7 +3,12 @@
      -->
 
 <!-- UNCOMMENT the needed parts of the profile to make them usable in your
-     product.   -->
+     product.   
+  
+     You may want to look at Products/CMFPlone/profiles/default/viewlets.xml
+     for inspiration.
+     
+  -->
 
 <object>
 
