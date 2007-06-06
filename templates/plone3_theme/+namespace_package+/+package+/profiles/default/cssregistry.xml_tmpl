@@ -21,7 +21,7 @@
       available keys and default values.
       -->
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
-    enabled="1" expression="" id="${package}.css" media="screen"
+    enabled="1" expression="" id="${namespace_package}.${package}.css" media="screen"
     rel="stylesheet" rendering="import"/>
 </object>
 
