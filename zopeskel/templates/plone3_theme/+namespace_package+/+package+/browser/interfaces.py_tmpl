@@ -1,6 +1,6 @@
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
-class IThisSkinSpecific(IDefaultBrowserLayer):
+class IThemeSpecific(IDefaultBrowserLayer):
     """Marker interface that defines a Zope 3 layer.
        If you need to register a viewlet only for the
        "$skinname" skin, this interface must be its layer

@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="${namespace_package}.${package}">
+
+    <!-- $skinname layer 
+    
+        Register viewlets and pages for this 'layer' to make sure they
+        only apply to the $skinname theme. You can also use this to
+        override browser views and viewlets for this theme only. 
+    
+      -->
+    <interface
+        interface=".interfaces.IThemeSpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="$skinname"
+        />
+        
+    <!-- Design credits viewlet -->
+    <browser:viewlet
+        name="${namespace_package}.credits"
+        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+        class=".viewlets.CreditsViewlet"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View"
+        />
+
+
+</configure>

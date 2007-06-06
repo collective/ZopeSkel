@@ -3,7 +3,5 @@ from Products.CMFCore.DirectoryView import registerDirectory
 from config import GLOBALS
 registerDirectory('skins', GLOBALS)
 
-#if $zope2product == True
 def initialize(context):
     """Intializer called when used as a Zope 2 product."""
-#end if

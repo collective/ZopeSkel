@@ -149,12 +149,12 @@ class Plone25Theme(Namespace):
 class Plone3Theme(Namespace):
     _template_dir = 'templates/plone3_theme'
     summary = "A Theme for Plone 3.0"
-    required_templates = ['plone']
+    required_templates = ['basic_namespace']
     use_cheetah = True
     
-    vars = copy.deepcopy(Plone.vars)
+    vars = copy.deepcopy(Namespace.vars)
+    
     get_var(vars, 'namespace_package').default = 'plonetheme'
-    get_var(vars, 'zope2product').default = True
     get_var(vars, 'author').default = 'Plone Community Member'
     get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
@@ -166,7 +166,7 @@ class Plone3Theme(Namespace):
             'Name of the skin selection the new one will be copied from',
             default='Plone Default'),
         ] + vars[2:]
-
+        
 
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'
