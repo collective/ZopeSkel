@@ -42,7 +42,10 @@ breed' file layouts for starting Zope projects.
       packages=find_packages(exclude=['ez_setup']),
       include_package_data=True,
       zip_safe=False,
-      install_requires=["PasteScript>=0.9.1dev-r5487,==dev"],
+      install_requires=[
+        "PasteScript>=0.9.1dev-r5487,==dev",
+        "Cheetah",
+      ],
       entry_points="""
       [paste.paster_create_template]
       basic_namespace = zopeskel:Namespace
