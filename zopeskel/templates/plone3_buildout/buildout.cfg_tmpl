@@ -1,114 +1,33 @@
 [buildout]
-
-# XXX: Because there is no Plone release yet, we track svn. This means
-# (a) using the plonebundle (if applicable) rather than a tarball in
-# productdistros, and (b) having lots of random find-links to point to
-# plone svn. When eggs are in the cheese shop, all the find-links to plone
-# svn can go away, and we can use just a tarball for Plone download.
-
 parts =
+    plone
 #if not $zope2_install
     zope2
-#end if
-#if not $plone_products_install
-    plonebundle
-    productdistros
 #end if
     instance
     zopepy
 
 find-links =
-    http://download.zope.org/distribution/
-    http://effbot.org/downloads
-    
-    http://codespeak.net/svn/kukit/kss.core/trunk#egg=kss.core-0.1dev
-    http://svn.plone.org/svn/collective/wicked/branches/1.1#egg=wicked-1.0.1dev
-    http://svn.plone.org/svn/collective/txtfilter/trunk#egg=txtfilter-1.0.1dev
-    http://svn.plone.org/svn/archetypes/archetypes.kss/trunk#egg=archetypes.kss-0.1dev
-    svn://svn.zope.org/repos/main/five.customerize/branches/plone-3.0-branch#egg=five.customerize-0.1dev
-   
-    http://svn.plone.org/svn/plone/plone.app.contentmenu/trunk#egg=plone.app.contentmenu-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.contentrules/trunk#egg=plone.app.contentrules-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.controlpanel/trunk#egg=plone.app.controlpanel-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.customerize/trunk#egg=plone.app.customerize-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.form/branches/plone-3.0#egg=plone.app.form-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.i18n/trunk#egg=plone.app.i18n-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.iterate/trunk#egg=plone.app.iterate-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.kss/trunk#egg=plone.app.kss-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.layout/trunk#egg=plone.app.layout-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.linkintegrity/trunk#egg=plone.app.linkintegrity-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.openid/trunk#egg=plone.app.openid-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.portlets/trunk#egg=plone.app.portlets-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.redirector/trunk#egg=plone.app.redirector-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.vocabularies/trunk#egg=plone.app.vocabularies-0.1dev
-    http://svn.plone.org/svn/plone/plone.app.workflow/trunk#egg=plone.app.workflow-0.1dev
-    http://svn.plone.org/svn/plone/plone.contentrules/trunk#egg=plone/plone.contentrules-0.1dev
-    http://svn.plone.org/svn/plone/plone.fieldsets/trunk#egg=plone.fieldsets-0.1dev
-    http://svn.plone.org/svn/plone/plone.i18n/trunk#egg=plone.i18n-0.1dev
-    http://svn.plone.org/svn/plone/plone.locking/trunk#egg=plone.locking-0.1dev
-    http://svn.plone.org/svn/plone/plone.memoize/trunk#egg=plone.memoize-0.1dev
-    http://svn.plone.org/svn/plone/plone.openid/trunk#egg=plone.openid-0.1dev
-    http://svn.plone.org/svn/plone/plone.portlets/trunk#egg=plone.portlets-0.1dev
-    http://svn.plone.org/svn/plone/plone.session/trunk#egg=plone.session-0.1dev
 
 \# Add additional eggs here
 eggs =
-    elementtree
-    python-yadis
-    python-openid
-    python-urljr
-    archetypes.kss
-    kss.core
-    plone.app.contentmenu
-    plone.app.contentrules
-    plone.app.controlpanel
-    plone.app.customerize
-    plone.app.form
-    plone.app.i18n
-    plone.app.iterate
-    plone.app.kss
-    plone.app.layout
-    plone.app.linkintegrity
-    plone.app.openid
-    plone.app.portlets
-    plone.app.redirector
-    plone.app.vocabularies
-    plone.app.workflow
-    plone.contentrules
-    plone.fieldsets
-    plone.i18n
-    plone.locking
-    plone.memoize
-    plone.openid
-    plone.portlets
-    plone.session
-    txtfilter
-    wicked
-    five.customerize
     
 \# Reference any eggs you are developing here, one per line
 \# e.g.: develop = src/my.package
 develop =
 
+[plone]
+recipe = plone.recipe.plone
+#if $plone_products_install
+\# By overriding the download URLs and making them an empty list, we
+\# Make sure our own products directory takes precedence
+urls = 
+#end if
+
 #if not $zope2_install
 [zope2]
 recipe = plone.recipe.zope2install
-url = http://www.zope.org/Products/Zope/2.10.2/Zope-2.10.2.tgz
-#end if
-
-#if not $plone_products_install
-[plonebundle]
-recipe = plone.recipe.bundlecheckout
-url = http://svn.plone.org/svn/plone/bundles/3.0
-
-[productdistros]
-recipe = plone.recipe.distros
-\# Add any additional tarballs you wish to download and use as products here
-urls =
-    http://www.dieter.handshake.de/pyprojects/zope/AdvancedQuery.tgz
-    http://antiloop.plone.org/download/ZopeVersionControl-0.3.3.tar.gz
-    http://plone.org/products/external-editor/releases/0.9.3/ExternalEditor-0.9.3-src.tgz
-    http://plone.org/products/i18ntestcase/releases/1.1/i18ntestcase-1.1.tar.gz
+url = \${plone:zope2-url}
 #end if
 
 [instance]
@@ -133,9 +52,10 @@ verbose-security = on
 
 \# If you want Zope to know about any additional eggs, list them here.
 \# This should include any development eggs you listed in develop-eggs above,
-\# e.g. eggs = \${buildout:eggs} my.package
+\# e.g. eggs = \${buildout:eggs} \${plone:eggs} my.package
 eggs =
     \${buildout:eggs}
+    \${plone:eggs}
 
 \# If you want to register ZCML slugs for any packages, list them here.
 \# e.g. zcml = my.package my.other.package
@@ -144,8 +64,7 @@ zcml =
 products =
     \${buildout:directory}/products
 #if not $plone_products_install
-    \${productdistros:location}
-    \${plonebundle:location}
+    \${plone:products}
 #else
     ${plone_products_install}
 #end if
