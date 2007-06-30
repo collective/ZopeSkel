@@ -38,7 +38,7 @@ zope2-location = ${zope2_install}
 zope2-location = \${zope2:location}
 #end if
 user = ${zope_user}:${zope_password}
-http-port = ${http_port}
+http-address = ${http_port}
 #if $debug_mode == 'on'
 debug-mode = on
 #else
