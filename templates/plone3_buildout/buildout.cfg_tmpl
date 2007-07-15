@@ -7,7 +7,12 @@ parts =
     instance
     zopepy
 
+\# Add additional egg download sources here. dist.plone.org contains archives
+\# of Plone packages.
 find-links =
+    http://dist.plone.org
+    http://download.zope.org/distribution/
+    http://effbot.org/downloads
 
 \# Add additional eggs here
 eggs =
