@@ -4,6 +4,7 @@ parts =
 #if not $zope2_install
     zope2
 #end if
+    productdistros
     instance
     zopepy
 
@@ -34,6 +35,20 @@ urls =
 recipe = plone.recipe.zope2install
 url = \${plone:zope2-url}
 #end if
+
+\# Use this section to download additional old-style products.
+\# List any number of URLs for product tarballs under URLs (separate
+\# with whitespace, or break over several lines, with subsequent lines
+\# indented). If any archives contain several products inside a top-level
+\# directory, list the archive file name (i.e. the last part of the URL, 
+\# normally with a .tar.gz suffix or similar) under 'nested-packages'.
+\# If any archives extract to a product directory with a version suffix, list
+\# the archive name under 'version-suffix-packages'.
+[productdistros]
+recipe = plone.recipe.distros
+urls =
+nested-packages =
+version-suffix-packages = 
 
 [instance]
 recipe = plone.recipe.zope2instance
@@ -68,6 +83,7 @@ zcml =
 
 products =
     \${buildout:directory}/products
+    \${productdistros:location}
 #if not $plone_products_install
     \${plone:products}
 #else
