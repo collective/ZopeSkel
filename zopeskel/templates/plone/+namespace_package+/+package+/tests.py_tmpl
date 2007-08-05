@@ -10,7 +10,7 @@ from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import PloneSite
 ptc.setupPloneSite()
 
-import ${namespace_package}
+import ${namespace_package}.${package}
 
 class TestCase(ptc.PloneTestCase):
     class layer(PloneSite):
