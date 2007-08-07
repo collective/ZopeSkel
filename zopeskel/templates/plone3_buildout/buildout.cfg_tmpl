@@ -12,11 +12,14 @@ parts =
 \# of Plone packages.
 find-links =
     http://dist.plone.org
+    http://download.zope.org/ppix/
     http://download.zope.org/distribution/
     http://effbot.org/downloads
 
 \# Add additional eggs here
+\# elementtree is required by Plone
 eggs =
+    elementtree
     
 \# Reference any eggs you are developing here, one per line
 \# e.g.: develop = src/my.package
