@@ -20,6 +20,10 @@ class TestCase(ptc.PloneTestCase):
             zcml.load_config('configure.zcml',
                              ${namespace_package}.${namespace_package2}.${package})
             fiveconfigure.debug_mode = False
+
+        @classmethod
+        def tearDown(cls):
+            pass
     
 
 def test_suite():
