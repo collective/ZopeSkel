@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import sys, os
 
 version = ${repr($version) or "0.0"}
 
