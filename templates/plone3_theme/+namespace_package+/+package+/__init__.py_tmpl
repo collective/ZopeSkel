@@ -1,7 +1,9 @@
-# Register our skins directory - this makes it available via portal_skins.
+\# Register our skins directory - this makes it available via portal_skins.
 from Products.CMFCore.DirectoryView import registerDirectory
-from config import GLOBALS
+GLOBALS = globals()
 registerDirectory('skins', GLOBALS)
 
+#if $zope2product
 def initialize(context):
     """Intializer called when used as a Zope 2 product."""
+#end if
