@@ -28,14 +28,16 @@
          Note: insert-before and -after accept the value "*" which means
          "all".
          -->
-    <viewlet name="${namespace_package}.credits"
-             insert-after="*" />
+<!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
+    <viewlet name="${namespace_package}.someviewlet"
+             insert-before="*" />
+-->
   </order>
 
-<!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
   <hidden manager="plone.portalheader" skinname="$skinname">
+<!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
     <viewlet name="plone.global_sections" />
-  </hidden>
 -->
+  </hidden>
 
 </object>

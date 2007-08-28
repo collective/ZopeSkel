@@ -1,13 +1,6 @@
-from zope.component import getMultiAdapter
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets.common import ViewletBase
 
-from ${namespace_package}.${package}.config import DESIGNER
+\#class SomeViewlet(ViewletBase):
+\#    render = ViewPageTemplateFile('sometemplate.pt')
 
-class CreditsViewlet(ViewletBase):
-    render = ViewPageTemplateFile('credits.pt')
-
-    def update(self):
-        # set here the values that you need to grab from the template.
-        # stupid example:
-        self.designer = DESIGNER
