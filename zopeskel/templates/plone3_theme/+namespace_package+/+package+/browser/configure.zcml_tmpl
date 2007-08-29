@@ -27,4 +27,17 @@
          />
 -->
 
+    <!-- Stylesheet registered with portal_css -->
+    <browser:resource
+        name="${namespace_package}.${package}.css"
+        file="${namespace_package}.${package}.css"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+    <!-- Resource directory for images -->
+    <browser:resourceDirectory
+        name="${package}-images"
+        directory="images"
+        />
+
 </configure>

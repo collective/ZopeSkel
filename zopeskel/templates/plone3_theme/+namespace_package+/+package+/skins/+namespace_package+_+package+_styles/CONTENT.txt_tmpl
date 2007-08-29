@@ -1,2 +1,13 @@
-Although this folder is not meant for storing customization skins, it holds
-stylesheet files that are registered for the '${skinname}' Skin Selection only.
+This folder holds stylesheet files that are registered for the '${skinname}'
+Skin Selection only.
+
+This folder is not meant for storing customizations of the default Plone
+stylesheets. Use the ${namespace_package}_${package}_custom_styles directory
+for that purpose.
+
+
+Note
+    Add stylesheets to this folder only if you have to make use of DTML with
+    them.
+    Stylesheet files that don't use DTML should be stored in and accessed from
+    the 'browser' package as Zope 3 file resources.
