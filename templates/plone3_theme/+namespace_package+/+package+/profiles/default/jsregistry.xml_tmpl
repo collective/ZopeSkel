@@ -19,8 +19,9 @@
       for the latest list of all available keys and default values.
       -->
 <!-- UNCOMMENT TO MAKE AVAILABLE
- <javascript cacheable="True" compression="safe" cookable="True"
-    enabled="True" expression="" id="example.js" inline="False"/>
+ <javascript title="" id="++resource++somejavascript.js"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression=""  inline="False"/>
 -->
 </object>
 

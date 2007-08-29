@@ -2,6 +2,7 @@
 <!-- This file holds the setup configuration for the portal_css tool. -->
 
 <object name="portal_css">
+
  <!-- Stylesheets that will be registered with the portal_css tool are defined
       here. You can also specify values for existing resources if you need to
       modify some of their properties.
@@ -20,8 +21,9 @@
       ResourceRegistries/tools/CSSRegistry.py for the latest list of all
       available keys and default values.
       -->
- <stylesheet title="" cacheable="True" compression="safe" cookable="True"
-    enabled="1" expression="" id="${namespace_package}.${package}.css" media="screen"
-    rel="stylesheet" rendering="import"/>
-</object>
+ <stylesheet title="" id="++resource++${namespace_package}.${package}.css"
+    media="screen" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
 
+</object>
