@@ -19,15 +19,12 @@
  <object name="${namespace_package}_${package}_custom_images"
     meta_type="Filesystem Directory View"
     directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_images"/>
- <object name="${namespace_package}_${package}_styles"
-    meta_type="Filesystem Directory View"
-    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_styles"/>
- <object name="${namespace_package}_${package}_custom_styles"
-    meta_type="Filesystem Directory View"
-    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_styles"/>
  <object name="${namespace_package}_${package}_custom_templates"
     meta_type="Filesystem Directory View"
     directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_templates"/>
+ <object name="${namespace_package}_${package}_styles"
+    meta_type="Filesystem Directory View"
+    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_styles"/>
 
  <!-- A skin-path in this file corresponds to a Skin Selection in the
      'Properties' tab of the portal_skins tool, in the ZMI.
@@ -43,13 +40,11 @@
        -->
  <skin-path name="$skinname" based-on="$skinbase">
   <layer name="${namespace_package}_${package}_custom_images"
-     insert-before="${namespace_package}_${package}_images"/>
-  <layer name="${namespace_package}_${package}_custom_styles"
-     insert-after="${namespace_package}_${package}_custom_images"/>
+     insert-before="custom"/>
   <layer name="${namespace_package}_${package}_custom_templates"
-     insert-after="${namespace_package}_${package}_custom_styles"/>
+     insert-after="${namespace_package}_${package}_custom_images"/>
   <layer name="${namespace_package}_${package}_styles"
-     insert-after="${namespace_package}_${package}_images"/>
+     insert-after="${namespace_package}_${package}_custom_templates"/>
  </skin-path>
 
 </object>
