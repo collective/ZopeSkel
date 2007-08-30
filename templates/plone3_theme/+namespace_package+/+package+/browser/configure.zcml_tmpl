@@ -3,18 +3,23 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="${namespace_package}.${package}">
 
+#if $include_doc
     <!-- '$skinname' Zope 3 skin layer 
-        Register viewlets and pages with this zope 3 skin layer
+        Register viewlets and pages for this zope 3 skin layer
         to make sure they only apply to the '${skinname}' theme.
         You can also use this layer to override default Plone browser views
         and viewlets only within the '${skinname}' theme.
       -->
+#else
+    <!-- '$skinname' Zope 3 skin layer -->
+#end if
     <interface
         interface=".interfaces.IThemeSpecific"
         type="zope.publisher.interfaces.browser.IBrowserSkinType"
         name="$skinname"
         />
 
+#if $include_doc
 <!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
      <browser:viewlet
          name="${namespace_package}.someviewlet"
@@ -25,6 +30,7 @@
          />
 -->
 
+#end if
     <!-- Resource directory for stylesheets -->
     <browser:resourceDirectory
         name="${namespace_package}.${package}.stylesheets"

@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
+#if $include_doc
 <!-- This file holds the setup configuration of the viewlet managers
      for the "$skinname" skin.
      -->
 
+#end if
 <object>
 
+#if $include_doc
   <!-- Viewlets keep the same ordering than the default skin ('Plone Default'
        out of the box).
        You can specify skinname="*" if you want changes apply for all skins.
@@ -40,4 +43,5 @@
 -->
   </hidden>
 
+#end if
 </object>

@@ -1,6 +1,8 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets.common import ViewletBase
 
+#if $include_doc
 \#class SomeViewlet(ViewletBase):
 \#    render = ViewPageTemplateFile('sometemplate.pt')
 
+#end if
