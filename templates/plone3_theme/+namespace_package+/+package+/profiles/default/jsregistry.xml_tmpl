@@ -17,7 +17,8 @@
       for the latest list of all available keys and default values.
       -->
 <!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
- <javascript title="" id="++resource++somejavascript.js"
+ <javascript title=""
+    id="++resource++${namespace_package}.${package}.javascripts/something.js"
     cacheable="True" compression="safe" cookable="True"
     enabled="True" expression=""  inline="False"/>
 -->

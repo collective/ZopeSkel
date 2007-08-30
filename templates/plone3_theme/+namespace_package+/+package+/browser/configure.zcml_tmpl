@@ -27,14 +27,14 @@
 
     <!-- Resource directory for stylesheets -->
     <browser:resourceDirectory
-        name="${namespace_package}.${package}-stylesheets"
+        name="${namespace_package}.${package}.stylesheets"
         directory="stylesheets"
         layer=".interfaces.IThemeSpecific"
         />
 
     <!-- Resource directory for images -->
     <browser:resourceDirectory
-        name="${namespace_package}.${package}-images"
+        name="${namespace_package}.${package}.images"
         directory="images"
         layer=".interfaces.IThemeSpecific"
         />
