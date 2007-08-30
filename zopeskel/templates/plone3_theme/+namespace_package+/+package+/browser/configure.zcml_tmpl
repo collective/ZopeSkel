@@ -4,12 +4,10 @@
     i18n_domain="${namespace_package}.${package}">
 
     <!-- '$skinname' Zope 3 skin layer 
-    
         Register viewlets and pages with this zope 3 skin layer
         to make sure they only apply to the '${skinname}' theme.
         You can also use this layer to override default Plone browser views
         and viewlets only within the '${skinname}' theme.
-    
       -->
     <interface
         interface=".interfaces.IThemeSpecific"

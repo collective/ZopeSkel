@@ -14,7 +14,8 @@
         'projection', 'handheld'...
       - 'rel' (optional - default: 'stylesheet')
       - 'title' (optional - default: '')
-      - 'rendering' (optional - default: 'import'): 'import', 'link' or 'inline'.
+      - 'rendering' (optional - default: 'import'): 'import', 'link' or
+        'inline'.
       - 'enabled' (optional - default: True): boolean
       - 'cookable' (optional - default: True): boolean (aka 'merging allowed')
       See registerStylesheet() arguments in
