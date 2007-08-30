@@ -16,9 +16,6 @@
       of your product (on the filesystem) as Filesystem Directory Views within
       the portal_skins tool, so that they become usable as skin layers.
       -->
- <object name="${namespace_package}_${package}_images"
-    meta_type="Filesystem Directory View"
-    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_images"/>
  <object name="${namespace_package}_${package}_custom_images"
     meta_type="Filesystem Directory View"
     directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_images"/>
@@ -28,9 +25,6 @@
  <object name="${namespace_package}_${package}_custom_styles"
     meta_type="Filesystem Directory View"
     directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_styles"/>
- <object name="${namespace_package}_${package}_templates"
-    meta_type="Filesystem Directory View"
-    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_templates"/>
  <object name="${namespace_package}_${package}_custom_templates"
     meta_type="Filesystem Directory View"
     directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_templates"/>
@@ -47,13 +41,6 @@
        Note: insert-before (and -after) accepts the value "*" which means
        "all".
        -->
- <skin-path name="*">
-  <layer name="${namespace_package}_${package}_images"
-     insert-after="custom"/>
-  <layer name="${namespace_package}_${package}_templates"
-     insert-after="${namespace_package}_${package}_images"/>
- </skin-path>
-
  <skin-path name="$skinname" based-on="$skinbase">
   <layer name="${namespace_package}_${package}_custom_images"
      insert-before="${namespace_package}_${package}_images"/>
