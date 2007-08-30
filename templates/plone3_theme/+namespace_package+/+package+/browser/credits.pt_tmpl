@@ -1,9 +1,0 @@
-<div id="design-credits"
-     i18n:domain="$package">
-
-    <span i18n:translate="design_by">Design by:
-        <span tal:omit-tag="python:True"
-              tal:content="view/designer"
-              i18n:name="designer">Terry Gilliam</span>.</span>
-
-</div>
