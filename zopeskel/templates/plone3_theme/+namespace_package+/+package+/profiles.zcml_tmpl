@@ -7,7 +7,7 @@
       name="default"
       title="$skinname"
       directory="profiles/default"
-      description="Extension profile for the ${skinname} theme."
+      description='Extension profile for the "${skinname}" Plone theme.'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

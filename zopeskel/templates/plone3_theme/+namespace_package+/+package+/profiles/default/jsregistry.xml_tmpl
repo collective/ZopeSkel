@@ -1,12 +1,16 @@
 <?xml version="1.0"?>
+#if $include_doc
 <!-- This file holds the setup configuration for the portal_javascripts tool.
      -->
 
+#end if
 <object name="portal_javascripts">
- <!-- Javascript files that will be registered with the portal_javascripts tool
-      are defined here. You can also specify values for existing resources if
-      you need to modify some of their properties. Javascript elements accept
-      these parameters:
+
+#if $include_doc
+ <!-- Javascript files that will be registered with the
+      portal_javascripts tool are defined here. You can also specify values
+      for existing resources if you need to modify some of their properties.
+      Javascript elements accept these parameters:
       - 'id' (required): same rules as for stylesheets (see
         'cssregistry.xml').
       - 'expression' (optional - default: ''): a tal condition.
@@ -22,5 +26,6 @@
     cacheable="True" compression="safe" cookable="True"
     enabled="True" expression=""  inline="False"/>
 -->
-</object>
 
+#end if
+</object>

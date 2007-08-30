@@ -161,11 +161,14 @@ class Plone3Theme(Plone):
     get_var(vars, 'zope2product').default = True
     vars = vars[:2] + [
         var('skinname',
-            "Name of the skin selection that will be added to 'portal_skins'",
+            "Name of the theme (in 'portal_skins')",
             default="Custom theme for Plone 3.0"),
         var('skinbase',
-            'Name of the skin selection the new one will be copied from',
+            'Name of the original theme the new one will be copied from',
             default='Plone Default'),
+        var('include_doc',
+            'Include documentation and examples in the code?',
+            default=False)
         ] + vars[2:]
         
 

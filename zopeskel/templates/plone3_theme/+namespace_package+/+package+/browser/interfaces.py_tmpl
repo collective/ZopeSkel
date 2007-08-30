@@ -1,8 +1,10 @@
 from plone.theme.interfaces import IDefaultPloneLayer
 
 class IThemeSpecific(IDefaultPloneLayer):
-    """Marker interface that defines a Zope 3 layer.
+    """Marker interface that defines a Zope 3 skin layer.
+#if $include_doc
        If you need to register a viewlet only for the
        "$skinname" skin, this interface must be its layer
        (in $package/viewlets/configure.zcml).
+#end if
     """

@@ -7,8 +7,8 @@
    <five:registerPackage package="." initialize=".initialize" />
 
 #end if
-   <include file="profiles.zcml" />
-
    <include package=".browser" />
+
+   <include file="profiles.zcml" />
 
 </configure>

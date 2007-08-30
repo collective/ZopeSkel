@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+#if $include_doc
 <!-- This file holds the setup configuration for the portal_skins tool -->
 
 <!-- Change the value of these parameters to modify portal_skins behavior:
@@ -9,13 +10,16 @@
        persist indefinitely. In the ZMI, this value is known as 'Skin Cookie
        persistence'.
        -->
+#end if
 <object name="portal_skins" allow_any="False" cookie_persistence="False"
    default_skin="$skinname">
 
+#if $include_doc
  <!-- This list registers the folders that are stored in the skins directory
       of your product (on the filesystem) as Filesystem Directory Views within
       the portal_skins tool, so that they become usable as skin layers.
       -->
+#end if
  <object name="${namespace_package}_${package}_custom_images"
     meta_type="Filesystem Directory View"
     directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_images"/>
@@ -26,6 +30,7 @@
     meta_type="Filesystem Directory View"
     directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_styles"/>
 
+#if $include_doc
  <!-- A skin-path in this file corresponds to a Skin Selection in the
      'Properties' tab of the portal_skins tool, in the ZMI.
      You can define for each new skin path the layers that it holds. A new
@@ -38,9 +43,10 @@
        Note: insert-before (and -after) accepts the value "*" which means
        "all".
        -->
+#end if
  <skin-path name="$skinname" based-on="$skinbase">
   <layer name="${namespace_package}_${package}_custom_images"
-     insert-before="custom"/>
+     insert-after="custom"/>
   <layer name="${namespace_package}_${package}_custom_templates"
      insert-after="${namespace_package}_${package}_custom_images"/>
   <layer name="${namespace_package}_${package}_styles"
@@ -48,4 +54,3 @@
  </skin-path>
 
 </object>
-
