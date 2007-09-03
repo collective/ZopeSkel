@@ -23,7 +23,7 @@
 <!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
  <javascript title=""
     id="++resource++${namespace_package}.${package}.javascripts/something.js"
-    cacheable="True" compression="safe" cookable="True"
+    cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False"/>
 -->
 
