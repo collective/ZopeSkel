@@ -29,7 +29,7 @@
  <stylesheet title=""
     id="++resource++${namespace_package}.${package}.stylesheets/main.css"
     media="screen" rel="stylesheet" rendering="import"
-    cacheable="False" compression="safe" cookable="Fasle"
+    cacheable="False" compression="safe" cookable="False"
     enabled="1" expression=""/>
 
 </object>
