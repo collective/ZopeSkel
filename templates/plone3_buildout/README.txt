@@ -78,7 +78,7 @@ Creating new eggs
 -----------------
 
 New packages you are working on (but which are not yet released as eggs and
-uploaded to the Cheese Shop, aka PYPI) should be placed in src. You can do:
+uploaded to the Python Package Index, aka PYPI) should be placed in src. You can do:
 
  $ cd src/
  $ paster create -t plone my.package
@@ -107,7 +107,8 @@ main "[buildout]" section:
     my.package
     
 Leave the ${buildout:eggs} part in place - it tells the instance to use the
-eggs that buildout will have downloaded from the Cheese Shop previously.
+eggs that buildout will have downloaded from the Python Package Index
+previously.
 
 If you also require a ZCML slug for your package, buildout can create one
 automatically. Just add the package to the 'zcml' option:
@@ -133,16 +134,16 @@ scanned on start-up for new products.
 Depending on a new egg
 ----------------------
 
-If you want to use a new egg that is in the Cheese Shop, all you need to do
-is to add it to the "eggs" option under the main "[buildout]" section:
+If you want to use a new egg that is in the Python Package Index, all you need
+to do is to add it to the "eggs" option under the main "[buildout]" section:
 
  [buildout]
  ...
  eggs =
     my.package
     
-If it's listed somewhere else than the Cheese Shop, you can add a link telling
-buildout where to find it in the 'find-links' option:
+If it's listed somewhere else than the Python Package Index, you can add a link
+telling buildout where to find it in the 'find-links' option:
 
  [buildout]
  ...
