@@ -186,7 +186,7 @@ number, add it as a "version suffix package":
  version-suffix-packages = 
     someproduct-1.3.tar.gz
     
-You can also track products from by adding a new bundle checkout part. It 
+You can also track products by adding a new bundle checkout part. It 
 doesn't strictly have to be an svn bundle at all, any svn location will do,
 and cvs is also supported:
 
