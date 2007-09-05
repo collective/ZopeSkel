@@ -104,25 +104,21 @@ class PloneApp(NestedNamespace):
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
 
 
-class Plone2Theme(Plone):
+class Plone2Theme(templates.Template):
     _template_dir = 'templates/plone2_theme'
-    summary = "A Theme for Plone 2.1 & Plone 2.5"
-    required_templates = ['plone']
+    summary = "A Theme Product for Plone 2.1 & Plone 2.5"
+    required_templates = []
     use_cheetah = True
     
-    vars = copy.deepcopy(Plone.vars)
-    get_var(vars, 'namespace_package').default = 'plonetheme'
-    get_var(vars, 'zope2product').default = True
+    vars = copy.deepcopy(Namespace.vars)
+    vars = [v for v in vars if v.name != 'namespace_package']
+    get_var(vars, 'package').description = 'The theme product (like MyTheme)'
     get_var(vars, 'author').default = 'Plone Community Member'
     get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
     vars = vars[:2] + [
         var('skinname',
-            "Name of the skin selection that will be added to 'portal_skins'",
-            default="Custom theme for Plone 2.1"),
-        var('skinbase',
-            'Name of the skin selection the new one will be copied from',
-            default='Plone Default'),
+            "The skin selection that will be added to 'portal_skins' (like 'My Theme')"),
         ] + vars[2:]
 
 class Plone25Theme(Plone):
