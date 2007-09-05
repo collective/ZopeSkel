@@ -1,5 +1,6 @@
 GLOBALS = globals()
 
+#if $include_doc
 # CHANGE this tuple of python dictionaries to list the different skin
 #  selections and their associated specific layers.
 #   'name' (required): the name of the new skin.
@@ -11,20 +12,26 @@ GLOBALS = globals()
 #     selection. By default (if the value is empty or if the key is absent
 #     from the dictionnary), all the folders in 'skins/' will be listed
 #     underneath 'custom' in the new skin selection layers.
+#end if
 SKINSELECTIONS = (
     {'name': '$skinname',
-     'base': '$skinbase',
+     'base': 'Plone Default',
      },
     )
 
+#if $include_doc
 # CHANGE it to False if you don't want the new skin selection to be selected
 #  at installation.
+#end if
 SELECTSKIN = True
 
+#if $include_doc
 # CHANGE it to the name of the skin selection that must be set as default in
 #  case SELECTSKIN is set to True.
+#end if
 DEFAULTSKIN = '$skinname'
 
+#if $include_doc
 # CHANGE this tuple of python dictionnaries to list the stylesheets that
 #  will be registered with the portal_css tool.
 #  'id' (required):
@@ -41,10 +48,12 @@ DEFAULTSKIN = '$skinname'
 #  See registerStylesheet() arguments in
 #  ResourceRegistries/tools/CSSRegistry.py
 #  for the latest list of all available keys and default values.
+#end if
 STYLESHEETS = (
     {'id': '${package}.css', 'media': 'screen', 'rendering': 'import'},
         )
 
+#if $include_doc
 # CHANGE this tuple of python dictionnaries to list the javascripts that
 #  will be registered with the portal_javascripts tool.
 #  'id' (required): same rules as for stylesheets.
@@ -57,18 +66,27 @@ STYLESHEETS = (
 JAVASCRIPTS = (
 #    {'id': '${package}.js.dtml',},
         )
+#else
+JAVASCRIPTS = ()
+#end if
 
+#if $include_doc
 # CHANGE it to True if you want users to be able to select the skin to use
 #  from their personal preferences management page.
 #  In the ZMI, this value is known as 'Skin flexibility'.
+#end if
 ALLOWSELECTION = False
 
+#if $include_doc
 # CHANGE it to True if you want to make the skin cookie persist indefinitely.
 #  In the ZMI, this value is known as 'Skin Cookie persistence'.
+#end if
 PERSISTENTCOOKIE = False
 
+#if $include_doc
 # CHANGE it to True if you want portal_skins properties to be reset to Plone
 #  default values when the product is uninstalled:
 #  Default Skin: 'Plone Default', Skin flexibility: False,
 #  Skin Cookie persistence: False.
+#end if
 RESETSKINTOOL = False
