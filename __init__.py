@@ -1,3 +1,4 @@
+import os
 import copy
 import pkg_resources
 from paste.script import templates
@@ -10,6 +11,10 @@ def get_var(vars, name):
             return var
     else:
         raise ValueError("No such var: %r" % name)
+
+def removeFile(dirpath, filename):
+    print "Removing %s from %s%s" %(filename, dirpath, os.sep)
+    os.remove(os.path.join(dirpath, filename))
 
 
 class Namespace(templates.Template):
@@ -130,20 +135,15 @@ class Plone25Theme(Plone):
     required_templates = ['plone']
     use_cheetah = True
     
-    vars = copy.deepcopy(Plone.vars)
-    get_var(vars, 'namespace_package').default = 'plonetheme'
-    get_var(vars, 'zope2product').default = True
-    get_var(vars, 'author').default = 'Plone Community Member'
-    get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
-    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
-    vars = vars[:2] + [
-        var('skinname',
-            "Name of the skin selection that will be added to 'portal_skins'",
-            default="Custom theme for Plone 2.5"),
-        var('skinbase',
-            'Name of the skin selection the new one will be copied from',
-            default='Plone Default'),
-        ] + vars[2:]
+    vars = copy.deepcopy(Plone2Theme.vars)
+    vars.insert(0, var('namespace_package',
+                       'Namespace package (like plonetheme or Products)',
+                       default = 'Products'))
+    vars.insert(4, var('zope2product', 'Are you creating a Zope 2 Product?',
+                       default=True))
+    vars.insert(3, var('skinbase',
+            'Name of the skin selection from which the new one will be copied',
+            default='Plone Default'))
 
 class Plone3Theme(Plone):
     _template_dir = 'templates/plone3_theme'
@@ -151,25 +151,25 @@ class Plone3Theme(Plone):
     required_templates = ['plone']
     use_cheetah = True
     
-    vars = copy.deepcopy(Plone.vars)
-    
+    vars = copy.deepcopy(Plone25Theme.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
-    get_var(vars, 'author').default = 'Plone Community Member'
-    get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
-    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
-    get_var(vars, 'zope2product').default = True
-    vars = vars[:2] + [
-        var('skinname',
-            "Name of the theme (in 'portal_skins')",
-            default="Custom theme for Plone 3.0"),
-        var('skinbase',
-            'Name of the original theme the new one will be copied from',
-            default='Plone Default'),
-        var('include_doc',
-            'Include documentation and examples in the code?',
-            default=False)
-        ] + vars[2:]
-        
+    get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme)'
+
+    def post(self, command, output_dir, vars):
+        if vars['include_doc'] is False:
+            namespace_package = vars['namespace_package']
+            package = vars['package']
+            ppath = os.path.join(output_dir, namespace_package, package)
+            for resource_dir in ('images', 'stylesheets'):
+                dirpath = os.path.join(ppath, 'browser', resource_dir)
+                removeFile(dirpath, 'README.txt')
+            spath = os.path.join(ppath, 'skins')
+            for skindir in ('images', 'templates', 'styles'):
+                custom = skindir in ('images', 'templates') and '_custom' or ''
+                skindir = '%s_%s%s_%s' % (namespace_package, package,
+                                          custom, skindir)
+                path = os.path.join(spath, skindir)
+                removeFile(path, 'CONTENT.txt')
 
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'
