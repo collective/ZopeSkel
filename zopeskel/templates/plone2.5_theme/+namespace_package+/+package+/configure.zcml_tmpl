@@ -1,5 +1,9 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
+#if $zope2product
+  <five:registerPackage package="." initialize=".initialize" />
+
+#end if
   <include file="profiles.zcml" />
 
 </configure>
