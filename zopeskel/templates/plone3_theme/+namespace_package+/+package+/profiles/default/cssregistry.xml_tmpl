@@ -27,9 +27,9 @@
       -->
 #end if
  <stylesheet title=""
-    id="++resource++${namespace_package}.${package}.stylesheets/main.css"
+    id="++resource++${namespace_package}.${package}.stylesheets/screen.css"
     media="screen" rel="stylesheet" rendering="import"
-    cacheable="False" compression="safe" cookable="False"
+    cacheable="True" compression="safe" cookable="True"
     enabled="1" expression=""/>
 
 </object>
