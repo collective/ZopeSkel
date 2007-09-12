@@ -1,6 +1,8 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five">
 
+  <include package="Products.GenericSetup" file="meta.zcml" />
+
 #if $zope2product
   <five:registerPackage package="." initialize=".initialize" />
 
