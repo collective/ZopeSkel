@@ -2,11 +2,7 @@
 <import-steps>
   <import-step id="${package}_various"
                version="20070220-01"
-#if $zope2product == True
-               handler="Products.${package}.setuphandlers.setupVarious"
-#else
                handler="${namespace_package}.${package}.setuphandlers.setupVarious"
-#end if
                title="${skinname}: miscellaneous import steps">
     <dependency step="skins" />
     Various import steps that are not handled by GS import/export
