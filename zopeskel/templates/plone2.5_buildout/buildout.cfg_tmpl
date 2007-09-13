@@ -77,10 +77,9 @@ verbose-security = on
 
 \# If you want Zope to know about any additional eggs, list them here.
 \# This should include any development eggs you listed in develop-eggs above,
-\# e.g. eggs = \${buildout:eggs} \${plone:eggs} my.package
+\# e.g. eggs = \${buildout:eggs} my.package
 eggs =
     \${buildout:eggs}
-    \${plone:eggs}
 
 \# If you want to register ZCML slugs for any packages, list them here.
 \# e.g. zcml = my.package my.other.package
@@ -90,7 +89,7 @@ products =
     \${buildout:directory}/products
     \${productdistros:location}
 #if not $plone_products_install
-    \${plone:products}
+    \${plone:location}
 #else
     ${plone_products_install}
 #end if
