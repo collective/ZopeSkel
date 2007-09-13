@@ -22,7 +22,7 @@ class Namespace(templates.Template):
     summary = "A project with a namespace package"
     required_templates = []
     use_cheetah = True
-
+    
     vars = [
         var('namespace_package', 'Namespace package (like plone)'),
         var('package', 'The package contained namespace package (like example)'),
@@ -114,7 +114,7 @@ class Plone2Theme(Namespace):
     summary = "A Theme Product for Plone 2.1 & Plone 2.5"
     required_templates = []
     use_cheetah = True
-
+    
     vars = copy.deepcopy(Namespace.vars)
     get_var(vars, 'package').description = 'The theme product (like MyTheme)'
     get_var(vars, 'author').default = 'Plone Community Member'
@@ -134,7 +134,7 @@ class Plone25Theme(Plone):
     summary = "A Theme for Plone 2.5"
     required_templates = ['plone']
     use_cheetah = True
-
+    
     vars = copy.deepcopy(Plone2Theme.vars)
     vars.insert(0, var('namespace_package',
                        'Namespace package (like plonetheme or Products)',
@@ -150,7 +150,7 @@ class Plone3Theme(Plone):
     summary = "A Theme for Plone 3.0"
     required_templates = ['plone']
     use_cheetah = True
-
+    
     vars = copy.deepcopy(Plone25Theme.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme)'
@@ -176,7 +176,7 @@ class Plone3Buildout(templates.Template):
     summary = "A buildout for Plone 3 projects"
     required_templates = []
     use_cheetah = True
-
+    
     vars = [
         var('zope2_install', 'Path to Zope 2 installation; leave blank to fetch one', default=''),
         var('plone_products_install', 'Path to directory containing Plone products; leave blank to fetch one', default=''),
@@ -196,9 +196,8 @@ class Plone3Buildout(templates.Template):
         print "See README.txt for details"
         print "-----------------------------------------------------------"
 
-
 class Plone25Buildout(Plone3Buildout):
     _template_dir = 'templates/plone2.5_buildout'
     summary = "A buildout for Plone 2.5 projects"
-    required_templates = [plone3_buildout]
+    required_templates = ['plone3_buildout']
 
