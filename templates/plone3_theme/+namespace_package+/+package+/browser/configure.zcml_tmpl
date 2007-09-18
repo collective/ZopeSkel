@@ -5,10 +5,10 @@
 
 #if $include_doc
     <!-- '$skinname' Zope 3 skin layer 
-        Register viewlets and pages for this zope 3 skin layer
-        to make sure they only apply to the '${skinname}' theme.
-        You can also use this layer to override default Plone browser views
-        and viewlets only within the '${skinname}' theme.
+         Register views, viewlets and resources for this layer to make sure
+         they only apply to the '${skinname}' theme.
+         You can also use this layer to override default Plone browser views
+         and viewlets only within the '${skinname}' theme.
       -->
 #else
     <!-- '$skinname' Zope 3 skin layer -->
