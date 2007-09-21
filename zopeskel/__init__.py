@@ -109,7 +109,7 @@ class PloneApp(NestedNamespace):
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
 
 
-class Plone2Theme(Namespace):
+class Plone2Theme(templates.Template):
     _template_dir = 'templates/plone2_theme'
     summary = "A Theme Product for Plone 2.1 & Plone 2.5"
     required_templates = []
