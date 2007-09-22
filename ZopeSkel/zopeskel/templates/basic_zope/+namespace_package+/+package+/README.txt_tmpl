@@ -1,0 +1,14 @@
+${project} Package Readme
+=========================
+
+Overview
+--------
+
+$description
+
+
+Your tests here
+---------------
+
+    >>> 1 + 1
+    3

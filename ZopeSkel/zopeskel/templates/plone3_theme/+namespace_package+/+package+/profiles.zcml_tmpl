@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="${namespace_package}.${package}">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="$skinname"
+      directory="profiles/default"
+      description='Extension profile for the "${skinname}" Plone theme.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>

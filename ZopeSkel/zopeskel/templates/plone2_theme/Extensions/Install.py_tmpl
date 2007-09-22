@@ -1,0 +1,23 @@
+from cStringIO import StringIO
+
+from Products.${project}.Extensions.utils import *
+from Products.${project}.config import *
+
+def install(self):
+    out = StringIO()
+
+    setupSkins(self, out, GLOBALS, SKINSELECTIONS, SELECTSKIN, DEFAULTSKIN,
+                          ALLOWSELECTION, PERSISTENTCOOKIE)
+    registerResources(self, out, 'portal_css', STYLESHEETS)
+    registerResources(self, out, 'portal_javascripts', JAVASCRIPTS)
+
+    print >> out, "Installation completed."
+    return out.getvalue()
+
+
+def uninstall(self):
+    out = StringIO()
+
+    removeSkins(self, out, SKINSELECTIONS, DEFAULTSKIN, RESETSKINTOOL)
+    resetResources(self, out, 'portal_css', STYLESHEETS)
+    resetResources(self, out, 'portal_javascripts', JAVASCRIPTS)
