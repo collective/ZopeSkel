@@ -2,8 +2,8 @@ Changelog for ${project}
 
     (name of developer listed in brackets)
 
-${project} - ${version or "0.0"} Unreleased
+${project} - ${version} Unreleased
 
-    - Initial package structure.
+    - Initial theme product structure.
       [zopeskel]
 

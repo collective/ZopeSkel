@@ -3,8 +3,9 @@ ${project and '='*(len($project)+7) or '========'}
 
 Overview
 --------
-${description and '\n'+description or None}
 
+$description
+${long_description and '\n'+long_description or None}
 
 Installation
 ------------

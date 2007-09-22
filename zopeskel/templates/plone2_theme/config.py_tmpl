@@ -15,7 +15,7 @@ GLOBALS = globals()
 #end if
 SKINSELECTIONS = (
     {'name': '$skinname',
-     'base': 'Plone Default',
+     'base': '$skinbase',
      },
     )
 
