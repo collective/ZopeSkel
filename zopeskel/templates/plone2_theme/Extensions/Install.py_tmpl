@@ -1,7 +1,7 @@
 from cStringIO import StringIO
 
-from ${project}.Extensions.utils import *
-from ${project}.config import *
+from Products.${project}.Extensions.utils import *
+from Products.${project}.config import *
 
 def install(self):
     out = StringIO()
