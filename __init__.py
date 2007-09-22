@@ -115,19 +115,22 @@ class Plone2Theme(templates.Template):
     required_templates = []
     use_cheetah = True
     
-    vars = copy.deepcopy(Namespace.vars)
-    get_var(vars, 'package').description = 'The theme product (like MyTheme)'
-    get_var(vars, 'author').default = 'Plone Community Member'
+    vars = copy.deepcopy(templates.BasicPackage.vars)
+    get_var(vars, 'version').default = '0.1'
+    get_var(vars, 'description').default = 'An installable theme for Plone'
+    get_var(vars, 'author').default = 'Plone Collective'
     get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
-    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/plonetheme'
-    vars = vars[:2] + [
+    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/'
+    vars = [
         var('skinname',
             "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
+        var('skinbase',
+            'Name of the skin selection from which the new one will be copied',
+            default='Plone Default'),
         var('include_doc',
             "Include in-line documentation in 'config.py'?",
-            default=False)
-        ] + vars[2:]
-    vars = [v for v in vars if v.name != 'namespace_package']
+            default=False),
+        ] + vars[:3] + vars[4:6]
 
 class Plone25Theme(Plone):
     _template_dir = 'templates/plone2.5_theme'
@@ -135,15 +138,20 @@ class Plone25Theme(Plone):
     required_templates = ['plone']
     use_cheetah = True
     
-    vars = copy.deepcopy(Plone2Theme.vars)
-    vars.insert(0, var('namespace_package',
-                       'Namespace package (like plonetheme or Products)',
-                       default = 'Products'))
-    vars.insert(4, var('zope2product', 'Are you creating a Zope 2 Product?',
-                       default=True))
-    vars.insert(3, var('skinbase',
+    vars = copy.deepcopy(Plone.vars)
+    get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme or Products)'
+    get_var(vars, 'namespace_package').default = 'Products'
+    get_var(vars, 'zope2product').default = True
+    vars = vars[:2] + [
+        var('skinname',
+            "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
+        var('skinbase',
             'Name of the skin selection from which the new one will be copied',
-            default='Plone Default'))
+            default='Plone Default'),
+        var('include_doc',
+            "Include in-line documentation in 'config.py'?",
+            default=False),
+        ] + vars[2:]
 
 class Plone3Theme(Plone):
     _template_dir = 'templates/plone3_theme'
