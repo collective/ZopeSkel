@@ -4,7 +4,7 @@ ez_setup.use_setuptools()
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.13'
+version = '1.0'
 
 setup(name='ZopeSkel',
       version=version,
@@ -25,7 +25,7 @@ Please contribute by submitting patches for what you consider 'best of
 breed' file layouts for starting Zope projects.
 """,
       classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: Zope2",
         "Framework :: Zope3",
         "Intended Audience :: Developers",
@@ -43,7 +43,7 @@ breed' file layouts for starting Zope projects.
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        "PasteScript>=0.9.1dev-r5487,==dev",
+        "PasteScript",
         "Cheetah",
       ],
       entry_points="""
