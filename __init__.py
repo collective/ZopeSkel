@@ -121,6 +121,7 @@ class Plone2Theme(templates.Template):
     get_var(vars, 'author').default = 'Plone Collective'
     get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/'
+    get_var(vars, 'keywords').default = 'web zope plone theme'
     vars = [
         var('skinname',
             "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
@@ -142,6 +143,11 @@ class Plone25Theme(Plone):
     get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme or Products)'
     get_var(vars, 'namespace_package').default = 'Products'
     get_var(vars, 'zope2product').default = True
+    get_var(vars, 'description').default = 'An installable theme for Plone 2.5'
+    get_var(vars, 'author').default = 'Plone Collective'
+    get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
+    get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/'
+    get_var(vars, 'keywords').default = 'web zope plone theme'
     vars = vars[:2] + [
         var('skinname',
             "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
@@ -155,7 +161,7 @@ class Plone25Theme(Plone):
 
     def post(self, command, output_dir, vars):
         if vars['include_doc'] is False:
-            spath = os.path.join(output_dir, namespace_package, package, 'skins')
+            spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
             for skindir in ('images', 'templates', 'styles'):
                 custom = skindir in ('images', 'templates') and '_custom' or ''
                 skindir = '%s%s_%s' % (vars['package'], custom, skindir)
@@ -171,6 +177,7 @@ class Plone3Theme(Plone):
     vars = copy.deepcopy(Plone25Theme.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme)'
+    get_var(vars, 'description').default = 'An installable theme for Plone 3.0'
 
     def post(self, command, output_dir, vars):
         if vars['include_doc'] is False:
