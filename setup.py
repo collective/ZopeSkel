@@ -2,28 +2,13 @@ import ez_setup
 ez_setup.use_setuptools()
 
 from setuptools import setup, find_packages
-import sys, os
 
 version = '1.0'
 
 setup(name='ZopeSkel',
       version=version,
       description="A collection of skeletons for quickstarting Zope projects.",
-      long_description="""
-A collection of skeletons for quickstarting Zope projects.
-
-This package adds to the list of available `PasteScript
-<http://pythonpaste.org/script/>`_ templates a few that are useful for
-quickly starting Zope projects that have a `setuptools
-<http://peak.telecommunity.com/DevCenter/setuptools>`_-ready file
-layout.
-
-The latest version is available in a `Subversion repository
-<http://svn.plone.org/svn/collective/ZopeSkel/trunk#egg=ZopeSkel-dev>`_.
-
-Please contribute by submitting patches for what you consider 'best of
-breed' file layouts for starting Zope projects.
-""",
+      long_description=open('README.txt').read(),
       classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Zope2",
