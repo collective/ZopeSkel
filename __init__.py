@@ -153,6 +153,15 @@ class Plone25Theme(Plone):
             default=False),
         ] + vars[2:]
 
+    def post(self, command, output_dir, vars):
+        if vars['include_doc'] is False:
+            spath = os.path.join(output_dir, namespace_package, package, 'skins')
+            for skindir in ('images', 'templates', 'styles'):
+                custom = skindir in ('images', 'templates') and '_custom' or ''
+                skindir = '%s%s_%s' % (vars['package'], custom, skindir)
+                path = os.path.join(spath, skindir)
+                removeFile(path, 'CONTENT.txt')
+
 class Plone3Theme(Plone):
     _template_dir = 'templates/plone3_theme'
     summary = "A Theme for Plone 3.0"
