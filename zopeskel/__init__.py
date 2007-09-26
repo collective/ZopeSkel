@@ -155,7 +155,7 @@ class Plone25Theme(Plone):
             'Name of the skin selection from which the new one will be copied',
             default='Plone Default'),
         var('include_doc',
-            "Include in-line documentation in 'config.py'?",
+            "Include in-line documentation in generated code?",
             default=False),
         ] + vars[2:]
 
