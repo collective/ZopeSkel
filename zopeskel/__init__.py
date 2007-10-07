@@ -224,4 +224,18 @@ class Plone25Buildout(Plone3Buildout):
     _template_dir = 'templates/plone2.5_buildout'
     summary = "A buildout for Plone 2.5 projects"
     required_templates = ['plone3_buildout']
+    
+    
+class Archetype(Plone):
+    _template_dir = 'templates/archetype'
+    summary = 'A Plone project that uses Archetypes'
+    required_templates = ['plone']
+    use_cheetah = True
+    
+    vars = copy.deepcopy(Plone.vars)  
+    
+    vars.insert(0,
+                var(
+        'title', 'The title of the project',
+        default='Plone Example'))      
 
