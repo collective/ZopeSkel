@@ -43,5 +43,6 @@ setup(name='ZopeSkel',
       plone3_theme = zopeskel:Plone3Theme
       plone2.5_buildout = zopeskel:Plone25Buildout
       plone3_buildout = zopeskel:Plone3Buildout
+      archetype = zopeskel:Archetype
       """,
       )
