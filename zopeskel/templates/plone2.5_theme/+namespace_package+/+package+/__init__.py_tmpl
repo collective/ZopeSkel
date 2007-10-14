@@ -20,5 +20,5 @@ utils.ProductsPath = ppath
 #if $zope2product
 
 def initialize(context):
-    """Intializer called when used as a Zope 2 product."""
+    """Initializer called when used as a Zope 2 product."""
 #end if
