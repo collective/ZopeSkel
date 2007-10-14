@@ -1,8 +1,7 @@
-#import datetime
 <?xml version="1.0"?>
 <import-steps>
   <import-step id="${namespace_package}.${package}.various"
-               version="${datetime.date.today().strftime("%Y%m%d")}-01"
+               version="${timestamp}-01"
                handler="${namespace_package}.${package}.setuphandlers.setupVarious"
                title="${skinname}: miscellaneous import steps">
     <dependency step="skins" />
