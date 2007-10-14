@@ -1,6 +1,7 @@
 import os
 import copy
 import pkg_resources
+import datetime
 from paste.script import templates
 
 var = templates.var
@@ -178,6 +179,9 @@ class Plone3Theme(Plone):
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme)'
     get_var(vars, 'description').default = 'An installable theme for Plone 3.0'
+
+    def pre(self, command, output_dir, vars):
+        vars['timestamp'] = datetime.date.today().strftime("%Y%m%d")
 
     def post(self, command, output_dir, vars):
         if vars['include_doc'] is False:
