@@ -5,10 +5,10 @@
 
 #if $include_doc
     <!-- '$skinname' Zope 3 skin layer 
-         Register views, viewlets and resources for this layer to make sure
-         they only apply to the '${skinname}' theme.
-         You can also use this layer to override default Plone browser views
-         and viewlets only within the '${skinname}' theme.
+      Register views, viewlets and resources for this layer to make sure
+      they only apply to the '${skinname}' theme.
+      You can also use this layer to override default Plone browser views
+      and viewlets only within the '${skinname}' theme.
       -->
 #else
     <!-- '$skinname' Zope 3 skin layer -->
@@ -20,7 +20,7 @@
         />
 
 #if $include_doc
-<!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
+<!-- Viewlet declaration (uncomment code to use it):
      <browser:viewlet
          name="${namespace_package}.someviewlet"
          manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
@@ -31,17 +31,31 @@
 -->
 
 #end if
-    <!-- Resource directory for stylesheets -->
-    <browser:resourceDirectory
-        name="${namespace_package}.${package}.stylesheets"
-        directory="stylesheets"
-        layer=".interfaces.IThemeSpecific"
-        />
-
+#if $include_doc
+    <!-- Resource directory for images
+      See ${namespace_package}/${package}/browser/images/README.txt
+      for more information about registering images as Zope 3 resources.
+      -->
+#else
     <!-- Resource directory for images -->
+#end if
     <browser:resourceDirectory
         name="${namespace_package}.${package}.images"
         directory="images"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+#if $include_doc
+    <!-- Resource directory for stylesheets
+      See ${namespace_package}/${package}/browser/stylesheets/README.txt
+      for more information about registering stylesheets as Zope 3 resources.
+      -->
+#else
+    <!-- Resource directory for stylesheets -->
+#end if
+    <browser:resourceDirectory
+        name="${namespace_package}.${package}.stylesheets"
+        directory="stylesheets"
         layer=".interfaces.IThemeSpecific"
         />
 
