@@ -35,8 +35,8 @@ can be accessed from this relative URL:
 
     "++resource++logo.png"
 
-Note
-----
+Notes
+-----
 
 * Whatever the way they are declared (in bulk inside a resource directory or
   as separate resources), images registered as Zope 3 browser resources don't
