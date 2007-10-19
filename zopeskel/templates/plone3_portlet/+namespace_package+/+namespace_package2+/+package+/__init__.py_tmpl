@@ -1,0 +1,5 @@
+from zope.i18nmessageid import MessageFactory
+${portlet_type_name}MessageFactory = MessageFactory('${project}')
+
+def initialize(context):
+    """Intializer called when used as a Zope 2 product."""

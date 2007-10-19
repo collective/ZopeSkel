@@ -13,6 +13,14 @@ def get_var(vars, name):
     else:
         raise ValueError("No such var: %r" % name)
 
+def remove_var(vars, name):
+    idx = 0
+    for var in vars:
+        if var.name == name:
+            del vars[idx]
+            break
+        idx += 1
+
 def removeFile(dirpath, filename):
     print "Removing %s from %s%s" %(filename, dirpath, os.sep)
     os.remove(os.path.join(dirpath, filename))
@@ -229,6 +237,28 @@ class Plone25Buildout(Plone3Buildout):
     summary = "A buildout for Plone 2.5 projects"
     required_templates = ['plone3_buildout']
     
+class Plone3Portlet(NestedNamespace):
+    _template_dir = 'templates/plone3_portlet'
+    summary = "A Plone 3 portlet"
+    required_templates = ['nested_namespace']
+    use_cheetah = True
+
+    vars = copy.deepcopy(PloneApp.vars)
+    get_var(vars, 'namespace_package').default = 'collective'
+    get_var(vars, 'namespace_package2').default = 'portlet'
+    get_var(vars, 'author').default = 'Plone Foundation'
+    get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
+    get_var(vars, 'url').default = 'http://plone.org'
+    vars.append(var('portlet_name', 'Portlet name (human readable)', default="Example portlet"))
+    vars.append(var('portlet_type_name', 'Portlet type name (should not contain spaces)', default="ExamplePortlet"))
+    
+    remove_var(vars, 'zope2product')
+    remove_var(vars, 'zip_safe')
+    
+    def pre(self, command, output_dir, vars):
+        vars['zip_safe'] = False
+        vars['portlet_filename'] = vars['portlet_type_name'].lower()
+        vars['dotted_name'] = "%s.%s.%s" % (vars['namespace_package'], vars['namespace_package2'], vars['package'])
     
 class Archetype(Plone):
     _template_dir = 'templates/archetype'
