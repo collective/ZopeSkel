@@ -17,17 +17,17 @@ class TestPortlet(TestCase):
     def afterSetUp(self):
         self.setRoles(('Manager',))
 
-    def testPortletTypeRegistered(self):
+    def test_portlet_type_registered(self):
         portlet = getUtility(IPortletType, name='${dotted_name}.${portlet_type_name}')
         self.assertEquals(portlet.addview, '${dotted_name}.${portlet_type_name}')
 
-    def testInterfaces(self):
+    def test_interfaces(self):
         # TODO: Pass any keywoard arguments to the Assignment constructor
         portlet = ${portlet_filename}.Assignment()
         self.failUnless(IPortletAssignment.providedBy(portlet))
         self.failUnless(IPortletDataProvider.providedBy(portlet.data))
 
-    def testInvokeAddview(self):
+    def test_invoke_add_view(self):
         portlet = getUtility(IPortletType, name='${dotted_name}.${portlet_type_name}')
         mapping = self.portal.restrictedTraverse('++contextportlets++plone.leftcolumn')
         for m in mapping.keys():
@@ -41,7 +41,7 @@ class TestPortlet(TestCase):
         self.failUnless(isinstance(mapping.values()[0], ${portlet_filename}.Assignment))
 
     # NOTE: This test can be removed if the portlet has no edit form
-    def testInvokeEditView(self):
+    def test_invoke_edit_view(self):
         mapping = PortletAssignmentMapping()
         request = self.folder.REQUEST
 
@@ -49,7 +49,7 @@ class TestPortlet(TestCase):
         editview = getMultiAdapter((mapping['foo'], request), name='edit')
         self.failUnless(isinstance(editview, ${portlet_filename}.EditForm))
 
-    def testRenderer(self):
+    def test_obtain_renderer(self):
         context = self.folder
         request = self.folder.REQUEST
         view = self.folder.restrictedTraverse('@@plone')
