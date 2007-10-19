@@ -48,8 +48,9 @@ Notes
   as a File System Directory View in the 'portal_skins' tool, and added to the
   layers of your skin.
 
-* Customizing/overriding stylesheets that are originally accessed from the
-  'portal_skins' tool (e.g. Plone default stylesheets) can be done inside that
-  tool only. There is no known way to do it with Zope 3 browser resources.
+* Customizing/overriding images that are originally accessed from the
+  'portal_skins' tool (e.g. Plone default logo and icons) can be done inside
+  that tool only. There is no known way to do it with Zope 3 browser
+  resources.
   Vice versa, there is no known (easy) way to override a Zope 3 browser
   resource from a skin layer in 'portal_skins'.
