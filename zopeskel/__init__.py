@@ -117,11 +117,16 @@ class PloneApp(NestedNamespace):
     get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
 
+def removeCSSOverrides(dirpath):
+    filenames = os.listdir(dirpath)
+    for prefix in ('base', 'generated', 'portlets', 'public'):
+        filename = prefix + '.css.dtml'
+        if filename in filenames:
+            removeFile(dirpath, filename)
 
 class Plone2Theme(templates.Template):
     _template_dir = 'templates/plone2_theme'
     summary = "A Theme Product for Plone 2.1 & Plone 2.5"
-    required_templates = []
     use_cheetah = True
     
     vars = copy.deepcopy(templates.BasicPackage.vars)
@@ -137,10 +142,20 @@ class Plone2Theme(templates.Template):
         var('skinbase',
             'Name of the skin selection from which the new one will be copied',
             default='Plone Default'),
+        var('empty_styles',
+            "Override default public stylesheets with empty ones?",
+            default=True),
         var('include_doc',
             "Include in-line documentation in 'config.py'?",
             default=False),
         ] + vars[:3] + vars[4:6]
+
+    def post(self, command, output_dir, vars):
+        if vars['empty_styles'] is not True:
+            spath = os.path.join(output_dir, 'skins')
+            stylesdirname = '%(package)s_styles' %vars
+            stylespath = os.path.join(spath, stylesdirname)
+            removeCSSOverrides(stylespath)
 
 class Plone25Theme(Plone):
     _template_dir = 'templates/plone2.5_theme'
@@ -163,6 +178,9 @@ class Plone25Theme(Plone):
         var('skinbase',
             'Name of the skin selection from which the new one will be copied',
             default='Plone Default'),
+        var('empty_styles',
+            "Override default public stylesheets with empty ones?",
+            default=True),
         var('include_doc',
             "Include in-line documentation in generated code?",
             default=False),
@@ -176,6 +194,11 @@ class Plone25Theme(Plone):
                 skindir = '%s%s_%s' % (vars['package'], custom, skindir)
                 path = os.path.join(spath, skindir)
                 removeFile(path, 'CONTENT.txt')
+        if vars['empty_styles'] is not True:
+            spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
+            stylesdirname = '%(package)s_custom_styles' %vars
+            stylespath = os.path.join(spath, stylesdirname)
+            removeCSSOverrides(stylespath)
 
 class Plone3Theme(Plone):
     _template_dir = 'templates/plone3_theme'
@@ -206,6 +229,11 @@ class Plone3Theme(Plone):
                                           custom, skindir)
                 path = os.path.join(spath, skindir)
                 removeFile(path, 'CONTENT.txt')
+        if vars['empty_styles'] is not True:
+            spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
+            stylesdirname = '%(namespace_package)s_%(package)s_styles' %vars
+            stylespath = os.path.join(spath, stylesdirname)
+            removeCSSOverrides(stylespath)
 
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'
