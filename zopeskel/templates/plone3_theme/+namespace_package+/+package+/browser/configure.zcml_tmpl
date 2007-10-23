@@ -4,14 +4,14 @@
     i18n_domain="${namespace_package}.${package}">
 
 #if $include_doc
-    <!-- '$skinname' Zope 3 skin layer 
+    <!-- '$skinname' Zope 3 browser layer 
       Register views, viewlets and resources for this layer to make sure
       they only apply to the '${skinname}' theme.
       You can also use this layer to override default Plone browser views
       and viewlets only within the '${skinname}' theme.
       -->
 #else
-    <!-- '$skinname' Zope 3 skin layer -->
+    <!-- '$skinname' Zope 3 browser layer -->
 #end if
     <interface
         interface=".interfaces.IThemeSpecific"
@@ -19,8 +19,9 @@
         name="$skinname"
         />
 
+    <!-- Viewlets registration -->
 #if $include_doc
-<!-- Viewlet declaration (uncomment code to use it):
+<!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
      <browser:viewlet
          name="${namespace_package}.someviewlet"
          manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
@@ -31,10 +32,13 @@
 -->
 
 #end if
+    <!-- Zope 3 browser resources -->
+
 #if $include_doc
     <!-- Resource directory for images
       See ${namespace_package}/${package}/browser/images/README.txt
-      for more information about registering images as Zope 3 resources.
+      for more information about registering images as Zope 3 browser
+      resources.
       -->
 #else
     <!-- Resource directory for images -->
@@ -48,7 +52,8 @@
 #if $include_doc
     <!-- Resource directory for stylesheets
       See ${namespace_package}/${package}/browser/stylesheets/README.txt
-      for more information about registering stylesheets as Zope 3 resources.
+      for more information about registering stylesheets as Zope 3 browser
+      resources.
       -->
 #else
     <!-- Resource directory for stylesheets -->
