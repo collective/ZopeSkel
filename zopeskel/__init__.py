@@ -13,14 +13,6 @@ def get_var(vars, name):
     else:
         raise ValueError("No such var: %r" % name)
 
-def remove_var(vars, name):
-    idx = 0
-    for var in vars:
-        if var.name == name:
-            del vars[idx]
-            break
-        idx += 1
-
 def removeFile(dirpath, filename):
     print "Removing %s from %s%s" %(filename, dirpath, os.sep)
     os.remove(os.path.join(dirpath, filename))
@@ -131,10 +123,8 @@ theme_vars = [
         default=False),
               ]
 
-OVERRIDDEN_STYLESHEETS = ('base', 'generated', 'portlets', 'public')
-
 def cleanupStylsheets(dirpath, filenames):
-    for prefix in OVERRIDDEN_STYLESHEETS:
+    for prefix in ('base', 'generated', 'portlets', 'public'):
         filename = prefix + '.css.dtml'
         if filename in filenames:
             removeFile(dirpath, filename)
@@ -256,15 +246,12 @@ class Plone3Portlet(NestedNamespace):
     get_var(vars, 'url').default = 'http://plone.org'
     vars.append(var('portlet_name', 'Portlet name (human readable)', default="Example portlet"))
     vars.append(var('portlet_type_name', 'Portlet type name (should not contain spaces)', default="ExamplePortlet"))
-    
-    remove_var(vars, 'zope2product')
-    remove_var(vars, 'zip_safe')
-    
+
     def pre(self, command, output_dir, vars):
         vars['zip_safe'] = False
         vars['portlet_filename'] = vars['portlet_type_name'].lower()
         vars['dotted_name'] = "%s.%s.%s" % (vars['namespace_package'], vars['namespace_package2'], vars['package'])
-    
+
 class Archetype(Plone):
     _template_dir = 'templates/archetype'
     summary = 'A Plone project that uses Archetypes'

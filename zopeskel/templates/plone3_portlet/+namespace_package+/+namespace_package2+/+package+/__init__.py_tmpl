@@ -1,5 +1,7 @@
 from zope.i18nmessageid import MessageFactory
 ${portlet_type_name}MessageFactory = MessageFactory('${project}')
 
+#if str($zope2product) == 'True'
 def initialize(context):
-    """Intializer called when used as a Zope 2 product."""
+    """Initializer called when used as a Zope 2 product."""
+#end if

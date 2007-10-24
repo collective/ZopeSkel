@@ -5,8 +5,10 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="${dotted_name}">
 
+#if str($zope2product) == 'True'
     <five:registerPackage package="." initialize=".initialize" />
     
+#end if
     <genericsetup:registerProfile
        name="default"
        title="${portlet_name}"
