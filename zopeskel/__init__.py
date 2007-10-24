@@ -117,9 +117,24 @@ class PloneApp(NestedNamespace):
     get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
 
-def removeCSSOverrides(dirpath):
-    filenames = os.listdir(dirpath)
-    for prefix in ('base', 'generated', 'portlets', 'public'):
+theme_vars = [
+    var('skinname',
+        "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
+    var('skinbase',
+        'Name of the skin selection from which the new one will be copied',
+        default='Plone Default'),
+    var('empty_styles',
+        "Override default public stylesheets with empty ones?",
+        default=True),
+    var('include_doc',
+        "Include in-line documentation in generated code?",
+        default=False),
+              ]
+
+OVERRIDDEN_STYLESHEETS = ('base', 'generated', 'portlets', 'public')
+
+def cleanupStylsheets(dirpath, filenames):
+    for prefix in OVERRIDDEN_STYLESHEETS:
         filename = prefix + '.css.dtml'
         if filename in filenames:
             removeFile(dirpath, filename)
@@ -136,26 +151,13 @@ class Plone2Theme(templates.Template):
     get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/'
     get_var(vars, 'keywords').default = 'web zope plone theme'
-    vars = [
-        var('skinname',
-            "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
-        var('skinbase',
-            'Name of the skin selection from which the new one will be copied',
-            default='Plone Default'),
-        var('empty_styles',
-            "Override default public stylesheets with empty ones?",
-            default=True),
-        var('include_doc',
-            "Include in-line documentation in 'config.py'?",
-            default=False),
-        ] + vars[:3] + vars[4:6]
+    vars = theme_vars + vars[:3] + vars[4:6]
 
     def post(self, command, output_dir, vars):
         if str(vars['empty_styles']) == 'False':
-            spath = os.path.join(output_dir, 'skins')
-            stylesdirname = '%(package)s_styles' %vars
-            stylespath = os.path.join(spath, stylesdirname)
-            removeCSSOverrides(stylespath)
+            skinsdir = os.path.join(output_dir, 'skins')
+            for dirpath, dirnames, filenames in os.walk(skinsdir):
+                cleanupStylsheets(dirpath, filenames)
 
 class Plone25Theme(Plone):
     _template_dir = 'templates/plone2.5_theme'
@@ -172,35 +174,21 @@ class Plone25Theme(Plone):
     get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/collective/'
     get_var(vars, 'keywords').default = 'web zope plone theme'
-    vars = vars[:2] + [
-        var('skinname',
-            "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
-        var('skinbase',
-            'Name of the skin selection from which the new one will be copied',
-            default='Plone Default'),
-        var('empty_styles',
-            "Override default public stylesheets with empty ones?",
-            default=True),
-        var('include_doc',
-            "Include in-line documentation in generated code?",
-            default=False),
-        ] + vars[2:]
+    vars = vars[:2] + theme_vars + vars[2:]
 
     def post(self, command, output_dir, vars):
-        if str(vars['include_doc']) == 'False':
-            spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
-            for skindir in ('images', 'templates', 'styles'):
-                custom = skindir in ('images', 'templates') and '_custom' or ''
-                skindir = '%s%s_%s' % (vars['package'], custom, skindir)
-                path = os.path.join(spath, skindir)
-                removeFile(path, 'CONTENT.txt')
+        np, p = vars['namespace_package'], vars['package']
+        sdir = os.path.join(output_dir, np, p, 'skins')
         if str(vars['empty_styles']) == 'False':
-            spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
-            stylesdirname = '%(package)s_custom_styles' %vars
-            stylespath = os.path.join(spath, stylesdirname)
-            removeCSSOverrides(stylespath)
+            for dirpath, dirnames, filenames in os.walk(sdir):
+                cleanupStylsheets(dirpath, filenames)
+        if str(vars['include_doc']) == 'False':
+            for dirpath, dirnames, filenames in os.walk(sdir):
+                if 'CONTENT.txt' in filenames:
+                    removeFile(dirpath, 'CONTENT.txt')
+        super(Plone25Theme, self).post(command, output_dir, vars)
 
-class Plone3Theme(Plone):
+class Plone3Theme(Plone25Theme):
     _template_dir = 'templates/plone3_theme'
     summary = "A Theme for Plone 3.0"
     required_templates = ['plone']
@@ -213,27 +201,16 @@ class Plone3Theme(Plone):
 
     def pre(self, command, output_dir, vars):
         vars['timestamp'] = datetime.date.today().strftime("%Y%m%d")
+        super(Plone3Theme, self).pre(command, output_dir, vars)
 
     def post(self, command, output_dir, vars):
         if str(vars['include_doc']) == 'False':
-            namespace_package = vars['namespace_package']
-            package = vars['package']
-            ppath = os.path.join(output_dir, namespace_package, package)
-            for resource_dir in ('images', 'stylesheets'):
-                dirpath = os.path.join(ppath, 'browser', resource_dir)
-                removeFile(dirpath, 'README.txt')
-            spath = os.path.join(ppath, 'skins')
-            for skindir in ('images', 'templates', 'styles'):
-                custom = skindir in ('images', 'templates') and '_custom' or ''
-                skindir = '%s_%s%s_%s' % (namespace_package, package,
-                                          custom, skindir)
-                path = os.path.join(spath, skindir)
-                removeFile(path, 'CONTENT.txt')
-        if str(vars['empty_styles']) == 'False':
-            spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
-            stylesdirname = '%(namespace_package)s_%(package)s_styles' %vars
-            stylespath = os.path.join(spath, stylesdirname)
-            removeCSSOverrides(stylespath)
+            np, p = vars['namespace_package'], vars['package']
+            bdir = os.path.join(output_dir, np, p, 'browser')
+            for dirpath, dirnames, filenames in os.walk(bdir):
+                if 'README.txt' in filenames:
+                    removeFile(dirpath, 'README.txt')
+        super(Plone3Theme, self).post(command, output_dir, vars)
 
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'
