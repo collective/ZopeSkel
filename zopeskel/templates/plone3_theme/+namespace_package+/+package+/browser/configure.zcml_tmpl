@@ -3,7 +3,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="${namespace_package}.${package}">
 
-#if $include_doc
+#if str($include_doc) == 'True'
     <!-- '$skinname' Zope 3 browser layer 
       Register views, viewlets and resources for this layer to make sure
       they only apply to the '${skinname}' theme.
@@ -20,7 +20,7 @@
         />
 
     <!-- Viewlets registration -->
-#if $include_doc
+#if str($include_doc) == 'True'
 <!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
      <browser:viewlet
          name="${namespace_package}.someviewlet"
@@ -34,7 +34,7 @@
 #end if
     <!-- Zope 3 browser resources -->
 
-#if $include_doc
+#if str($include_doc) == 'True'
     <!-- Resource directory for images
       See ${namespace_package}/${package}/browser/images/README.txt
       for more information about registering images as Zope 3 browser
@@ -49,7 +49,7 @@
         layer=".interfaces.IThemeSpecific"
         />
 
-#if $include_doc
+#if str($include_doc) == 'True'
     <!-- Resource directory for stylesheets
       See ${namespace_package}/${package}/browser/stylesheets/README.txt
       for more information about registering stylesheets as Zope 3 browser

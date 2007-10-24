@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-#if $include_doc
+#if str($include_doc) == 'True'
 <!-- This file holds the setup configuration for the portal_skins tool -->
 
 <!-- Change the value of these parameters to modify portal_skins behavior:
@@ -14,7 +14,7 @@
 <object name="portal_skins" allow_any="False" cookie_persistence="False"
    default_skin="${skinname}">
 
-#if $include_doc
+#if str($include_doc) == 'True'
  <!-- This list registers the folders that are stored in the skins directory
       of your product (on the filesystem) as Filesystem Directory Views within
       the portal_skins tool, so that they become usable as skin layers.
@@ -39,7 +39,7 @@
     meta_type="Filesystem Directory View"
     directory="${package}/skins/${package}_custom_templates"/>
 
-#if $include_doc
+#if str($include_doc) == 'True'
  <!-- A skin-path in this file corresponds to a Skin Selection in the
      'Properties' tab of the portal_skins tool, in the ZMI.
      You can define for each new skin path the layers that it holds. A new

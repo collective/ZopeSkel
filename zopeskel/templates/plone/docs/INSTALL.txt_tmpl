@@ -9,7 +9,7 @@ using a traditional Zope 2 instance, you can do this:
    (and EasyInstall) here:
    http://peak.telecommunity.com/DevCenter/EasyInstall
 
-#if $zope2product
+#if str($zope2product) == 'True'
  * If you are using Zope 2.9 (not 2.10), get `pythonproducts`_ and install it 
    via::
 
@@ -24,7 +24,7 @@ using a traditional Zope 2 instance, you can do this:
 
        <include package="${namespace_package}.${package}" />
 
-#if $zope2product
+#if str($zope2product) == 'True'
 .. _pythonproducts: http://plone.org/products/pythonproducts
 #end if
 

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-#if $include_doc
+#if str($include_doc) == 'True'
 <!-- This file holds the setup configuration for the portal_css tool. -->
 
 #end if
 <object name="portal_css">
 
-#if $include_doc
+#if str($include_doc) == 'True'
  <!-- Stylesheets that will be registered with the portal_css tool are defined
       here. You can also specify values for existing resources if you need to
       modify some of their properties.

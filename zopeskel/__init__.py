@@ -151,7 +151,7 @@ class Plone2Theme(templates.Template):
         ] + vars[:3] + vars[4:6]
 
     def post(self, command, output_dir, vars):
-        if vars['empty_styles'] is not True:
+        if str(vars['empty_styles']) == 'False':
             spath = os.path.join(output_dir, 'skins')
             stylesdirname = '%(package)s_styles' %vars
             stylespath = os.path.join(spath, stylesdirname)
@@ -187,14 +187,14 @@ class Plone25Theme(Plone):
         ] + vars[2:]
 
     def post(self, command, output_dir, vars):
-        if vars['include_doc'] is False:
+        if str(vars['include_doc']) == 'False':
             spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
             for skindir in ('images', 'templates', 'styles'):
                 custom = skindir in ('images', 'templates') and '_custom' or ''
                 skindir = '%s%s_%s' % (vars['package'], custom, skindir)
                 path = os.path.join(spath, skindir)
                 removeFile(path, 'CONTENT.txt')
-        if vars['empty_styles'] is not True:
+        if str(vars['empty_styles']) == 'False':
             spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
             stylesdirname = '%(package)s_custom_styles' %vars
             stylespath = os.path.join(spath, stylesdirname)
@@ -215,7 +215,7 @@ class Plone3Theme(Plone):
         vars['timestamp'] = datetime.date.today().strftime("%Y%m%d")
 
     def post(self, command, output_dir, vars):
-        if vars['include_doc'] is False:
+        if str(vars['include_doc']) == 'False':
             namespace_package = vars['namespace_package']
             package = vars['package']
             ppath = os.path.join(output_dir, namespace_package, package)
@@ -229,7 +229,7 @@ class Plone3Theme(Plone):
                                           custom, skindir)
                 path = os.path.join(spath, skindir)
                 removeFile(path, 'CONTENT.txt')
-        if vars['empty_styles'] is not True:
+        if str(vars['empty_styles']) == 'False':
             spath = os.path.join(output_dir, vars['namespace_package'], vars['package'], 'skins')
             stylesdirname = '%(namespace_package)s_%(package)s_styles' %vars
             stylespath = os.path.join(spath, stylesdirname)

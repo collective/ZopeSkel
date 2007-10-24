@@ -5,7 +5,7 @@
 
   <include package="Products.GenericSetup" file="meta.zcml" />
 
-#if $zope2product
+#if str($zope2product) == 'True'
   <five:registerPackage package="." initialize=".initialize" />
 
 #end if

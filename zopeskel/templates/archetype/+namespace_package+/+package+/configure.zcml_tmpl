@@ -4,7 +4,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="${namespace_package}.${package}">
 
-#if $zope2product
+#if str($zope2product) == 'True'
     <five:registerPackage package="." initialize=".initialize" />
 #end if
 

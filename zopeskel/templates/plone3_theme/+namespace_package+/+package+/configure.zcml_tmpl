@@ -4,7 +4,7 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="${namespace_package}.${package}">
 
-#if $zope2product
+#if str($zope2product) == 'True'
    <five:registerPackage package="." initialize=".initialize" />
 
 #end if

@@ -15,7 +15,7 @@ from Products.CMFCore.permissions import setDefaultRoles
 ${package}MessageFactory = MessageFactory('${namespace_package}.${package}')
 
 
-#if $zope2product
+#if str($zope2product) == 'True'
 def initialize(context):
     """Initializer called when used as a Zope 2 product.
     
