@@ -1,7 +1,7 @@
 [buildout]
 parts =
     plone
-#if str($zope2_install) == 'False'
+#if not $zope2_install
     zope2
 #end if
     productdistros
@@ -33,7 +33,7 @@ recipe = plone.recipe.plone
 urls = 
 #end if
 
-#if str($zope2_install) == 'False'
+#if not $zope2_install
 [zope2]
 recipe = plone.recipe.zope2install
 url = \${plone:zope2-url}
@@ -55,7 +55,7 @@ version-suffix-packages =
 
 [instance]
 recipe = plone.recipe.zope2instance
-#if str($zope2_install) == 'True'
+#if $zope2_install
 zope2-location = ${zope2_install}
 #else
 zope2-location = \${zope2:location}
@@ -87,7 +87,7 @@ zcml =
 products =
     \${buildout:directory}/products
     \${productdistros:location}
-#if str($plone_products_install) == 'False'
+#if not $plone_products_install
     \${plone:products}
 #else
     ${plone_products_install}
@@ -97,7 +97,7 @@ products =
 recipe = zc.recipe.egg
 eggs = \${instance:eggs}
 interpreter = zopepy
-#if str($zope2_install) == 'True'
+#if $zope2_install
 extra-paths = ${zope2_install}/lib/python
 #else
 extra-paths = \${zope2:location}/lib/python
