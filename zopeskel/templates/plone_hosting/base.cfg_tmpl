@@ -1,0 +1,84 @@
+[buildout]
+parts =
+    plone
+    zope2
+    productdistros
+    zeo
+    instance
+    zopepy
+#if $proxy_port
+    varnish-build
+    varnish
+#end if
+find-links =
+    http://dist.plone.org
+    http://download.zope.org/ppix/
+    http://effbot.org/downloads
+eggs =
+    elementtree
+develop =
+
+[plone]
+recipe = ${plone_recipe}
+#if $plone_recipe == "plone.recipe.plone25install"
+url = ${plone_url}
+#end if
+
+
+[zope2]
+recipe = plone.recipe.zope2install
+url = \${plone:zope2-url}
+
+
+[productdistros]
+recipe = plone.recipe.distros
+urls =
+nested-packages =
+version-suffix-packages = 
+
+
+[zeo]
+recipe = plone.recipe.zope2zeoserver
+zope2-location = \${zope2:location}
+zeo-address = 127.0.0.1:${zeo_port}
+
+
+[instance]
+recipe = plone.recipe.zope2instance
+zope2-location = \${zope2:location}
+debug-mode = off
+verbose-security = off
+zeo-client = True
+zeo-address = \${zeo:zeo-address}
+user = admin:${zope_password}
+http-address = 127.0.0.1:${http_port}
+eggs =
+    \${buildout:eggs}
+    \${plone:eggs}
+zcml = 
+products =
+    \${buildout:directory}/products
+    \${productdistros:location}
+    \${plone:products}
+
+
+[zopepy]
+recipe = zc.recipe.egg
+eggs = \${instance:eggs}
+interpreter = zopepy
+extra-paths = \${zope2:location}/lib/python
+scripts = zopepy
+
+
+#if $proxy_port
+[varnish-build]
+recipe = plone.recipe.varnish:build
+url = http://puzzle.dl.sourceforge.net/sourceforge/varnish/varnish-1.1.1.tar.gz
+
+
+[varnish]
+recipe = plone.recipe.varnish:instance
+backends = \${instance:http-address}
+bind = 127.0.0.1:${proxy_port}
+cache-size = 512M
+#end if

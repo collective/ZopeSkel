@@ -1,0 +1,55 @@
+#!/bin/sh
+
+set -e
+
+myself="\$0"
+case "\$myself" in
+    (/*)
+        mydir="\$(dirname \$myself)"
+        ;;
+
+    (*)
+        mydir="\$(dirname \$(pwd)/\$myself)"
+        ;;
+esac
+
+buildout="\$(dirname \$mydir)"
+#if $proxy_port
+varnishpid="\$buildout"/parts/varnish/varnish.pid
+#end if
+
+
+case "\$1" in
+    start)
+        echo Starting buildout in \$buildout
+        \$mydir/zeo start
+        \$mydir/instance start
+#if $proxy_port
+        \$mydir/varnish
+#end if
+        ;;
+
+    stop)
+        echo Stopping buildout in \$buildout
+#if $proxy_port
+        if [ -f "\$varnishpid" ] ; then
+            kill -TERM \$(cat "\$varnishpid")
+        fi
+#end if
+        \$mydir/instance stop
+        \$mydir/zeo stop
+        ;;
+
+    restart)
+        \$0 stop
+        \$0 start
+        ;;
+
+    *)
+        echo "Usage: $0 (start|stop|restart)" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
+
