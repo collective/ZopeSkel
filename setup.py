@@ -3,12 +3,12 @@ ez_setup.use_setuptools()
 
 from setuptools import setup, find_packages
 
-version = '1.1.3'
+version = '1.2'
 
 setup(name='ZopeSkel',
       version=version,
       description="A collection of skeletons for quickstarting Zope projects.",
-      long_description=open('README.txt').read(),
+      long_description=open('README.txt').read() + open('HISTORY.txt').read(),
       classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Zope2",
@@ -45,5 +45,6 @@ setup(name='ZopeSkel',
       plone3_buildout = zopeskel:Plone3Buildout
       archetype = zopeskel:Archetype
       plone3_portlet = zopeskel:Plone3Portlet
+      plone_hosting = zopeskel.hosting:StandardHosting
       """,
       )
