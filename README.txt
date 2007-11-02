@@ -14,3 +14,4 @@ The latest version is available in a `Subversion repository
 
 Please contribute by submitting patches for what you consider 'best of
 breed' file layouts for starting Zope projects.
+

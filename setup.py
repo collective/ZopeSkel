@@ -8,7 +8,7 @@ version = '1.1.3'
 setup(name='ZopeSkel',
       version=version,
       description="A collection of skeletons for quickstarting Zope projects.",
-      long_description=open('README.txt').read(),
+      long_description=open('README.txt').read() + open('HISTORY.txt').read(),
       classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Zope2",
