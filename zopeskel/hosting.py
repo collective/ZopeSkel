@@ -4,7 +4,6 @@ from paste.script import templates
 from paste.script.command import BadCommand
 var = templates.var
 
-plone30s = [ "3.0", "3.0.1", "3.0.2" ]
 plone25s = {
         "2.5.4": "http://plone.googlecode.com/files/Plone-2.5.4-2.tar.gz",
         "2.5.3": "http://plone.googlecode.com/files/Plone-2.5.3-final.tar.gz",
@@ -26,7 +25,7 @@ class StandardHosting(templates.Template):
             var("zeo_port", "ZEO port number", default=8100),
             var("proxy_port", "Proxy port number (optional)"),
             var("plone", "Plone version (2.5, 2.5.1, 3.0, 3.0.1, etc.)",
-                default="3.0.2"),
+                default="3.0.3"),
             ]
     
     def _buildout(self, output_dir):
@@ -39,14 +38,14 @@ class StandardHosting(templates.Template):
 
     def check_vars(self, vars, cmd):
         result=templates.Template.check_vars(self, vars, cmd)
-        if vars["plone"] not in plone25s and vars["plone"] not in plone30s:
+        if vars["plone"] not in plone25s and not vars["plone"].startswith("3.0"):
             raise BadCommand("Unknown plone version: %s" % vars["plone"])
         return result
 
 
     def pre(self, command, output_dir, vars):
         plone=vars["plone"]
-        if plone in plone30s:
+        if plone.startswith("3.0"):
             vars["plone_recipe"]="plone.recipe.plone==%s" % plone
         else:
             vars["plone_recipe"]="plone.recipe.plone25install"
