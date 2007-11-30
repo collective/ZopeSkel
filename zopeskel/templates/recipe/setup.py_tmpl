@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+"""
+This module contains the tool of $project
+"""
+import os
+from setuptools import setup, find_packages
+
+version = ${repr($version) or "0.0"}
+
+README = os.path.join(os.path.dirname(__file__), 
+                      ${repr($namespace_package)},
+                      ${repr($namespace_package2)},
+                      ${repr($package)}, 'docs', 'README.txt')
+
+long_description = open(README).read() + '\n\n' 
+
+entry_point = '$namespace_package.$namespace_package2.${package}:Recipe'
+
+entry_points = {"zc.buildout": ["default = %s" % entry_point]}
+
+setup(name=${repr($project)},
+      version=version,
+      description="${description or None}",
+      long_description=long_description,
+      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      classifiers=[
+        "Programming Language :: Python",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        ],
+      keywords=${repr($keywords) or $empty},
+      author=${repr($author) or $empty},
+      author_email=${repr($author_email) or $empty},
+      url=${repr($url) or $empty},
+      license=${repr($license_name) or $empty},
+      packages=find_packages(exclude=['ez_setup']),
+      namespace_packages=['$namespace_package.$namespace_package2'],
+      include_package_data=True,
+      zip_safe=${repr(bool($zip_safe)) or False},
+      install_requires=['setuptools',
+                        'zope.testing',
+                        'zc.buildout'
+                        # -*- Extra requirements: -*-
+                        ],
+      entry_points=entry_points,
+      )

@@ -82,6 +82,9 @@ plone_hosting
   a simple ''bin/control'' script is created which can be used to quickly
   start, stop and restart the entire Plone deployment.
 
+recipe
+  This template creates a recipe skeleton for zc.buildout.
+
 
 .. _buildout: http://plone.org/documentation/tutorial/buildout
 .. _varnish: http://varnish.projects.linpro.no

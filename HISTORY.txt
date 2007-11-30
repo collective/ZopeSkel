@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Trunk
+-----
+
+* added the `recipe` template
+
 Version 1.2
 -----------
 
