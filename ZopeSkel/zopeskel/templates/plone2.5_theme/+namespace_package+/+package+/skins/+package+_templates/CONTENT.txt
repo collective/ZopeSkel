@@ -1,2 +1,0 @@
-This folder holds Filesystem Page Template files that are registered for all
-Skin Selections (all selectable skins in the 'portal_skins' tool).

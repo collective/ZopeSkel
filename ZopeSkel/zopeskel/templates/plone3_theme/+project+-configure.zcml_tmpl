@@ -1,1 +1,0 @@
-<include package="${namespace_package}.${package}" />
