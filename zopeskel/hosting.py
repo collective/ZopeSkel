@@ -52,10 +52,7 @@ class StandardHosting(templates.Template):
             vars["plone_url"]=plone25s[plone]
 
 
-    def post(self, command, output_dir, vars):
-        output_dir=os.path.abspath(output_dir)
-        os.chmod(os.path.join(output_dir, "bin", "control"), 0755)
-        self._buildout(output_dir)
+    def show_summary(self, vars):
         print 
         print "Finished creation of standard hosting buildout."
         print
@@ -71,5 +68,12 @@ class StandardHosting(templates.Template):
         print
         print "  Zope admin user    :  admin"
         print "  Zope admin password:  %s" % vars["zope_password"]
+
+
+    def post(self, command, output_dir, vars):
+        output_dir=os.path.abspath(output_dir)
+        os.chmod(os.path.join(output_dir, "bin", "control"), 0755)
+        self._buildout(output_dir)
+        self.show_summary(vars)
 
 
