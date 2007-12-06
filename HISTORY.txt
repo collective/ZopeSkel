@@ -1,10 +1,14 @@
 Changelog
 =========
 
-Trunk
------
+Version 1.3
+-----------
 
 * added the `recipe` template
+  [tarek]
+
+* Add Plone 2.5.5.
+  [wichert]
 
 Version 1.2
 -----------
