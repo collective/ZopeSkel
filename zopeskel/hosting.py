@@ -5,8 +5,9 @@ from paste.script.command import BadCommand
 var = templates.var
 
 plone25s = {
-        "2.5.4": "http://plone.googlecode.com/files/Plone-2.5.4-2.tar.gz",
-        "2.5.3": "http://plone.googlecode.com/files/Plone-2.5.3-final.tar.gz",
+        "2.5.5": "https://launchpad.net/plone/2.5/2.5.5/+download/Plone-2.5.5.tar.gz",
+        "2.5.4": "https://launchpad.net/plone/2.5/2.5.4/+download/Plone-2.5.4-2.tar.gz",
+        "2.5.3": "https://launchpad.net/plone/2.5/2.5.3/+download/Plone-2.5.3-final.tar.gz",
         "2.5.2": "http://plone.googlecode.com/files/Plone-2.5.2-1.tar.gz",
         "2.5.1": "http://heanet.dl.sourceforge.net/sourceforge/plone/Plone-2.5.1-final.tar.gz",
         "2.5"  : "http://heanet.dl.sourceforge.net/sourceforge/plone/Plone-2.5.tar.gz",
