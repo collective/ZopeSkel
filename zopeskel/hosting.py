@@ -26,7 +26,7 @@ class StandardHosting(templates.Template):
             var("zeo_port", "ZEO port number", default=8100),
             var("proxy_port", "Proxy port number (optional)"),
             var("plone", "Plone version (2.5, 2.5.1, 3.0, 3.0.1, etc.)",
-                default="3.0.3"),
+                default="3.0.4"),
             ]
     
     def _buildout(self, output_dir):

@@ -1,6 +1,15 @@
 Changelog
 =========
 
+Version 1.3.1
+-------------
+
+* Updated to Plone 3.0.4.
+  [fschulze]
+
+* Rerelease because of a bad egg.
+  [fschulze]
+
 Version 1.3
 -----------
 
