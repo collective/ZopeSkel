@@ -1,0 +1,9 @@
+#<configure xmlns="http://namespaces.zope.org/zope"
+#           xmlns:browser="http://namespaces.plone.org/browser"
+#           i18n_domain="${package_dotted_name}">
+#
+#  <!-- -*- extra stuff goes here -*- -->
+
+    <include package=".meta" />
+    
+#</configure>    

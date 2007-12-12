@@ -1,0 +1,61 @@
+"""Definition of the $contenttype_name content type
+"""
+
+from zope.interface import implements, directlyProvides
+
+from Products.Archetypes import atapi
+#if str($folderish) == 'True'
+from Products.ATContentTypes.content import folder
+#else
+from Products.ATContentTypes.content import base
+#end if
+
+from Products.ATContentTypes.content import schemata
+from Products.ATContentTypes.content.schemata import finalizeATCTSchema
+
+from ${package_dotted_name} import ${package}MessageFactory as _
+from ${package_dotted_name}.interfaces import ${interface_name}
+from ${package_dotted_name}.config import PROJECTNAME
+
+#if str($folderish) == 'True'
+${schema_name} = folder.ATFolderSchema.copy() + atapi.Schema((
+#else
+${schema_name} = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+#end if
+
+# Your Archetypes field definitions here ...
+
+))
+
+#if str($folderish) == 'True'
+# Set storage on fields copied from ATFolder, making sure they work
+# well with the python bridge properties.
+#else
+# Set storage on fields copied from ATContentTypeSchemata, making sure 
+# they work well with the python bridge properties.
+#end if
+
+${schema_name}['title'].storage = atapi.AnnotationStorage()
+${schema_name}['description'].storage = atapi.AnnotationStorage()
+
+#if str($folderish) == 'True'
+finalizeATCTSchema(${schema_name}, folderish=True, moveDiscussion=False)
+#else
+finalizeATCTSchema(${schema_name}, moveDiscussion=False)
+#end if
+
+#if str($folderish) == 'True'
+class ${contenttype_classname}(folder.ATFolder):
+#else
+class ${contenttype_classname}(base.ATCTContent):
+#end if
+    """${contenttype_description}"""
+    implements(${interface_name})
+
+    portal_type = "${contenttype_name}"
+    schema = ${schema_name}
+
+    title = atapi.ATFieldProperty('title')
+    description = atapi.ATFieldProperty('description')
+    
+atapi.registerType(${contenttype_classname}, PROJECTNAME)

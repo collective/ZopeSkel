@@ -8,7 +8,6 @@
       -->
     <include package="plone.app.portlets" />
 
-	<!-- configure your portlets here -->      
-
+	<!-- -*- extra stuff goes here -*- -->      
     
 </configure>

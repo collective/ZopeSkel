@@ -4,5 +4,6 @@
     i18n_domain="${namespace_package}.${package}">	
  
     <!-- configure your content components here -->
+    <!-- -*- extra stuff goes here -*- -->
     
 </configure> 

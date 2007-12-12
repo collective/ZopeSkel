@@ -256,6 +256,7 @@ class Archetype(Plone):
     _template_dir = 'templates/archetype'
     summary = 'A Plone project that uses Archetypes'
     required_templates = ['plone']
+    egg_plugins = ['ZopeSkel']
     use_cheetah = True
     
     vars = copy.deepcopy(Plone.vars)  

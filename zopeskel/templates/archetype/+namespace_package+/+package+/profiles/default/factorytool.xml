@@ -9,6 +9,6 @@
   -->
 <object name="portal_factory" meta_type="Plone Factory Tool">
  <factorytypes>
-
+<!-- -*- extra stuff goes here -*- -->
  </factorytypes>
 </object>

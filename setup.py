@@ -47,5 +47,14 @@ setup(name='ZopeSkel',
       plone3_portlet = zopeskel:Plone3Portlet
       plone_hosting = zopeskel.hosting:StandardHosting
       recipe = zopeskel:Recipe
+
+      [paste.paster_command]
+      addcontent = zopeskel.localcommands:ZopeSkelLocalCommand
+
+      [zopeskel.zopeskel_sub_template]
+      portlet = zopeskel.localcommands.templates:Portlet
+      view = zopeskel.localcommands.templates:View
+      zcmlmeta = zopeskel.localcommands.templates:ZCMLMetaDirective
+      contenttype = zopeskel.localcommands.templates:ContentType
       """,
       )

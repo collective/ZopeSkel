@@ -6,7 +6,10 @@
       uses an underscore instead. The "Factory-based Type Information with
       dynamic views" refers to an FTI from Products.CMFDynamicViewFTI,
       which supports Plone's "display" menu.
-   -->
+
+      # ZopeSkel local commands marker
+      # -*- extra stuff goes here -*-  -->
 
     
 </object>
+
