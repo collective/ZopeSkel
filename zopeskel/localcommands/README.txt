@@ -47,25 +47,9 @@ zopeskel.localcommands is one implementation of such idea.
 How to use zopeskel.localcommands
 =================================
 
-To try it, create a test environment with virtualenv::
+List the available paster commands::
 
-  $ virtualenv --no-site-packages myenv
-  $ cd myenv
-  $ source ./bin/activate
-
-Install my ZopeSkel branch::
-
-  $ ./bin/easy_install \
-  http://svn.plone.org/svn/collective/ZopeSkel/branches/mustap#egg=ZopeSkel-dev
-
-You can check the available templates:
-
-  $ ./bin/paster create --list-templates
-
-Nothing special :)
-check now the available commands::
-
-  $ ./bin/paster --help
+  $ paster --help
   ...
   Commands:
     create       Create the file layout for a Python distribution
@@ -75,12 +59,11 @@ check now the available commands::
     serve        Serve the described application
     setup-app    Setup an application, given a config file
 
-Nothing special too :)
 Now create an archetype project as described above, cd to the project folder 
 and check the available commands::
 
   $ cd myproject
-  myproject$ ../bin/paster --help
+  myproject$ paster --help
   ...
   Commands:
     create       Create the file layout for a Python distribution
@@ -99,14 +82,17 @@ called ``addcontent``. This new section is only available if paster detects
 that your project is ``addcontent`` aware (more about this later) . 
 To see the list of available templates from this command::
 
-  myproject$ ../bin/paster addcontent --list
+  myproject$ paster addcontent --list
   Available templates:
-    portlet:    A portlet skeleton
+    contenttype:  A content type skeleton
+    portlet:      A Plone 3 portlet
+    view:         A browser view skeleton
+    zcmlmeta:     A ZCML meta directive skeleton
 
 To add a portlet to your project, run the following command from anywhere 
 inside your project (you don't need to be in the project's root folder)::
 
-  myproject$ ../bin/paster addcontent portlet
+  myproject$ paster addcontent portlet
   Enter portlet_name (Portlet name (human readable)) ['Example portlet']: My Portlet
   Enter portlet_type_name (Portlet type name (should not contain spaces)) ['ExamplePortlet']: MyPortlet
   Enter description (Portlet description) )['']: My Portlet
@@ -198,14 +184,14 @@ no difference between `configure.zcml_insert` and `configure.zcml`. Both will be
 treated in insert-mode. In the case of .py files if you don't add '_insert' in 
 the end of their name, setuptools will fail with 'SyntaxError' when installing
 ZopeSkel. That's normal because of the template variables in the file.
-For readability I recommand using the '_insert' syntax.
+For readability I recommand using the '_insert' syntax in all cases.
 
 Now, take a look to the python part. Here is the Portlet class::
 
   from zopeskel import var
   from zopeskel.localcommands import ZopeSkelLocalTemplate
   
-  class MyPortlet(ZopeSkelLocalTemplate):
+  class Portlet(ZopeSkelLocalTemplate):
       """
       A plone 3 portlet skeleton
       """
@@ -274,7 +260,7 @@ and our templates have to be added under that section. If you look in the
 setup.py file of ZopeSkel to the entry_points argument, you will find::
 
     [zopeskel.zopeskel_sub_template]
-    portlet = zopeskel.localcommands.templates:MyPortlet
+    portlet = zopeskel.localcommands.templates:Portlet
 
 Enable ``addcontent`` in other ZopeSkel templates
 -------------------------------------------------
