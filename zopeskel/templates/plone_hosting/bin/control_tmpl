@@ -21,7 +21,7 @@ varnishpid="\$buildout"/parts/varnish/varnish.pid
 
 case "\$1" in
     start)
-        echo Starting buildout in \$buildout
+        echo Starting buildout in \$(dirname \$buildout)
         \$mydir/zeo start
         \$mydir/instance start
 #if $proxy_port
@@ -30,7 +30,7 @@ case "\$1" in
         ;;
 
     stop)
-        echo Stopping buildout in \$buildout
+        echo Stopping buildout in \$(dirname \$buildout)
 #if $proxy_port
         if [ -f "\$varnishpid" ] ; then
             kill -TERM \$(cat "\$varnishpid")
