@@ -1,21 +1,22 @@
-#compiler-settings
-## I didnt' find any better way of being able to output ${folder_url}
-cheetahVarStartToken = §
-#end compiler-settings
 <?xml version="1.0"?>
-<object name="§{contenttype_name}"
+<object name="${contenttype_name}"
    meta_type="Factory-based Type Information with dynamic views"
-   i18n:domain="§{package_dotted_name}" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">§{contenttype_name}</property>
+   i18n:domain="${package_dotted_name}" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">${contenttype_name}</property>
  <property name="description"
-     i18n:translate="">§{contenttype_description}</property>
- <property name="content_meta_type">§{contenttype_name}</property>
- <property name="product">§{package_dotted_name}</property>
- <property name="factory">add§{contenttype_classname}</property>
+     i18n:translate="">${contenttype_description}</property>
+ <property name="content_meta_type">${contenttype_name}</property>
+#if str($folderish) == 'True'
+ <property name="content_icon">folder_icon.gif</property>
+#else
+ <property name="content_icon">document_icon.gif</property>
+#end if    
+ <property name="product">${package_dotted_name}</property>
+ <property name="factory">add${contenttype_classname}</property>
  <property name="immediate_view">atct_edit</property>
- <property name="global_allow">§{global_allow}</property>
+ <property name="global_allow">${global_allow}</property>
  <property name="filter_content_types">False</property>
- <property name="allow_discussion">§{allow_discussion}</property>
+ <property name="allow_discussion">${allow_discussion}</property>
  <property name="default_view">base_view</property>
  <property name="view_methods">
   <element value="base_view"/>
@@ -25,11 +26,15 @@ cheetahVarStartToken = §
  <alias from="sharing" to="@@sharing"/>
  <alias from="view" to="(selected layout)"/>
  <action title="View" action_id="view" category="object" condition_expr=""
-    url_expr="string:${folder_url}/" visible="True">
+#if str($folderish) == 'True'
+    url_expr="string:\${folder_url}/" visible="True">
+#else
+    url_expr="string:\${object_url}/" visible="True">
+#end if    
   <permission value="View"/>
  </action>
  <action title="Edit" action_id="edit" category="object" condition_expr=""
-    url_expr="string:${object_url}/edit" visible="True">
+    url_expr="string:\${object_url}/edit" visible="True">
   <permission value="Modify portal content"/>
  </action>
 </object>
