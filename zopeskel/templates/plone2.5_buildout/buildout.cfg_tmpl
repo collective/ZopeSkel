@@ -30,9 +30,9 @@ develop =
 #if not $plone_products_install
 [plone]
 recipe = plone.recipe.distros
-urls = http://plone.googlecode.com/files/Plone-2.5.3-final.tar.gz
-nested-packages = Plone-2.5.3-final.tar.gz
-version-suffix-packages = Plone-2.5.3-final.tar.gz
+urls = http://launchpad.net/plone/2.5/2.5.5/+download/Plone-2.5.5.tar.gz
+nested-packages = Plone-2.5.5.tar.gz
+version-suffix-packages = Plone-2.5.5.tar.gz
 #end if
 
 #if not $zope2_install
