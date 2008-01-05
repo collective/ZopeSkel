@@ -3,6 +3,6 @@
 
 PROJECTNAME = "${namespace_package}.${package}"
 
-ADD_PERMISSIONS = { 
+ADD_PERMISSIONS = {
 	# -*- extra stuff goes here -*-
 	}

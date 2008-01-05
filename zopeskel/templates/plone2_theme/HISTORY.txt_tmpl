@@ -6,4 +6,3 @@ ${project} - ${version} Unreleased
 
     - Initial theme product structure.
       [zopeskel]
-

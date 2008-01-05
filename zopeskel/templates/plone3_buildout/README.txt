@@ -2,25 +2,25 @@
 Using a custom buildout
 =======================
 
-Note: If you are using Windows, if you do not have PIL installed, or you are 
-not using Python 2.4 as your main system Python, please see the relevant 
+Note: If you are using Windows, if you do not have PIL installed, or you are
+not using Python 2.4 as your main system Python, please see the relevant
 sections below.
 
 You probably got here by running something like:
 
  $ paster create -t plone3_buildout
- 
+
 Now, you need to run:
 
  $ python bootstrap.py
- 
-This will install zc.buildout for you. 
+
+This will install zc.buildout for you.
 
 To create an instance immediately, run:
 
  $ bin/buildout
- 
-This will download Plone's eggs and products for you, as well as other 
+
+This will download Plone's eggs and products for you, as well as other
 dependencies, create a new Zope 2 installation (unless you specified
 an existing one when you ran "paster create"), and create a new Zope instance
 configured with these products.
@@ -28,15 +28,15 @@ configured with these products.
 You can start your Zope instance by running:
 
  $ bin/instance start
- 
+
 or, to run in foreground mode:
 
  $ bin/instance fg
- 
+
 To run unit tests, you can use:
 
  $ bin/instance test -s my.package
- 
+
 Installing PIL
 --------------
 
@@ -51,8 +51,8 @@ Buildout will use your system Python installation by default. However, Zope
 which version of Python you have, by running:
 
  $ python -V
- 
-If that is not a 2.4 version, you need to install Python 2.4 from 
+
+If that is not a 2.4 version, you need to install Python 2.4 from
 http://python.org. If you wish to keep another version as your main system
 Python, edit buildout.cfg and add an 'executable' option to the "[buildout]"
 section, pointing to a python interpreter binary:
@@ -60,20 +60,20 @@ section, pointing to a python interpreter binary:
  [buildout]
  ...
  executable = /path/to/python
- 
+
 Working with buildout.cfg
 -------------------------
 
 You can change any option in buildout.cfg and re-run bin/buildout to reflect
 the changes. This may delete things inside the 'parts' directory, but should
-keep your Data.fs and source files intact. 
+keep your Data.fs and source files intact.
 
-To save time, you can run buildout in "offline" (-o) and non-updating (-N) 
-mode, which will prevent it from downloading things and checking for new 
+To save time, you can run buildout in "offline" (-o) and non-updating (-N)
+mode, which will prevent it from downloading things and checking for new
 versions online:
 
  $ bin/buildout -Nov
- 
+
 Creating new eggs
 -----------------
 
@@ -82,7 +82,7 @@ uploaded to the Python Package Index, aka PYPI) should be placed in src. You can
 
  $ cd src/
  $ paster create -t plone my.package
- 
+
 Use "paster create --list-templates" to see all available templates. Answer
 the questions and you will get a new egg. Then tell buildout about your egg
 by editing buildout.cfg and adding your source directory to 'develop':
@@ -91,7 +91,7 @@ by editing buildout.cfg and adding your source directory to 'develop':
  ...
  develop =
     src/my.package
-    
+
 You can list multiple packages here, separated by whitespace or indented
 newlines.
 
@@ -105,7 +105,7 @@ main "[buildout]" section:
     ${buildout:eggs}
     ${plone:eggs}
     my.package
-    
+
 Leave the ${buildout:eggs} part in place - it tells the instance to use the
 eggs that buildout will have downloaded from the Python Package Index
 previously.
@@ -117,12 +117,12 @@ automatically. Just add the package to the 'zcml' option:
  ...
  zcml =
     my.package
-    
-When you are finished, re-run buildout. Offline, non-updating mode should 
+
+When you are finished, re-run buildout. Offline, non-updating mode should
 suffice:
 
  $ bin/buildout -Nov
- 
+
 Developing old-style products
 -----------------------------
 
@@ -141,7 +141,7 @@ to do is to add it to the "eggs" option under the main "[buildout]" section:
  ...
  eggs =
     my.package
-    
+
 If it's listed somewhere else than the Python Package Index, you can add a link
 telling buildout where to find it in the 'find-links' option:
 
@@ -152,11 +152,11 @@ telling buildout where to find it in the 'find-links' option:
     http://download.zope.org/distribution/
     http://effbot.org/downloads
     http://some.host.com/packages
-    
+
 Using existing old-style products
 ---------------------------------
 
-If you are using an old-style (non-egg) product, you can either add it as an 
+If you are using an old-style (non-egg) product, you can either add it as an
 automatically downloaded archive or put it in the top-level "products" folder.
 The former is probably better, because it means you can redistribute your
 buildout.cfg more easily:
@@ -176,18 +176,18 @@ add it as a "nested package":
     http://plone.org/products/someproduct/releases/1.3/someproduct-1.3.tar.gz
  nested-packages =
     someproduct-1.3.tar.gz
- 
-Alternatively, if it extracts to a directory which contains the version 
+
+Alternatively, if it extracts to a directory which contains the version
 number, add it as a "version suffix package":
 
  [productdistros]
  recipe = plone.recipe.distros
  urls =
     http://plone.org/products/someproduct/releases/1.3/someproduct-1.3.tar.gz
- version-suffix-packages = 
+ version-suffix-packages =
     someproduct-1.3.tar.gz
-    
-You can also track products by adding a new bundle checkout part. It 
+
+You can also track products by adding a new bundle checkout part. It
 doesn't strictly have to be an svn bundle at all, any svn location will do,
 and cvs is also supported:
 
@@ -207,7 +207,7 @@ need to add a new section to buildout.cfg:
  [myproduct]
  recipe = plone.recipe.bundlecheckout
  url = http://svn.plone.org/svn/collective/myproduct/trunk
- 
+
 Finally, you need to tell Zope to find this new checkout and add it to its
 list of directories that are scanned for products:
 
@@ -218,8 +218,8 @@ list of directories that are scanned for products:
     ${productdistros:location}
     ${plonebundle:location}
     ${myproduct:location}
-    
-Without this last step, the "myproduct" part is simply managing an svn 
+
+Without this last step, the "myproduct" part is simply managing an svn
 checkout and could potentially be used for something else instead.
 
 =============
@@ -258,7 +258,7 @@ Python (http://python.org)
   - You can test if this was successful by opening a new shell (cmd) and type
     in 'python -V'. It should report version 2.4.4 (or whichever version you
     installed).
-    
+
     Opening a new shell can be done quickly by using the key combination
     'Windows-r' or if you are using Parallels on a Mac 'Apple-r'. Type in 'cmd'
     into the popup box that opens up and hit enter.

@@ -6,4 +6,3 @@ ${project} - ${version or "0.0"} Unreleased
 
     - Initial package structure.
       [zopeskel]
-

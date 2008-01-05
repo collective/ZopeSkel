@@ -9,7 +9,7 @@
      - cookie_persistence: change it to True if you want to make the skin cookie
        persist indefinitely. In the ZMI, this value is known as 'Skin Cookie
        persistence'.
-       -->
+  -->
 #end if
 <object name="portal_skins" allow_any="False" cookie_persistence="False"
    default_skin="${skinname}">
@@ -18,7 +18,7 @@
  <!-- This list registers the folders that are stored in the skins directory
       of your product (on the filesystem) as Filesystem Directory Views within
       the portal_skins tool, so that they become usable as skin layers.
-      -->
+   -->
 #end if
  <object name="${package}_images"
     meta_type="Filesystem Directory View"
@@ -51,7 +51,7 @@
        - insert-after: name of the layer after which it must be added.
        Note: insert-before (and -after) accepts the value "*" which means
        "all".
-       -->
+   -->
 #end if
  <skin-path name="${skinname}">
   <layer name="custom"/>
@@ -104,4 +104,3 @@
  </skin-path>
 
 </object>
-

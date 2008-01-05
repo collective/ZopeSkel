@@ -7,7 +7,7 @@
 
 #if str($zope2product) == 'True'
     <five:registerPackage package="." initialize=".initialize" />
-    
+
 #end if
     <genericsetup:registerProfile
        name="default"
@@ -16,9 +16,9 @@
        description="${description}"
        provides="Products.GenericSetup.interfaces.EXTENSION"
        />
- 
+
      <!-- Register the portlet -->
-     
+
      <!-- If the portlet has no configurable parameters, you can remove
           the EditForm declaration in ${portlet_filename}.py and delete
           the 'editview' attribute from this statement.

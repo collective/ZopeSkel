@@ -50,4 +50,3 @@ ws.require('zc.buildout')
 import zc.buildout.buildout
 zc.buildout.buildout.main(sys.argv[1:] + ['bootstrap'])
 shutil.rmtree(tmpeggs)
-

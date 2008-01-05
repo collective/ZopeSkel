@@ -7,12 +7,12 @@ from setuptools import setup, find_packages
 
 version = ${repr($version) or "0.0"}
 
-README = os.path.join(os.path.dirname(__file__), 
+README = os.path.join(os.path.dirname(__file__),
                       ${repr($namespace_package)},
                       ${repr($namespace_package2)},
                       ${repr($package)}, 'docs', 'README.txt')
 
-long_description = open(README).read() + '\n\n' 
+long_description = open(README).read() + '\n\n'
 
 entry_point = '$namespace_package.$namespace_package2.${package}:Recipe'
 

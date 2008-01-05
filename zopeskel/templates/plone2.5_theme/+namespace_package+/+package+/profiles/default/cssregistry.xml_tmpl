@@ -24,11 +24,10 @@
       See registerStylesheet() arguments in
       ResourceRegistries/tools/CSSRegistry.py for the latest list of all
       available keys and default values.
-      -->
+   -->
 #end if
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="1" expression="" id="${package}.css" media="screen"
     rel="stylesheet" rendering="import"/>
 
 </object>
-

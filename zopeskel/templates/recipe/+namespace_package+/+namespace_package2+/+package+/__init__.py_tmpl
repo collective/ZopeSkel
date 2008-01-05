@@ -16,4 +16,3 @@ class Recipe(object):
     def update(self):
         """updater"""
         pass
-

@@ -1,7 +1,7 @@
+import os, string
 from Globals import package_home
 from Products.CMFCore.DirectoryView import addDirectoryViews
 from Products.CMFCore.utils import getToolByName
-import os, string
 
 
 def getSkinsFolderNames(globals, skins_dir='skins'):

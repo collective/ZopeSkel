@@ -23,7 +23,7 @@ def test_suite():
 
         #ztc.FunctionalDocFileSuite(
         #    'browser.txt', package='${namespace_package}.${package}'),
-        
+
         ])
 
 if __name__ == '__main__':

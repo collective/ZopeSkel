@@ -24,7 +24,7 @@ class TestCase(ptc.PloneTestCase):
         @classmethod
         def tearDown(cls):
             pass
-    
+
 
 def test_suite():
     return unittest.TestSuite([
@@ -47,7 +47,7 @@ def test_suite():
         \#ztc.FunctionalDocFileSuite(
         \#    'browser.txt', package='${namespace_package}.${namespace_package2}.${package}',
         \#    test_class=TestCase),
-        
+
         ])
 
 if __name__ == '__main__':

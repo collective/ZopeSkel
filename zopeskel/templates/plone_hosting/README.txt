@@ -1,20 +1,20 @@
 ==============
 Using buildout
 ==============
- 
+
 Working with buildout.cfg
 -------------------------
 
 You can change any option in buildout.cfg and re-run bin/buildout to reflect
 the changes. This may delete things inside the 'parts' directory, but should
-keep your Data.fs and source files intact. 
+keep your Data.fs and source files intact.
 
-To save time, you can run buildout in "offline" (-o) and non-updating (-N) 
-mode, which will prevent it from downloading things and checking for new 
+To save time, you can run buildout in "offline" (-o) and non-updating (-N)
+mode, which will prevent it from downloading things and checking for new
 versions online:
 
  $ bin/buildout -Nov
- 
+
 Adding eggs to your buildout
 ----------------------------
 
@@ -23,7 +23,7 @@ uploaded to the Python Package Index, aka PYPI) should be placed in src. You can
 
  $ cd src/
  $ paster create -t plone my.package
- 
+
 Use "paster create --list-templates" to see all available templates. Answer
 the questions and you will get a new egg. Then tell buildout about your egg
 by editing buildout.cfg and adding your source directory to 'develop':
@@ -32,7 +32,7 @@ by editing buildout.cfg and adding your source directory to 'develop':
  ...
  develop =
     src/my.package
-    
+
 You can list multiple packages here, separated by whitespace or indented
 newlines.
 
@@ -46,7 +46,7 @@ main "[buildout]" section:
     ${buildout:eggs}
     ${plone:eggs}
     my.package
-    
+
 Leave the ${buildout:eggs} part in place - it tells the instance to use the
 eggs that buildout will have downloaded from the Python Package Index previously.
 
@@ -57,12 +57,12 @@ automatically. Just add the package to the 'zcml' option:
  ...
  zcml =
     my.package
-    
-When you are finished, re-run buildout. Offline, non-updating mode should 
+
+When you are finished, re-run buildout. Offline, non-updating mode should
 suffice:
 
  $ bin/buildout -Nov
- 
+
 Depending on a new egg
 ----------------------
 
@@ -73,7 +73,7 @@ to do is to add it to the "eggs" option under the main "[buildout]" section:
  ...
  eggs =
     my.package
-    
+
 If it's listed somewhere else than the Python Package Index, you can add a link
 telling buildout where to find it in the 'find-links' option:
 
@@ -84,7 +84,7 @@ telling buildout where to find it in the 'find-links' option:
     http://download.zope.org/distribution/
     http://effbot.org/downloads
     http://some.host.com/packages
-    
+
 If you want to use a package that is not registered with the package index
 you can add it to the src/ directory. You need to tell buildout about your
 package by editing buildout.cfg and adding your source directory to
@@ -130,7 +130,7 @@ suffice:
 Adding Zope products
 --------------------
 
-If you are using an old-style (non-egg) product, you can either add it as an 
+If you are using an old-style (non-egg) product, you can either add it as an
 automatically downloaded archive or put it in the top-level "products" folder.
 
 To use a product archive add this to buildout.cfg:
@@ -151,18 +151,18 @@ add it as a "nested package":
     http://plone.org/products/someproduct/releases/1.3/someproduct-1.3.tar.gz
  nested-packages =
     someproduct-1.3.tar.gz
- 
-Alternatively, if it extracts to a directory which contains the version 
+
+Alternatively, if it extracts to a directory which contains the version
 number, add it as a "version suffix package":
 
  [productdistros]
  recipe = plone.recipe.distros
  urls =
     http://plone.org/products/someproduct/releases/1.3/someproduct-1.3.tar.gz
- version-suffix-packages = 
+ version-suffix-packages =
     someproduct-1.3.tar.gz
-    
-You can also track products by adding a new bundle checkout part. It 
+
+You can also track products by adding a new bundle checkout part. It
 doesn't strictly have to be an svn bundle at all, any svn location will do,
 and cvs is also supported:
 
@@ -182,7 +182,7 @@ need to add a new section to buildout.cfg:
  [myproduct]
  recipe = plone.recipe.bundlecheckout
  url = http://svn.plone.org/svn/collective/myproduct/trunk
- 
+
 Finally, you need to tell Zope to find this new checkout and add it to its
 list of directories that are scanned for products:
 
@@ -193,7 +193,6 @@ list of directories that are scanned for products:
     ${productdistros:location}
     ${plonebundle:location}
     ${myproduct:location}
-    
-Without this last step, the "myproduct" part is simply managing an svn 
-checkout and could potentially be used for something else instead.
 
+Without this last step, the "myproduct" part is simply managing an svn
+checkout and could potentially be used for something else instead.
