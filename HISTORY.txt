@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Version 1.3.2
+-------------
+
+* Small fix in plone3_theme that did not install correctly with easy_install
+  because of some files fissing the the egg informations.
+  [davconvent]
+
 Version 1.3.1
 -------------
 
