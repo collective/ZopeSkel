@@ -6,5 +6,4 @@ from zope.app.container.constraints import containers
 
 from $namespace_package.$package import ${package}MessageFactory as _
 
-# Interfaces go here ...
 # -*- extra stuff goes here -*-

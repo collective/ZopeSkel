@@ -2,19 +2,21 @@
 """
 
 from zope.i18nmessageid import MessageFactory
+#if str($zope2product) == 'True'
 from ${namespace_package}.${package} import config
 
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
 from Products.CMFCore.permissions import setDefaultRoles
+#end if
 
 # Define a message factory for when this product is internationalised.
 # This will be imported with the special name "_" in most modules. Strings
 # like _(u"message") will then be extracted by i18n tools for translation.
 
 ${package}MessageFactory = MessageFactory('${namespace_package}.${package}')
-
 #if str($zope2product) == 'True'
+
 def initialize(context):
     """Initializer called when used as a Zope 2 product.
 
@@ -49,5 +51,4 @@ def initialize(context):
             permission         = config.ADD_PERMISSIONS[atype.portal_type],
             extra_constructors = (constructor,),
             ).initialize(context)
-
 #end if
