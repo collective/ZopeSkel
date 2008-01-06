@@ -1,7 +1,7 @@
 #<?xml version="1.0"?>
 #<rolemap>
 #  <permissions>
-#  <!-- -*- extra stuff goes here -*- -->
+#   <!-- -*- extra stuff goes here -*- -->
     <permission name="$add_permission_name" acquire="False">
        <role name="Manager" />
     </permission>
