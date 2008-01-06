@@ -13,10 +13,6 @@ def get_var(vars, name):
     else:
         raise ValueError("No such var: %r" % name)
 
-def removeFile(dirpath, filename):
-    print "Removing %s from %s%s" %(filename, dirpath, os.sep)
-    os.remove(os.path.join(dirpath, filename))
-
 
 class Namespace(templates.Template):
     _template_dir = 'templates/basic_namespace'
@@ -127,7 +123,8 @@ def cleanupStylsheets(dirpath, filenames):
     for prefix in ('base', 'generated', 'portlets', 'public'):
         filename = prefix + '.css.dtml'
         if filename in filenames:
-            removeFile(dirpath, filename)
+            print "Removing %s from %s%s" %(filename, dirpath, os.sep)
+            os.remove(os.path.join(dirpath, filename))
 
 class Plone2Theme(templates.Template):
     _template_dir = 'templates/plone2_theme'
@@ -172,10 +169,6 @@ class Plone25Theme(Plone):
         if str(vars['empty_styles']) == 'False':
             for dirpath, dirnames, filenames in os.walk(sdir):
                 cleanupStylsheets(dirpath, filenames)
-        if str(vars['include_doc']) == 'False':
-            for dirpath, dirnames, filenames in os.walk(sdir):
-                if 'CONTENT.txt' in filenames:
-                    removeFile(dirpath, 'CONTENT.txt')
         super(Plone25Theme, self).post(command, output_dir, vars)
 
 class Plone3Theme(Plone25Theme):
@@ -192,15 +185,6 @@ class Plone3Theme(Plone25Theme):
     def pre(self, command, output_dir, vars):
         vars['timestamp'] = datetime.date.today().strftime("%Y%m%d")
         super(Plone3Theme, self).pre(command, output_dir, vars)
-
-    def post(self, command, output_dir, vars):
-        if str(vars['include_doc']) == 'False':
-            np, p = vars['namespace_package'], vars['package']
-            bdir = os.path.join(output_dir, np, p, 'browser')
-            for dirpath, dirnames, filenames in os.walk(bdir):
-                if 'README.txt' in filenames:
-                    removeFile(dirpath, 'README.txt')
-        super(Plone3Theme, self).post(command, output_dir, vars)
 
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'
