@@ -2,7 +2,7 @@
 Local templates
 """
 
-from zopeskel import get_var, removeFile, var
+from zopeskel import get_var, var
 from zopeskel.localcommands import ZopeSkelLocalTemplate
 
 
