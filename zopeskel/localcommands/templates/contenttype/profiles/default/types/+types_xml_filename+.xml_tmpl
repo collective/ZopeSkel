@@ -4,7 +4,7 @@
    i18n:domain="${package_dotted_name}" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   <property name="title" i18n:translate="">${contenttype_name}</property>
   <property name="description"
-      i18n:translate="">${contenttype_description}</property>
+    i18n:translate="">${contenttype_description}</property>
   <property name="content_meta_type">${contenttype_name}</property>
 #if str($folderish) == 'True'
   <property name="content_icon">folder_icon.gif</property>

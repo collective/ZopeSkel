@@ -7,6 +7,5 @@
      which supports Plone's "display" menu.
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
-  <!-- # ZopeSkel local commands marker -->
   <!-- -*- extra stuff goes here -*- -->
 </object>
