@@ -10,7 +10,7 @@
  <property name="content_icon">folder_icon.gif</property>
 #else
  <property name="content_icon">document_icon.gif</property>
-#end if    
+#end if
  <property name="product">${package_dotted_name}</property>
  <property name="factory">add${contenttype_classname}</property>
  <property name="immediate_view">atct_edit</property>
@@ -30,7 +30,7 @@
     url_expr="string:\${folder_url}/" visible="True">
 #else
     url_expr="string:\${object_url}/" visible="True">
-#end if    
+#end if
   <permission value="View"/>
  </action>
  <action title="Edit" action_id="edit" category="object" condition_expr=""

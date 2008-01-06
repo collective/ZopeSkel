@@ -9,8 +9,8 @@ from plone.portlets.interfaces import IPortletRenderer
 from plone.app.portlets.storage import PortletAssignmentMapping
 
 from ${dotted_name} import ${portlet_filename}
-
 from ${dotted_name}.tests.base_${portlet_filename} import TestCase
+
 
 class TestPortlet(TestCase):
 
@@ -54,15 +54,16 @@ class TestPortlet(TestCase):
         request = self.folder.REQUEST
         view = self.folder.restrictedTraverse('@@plone')
         manager = getUtility(IPortletManager, name='plone.rightcolumn', context=self.portal)
-        
+
         # TODO: Pass any keywoard arguments to the Assignment constructor
         assignment = ${portlet_filename}.Assignment()
 
         renderer = getMultiAdapter((context, request, view, manager, assignment), IPortletRenderer)
         self.failUnless(isinstance(renderer, ${portlet_filename}.Renderer))
 
+
 class TestRenderer(TestCase):
-    
+
     def afterSetUp(self):
         self.setRoles(('Manager',))
 
@@ -71,7 +72,7 @@ class TestRenderer(TestCase):
         request = request or self.folder.REQUEST
         view = view or self.folder.restrictedTraverse('@@plone')
         manager = manager or getUtility(IPortletManager, name='plone.rightcolumn', context=self.portal)
-        
+
         # TODO: Pass any default keywoard arguments to the Assignment constructor
         assignment = assignment or ${portlet_filename}.Assignment()
         return getMultiAdapter((context, request, view, manager, assignment), IPortletRenderer)
@@ -83,7 +84,8 @@ class TestRenderer(TestCase):
         r.update()
         output = r.render()
         # TODO: Test output
-        
+
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()

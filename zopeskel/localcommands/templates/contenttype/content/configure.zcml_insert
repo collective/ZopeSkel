@@ -4,10 +4,10 @@
             permission="zope2.View"
             interface="..interfaces.${interface_name}"
             />
+
         <require
             permission="cmf.ModifyPortalContent"
             set_schema="..interfaces.${interface_name}"
             />
-    </class>
 
- 
+    </class>

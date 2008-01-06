@@ -28,7 +28,7 @@ class StandardHosting(templates.Template):
             var("plone", "Plone version (2.5, 2.5.1, 3.0, 3.0.1, etc.)",
                 default="3.0.4"),
             ]
-    
+
     def _buildout(self, output_dir):
         os.chdir(output_dir)
         print "Bootstrapping the buildout"
@@ -36,13 +36,11 @@ class StandardHosting(templates.Template):
         print "Configuring the buildout"
         subprocess.call(["bin/buildout", "-n"])
 
-
     def check_vars(self, vars, cmd):
         result=templates.Template.check_vars(self, vars, cmd)
         if vars["plone"] not in plone25s and not vars["plone"].startswith("3.0"):
             raise BadCommand("Unknown plone version: %s" % vars["plone"])
         return result
-
 
     def pre(self, command, output_dir, vars):
         plone=vars["plone"]
@@ -52,9 +50,8 @@ class StandardHosting(templates.Template):
             vars["plone_recipe"]="plone.recipe.plone25install"
             vars["plone_url"]=plone25s[plone]
 
-
     def show_summary(self, vars):
-        print 
+        print
         print "Finished creation of standard hosting buildout."
         print
         print "Configuration summary:"
@@ -70,11 +67,8 @@ class StandardHosting(templates.Template):
         print "  Zope admin user    :  admin"
         print "  Zope admin password:  %s" % vars["zope_password"]
 
-
     def post(self, command, output_dir, vars):
         output_dir=os.path.abspath(output_dir)
         os.chmod(os.path.join(output_dir, "bin", "control"), 0755)
         self._buildout(output_dir)
         self.show_summary(vars)
-
-

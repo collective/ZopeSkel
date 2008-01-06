@@ -7,7 +7,7 @@
 #      -->
 #    <include package="plone.app.portlets" />
 #
-#	<!-- -*- extra stuff goes here -*- -->      
+#	<!-- -*- extra stuff goes here -*- -->
 
      <plone:portlet
          name="${dotted_name}.${portlet_type_name}"

@@ -31,7 +31,7 @@ ${schema_name} = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 # Set storage on fields copied from ATFolder, making sure they work
 # well with the python bridge properties.
 #else
-# Set storage on fields copied from ATContentTypeSchemata, making sure 
+# Set storage on fields copied from ATContentTypeSchemata, making sure
 # they work well with the python bridge properties.
 #end if
 
@@ -57,5 +57,5 @@ class ${contenttype_classname}(base.ATCTContent):
 
     title = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
-    
+
 atapi.registerType(${contenttype_classname}, PROJECTNAME)

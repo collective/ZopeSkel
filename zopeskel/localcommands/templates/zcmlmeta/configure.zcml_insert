@@ -5,5 +5,5 @@
 #  <!-- -*- extra stuff goes here -*- -->
 
     <include package=".meta" />
-    
-#</configure>    
+
+#</configure>

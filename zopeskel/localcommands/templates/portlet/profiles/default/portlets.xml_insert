@@ -4,12 +4,12 @@
 #     of this file for more information.
 #  -->
 #<portlets>
-#	<!-- -*- extra stuff goes here -*- -->      
+#	<!-- -*- extra stuff goes here -*- -->
 
    <portlet
      addview="${dotted_name}.${portlet_type_name}"
      title="${portlet_name}"
      description="${description}"
    />
-	    
+
 #</portlets>

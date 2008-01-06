@@ -28,4 +28,3 @@ class I${directive_class_name}Directive(Interface):
         description=u"The factory",
         required=True
         )
-

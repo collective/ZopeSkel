@@ -19,7 +19,7 @@ class Namespace(templates.Template):
     summary = "A project with a namespace package"
     required_templates = []
     use_cheetah = True
-    
+
     vars = [
         var('namespace_package', 'Namespace package (like plone)'),
         var('package', 'The package contained namespace package (like example)'),
@@ -50,10 +50,9 @@ class NestedNamespace(Namespace):
 
     vars = copy.deepcopy(Namespace.vars)
     get_var(vars, 'namespace_package').default = 'plone'
-    vars.insert(1,
-                var(
-        'namespace_package2', 'Nested namespace package (like app)',
-        default='app'))
+    vars.insert(1, var('namespace_package2',
+                        'Nested namespace package (like app)',
+                        default='app'))
     get_var(vars, 'package').default = 'example'
 
 
@@ -66,10 +65,9 @@ class BasicZope(Namespace):
     vars = copy.deepcopy(Namespace.vars)
     get_var(vars, 'namespace_package').default = 'myzopelib'
     get_var(vars, 'package').default = 'example'
-    vars.insert(2,
-                var(
-        'zope2product', 'Are you creating a Zope 2 Product?',
-        default=False))
+    vars.insert(2, var('zope2product',
+                       'Are you creating a Zope 2 Product?',
+                       default=False))
 
 
 class Plone(Namespace):
@@ -81,10 +79,9 @@ class Plone(Namespace):
     vars = copy.deepcopy(Namespace.vars)
     get_var(vars, 'namespace_package').default = 'plone'
     get_var(vars, 'package').default = 'example'
-    vars.insert(2,
-                var(
-        'zope2product', 'Are you creating a Zope 2 Product?',
-        default=False))
+    vars.insert(2, var('zope2product',
+                       'Are you creating a Zope 2 Product?',
+                       default=False))
     get_var(vars, 'author').default = 'Plone Foundation'
     get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.example'
@@ -97,10 +94,9 @@ class PloneApp(NestedNamespace):
     use_cheetah = True
 
     vars = copy.deepcopy(NestedNamespace.vars)
-    vars.insert(3,
-                var(
-        'zope2product', 'Are you creating a Zope 2 Product?',
-        default=True))
+    vars.insert(3, var('zope2product',
+                       'Are you creating a Zope 2 Product?',
+                       default=True))
     get_var(vars, 'author').default = 'Plone Foundation'
     get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
@@ -126,11 +122,12 @@ def cleanupStylsheets(dirpath, filenames):
             print "Removing %s from %s%s" %(filename, dirpath, os.sep)
             os.remove(os.path.join(dirpath, filename))
 
+
 class Plone2Theme(templates.Template):
     _template_dir = 'templates/plone2_theme'
     summary = "A Theme Product for Plone 2.1 & Plone 2.5"
     use_cheetah = True
-    
+
     vars = copy.deepcopy(templates.BasicPackage.vars)
     get_var(vars, 'version').default = '0.1'
     get_var(vars, 'description').default = 'An installable theme for Plone'
@@ -146,12 +143,13 @@ class Plone2Theme(templates.Template):
             for dirpath, dirnames, filenames in os.walk(skinsdir):
                 cleanupStylsheets(dirpath, filenames)
 
+
 class Plone25Theme(Plone):
     _template_dir = 'templates/plone2.5_theme'
     summary = "A Theme for Plone 2.5"
     required_templates = ['plone']
     use_cheetah = True
-    
+
     vars = copy.deepcopy(Plone.vars)
     get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme or Products)'
     get_var(vars, 'namespace_package').default = 'Products'
@@ -171,12 +169,13 @@ class Plone25Theme(Plone):
                 cleanupStylsheets(dirpath, filenames)
         super(Plone25Theme, self).post(command, output_dir, vars)
 
+
 class Plone3Theme(Plone25Theme):
     _template_dir = 'templates/plone3_theme'
     summary = "A Theme for Plone 3.0"
     required_templates = ['plone']
     use_cheetah = True
-    
+
     vars = copy.deepcopy(Plone25Theme.vars)
     get_var(vars, 'namespace_package').default = 'plonetheme'
     get_var(vars, 'namespace_package').description = 'Namespace package (like plonetheme)'
@@ -186,36 +185,52 @@ class Plone3Theme(Plone25Theme):
         vars['timestamp'] = datetime.date.today().strftime("%Y%m%d")
         super(Plone3Theme, self).pre(command, output_dir, vars)
 
+
 class Plone3Buildout(templates.Template):
     _template_dir = 'templates/plone3_buildout'
     summary = "A buildout for Plone 3 projects"
     required_templates = []
     use_cheetah = True
-    
+
     vars = [
-        var('zope2_install', 'Path to Zope 2 installation; leave blank to fetch one', default=''),
-        var('plone_products_install', 'Path to directory containing Plone products; leave blank to fetch one', default=''),
-        var('zope_user', 'Zope root admin user', default='admin'),
-        var('zope_password', 'Zope root admin password'),
-        var('http_port', 'HTTP port', default=8080),
-        var('debug_mode', 'Should debug mode be "on" or "off"?', default='off'),
-        var('verbose_security', 'Should verbose security be "on" or "off"?', default='off'),
+        var('zope2_install',
+            'Path to Zope 2 installation; leave blank to fetch one',
+            default=''),
+        var('plone_products_install',
+            'Path to directory containing Plone products; leave blank to fetch one',
+            default=''),
+        var('zope_user',
+            'Zope root admin user',
+            default='admin'),
+        var('zope_password',
+            'Zope root admin password'),
+        var('http_port',
+            'HTTP port',
+            default=8080),
+        var('debug_mode',
+            'Should debug mode be "on" or "off"?',
+            default='off'),
+        var('verbose_security',
+            'Should verbose security be "on" or "off"?',
+            default='off'),
         ]
-        
+
     def post(self, command, output_dir, vars):
         print "-----------------------------------------------------------"
         print "Generation finished"
         print "You probably want to run python bootstrap.py and then edit"
         print "buildout.cfg before running bin/buildout -v"
-        print 
+        print
         print "See README.txt for details"
         print "-----------------------------------------------------------"
+
 
 class Plone25Buildout(Plone3Buildout):
     _template_dir = 'templates/plone2.5_buildout'
     summary = "A buildout for Plone 2.5 projects"
     required_templates = ['plone3_buildout']
-    
+
+
 class Plone3Portlet(NestedNamespace):
     _template_dir = 'templates/plone3_portlet'
     summary = "A Plone 3 portlet"
@@ -228,13 +243,20 @@ class Plone3Portlet(NestedNamespace):
     get_var(vars, 'author').default = 'Plone Foundation'
     get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
     get_var(vars, 'url').default = 'http://plone.org'
-    vars.append(var('portlet_name', 'Portlet name (human readable)', default="Example portlet"))
-    vars.append(var('portlet_type_name', 'Portlet type name (should not contain spaces)', default="ExamplePortlet"))
+    vars.append(var('portlet_name',
+                    'Portlet name (human readable)',
+                    default="Example portlet"))
+    vars.append(var('portlet_type_name',
+                    'Portlet type name (should not contain spaces)',
+                    default="ExamplePortlet"))
 
     def pre(self, command, output_dir, vars):
         vars['zip_safe'] = False
         vars['portlet_filename'] = vars['portlet_type_name'].lower()
-        vars['dotted_name'] = "%s.%s.%s" % (vars['namespace_package'], vars['namespace_package2'], vars['package'])
+        vars['dotted_name'] = "%s.%s.%s" % (vars['namespace_package'],
+                                            vars['namespace_package2'],
+                                            vars['package'])
+
 
 class Archetype(Plone):
     _template_dir = 'templates/archetype'
@@ -242,13 +264,12 @@ class Archetype(Plone):
     required_templates = ['plone']
     egg_plugins = ['ZopeSkel']
     use_cheetah = True
-    
-    vars = copy.deepcopy(Plone.vars)  
-    
-    vars.insert(0,
-                var(
-        'title', 'The title of the project',
-        default='Plone Example'))      
+
+    vars = copy.deepcopy(Plone.vars)
+    vars.insert(0, var('title',
+                       'The title of the project',
+                       default='Plone Example'))
+
 
 class Recipe(NestedNamespace):
     """A template for buidldout recipes"""
@@ -258,4 +279,3 @@ class Recipe(NestedNamespace):
     use_cheetah = True
     vars = copy.deepcopy(NestedNamespace.vars)
     get_var(vars, 'namespace_package2').default = 'recipe'
-
