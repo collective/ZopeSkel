@@ -9,9 +9,7 @@ from Products.ATContentTypes.content import folder
 #else
 from Products.ATContentTypes.content import base
 #end if
-
 from Products.ATContentTypes.content import schemata
-from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 
 from ${package_dotted_name} import ${package}MessageFactory as _
 from ${package_dotted_name}.interfaces import ${interface_name}
@@ -23,15 +21,15 @@ ${schema_name} = folder.ATFolderSchema.copy() + atapi.Schema((
 ${schema_name} = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 #end if
 
-# Your Archetypes field definitions here ...
+    # Your Archetypes field definitions here ...
 
 ))
 
 #if str($folderish) == 'True'
-# Set storage on fields copied from ATFolder, making sure they work
-# well with the python bridge properties.
+# Set storage on fields copied from ATFolderSchema, making sure
+# they work well with the python bridge properties.
 #else
-# Set storage on fields copied from ATContentTypeSchemata, making sure
+# Set storage on fields copied from ATContentTypeSchema, making sure
 # they work well with the python bridge properties.
 #end if
 
@@ -39,9 +37,9 @@ ${schema_name}['title'].storage = atapi.AnnotationStorage()
 ${schema_name}['description'].storage = atapi.AnnotationStorage()
 
 #if str($folderish) == 'True'
-finalizeATCTSchema(${schema_name}, folderish=True, moveDiscussion=False)
+schemata.finalizeATCTSchema(${schema_name}, folderish=True, moveDiscussion=False)
 #else
-finalizeATCTSchema(${schema_name}, moveDiscussion=False)
+schemata.finalizeATCTSchema(${schema_name}, moveDiscussion=False)
 #end if
 
 #if str($folderish) == 'True'
