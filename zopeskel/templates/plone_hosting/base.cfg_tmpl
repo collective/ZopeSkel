@@ -67,7 +67,7 @@ scripts = zopepy
 #if $proxy_port
 [varnish-build]
 recipe = plone.recipe.varnish:build
-url = http://puzzle.dl.sourceforge.net/sourceforge/varnish/varnish-1.1.1.tar.gz
+url = http://puzzle.dl.sourceforge.net/sourceforge/varnish/varnish-1.1.2.tar.gz
 
 [varnish]
 recipe = plone.recipe.varnish:instance
