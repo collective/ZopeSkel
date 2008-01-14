@@ -1,0 +1,5 @@
+include HISTORY.txt
+recursive-include ez_setup *.txt *.py
+recursive-include zopeskel/localcommands *.txt
+recursive-include zopeskel/localcommands/templates *
+recursive-include zopeskel/templates *
