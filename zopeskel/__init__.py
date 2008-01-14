@@ -36,7 +36,8 @@ class Namespace(templates.Template):
         ]
 
     def check_vars(self, vars, command):
-        if not hasattr(command, '_deleted_once'):
+        if not command.options.no_interactive and \
+           not hasattr(command, '_deleted_once'):
             del vars['package']
             command._deleted_once = True
         return super(Namespace, self).check_vars(vars, command)
