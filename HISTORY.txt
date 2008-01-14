@@ -4,9 +4,9 @@ Changelog
 Version 1.4
 -----------
 
-.......
-....... your entries here!
-....... 
+* Fixed bug: when running 'paster create' with --no-interactive option, 
+  the package variable given in the command line is ignored.
+  [Mustapha]
 
 Version 1.3.4
 -------------
