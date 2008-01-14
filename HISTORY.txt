@@ -4,9 +4,8 @@ Changelog
 Version 1.3.4
 -------------
 
-.......
-....... your entries here!
-....... 
+* Added MANIFEST.in to prevent bad releases from svn exports.
+  [fschulze]
 
 Version 1.3.3
 -------------
