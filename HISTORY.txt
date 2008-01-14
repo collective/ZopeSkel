@@ -1,6 +1,18 @@
 Changelog
 =========
 
+Version 1.3.3
+-------------
+
+* Move to the newly released Varnish 1.1.2.
+  [wichert]
+
+* Remove bad import which broke localcommand support.
+  [deo]
+
+* Remove unneeded imports and whitespace cleanup.
+  [deo]
+
 Version 1.3.2
 -------------
 
