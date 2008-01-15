@@ -14,7 +14,6 @@ find-links =
     http://dist.plone.org
     http://download.zope.org/ppix/
     http://effbot.org/downloads
-versions = versions
 eggs =
     elementtree
 develop =

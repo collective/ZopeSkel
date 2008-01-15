@@ -20,6 +20,6 @@ version-suffix-packages =
 
 [instance]
 eggs =
-    ${buildout:eggs}
-    ${plone:eggs}
+    \${buildout:eggs}
+    \${plone:eggs}
 zcml =
