@@ -6,8 +6,8 @@ Version 1.5 (UNRELEASED)
 
 * Added paragraph about old style Zope 2 Product installation in the
   INSTALL.txt_tmpl file of the plone template.
-  Will be added to the installation instructions if the top level namespace
-  package is called 'Products'.
+  The paragraph will be added to the installation instructions if the top
+  level namespace package is called 'Products'.
   [davconvent]
 
 Version 1.4
