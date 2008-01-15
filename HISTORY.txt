@@ -4,6 +4,11 @@ Changelog
 Version 1.4
 -----------
 
+* Set the version number for plone.recipe.plone in a new versions part in
+  buildout.cfg. That works around a buildout bug: buildout breaks if you change
+  the revision pin for a recipe.
+  [wichert]
+
 * Fixed bug: when running 'paster create' with --no-interactive option, 
   the package variable given in the command line is ignored.
   [Mustapha]
