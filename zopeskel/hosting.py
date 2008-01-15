@@ -45,7 +45,8 @@ class StandardHosting(templates.Template):
     def pre(self, command, output_dir, vars):
         plone=vars["plone"]
         if plone.startswith("3.0"):
-            vars["plone_recipe"]="plone.recipe.plone==%s" % plone
+            vars["plone_recipe"]="plone.recipe.plone"
+            vars["plone_recipe_version"]=plone
         else:
             vars["plone_recipe"]="plone.recipe.plone25install"
             vars["plone_url"]=plone25s[plone]
