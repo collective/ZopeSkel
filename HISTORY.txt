@@ -4,7 +4,11 @@ Changelog
 Version 1.5 (UNRELEASED)
 -----------
 
-* Your change goes here....
+* Added paragraph about old style Zope 2 Product installation in the
+  INSTALL.txt_tmpl file of the plone template.
+  Will be added to the installation instructions if the top level namespace
+  package is called 'Products'.
+  [davconvent]
 
 Version 1.4
 -----------
@@ -40,7 +44,7 @@ Version 1.3.2
 -------------
 
 * Small fix in plone3_theme that did not install correctly with easy_install
-  because of some files missing the the egg informations.
+  because of some files missing the the egg informations (added MANIFEST.in).
   [davconvent]
 
 Version 1.3.1

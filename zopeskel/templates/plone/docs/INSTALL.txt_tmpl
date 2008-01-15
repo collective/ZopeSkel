@@ -1,5 +1,5 @@
 ${project} Installation
-=======================
+==========================
 
 To install ${project} into the global Python environment (or a workingenv),
 using a traditional Zope 2 instance, you can do this:
@@ -26,6 +26,7 @@ using a traditional Zope 2 instance, you can do this:
 
 #if str($zope2product) == 'True'
 .. _pythonproducts: http://plone.org/products/pythonproducts
+
 #end if
 
 Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
@@ -53,3 +54,16 @@ recipe to manage your project, you can do this:
         
 You can skip the ZCML slug if you are going to explicitly include the package
 from another package's configure.zcml file.
+#if str($zope2product) == 'True' and $namespace_package == 'Products'
+
+
+Because its top level Python namespace package is called ``Products``, this
+package can also be installed in Zope 2 as an old style **Zope 2 Product**.
+
+For that, move (or symlink) the ``$package`` folder of this project
+(``$project/$namespace_package/$package``) into the ``Products`` directory of
+the Zope instance it has to be installed for, and restart the server.
+
+You can also skip the ZCML slug if you install this package the **Zope 2
+Product** way.
+#end if
