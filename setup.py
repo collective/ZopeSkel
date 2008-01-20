@@ -44,11 +44,9 @@ setup(name='ZopeSkel',
       plone2.5_buildout = zopeskel:Plone25Buildout
       plone3_buildout = zopeskel:Plone3Buildout
       archetype = zopeskel:Archetype
-      p3p = zopeskel:Plone3rdParty
       plone3_portlet = zopeskel:Plone3Portlet
       plone_hosting = zopeskel.hosting:StandardHosting
       recipe = zopeskel:Recipe
-
 
       [paste.paster_command]
       addcontent = zopeskel.localcommands:ZopeSkelLocalCommand

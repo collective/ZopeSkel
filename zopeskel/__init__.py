@@ -14,33 +14,33 @@ def get_var(vars, name):
         raise ValueError("No such var: %r" % name)
 
 
-class BasicPackage(templates.BasicPackage):
+class Namespace(templates.Template):
+    _template_dir = 'templates/basic_namespace'
+    summary = "A project with a namespace package"
     required_templates = []
     use_cheetah = True
-    vars = copy.deepcopy(templates.BasicPackage.vars)
 
-    @classmethod
-    def insert_vars(cls, vars, newvars):
-        for var in reversed(newvars):
-            vars.insert(0, var)
+    vars = [
+        var('namespace_package', 'Namespace package (like plone)'),
+        var('package', 'The package contained namespace package (like example)'),
+        var('version', 'Version', default='0.1'),
+        var('description', 'One-line description of the package'),
+        var('long_description', 'Multi-line description (in reST)'),
+        var('author', 'Author name'),
+        var('author_email', 'Author email'),
+        var('keywords', 'Space-separated keywords/tags'),
+        var('url', 'URL of homepage'),
+        var('license_name', 'License name', default='GPL'),
+        var('zip_safe', 'True/False: if the package can be distributed '
+            'as a .zip file', default=False),
+        ]
 
     def check_vars(self, vars, command):
         if not command.options.no_interactive and \
            not hasattr(command, '_deleted_once'):
             del vars['package']
             command._deleted_once = True
-        return super(BasicPackage, self).check_vars(vars, command)
-
-
-class Namespace(BasicPackage):
-    _template_dir = 'templates/basic_namespace'
-    summary = "A project with a namespace package"
-    required_templates = []
-    use_cheetah = True
-    vars = copy.deepcopy(BasicPackage.vars)
-    newvars = [var('namespace_package', 'Namespace package (like plone)'),
-               var('package', 'The package contained namespace package (like example)')]
-    BasicPackage.insert_vars(vars, newvars)
+        return super(Namespace, self).check_vars(vars, command)
 
 
 class NestedNamespace(Namespace):
@@ -62,11 +62,13 @@ class BasicZope(Namespace):
     summary = "A Zope project"
     required_templates = ['basic_namespace']
     use_cheetah = True
-    zope_var = var('zope2product', 'Are you creating a Zope 2 Product?', default=False)
+
     vars = copy.deepcopy(Namespace.vars)
     get_var(vars, 'namespace_package').default = 'myzopelib'
     get_var(vars, 'package').default = 'example'
-    vars.insert(2, zope_var)
+    vars.insert(2, var('zope2product',
+                       'Are you creating a Zope 2 Product?',
+                       default=False))
 
 
 class Plone(Namespace):
@@ -255,15 +257,6 @@ class Plone3Portlet(NestedNamespace):
         vars['dotted_name'] = "%s.%s.%s" % (vars['namespace_package'],
                                             vars['namespace_package2'],
                                             vars['package'])
-
-
-class Plone3rdParty(BasicPackage):
-    _template_dir = 'templates/p3p'
-    summary="A 3rd party distribution for extending plone3"
-    vars = copy.deepcopy(BasicPackage.vars)
-    vars.append(BasicZope.zope_var)
-    egg_plugins = ['ZopeSkel']
-    use_cheetah = True
 
 
 class Archetype(Plone):
