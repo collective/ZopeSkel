@@ -4,6 +4,9 @@ Changelog
 Version 1.5 (UNRELEASED)
 -----------
 
+* added a doctest for each template, and refactored the package
+  so we have one python module per template [tarek] 
+
 * Refactored the zc.buildout recipe to provide structured documention
   that will render nicely on PyPI, added comments for recipe authors
   to help writing documentation and tests and added a working doctest

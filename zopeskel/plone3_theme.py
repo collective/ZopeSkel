@@ -1,4 +1,5 @@
 import copy
+import datetime
 
 from zopeskel.plone25_theme import Plone25Theme
 from zopeskel.base import get_var
