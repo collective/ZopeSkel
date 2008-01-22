@@ -45,7 +45,7 @@ We'll start by creating a buildout that uses the recipe.
     ... parts = test1
     ...
     ... [test1]
-    ... recipe = $namespace_package.$namespace_package2.${package}
+    ... recipe = $project
     ... option1 = %(foo)s
     ... option2 = %(bar)s
     ... """ % { 'foo' : 'value1', 'bar' : 'value2'})
