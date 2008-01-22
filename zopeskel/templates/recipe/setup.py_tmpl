@@ -44,7 +44,10 @@ setup(name=${repr($project)},
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'Topic :: Software Development :: Libraries :: Python Modules',
-#        'License :: OSI Approved :: Zope Public License',
+        #from zopeskel.base import LICENSE_CATEGORIES
+        #if $license_name.strip() in $LICENSE_CATEGORIES
+        ${$repr($LICENSE_CATEGORIES[$license_name.strip()])},
+        #end if
         ],
       keywords=${repr($keywords) or $empty},
       author=${repr($author) or $empty},
