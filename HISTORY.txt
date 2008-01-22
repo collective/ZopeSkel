@@ -4,6 +4,11 @@ Changelog
 Version 1.5 (UNRELEASED)
 -----------
 
+* The 'five:registerPackage' ZCML directive is added in a project based on the
+  'plone' template only if the top level namespace package is not
+  called 'Products'. This avoids having the product loaded twice in Zope.
+  [davconvent]
+
 * Added paragraph about old style Zope 2 Product installation in the
   INSTALL.txt_tmpl file of the plone template.
   The paragraph will be added to the installation instructions if the top
