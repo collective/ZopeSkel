@@ -1,0 +1,53 @@
+===============
+recipe template
+===============
+
+Check that the directory does not exist::
+
+    >>> rmdir(tempdir, 'plone.recipe.example')
+
+Go to a directory::
+
+    >>> cd(tempdir)
+
+Then use paster::
+
+    >>> sh('paster create -t recipe plone.recipe.example --no-interactive')
+    paster create -t recipe plone.recipe.example --no-interactive
+    ...
+
+Let's check the content::
+
+    >>> package_dir = os.path.join(tempdir, 'plone.recipe.example', 
+    ...                            'plone', 'recipe', 'example')
+    >>> ls(package_dir)
+    README.txt
+    __init__.py
+    docs
+    tests
+
+Let's check how the recipe looks like::
+
+    >>> recipe = open(os.path.join(package_dir, '__init__.py')).read()
+    >>> print recipe
+    # -*- coding: utf-8 -*-
+    """Recipe example"""
+    <BLANKLINE>
+    class Recipe(object):
+        """This recipe is used by zc.buildout"""
+    <BLANKLINE>
+        def __init__(self, buildout, name, options):
+            self.name, self.options = name, options
+    <BLANKLINE>
+        def install(self):
+            """installer"""
+            # XXX do the job here
+            # returns installed files
+            return tuple()
+    <BLANKLINE>
+        def update(self):
+            """updater"""
+            pass
+
+
+
