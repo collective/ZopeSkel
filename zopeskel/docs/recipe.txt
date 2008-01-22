@@ -19,7 +19,7 @@ Then use paster::
 Let's check the content::
 
     >>> package_dir = os.path.join(tempdir, 'plone.recipe.example', 
-    ...                            'plone', 'recipe', 'example')
+    ...                            'plone', 'recipe', 'plonerecipeexample')
     >>> ls(package_dir)
     README.txt
     __init__.py
@@ -31,7 +31,7 @@ Let's check how the recipe looks like::
     >>> recipe = open(os.path.join(package_dir, '__init__.py')).read()
     >>> print recipe
     # -*- coding: utf-8 -*-
-    """Recipe example"""
+    """Recipe plonerecipeexample"""
     <BLANKLINE>
     class Recipe(object):
         """This recipe is used by zc.buildout"""

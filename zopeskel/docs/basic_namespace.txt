@@ -1,0 +1,26 @@
+========================
+basic_namespace template
+=======================
+
+Check that the directory does not exist::
+
+    >>> rmdir(tempdir, 'plone.example')
+
+Go to a directory::
+
+    >>> cd(tempdir)
+
+Then use paster::
+
+    >>> sh('paster create -t basic_namespace plone.example --no-interactive')
+    paster create -t basic_namespace plone.example --no-interactive
+    ...
+
+Let's check the content::
+
+    >>> package_dir = os.path.join(tempdir, 'plone.example', 
+    ...                            'plone', 'ploneexample')
+    >>> ls(package_dir)
+    __init__.py
+    
+

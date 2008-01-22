@@ -43,6 +43,6 @@ setup(name=${repr($project)},
                         'zc.buildout'
                         # -*- Extra requirements: -*-
                         ],
-      tests_require['zope.testing']
+      tests_require=['zope.testing'],
       entry_points=entry_points,
       )

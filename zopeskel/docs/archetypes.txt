@@ -19,7 +19,7 @@ Then use paster::
 Let's check the content::
 
     >>> package_dir = os.path.join(tempdir, 'plone.example', 
-    ...                            'plone', 'example')
+    ...                            'plone', 'ploneexample')
     >>> ls(package_dir)
     __init__.py
     browser

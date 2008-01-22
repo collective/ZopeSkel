@@ -1,4 +1,5 @@
 from zopeskel.base import var
+from zopeskel.base import get_var
 from zopeskel.base import BaseTemplate
 
 class BasicNamespace(BaseTemplate):
@@ -9,7 +10,7 @@ class BasicNamespace(BaseTemplate):
 
     vars = [
         var('namespace_package', 'Namespace package (like plone)', 
-            default='plone'),
+             default='plone'), 
         var('package', 'The package contained namespace package (like example)',
             default='example'),
         var('version', 'Version', default='0.1'),
