@@ -52,3 +52,13 @@ Let's check how the recipe looks like::
             """Updater"""
             pass
 
+Now let's try to run the recipe own tests::
+
+    >>> cd(os.path.join(tempdir, 'plone.recipe.example'))
+    >>> import sys
+    >>> python_ = sys.executable
+    >>> res = read_sh('%s setup.py test' % python_)
+    >>> res.strip().endswith('OK')
+    True
+
+

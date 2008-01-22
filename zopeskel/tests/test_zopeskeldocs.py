@@ -10,6 +10,7 @@ import sys
 import os
 import shutil
 import popen2
+import StringIO
 
 from zope.testing import doctest
 
@@ -19,6 +20,16 @@ def rmdir(*args):
     dirname = os.path.join(*args)
     if os.path.isdir(dirname):
         shutil.rmtree(dirname)
+
+def read_sh(cmd):
+    _cmd = cmd
+    if _cmd.startswith('python') or \
+       _cmd.startswith('paster'):
+        _cmd = execdir + os.path.sep + cmd
+    old = sys.stdout 
+    child_stdout_and_stderr, child_stdin = popen2.popen4(_cmd)
+    child_stdin.close()
+    return child_stdout_and_stderr.read()
 
 def sh(cmd):
     _cmd = cmd
