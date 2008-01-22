@@ -31,6 +31,7 @@ setup(name='ZopeSkel',
         "PasteScript",
         "Cheetah",
       ],
+      tests_require=['zope.testing'],
       entry_points="""
       [paste.paster_create_template]
       basic_namespace = zopeskel:BasicNamespace
