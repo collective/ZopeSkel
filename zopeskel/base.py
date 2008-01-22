@@ -1,5 +1,6 @@
 from paste.script import templates
 from paste.script.command import BadCommand
+from paste.script.templates import BasicPackage
 
 var = templates.var
 

@@ -1,0 +1,41 @@
+==================
+archetype template
+==================
+
+Check that the directory does not exist::
+
+    >>> rmdir(tempdir, 'plone.example')
+
+Go to a directory::
+
+    >>> cd(tempdir)
+
+Then use paster::
+
+    >>> sh('paster create -t archetype plone.example --no-interactive')
+    paster create -t archetype plone.example --no-interactive
+    ...
+
+Let's check the content::
+
+    >>> package_dir = os.path.join(tempdir, 'plone.example', 
+    ...                            'plone', 'example')
+    >>> ls(package_dir)
+    __init__.py
+    browser
+    config.py
+    configure.zcml
+    content
+    interfaces.py
+    portlets
+    profiles
+    tests
+    tests.py
+
+Let's check how the `content` folder::
+
+    >>> content_dir = os.path.join(package_dir, 'content')
+    >>> ls(content_dir)
+    __init__.py
+    configure.zcml
+

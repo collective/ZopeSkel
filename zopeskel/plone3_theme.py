@@ -1,6 +1,6 @@
 import copy
 
-from zopeskel.plone2_theme import Plone25Theme
+from zopeskel.plone25_theme import Plone25Theme
 from zopeskel.base import get_var
 
 class Plone3Theme(Plone25Theme):

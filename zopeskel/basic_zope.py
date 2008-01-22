@@ -1,6 +1,7 @@
 import copy 
 from zopeskel.basic_namespace import BasicNamespace
 from zopeskel.base import get_var
+from zopeskel.base import var
 
 class BasicZope(BasicNamespace):
     _template_dir = 'templates/basic_zope'
@@ -8,7 +9,7 @@ class BasicZope(BasicNamespace):
     required_templates = ['basic_namespace']
     use_cheetah = True
 
-    vars = copy.deepcopy(Namespace.vars)
+    vars = copy.deepcopy(BasicNamespace.vars)
     get_var(vars, 'namespace_package').default = 'myzopelib'
     get_var(vars, 'package').default = 'example'
     vars.insert(2, var('zope2product',

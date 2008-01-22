@@ -1,6 +1,7 @@
 import copy
-from zopeskel.nested_namespace import NestedNamespace
 
+from zopeskel.nested_namespace import NestedNamespace
+from zopeskel.base import get_var
 
 class Recipe(NestedNamespace):
     """A template for buidldout recipes"""

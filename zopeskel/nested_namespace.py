@@ -2,7 +2,7 @@ import copy
 
 from zopeskel.base import get_var
 from zopeskel.base import var
-from zopeskel.basic_namespace import BasicNameSpace
+from zopeskel.basic_namespace import BasicNamespace
 
 class NestedNamespace(BasicNamespace):
     _template_dir = 'templates/nested_namespace'

@@ -3,6 +3,7 @@ import copy
 from zopeskel.nested_namespace import NestedNamespace
 from zopeskel.plone_app import PloneApp
 from zopeskel.base import get_var
+from zopeskel.base import var
 
 class Plone3Portlet(NestedNamespace):
     _template_dir = 'templates/plone3_portlet'

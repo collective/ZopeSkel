@@ -33,7 +33,7 @@ setup(name='ZopeSkel',
       ],
       entry_points="""
       [paste.paster_create_template]
-      basic_namespace = zopeskel:Namespace
+      basic_namespace = zopeskel:BasicNamespace
       nested_namespace = zopeskel:NestedNamespace
       basic_zope = zopeskel:BasicZope
       plone = zopeskel:Plone

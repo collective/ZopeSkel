@@ -3,6 +3,7 @@ import copy
 from zopeskel.base import BaseTemplate
 from zopeskel.base import get_var
 from zopeskel.base import var
+from zopeskel.base import BasicPackage
 
 theme_vars = [
     var('skinname',
@@ -23,7 +24,7 @@ class Plone2Theme(BaseTemplate):
     summary = "A Theme Product for Plone 2.1 & Plone 2.5"
     use_cheetah = True
 
-    vars = copy.deepcopy(templates.BasicPackage.vars)
+    vars = copy.deepcopy(BasicPackage.vars)
     get_var(vars, 'version').default = '0.1'
     get_var(vars, 'description').default = 'An installable theme for Plone'
     get_var(vars, 'author').default = 'Plone Collective'

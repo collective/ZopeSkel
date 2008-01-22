@@ -1,5 +1,7 @@
 import copy
+
 from zopeskel.plone import Plone
+from zopeskel.base import var
 
 class Archetype(Plone):
     _template_dir = 'templates/archetype'

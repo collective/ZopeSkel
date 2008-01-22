@@ -1,7 +1,8 @@
 import copy
 
 from zopeskel.basic_namespace import BasicNamespace
-from zopeskel.base import get_vars
+from zopeskel.base import get_var
+from zopeskel.base import var
 
 class Plone(BasicNamespace):
     _template_dir = 'templates/plone'

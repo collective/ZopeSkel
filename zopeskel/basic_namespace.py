@@ -8,8 +8,10 @@ class BasicNamespace(BaseTemplate):
     use_cheetah = True
 
     vars = [
-        var('namespace_package', 'Namespace package (like plone)'),
-        var('package', 'The package contained namespace package (like example)'),
+        var('namespace_package', 'Namespace package (like plone)', 
+            default='plone'),
+        var('package', 'The package contained namespace package (like example)',
+            default='example'),
         var('version', 'Version', default='0.1'),
         var('description', 'One-line description of the package'),
         var('long_description', 'Multi-line description (in reST)'),

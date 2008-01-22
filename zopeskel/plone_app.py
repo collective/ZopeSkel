@@ -1,7 +1,7 @@
 import copy
 
 from zopeskel.nested_namespace import NestedNamespace
-from zopeskel.base import get_vars
+from zopeskel.base import get_var
 from zopeskel.base import var
 
 class PloneApp(NestedNamespace):
