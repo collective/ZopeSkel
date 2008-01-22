@@ -4,7 +4,7 @@ from zopeskel.nested_namespace import NestedNamespace
 from zopeskel.base import get_var
 
 class Recipe(NestedNamespace):
-    """A template for buidldout recipes"""
+    """A template for buildout recipes"""
     _template_dir = 'templates/recipe'
     summary = "A recipe project for zc.buildout"
     required_templates = []
