@@ -4,6 +4,14 @@ Changelog
 Version 1.5 (UNRELEASED)
 -----------
 
+* Refactored the zc.buildout recipe to provide structured documention
+  that will render nicely on PyPI, added comments for recipe authors
+  to help writing documentation and tests and added a working doctest
+  skeleton. Implemented automatic license classifiers for common
+  licenses in the generated setup.py. The mapping is in zopeskel.base
+  and can be used for other templates also.
+  [dokai]
+
 * The 'five:registerPackage' ZCML directive is added in a project based on the
   'plone' template only if the top level namespace package is not
   called 'Products'. This avoids having the product loaded twice in Zope.
