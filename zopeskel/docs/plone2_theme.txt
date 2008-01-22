@@ -1,0 +1,31 @@
+========================
+plone template
+=======================
+
+Check that the directory does not exist::
+
+    >>> rmdir(tempdir, 'plone.example')
+
+Go to a directory::
+
+    >>> cd(tempdir)
+
+Then use paster::
+
+    >>> sh('paster create -t plone2_theme plone.example --no-interactive')
+    paster create -t plone2_theme plone.example --no-interactive
+    ...
+
+Let's check the content::
+
+    >>> package_dir = os.path.join(tempdir, 'plone.example') 
+    >>> ls(package_dir)
+    Extensions
+    HISTORY.txt
+    README.txt
+    __init__.py
+    config.py
+    skins
+    tests
+    version.txt
+
