@@ -1,4 +1,5 @@
 import copy
+import os
 
 from zopeskel.plone import Plone
 from zopeskel.plone2_theme import theme_vars
