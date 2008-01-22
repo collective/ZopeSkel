@@ -23,7 +23,6 @@ Let's check the content::
     >>> ls(package_dir)
     README.txt
     __init__.py
-    docs
     tests
 
 Let's check how the recipe looks like::
@@ -33,21 +32,23 @@ Let's check how the recipe looks like::
     # -*- coding: utf-8 -*-
     """Recipe plonerecipeexample"""
     <BLANKLINE>
+    from zc.buildout import UserError
+    <BLANKLINE>
     class Recipe(object):
-        """This recipe is used by zc.buildout"""
+        """zc.buildout recipe"""
     <BLANKLINE>
         def __init__(self, buildout, name, options):
-            self.name, self.options = name, options
+            self.buildout, self.name, self.options = buildout, name, options
     <BLANKLINE>
         def install(self):
-            """installer"""
-            # XXX do the job here
-            # returns installed files
-            return tuple()
+            """Installer"""
+            # XXX Implement recipe functionality here
+    <BLANKLINE>
+            # Return files that were created by the recipe. The buildout
+            # will remove all returned files upon reinstall.
+        return tuple()
     <BLANKLINE>
         def update(self):
-            """updater"""
+            """Updater"""
             pass
-
-
 
