@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
 """Recipe $package"""
 
+from zc.buildout import UserError
+
 class Recipe(object):
-    """This recipe is used by zc.buildout"""
+    """zc.buildout recipe"""
 
     def __init__(self, buildout, name, options):
-        self.name, self.options = name, options
+        self.buildout, self.name, self.options = buildout, name, options
 
     def install(self):
-        """installer"""
-        # XXX do the job here
-        # returns installed files
-        return tuple()
+        """Installer"""
+        # XXX Implement recipe functionality here
+
+        # Return files that were created by the recipe. The buildout
+        # will remove all returned files upon reinstall.
+	return tuple()
 
     def update(self):
-        """updater"""
+        """Updater"""
         pass

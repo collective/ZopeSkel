@@ -11,4 +11,6 @@ class Recipe(NestedNamespace):
     use_cheetah = True
     vars = copy.deepcopy(NestedNamespace.vars)
     get_var(vars, 'namespace_package2').default = 'recipe'
+    get_var(vars, 'version').default = '0.1.0'
+    get_var(vars, 'license_name').default = 'ZPL'
 

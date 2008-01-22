@@ -5,17 +5,33 @@ This module contains the tool of $project
 import os
 from setuptools import setup, find_packages
 
-version = ${repr($version) or "0.0"}
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-README = os.path.join(os.path.dirname(__file__),
-                      ${repr($namespace_package)},
-                      ${repr($namespace_package2)},
-                      ${repr($package)}, 'docs', 'README.txt')
+version = ${repr($version) or "0.0.0"}
 
-long_description = open(README).read() + '\n\n'
-
+long_description = (
+    read('README.txt')
+    + '\n' +
+    'Change history\n'
+    '**************\n'
+    + '\n' + 
+    read('CHANGES.txt')
+    + '\n' +
+    'Detailed Documentation\n'
+    '**********************\n'
+    + '\n' +
+    read(${repr($namespace_package)}, ${repr($namespace_package2)}, ${repr($package)}, 'README.txt')
+    + '\n' +
+    'Contributors\n' 
+    '************\n'
+    + '\n' +
+    read('CONTRIBUTORS.txt')
+    + '\n' +
+    'Download\n'
+    '********\n'
+    )
 entry_point = '$namespace_package.$namespace_package2.${package}:Recipe'
-
 entry_points = {"zc.buildout": ["default = %s" % entry_point]}
 
 setup(name=${repr($project)},
@@ -44,5 +60,6 @@ setup(name=${repr($project)},
                         # -*- Extra requirements: -*-
                         ],
       tests_require=['zope.testing'],
+      test_suite = '$namespace_package.$namespace_package2.${package}.tests.test_docs.test_suite',
       entry_points=entry_points,
       )
