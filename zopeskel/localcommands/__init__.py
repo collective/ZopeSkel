@@ -14,6 +14,10 @@ from paste.script import copydir
 class ZopeSkelLocalCommand(command.Command):
     """paster command to add content skeleton to plone project"""
 
+    def __init__(self, name):
+        command.Command.__init__(self, name)
+
+
     max_args = 2
     usage = "[template name]"
     summary = "Adds plone content types to your project"
@@ -24,6 +28,10 @@ class ZopeSkelLocalCommand(command.Command):
                       action='store_true',
                       dest='listcontents',
                       help="List available templates")
+    parser.add_option('-q', '--no-interactive',
+                      action="count",
+                      dest="no_interactive",
+                      default=0)    
 
     template_vars = {}
 
@@ -37,6 +45,9 @@ class ZopeSkelLocalCommand(command.Command):
         if options.listcontents:
             self._list_available_templates()
             return
+        if options.no_interactive:
+            self.interactive = False
+            #return
 
         if len(args) != 2:
             print "\n\tError: Need a template name\n"

@@ -1,0 +1,18 @@
+
+    atapi.${field_type}Field(
+        name='${field_name}',
+        widget=${widget_type}Widget(
+            label="${field_label}",
+            label_msgid='${i18n_domain}_label_${field_name}',
+            description="${field_desc}",
+            description_msgid='${i18n_domain}_help_${field_name}',
+            i18n_domain='${i18n_domain}',
+        ),
+#if str($required) == 'True'
+        required=${required},
+#end if
+#if str($default) != ''
+		default='${default}',
+#end if
+    ),
+    

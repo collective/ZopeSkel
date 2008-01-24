@@ -1,0 +1,59 @@
+================
+atschema builder
+================
+
+Build an archetype from scratch, and use paster to add a contenttype::
+
+    >>> rmdir(tempdir, 'plone.example')
+    >>> cd(tempdir)
+    >>> sh('paster create -t archetype plone.example --no-interactive')
+    paster create -t archetype plone.example --no-interactive
+    ...
+	>>> cd('plone.example')
+    >>> sh('paster addcontent contenttype --no-interactive')
+	paster addcontent contenttype --no-interactive
+    ...
+    File 'Example_Type.xml' already exists: skipped
+          Inserting from types.xml_insert into /private/tmp/plone.example/plone/ploneexample/profiles/default/types.xml
+    <BLANKLINE>
+    >>> content_dir = os.path.join(tempdir, 'plone.example', 
+    ...                            'plone', 'ploneexample', 'content')
+    
+Check for the file::
+
+    >>> ls(content_dir)
+    __init__.py
+    configure.zcml
+    exampletype.py
+
+Check to see that atschema is available::
+
+    >>> sh('paster addcontent --list')
+    paster addcontent --list
+    Available templates:
+      atschema:     A handy AT schema builder
+      contenttype:  A content type skeleton
+      portlet:      A Plone 3 portlet
+      view:         A browser view skeleton
+      zcmlmeta:     A ZCML meta directive skeleton
+    <BLANKLINE>
+    
+Now add a schema field via paster::
+
+	>>> sh('paster addcontent atschema --no-interactive')
+	paster addcontent atschema --no-interactive
+	...
+	
+Check that the schema was inserted::
+
+	>>> cd(content_dir)
+    >>> print open(os.path.join(content_dir, 'exampletype.py')).read()
+    """Definition of the Example Type content type
+    """
+    ... 
+        atapi.StringField(
+    ...
+    atapi.registerType(ExampleType, PROJECTNAME)
+    <BLANKLINE>
+
+	

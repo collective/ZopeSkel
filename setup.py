@@ -52,10 +52,12 @@ setup(name='ZopeSkel',
       [paste.paster_command]
       addcontent = zopeskel.localcommands:ZopeSkelLocalCommand
 
+      
       [zopeskel.zopeskel_sub_template]
       portlet = zopeskel.localcommands.templates:Portlet
       view = zopeskel.localcommands.templates:View
       zcmlmeta = zopeskel.localcommands.templates:ZCMLMetaDirective
       contenttype = zopeskel.localcommands.templates:ContentType
+      atschema = zopeskel.localcommands.templates:ATSchemaField
       """,
       )

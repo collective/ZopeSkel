@@ -21,7 +21,7 @@ ${schema_name} = folder.ATFolderSchema.copy() + atapi.Schema((
 ${schema_name} = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 #end if
 
-    # Your Archetypes field definitions here ...
+    # -*- Your Archetypes field definitions here ... -*-
 
 ))
 
