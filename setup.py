@@ -3,7 +3,7 @@ ez_setup.use_setuptools()
 
 from setuptools import setup, find_packages
 
-version = '1.4'
+version = '1.6'
 
 setup(name='ZopeSkel',
       version=version,

@@ -1,7 +1,10 @@
 Changelog
 =========
 
-Version 1.5 (UNRELEASED)
+Version 1.6 (UNRELEASED)
+------------------------
+
+Version 1.5
 -----------
 
 * added a new local command into archetype template to inject
