@@ -72,6 +72,10 @@ Version 1.3.2
 Version 1.3.1
 -------------
 
+* Added 'addcontent' local command to make possible injecting content types 
+  in ZopeSkel projects and make the Archetype template 'addcontent' aware.
+  [mustapha]
+
 * Updated to Plone 3.0.4.
   [fschulze]
 
