@@ -4,6 +4,9 @@ Changelog
 Version 1.6 (UNRELEASED)
 ------------------------
 
+Version 1.5.1
+-------------
+
 * Fix #2 (missing import in 'hosting.py') at
   http://plone.org/products/zopeskel/issues/2
   [nouri]
