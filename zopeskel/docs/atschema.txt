@@ -10,11 +10,11 @@ Build an archetype from scratch, and use paster to add a contenttype::
     paster create -t archetype plone.example --no-interactive
     ...
 	>>> cd('plone.example')
-    >>> sh('paster addcontent contenttype --no-interactive')
-	paster addcontent contenttype --no-interactive
+    >>> sh('paster addcontent contenttype --no-interactive') # doctest: +REPORT_NDIFF
+    paster addcontent contenttype --no-interactive
     ...
     File 'Example_Type.xml' already exists: skipped
-          Inserting from types.xml_insert into /private/tmp/plone.example/plone/ploneexample/profiles/default/types.xml
+          Inserting from types.xml_insert into .../plone.example/plone/ploneexample/profiles/default/types.xml
     <BLANKLINE>
     >>> content_dir = os.path.join(tempdir, 'plone.example', 
     ...                            'plone', 'ploneexample', 'content')
