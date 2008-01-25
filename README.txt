@@ -89,3 +89,11 @@ plone_hosting
 .. _buildout: http://plone.org/documentation/tutorial/buildout
 .. _varnish: http://varnish.projects.linpro.no
 
+
+Testing
+-------
+
+Since version 1.5, ZopeSkel has tests.  It's required to run these
+before checking in; they can be run like::
+
+  python setup.py test -m zopeskel.tests.test_zopeskeldocs
