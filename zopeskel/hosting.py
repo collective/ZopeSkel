@@ -1,6 +1,7 @@
 import os
 import subprocess
 
+from zopeskel.base import templates
 from zopeskel.base import BaseTemplate
 from zopeskel.base import BadCommand
 from zopeskel.base import var

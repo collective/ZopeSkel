@@ -4,6 +4,10 @@ Changelog
 Version 1.6 (UNRELEASED)
 ------------------------
 
+* Fix #2 (missing import in 'hosting.py') at
+  http://plone.org/products/zopeskel/issues/2
+  [nouri]
+
 Version 1.5
 -----------
 
