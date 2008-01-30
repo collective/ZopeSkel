@@ -1,6 +1,3 @@
-import ez_setup
-ez_setup.use_setuptools()
-
 from setuptools import setup, find_packages
 
 version = '1.6'
@@ -32,6 +29,7 @@ setup(name='ZopeSkel',
         "Cheetah",
       ],
       tests_require=['zope.testing'],
+      test_suite='zopeskel.tests.test_zopeskeldocs.test_suite',
       entry_points="""
       [paste.paster_create_template]
       basic_namespace = zopeskel:BasicNamespace
