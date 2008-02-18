@@ -1,0 +1,56 @@
+[buildout]
+parts =
+    PILwoTK
+#if not $zope2_install
+    zope2
+#end if
+#if not $silva_layout
+    silva-layout
+#end if
+    silva-all
+    instance
+
+extends =
+    https://svn.infrae.com/buildout/silva/${silva_distribution}.cfg
+
+\# Reference any eggs you are developing here, one per line
+\# e.g.: develop = src/my.package
+develop =
+
+[instance]
+recipe = plone.recipe.zope2instance
+#if $zope2_install
+zope2-location = ${zope2_install}
+#else
+zope2-location = \${zope2:location}
+#end if
+user = ${zope_user}:${zope_password}
+http-address = ${http_port}
+#if $debug_mode == 'on'
+debug-mode = on
+#else
+\#debug-mode = on
+#end if
+#if $verbose_security == 'on'
+verbose-security = on
+#else
+\#verbose-security = on
+#end if
+
+\# If you want Zope to know about any additional eggs, list them here.
+\# This should include any development eggs you listed in develop-eggs above,
+\# e.g. eggs = \${buildout:eggs} my.package
+eggs =
+    PILwoTK
+
+\# If you want to register ZCML slugs for any packages, list them here.
+\# e.g. zcml = my.package my.other.package
+zcml =
+
+products =
+    \${buildout:directory}/products
+    \${silva-all:location}
+#if not $silva_layout
+    \${silva-layout:location}
+#end if
+

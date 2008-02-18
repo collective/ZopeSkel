@@ -46,6 +46,7 @@ setup(name='ZopeSkel',
       plone3_portlet = zopeskel:Plone3Portlet
       plone_hosting = zopeskel.hosting:StandardHosting
       recipe = zopeskel:Recipe
+      silva_buildout = zopeskel:SilvaBuildout
 
       [paste.paster_command]
       addcontent = zopeskel.localcommands:ZopeSkelLocalCommand

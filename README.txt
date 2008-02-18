@@ -84,6 +84,8 @@ plone_hosting
   a simple ''bin/control'' script is created which can be used to quickly
   start, stop and restart the entire Plone deployment.
 
+silva_buildout
+  A basic buildout Silva instance.
 
 
 .. _buildout: http://plone.org/documentation/tutorial/buildout
