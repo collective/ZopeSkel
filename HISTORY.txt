@@ -1,8 +1,8 @@
 Changelog
 =========
 
-Version 1.6 (UNRELEASED)
-------------------------
+Version 1.6
+-----------
 
 * Add templates for a Silva buildout.
   [thefunny]
