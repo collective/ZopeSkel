@@ -4,7 +4,21 @@ Changelog
 Version 1.6 (UNRELEASED)
 ------------------------
 
-* Add templates for a Silva buildout [thefunny]
+* Add templates for a Silva buildout.
+  [thefunny]
+
+* Add a metadata.xml to all generated GenericSetup profiles. This is
+  required by new versions of GenericSetup.
+  [wichert]
+
+* For nested namespace packages we need to declare both namespace
+  levels as namespace packages. This is a requirement for current
+  versions of setuptools.
+  [wichert]
+
+* Use Plone 3.0.6 as default version for new Plone hosting buildouts
+  [wichert]
+
 
 Version 1.5.1
 -------------
