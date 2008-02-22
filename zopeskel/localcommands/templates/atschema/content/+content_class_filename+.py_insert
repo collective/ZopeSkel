@@ -1,7 +1,7 @@
 
     atapi.${field_type}Field(
         name='${field_name}',
-        widget=${widget_type}Widget(
+        widget=atapi.${widget_type}Widget(
             label="${field_label}",
             label_msgid='${i18n_domain}_label_${field_name}',
             description="${field_desc}",
