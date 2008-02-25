@@ -35,6 +35,8 @@ class TestPortlet(TestCase):
         addview = mapping.restrictedTraverse('+/' + portlet.addview)
 
         # TODO: Pass a dictionary containing dummy form inputs from the add form
+        # Note: if the portlet has a NullAddForm, simply call
+        # addview() instead of the next line.
         addview.createAndAdd(data={})
 
         self.assertEquals(len(mapping), 1)
