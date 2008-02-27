@@ -4,6 +4,18 @@ Changelog
 Version 1.7 (UNRELEASED)
 ------------------------
 
+* Update the templates to have README.txt and HISTORY.txt in valid
+  restructured format and use those as the package's long description.
+  This automatically gives packages a more readable page on PyPI
+  (and PSC with Tarek's excellent changes).
+  [wichert]
+
+* Adjust the trove classifiers on the packages to not claim incorrect
+  frameworks: we should only claim frameworks on which the package
+  can run directly. So, for exapmle, do not claim Zope2 of we also need
+  Plone on top of Zope2.
+  [wichert]
+  
 
 Version 1.6
 -----------
