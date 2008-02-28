@@ -1,8 +1,12 @@
 Changelog
 =========
 
-Version 1.7 (UNRELEASED)
+Version 1.8 (UNRELEASED)
 ------------------------
+
+
+Version 1.7
+-----------
 
 * Update the templates to have README.txt and HISTORY.txt in valid
   restructured format and use those as the package's long description.
