@@ -23,9 +23,6 @@ def rmdir(*args):
 
 def read_sh(cmd):
     _cmd = cmd
-    if _cmd.startswith('python') or \
-       _cmd.startswith('paster'):
-        _cmd = execdir + os.path.sep + cmd
     old = sys.stdout 
     child_stdout_and_stderr, child_stdin = popen2.popen4(_cmd)
     child_stdin.close()
@@ -34,9 +31,6 @@ def read_sh(cmd):
 def sh(cmd):
     _cmd = cmd
     print cmd
-    if _cmd.startswith('python') or \
-       _cmd.startswith('paster'):
-        _cmd = execdir + os.path.sep + cmd
     # launch command 2 times to see what append and be able 
     # to test in doc tests
     os.system(_cmd)
