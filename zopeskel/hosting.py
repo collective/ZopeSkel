@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 
 from zopeskel.base import templates
 from zopeskel.base import BaseTemplate
@@ -33,7 +34,7 @@ class StandardHosting(BaseTemplate):
     def _buildout(self, output_dir):
         os.chdir(output_dir)
         print "Bootstrapping the buildout"
-        subprocess.call(["python", "bootstrap.py"])
+        subprocess.call([sys.executable, "bootstrap.py"])
         print "Configuring the buildout"
         subprocess.call(["bin/buildout", "-n"])
 
