@@ -16,7 +16,7 @@ Version 1.7
 
 * Adjust the trove classifiers on the packages to not claim incorrect
   frameworks: we should only claim frameworks on which the package
-  can run directly. So, for exapmle, do not claim Zope2 of we also need
+  can run directly. So, for example, do not claim Zope2 of we also need
   Plone on top of Zope2.
   [wichert]
   
