@@ -54,11 +54,20 @@ Let's check how the recipe looks like::
 
 Now let's try to run the recipe own tests::
 
-    >>> cd(os.path.join(tempdir, 'plone.recipe.example'))
+    >>> recipe_dir = os.path.join(tempdir, 'plone.recipe.example')
+    >>> cd(recipe_dir)
     >>> import sys
     >>> python_ = sys.executable
     >>> res = read_sh('%s setup.py test' % python_)
     >>> res.strip().endswith('OK')
     True
 
+And the dedicated buildout `test` script::
+
+    >>> null = os.chdir(recipe_dir)
+    >>> null = read_sh('%s bootstrap.py' % python_)
+    >>> null = read_sh(os.path.join('bin', 'buildout'))
+    >>> res = read_sh(os.path.join('bin', 'test'))
+    >>> '0 failures and 0 errors' in res
+    True
 

@@ -4,5 +4,5 @@ parts = test
 
 [test]
 recipe = zc.recipe.testrunner
-eggs = $namespace_package.$namespace_package2.$package [test]
+eggs = ${project} [tests]
 

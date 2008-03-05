@@ -4,6 +4,8 @@ Changelog
 Version 1.8 (UNRELEASED)
 ------------------------
 
+* fixed the recipe template buildout.cfg generation, thanks Kai ;)
+  [tarek]
 
 Version 1.7
 -----------
