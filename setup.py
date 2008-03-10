@@ -29,7 +29,7 @@ setup(name='ZopeSkel',
         "PasteScript",
         "Cheetah",
       ],
-      tests_require=['zope.testing'],
+      tests_require=['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript'],
       test_suite='zopeskel.tests.test_zopeskeldocs.test_suite',
       entry_points="""
       [paste.paster_create_template]
