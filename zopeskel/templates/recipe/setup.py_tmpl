@@ -34,7 +34,7 @@ long_description = (
 entry_point = '$namespace_package.$namespace_package2.${package}:Recipe'
 entry_points = {"zc.buildout": ["default = %s" % entry_point]}
 
-tests_require=['zope.testing']
+tests_require=['zope.testing', 'zc.buildout']
 
 setup(name=${repr($project)},
       version=version,

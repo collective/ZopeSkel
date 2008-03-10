@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """Recipe $package"""
 
-from zc.buildout import UserError
-
 class Recipe(object):
     """zc.buildout recipe"""
 
