@@ -1,3 +1,4 @@
+import os
 import copy
 
 from zopeskel.base import BaseTemplate
