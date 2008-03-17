@@ -4,7 +4,7 @@ parts =
 #if not $zope2_install
     zope2
 #end if
-#if not $silva_layout
+#if $silva_layout == 'yes'
     silva-layout
 #end if
     silva-all
@@ -50,7 +50,7 @@ zcml =
 products =
     \${buildout:directory}/products
     \${silva-all:location}
-#if not $silva_layout
+#if $silva_layout == 'yes'
     \${silva-layout:location}
 #end if
 

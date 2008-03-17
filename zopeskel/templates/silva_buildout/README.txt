@@ -94,7 +94,6 @@ telling buildout where to find it in the 'find-links' option:
  [buildout]
  ...
  find-links =
-    http://dist.plone.org
     http://download.zope.org/distribution/
     http://effbot.org/downloads
     http://some.host.com/packages
@@ -110,7 +109,7 @@ buildout.cfg more easily:
  [productdistros]
  recipe = plone.recipe.distros
  urls =
-    http://plone.org/products/someproduct/releases/1.3/someproduct-1.3.tar.gz
+    http://infrae.com/download/someproduct/releases/1.3/someproduct-1.3.tar.gz
 
 If someproduct-1.3.tar.gz extracts into several products inside a top-level
 directory, e.g. SomeProduct-1.3/PartOne and SomeProduct-1.3/PartTwo, then
@@ -119,7 +118,7 @@ add it as a "nested package":
  [productdistros]
  recipe = plone.recipe.distros
  urls =
-    http://plone.org/products/someproduct/releases/1.3/someproduct-1.3.tar.gz
+    http://infrae.com/download/someproduct/releases/1.3/someproduct-1.3.tar.gz
  nested-packages =
     someproduct-1.3.tar.gz
 
@@ -129,7 +128,7 @@ number, add it as a "version suffix package":
  [productdistros]
  recipe = plone.recipe.distros
  urls =
-    http://plone.org/products/someproduct/releases/1.3/someproduct-1.3.tar.gz
+    http://infrae.com/download/someproduct/releases/1.3/someproduct-1.3.tar.gz
  version-suffix-packages =
     someproduct-1.3.tar.gz
 
@@ -140,12 +139,13 @@ and cvs is also supported:
  [buildout]
  ...
  parts =
-    plone
+    PILwoTK
     zope2
-    productdistros
     myproduct
+    productdistros
+    silva-layout
+    silva-all
     instance
-    zopepy
 
 Note that "myproduct" comes before the "instance" part. You then
 need to add a new section to buildout.cfg:
@@ -161,9 +161,10 @@ list of directories that are scanned for products:
  ...
  products =
     ${buildout:directory}/products
-    ${productdistros:location}
-    ${plonebundle:location}
     ${myproduct:location}
+    ${productdistros:location}
+    ${silva-all:location}
+    ${silva-layout:location}
 
 Without this last step, the "myproduct" part is simply managing an svn
 checkout and could potentially be used for something else instead.

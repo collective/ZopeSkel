@@ -1,8 +1,14 @@
 Changelog
 =========
 
-Version 1.8 (UNRELEASED)
+Version 1.9 (UNRELEASED)
 ------------------------
+
+* Fix an ambiguous question in the silva_buildout template, and update
+  the generated README file. [thefunny]
+
+Version 1.8 
+-----------
 
 * fixed the recipe template buildout.cfg generation, thanks Kai ;)
   [tarek]
