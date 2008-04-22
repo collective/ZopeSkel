@@ -1,8 +1,12 @@
 Changelog
 =========
 
-Version 1.9 (UNRELEASED)
-------------------------
+Version 1.10 - unreleased
+-------------------------
+
+
+Version 1.9
+-----------
 
 * Install Plone 3.1 as default option.
   [wichert]
