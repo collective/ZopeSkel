@@ -4,10 +4,14 @@ Changelog
 Version 1.9 (UNRELEASED)
 ------------------------
 
+* Install Plone 3.1 as default option.
+  [wichert]
+
 * Fixed a missing 'import os' in the plone2_theme template. [davisagli]
 
 * Fix an ambiguous question in the silva_buildout template, and update
   the generated README file. [thefunny]
+
 
 Version 1.8 
 -----------
