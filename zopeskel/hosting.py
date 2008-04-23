@@ -1,3 +1,4 @@
+import errno
 import os
 import socket
 import subprocess
@@ -29,6 +30,7 @@ class StandardHosting(BaseTemplate):
             var("proxy", "Install a proxy server", default="no"),
             var("plone", "Plone version (2.5, 2.5.1, 3.0, 3.0.1, etc.)",
                 default="3.1"),
+            var("buildout", "Run buildout", default="yes"),
             ]
 
     def _buildout(self, output_dir):
@@ -67,6 +69,7 @@ class StandardHosting(BaseTemplate):
         result["proxy_port"]=base_port+1
         result["http_port"]=base_port+2
         result["proxy"]=vars["proxy"].lower() in [ "yes", "true", "on" ]
+        result["buildout"]=vars["buildout"].lower() in [ "yes", "true", "on" ]
 
         self._checkPortAvailable(result["zeo_port"])
         self._checkPortAvailable(result["http_port"])
@@ -99,13 +102,16 @@ class StandardHosting(BaseTemplate):
         if vars["proxy"]:
             print "  Proxy port: %s" % vars["proxy_port"]
         else:
-            print " Proxy port: disabled"
+            print "  Proxy port: disabled"
         print
         print "  Zope admin user    :  admin"
         print "  Zope admin password:  %s" % vars["zope_password"]
 
+
     def post(self, command, output_dir, vars):
         output_dir=os.path.abspath(output_dir)
         os.chmod(os.path.join(output_dir, "bin", "control"), 0755)
-        self._buildout(output_dir)
+        if vars["buildout"]:
+            self._buildout(output_dir)
         self.show_summary(vars)
+
