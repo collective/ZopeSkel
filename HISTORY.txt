@@ -4,6 +4,14 @@ Changelog
 Version 1.10 - unreleased
 -------------------------
 
+
+* Update the hosting template to test if a port is already in use and
+  abort if so.
+  [wichert]
+
+* Update the hosting template to only ask for a single base port number.
+  [wichert]
+
 * Fix broken creation of Plone 3.1(.x) sites.
   [wichert]
 

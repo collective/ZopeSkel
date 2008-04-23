@@ -1,4 +1,5 @@
 import os
+import socket
 import subprocess
 import sys
 
@@ -24,9 +25,8 @@ class StandardHosting(BaseTemplate):
 
     vars = [
             var("zope_password", "Initial Zope admin password", default="admin"),
-            var("http_port", "HTTP port number", default=8080),
-            var("zeo_port", "ZEO port number", default=8100),
-            var("proxy_port", "Proxy port number (optional)"),
+            var("base_port", "Base port number", default=8000),
+            var("proxy", "Install a proxy server", default="no"),
             var("plone", "Plone version (2.5, 2.5.1, 3.0, 3.0.1, etc.)",
                 default="3.1"),
             ]
@@ -38,10 +38,44 @@ class StandardHosting(BaseTemplate):
         print "Configuring the buildout"
         subprocess.call(["bin/buildout", "-n"])
 
+
+    def _checkPortAvailable(self, port):
+        s=socket.socket()
+        try:
+            s.connect(("127.0.0.1", port))
+        except socket.error, e:
+            s.close()
+
+            if e.args[0]==errno.ECONNREFUSED:
+                return 
+
+            raise BadCommand("Error checking port availability: %s" % e.args[1])
+
+        s.close()
+        raise BadCommand("Port %s is already in use" % port)
+
+
     def check_vars(self, vars, cmd):
         result=templates.Template.check_vars(self, vars, cmd)
+
+        try:
+            base_port=int(vars["base_port"])
+        except ValueError:
+            raise BadCommand("Illegal base port number: %s" % vars["base_port"])
+
+        result["zeo_port"]=base_port
+        result["proxy_port"]=base_port+1
+        result["http_port"]=base_port+2
+        result["proxy"]=vars["proxy"].lower() in [ "yes", "true", "on" ]
+
+        self._checkPortAvailable(result["zeo_port"])
+        self._checkPortAvailable(result["http_port"])
+        if result["proxy"]:
+            self._checkPortAvailable(result["proxy_port"])
+
         if vars["plone"] not in plone25s and not vars["plone"].startswith("3."):
             raise BadCommand("Unknown plone version: %s" % vars["plone"])
+
         return result
 
     def pre(self, command, output_dir, vars):
@@ -62,7 +96,7 @@ class StandardHosting(BaseTemplate):
         print
         print "  HTTP port : %s" % vars["http_port"]
         print "  ZEO port  : %s" % vars["zeo_port"]
-        if vars["proxy_port"]:
+        if vars["proxy"]:
             print "  Proxy port: %s" % vars["proxy_port"]
         else:
             print " Proxy port: disabled"
