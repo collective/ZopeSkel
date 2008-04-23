@@ -4,6 +4,9 @@ Changelog
 Version 1.10 - unreleased
 -------------------------
 
+* Fix broken creation of Plone 3.1(.x) sites.
+  [wichert]
+
 
 Version 1.9
 -----------

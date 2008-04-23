@@ -40,13 +40,13 @@ class StandardHosting(BaseTemplate):
 
     def check_vars(self, vars, cmd):
         result=templates.Template.check_vars(self, vars, cmd)
-        if vars["plone"] not in plone25s and not vars["plone"].startswith("3.0"):
+        if vars["plone"] not in plone25s and not vars["plone"].startswith("3."):
             raise BadCommand("Unknown plone version: %s" % vars["plone"])
         return result
 
     def pre(self, command, output_dir, vars):
         plone=vars["plone"]
-        if plone.startswith("3.0"):
+        if plone.startswith("3."):
             vars["plone_recipe"]="plone.recipe.plone"
             vars["plone_recipe_version"]=plone
         else:
