@@ -99,9 +99,16 @@ class ZopeSkelLocalCommand(command.Command):
                                             os.path.dirname(egg_info),
                                                     namespace_package,
                                                     namespace_package2)).next()
-        package = dirnames[0]
-        if package == '.svn':
-            package = dirnames[1]
+        # Get the package dir because we usually want to issue the 
+        # localcommand in the package dir. 
+        package = os.path.basename(os.path.abspath(os.path.curdir))
+
+        # If the package dir is not in the list of directories, 
+        # then we should stay with the old behavior.
+        if package not in dirnames:
+            package = dirnames[0]
+            if package == '.svn':
+                package = dirnames[1]
 
         return namespace_package, namespace_package2, package
 
