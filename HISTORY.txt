@@ -10,6 +10,13 @@ Version 1.10
 
 * Install Plone 3.1.1 as default option.
   [wichert]
+  
+* Fixed a problem with ZopeSkel localcommands when we have multiple 
+  projects, it was getting the first directory always and sometimes
+  the package dir was not the first directory, so when running the
+  addcontent in the package it was creating the contents in the wrong
+  dir. Thanks to wichert for pointing me this file.
+  [dsa]  
 
 * Update the hosting template to make running of buildout optional.
   [wichert]
