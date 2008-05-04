@@ -1,0 +1,11 @@
+Initial author - Daniel Nouri
+
+Contributors:
+
+    - Tarek Ziadé : refactored templates in separated files,
+      added the test framework and the recipe template.
+
+    - Please guys, add your name here !
+
+See HISTORY for full details.
+
