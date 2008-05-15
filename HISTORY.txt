@@ -4,6 +4,36 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
+* sub-templates per ZopeSkel template: Only sub-templates related to the parent
+  template is visible with the -l option
+  [mustapha]
+
+* added -a (--list-all) option to show all subtemplates regardless of the
+  current project. Subtemplates that are not for the type of the current
+  project are prefixed with N
+  [mustapha]
+
+* Fixed the recreation of the paster_plugins.txt metadata file for archetype.
+  For now we have to run 2 times the egg_info command to get the paster_plugins
+  file recreated (setuptools problem: nice task to fix) 
+  [mustapha]
+
+* fixed the case of many inner packages: ask the user to choose a packe to
+  inject content into if the command is run outside of an inner package
+  [mustapha]
+
+* make all ZopeSkel templates that inherits from BaseTemplate addcontent aware
+  [mustapha]
+
+* Added plone_pas template for PlonePas projects and many subtemplates
+  [mustapha]
+
+* regrouped archetype subtemplates in templates/archetype
+  [mustapha]
+
+* added and fixed tests
+  [mustapha]
+
 
 Version 1.10
 ------------
