@@ -110,7 +110,7 @@ class ZopeSkelLocalCommand(command.Command):
         # localcommand in the package dir. 
         package = os.path.basename(os.path.abspath(os.path.curdir))
 
-        # If the package dir is not in the list of inner_packages, 
+        # If the package dir is not in the list of inner_packages,
         # then:
         #    if there is only one package in the list, we take it
         #    else ask the user to pick a package from the list
@@ -127,7 +127,7 @@ class ZopeSkelLocalCommand(command.Command):
         lists available templates
         """
         templates = []
-        parent_template = None 
+        parent_template = None
 
         egg_info_dir = pluginlib.find_egg_info_dir(os.getcwd())
         zopeskel_txt = os.path.join(os.path.dirname(egg_info_dir), 'zopeskel.txt')
@@ -150,7 +150,7 @@ class ZopeSkelLocalCommand(command.Command):
         if not templates:
             print '  No template'
             return
-     
+
         max_name = max([len(t.name) for t in templates])
         templates.sort(lambda a, b: cmp(a.name, b.name))
         for template in templates:

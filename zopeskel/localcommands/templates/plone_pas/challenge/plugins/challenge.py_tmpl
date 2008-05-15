@@ -37,7 +37,7 @@ class ChallengePlugin( BasePlugin ):
           - Cause the response object to redirect to another URL (a
             login form page, for instance)
         """
- 
+
         \# add your code here
         pass
 

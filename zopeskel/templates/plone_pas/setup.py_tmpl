@@ -15,17 +15,17 @@ long_description = (
     + '\n' +
     'Change history\n'
     '**************\n'
-    + '\n' + 
+    + '\n' +
     read('docs', 'CHANGES.txt')
     + '\n' +
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
-    read(${repr($namespace_package)}, 
-         ${repr($namespace_package2)}, 
+    read(${repr($namespace_package)},
+         ${repr($namespace_package2)},
          ${repr($package)}, 'README.txt')
     + '\n' +
-    'Contributors\n' 
+    'Contributors\n'
     '************\n'
     + '\n' +
     read('docs', 'CONTRIBUTORS.txt')

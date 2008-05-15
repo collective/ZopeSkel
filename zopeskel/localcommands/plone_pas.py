@@ -26,7 +26,7 @@ class AuthenticationPlugin(PlonePasSubTemplate):
     _template_dir = 'templates/plone_pas/authentication'
     summary = "A Plone PAS Authentication Plugin"
 
-    
+
 class ChallengePlugin(PlonePasSubTemplate):
     """
     A plone pas challenge plugin

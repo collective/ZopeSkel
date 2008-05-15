@@ -10,7 +10,7 @@ class ExtractionPlugin( BasePlugin ):
 
     security = ClassSecurityInfo()
 
-    security.declarePrivate('extractCredentials') 
+    security.declarePrivate('extractCredentials')
     def extractCredentials( request ):
 
         """ request -> {...}
@@ -20,7 +20,7 @@ class ExtractionPlugin( BasePlugin ):
         o Return an empty mapping to indicate that the plugin found no
           appropriate credentials.
         """
-        
+ 
         creds = {}
 
         \#add your code here

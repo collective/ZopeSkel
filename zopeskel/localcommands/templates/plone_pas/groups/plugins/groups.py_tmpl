@@ -13,7 +13,7 @@ class GroupsPlugin( BasePlugin ):
     def getGroupsForPrincipal( principal, request=None ):
         """ principal -> ( group_1, ... group_N )
 
-        o Return a sequence of group names to which the principal 
+        o Return a sequence of group names to which the principal
           (either a user or another group) belongs.
 
         o May assign groups based on values in the REQUEST object, if present

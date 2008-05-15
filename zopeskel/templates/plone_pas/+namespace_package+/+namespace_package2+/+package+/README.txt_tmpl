@@ -25,7 +25,7 @@ ${namespace_package}.${namespace_package2}.${package} should be in the list of i
 
 and we can select it:
 
-    >>> select.getControl('${multiplugin_name} Helper').click()     
+    >>> select.getControl('${multiplugin_name} Helper').click()
     >>> select.displayValue
     ['${multiplugin_name} Helper']
     >>> select.value
@@ -37,8 +37,8 @@ we add '${multiplugin_name} Helper' to acl_users:
     >>> myhelper = ${multiplugin_name}Helper('myplugin', '${multiplugin_name} Helper')
     >>> self.portal.acl_users['myplugin'] = myhelper
 
-and so on. Continue your tests here 
- 
+and so on. Continue your tests here
+
     >>> 'ALL OK'
-    'ALL OK'     
+    'ALL OK'
 

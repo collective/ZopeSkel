@@ -41,7 +41,7 @@ class UserEnumerationPlugin( BasePlugin ):
           plugin should return mappings for all users satisfying the criteria.
 
         o Minimal keys in the returned mappings:
-        
+
           'id' -- (required) the user ID, which may be different than
                   the login name
 

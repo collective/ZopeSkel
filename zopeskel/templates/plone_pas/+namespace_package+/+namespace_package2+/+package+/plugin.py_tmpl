@@ -12,8 +12,8 @@ import plugins
 
 class ${multiplugin_name}Helper( # -*- implemented plugins -*-
                                ):
-    '''Multi-plugin 
-    
+    '''Multi-plugin
+
     '''
 
     meta_type = '${package} Helper'
@@ -26,5 +26,5 @@ class ${multiplugin_name}Helper( # -*- implemented plugins -*-
 
 
 classImplements(${multiplugin_name}Helper, interface.I${multiplugin_name}Helper)
-  
+
 InitializeClass( ${multiplugin_name}Helper )

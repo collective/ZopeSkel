@@ -30,7 +30,7 @@ def get_var(vars, name):
 
 class BaseTemplate(templates.Template):
     """Base template for all ZopeSkel templates"""
-    
+
     #make all ZopeSkel templates localcommand ready
     egg_plugins = ['ZopeSkel']
 
@@ -40,7 +40,7 @@ class BaseTemplate(templates.Template):
     #the post method is not a condidate because many templates ovveride it
     def run(self, command, output_dir, vars):
         templates.Template.run(self, command, output_dir, vars)
-        open(os.path.join(output_dir, 'zopeskel.txt'), 
+        open(os.path.join(output_dir, 'zopeskel.txt'),
              'w').write(os.sys.argv[3])
 
 def cleanupStylsheets(dirpath, filenames):

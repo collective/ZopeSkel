@@ -4,4 +4,4 @@ install.register_${package}_plugin()
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
-    install.register_${package}_plugin_class(context)   
+    install.register_${package}_plugin_class(context)

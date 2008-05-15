@@ -4,7 +4,7 @@ from Products.PluggableAuthService import registerMultiPlugin
 
 import plugin
 
-manage_add_${package}_form = PageTemplateFile('browser/add_plugin', 
+manage_add_${package}_form = PageTemplateFile('browser/add_plugin',
                             globals(), __name__='manage_add_${package}_form' )
 
 

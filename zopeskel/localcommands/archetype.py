@@ -103,9 +103,9 @@ class ContentType(ArchetypeSubTemplate):
         vars['types_xml_filename'] = vars['contenttype_name'].replace(" ", "_")
         vars['interface_name'] = "I" + vars['contenttype_name'].replace(" ", "")
         vars['add_permission_name'] = vars['package_dotted_name'] + ': Add ' + vars['contenttype_name']
-        
-        
-        
+
+
+
 class ATSchemaField(ArchetypeSubTemplate):
     """
     A handy AT schema builder
@@ -119,23 +119,23 @@ class ATSchemaField(ArchetypeSubTemplate):
         var('welcome',
             '\n\nWelcome to the handy AT Schema maker, we hope you like it! Crtain things are implied: i.e. Field Type should be String, not StringField.  We do the work for you!',
             default='True'),
-        var('content_class_filename',      
-            '\n\nWhat is the module (file)name of your content class? (.py is implied)\n',           
+        var('content_class_filename',
+            '\n\nWhat is the module (file)name of your content class? (.py is implied)\n',
             default='exampletype'),
-        var('field_type',       
-            '\n\nWhat kind of field should I make for you?\n', 
-            default='String'),            
-        var('field_name',       
-            '\n\nWhat would you like to name this field?\n',     
-            default='field'),
-        var('widget_type',      
-            '\n\nWhat kind of widget do you want to use?\n',   
+        var('field_type',
+            '\n\nWhat kind of field should I make for you?\n',
             default='String'),
-        var('field_label',      
-            '\n\nWhat should be the label of this field (title)?\n',   
+        var('field_name',
+            '\n\nWhat would you like to name this field?\n',
+            default='field'),
+        var('widget_type',
+            '\n\nWhat kind of widget do you want to use?\n',
+            default='String'),
+        var('field_label',
+            '\n\nWhat should be the label of this field (title)?\n',
             default='New Field'),
-        var('field_desc',       
-            '\n\nWhat should be the description of this field (help text)?\n',   
+        var('field_desc',
+            '\n\nWhat should be the description of this field (help text)?\n',
             default='Field description'),
         var('i18n_domain',
             '\n\nWhat is the product name/i18n domain?\n',
@@ -149,10 +149,10 @@ class ATSchemaField(ArchetypeSubTemplate):
         ]
 
     def pre(self, command, output_dir, vars):
-        
+
         file = vars['content_class_filename']
         if file.endswith('.py'):
             file = os.path.splitext(file)[0]
-        
+
         vars['content_class_filename'] = file
 

@@ -25,8 +25,8 @@ class RoleEnumerationPlugin( BasePlugin ):
           return at most one mapping per supplied ID ('id' and 'login'
           may be sequences).
 
-        o If 'exact_match' is False, then 'id' may be treated by 
-          the plugin as "contains" searches (more complicated searches 
+        o If 'exact_match' is False, then 'id' may be treated by
+          the plugin as "contains" searches (more complicated searches
           may be supported by some plugins using other keyword arguments).
 
         o If 'sort_by' is passed, the results will be sorted accordingly.
@@ -34,11 +34,11 @@ class RoleEnumerationPlugin( BasePlugin ):
 
         o If 'max_results' is specified, it must be a positive integer,
           limiting the number of returned mappings.  If unspecified, the
-          plugin should return mappings for all roles satisfying the 
+          plugin should return mappings for all roles satisfying the
           criteria.
 
         o Minimal keys in the returned mappings:
-        
+
           'id' -- (required) the role ID
 
           'pluginid' -- (required) the plugin ID (as returned by getId())

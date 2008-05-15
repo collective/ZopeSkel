@@ -10,8 +10,8 @@ Check that the `addcontent` command is not globaly available::
     >>> help_text.find('addcontent') == -1
     True
 
-`addcontent` is active for all ZopeSkel templates that inherit from 
-BaseTemplate except those which are not eggs (ie: plone3_buildout). 
+`addcontent` is active for all ZopeSkel templates that inherit from
+BaseTemplate except those which are not eggs (ie: plone3_buildout).
 Let's for example take the basic_namespace template::
 
     >>> sh('paster create -t basic_namespace plone.example --no-interactive')
