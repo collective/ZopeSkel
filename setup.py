@@ -48,16 +48,33 @@ setup(name='ZopeSkel',
       plone_hosting = zopeskel.hosting:StandardHosting
       recipe = zopeskel:Recipe
       silva_buildout = zopeskel:SilvaBuildout
+      plone_pas = zopeskel:PlonePas
 
       [paste.paster_command]
       addcontent = zopeskel.localcommands:ZopeSkelLocalCommand
-
       
       [zopeskel.zopeskel_sub_template]
-      portlet = zopeskel.localcommands.templates:Portlet
-      view = zopeskel.localcommands.templates:View
-      zcmlmeta = zopeskel.localcommands.templates:ZCMLMetaDirective
-      contenttype = zopeskel.localcommands.templates:ContentType
-      atschema = zopeskel.localcommands.templates:ATSchemaField
+      portlet = zopeskel.localcommands.archetype:Portlet
+      view = zopeskel.localcommands.archetype:View
+      zcmlmeta = zopeskel.localcommands.archetype:ZCMLMetaDirective
+      contenttype = zopeskel.localcommands.archetype:ContentType
+      atschema = zopeskel.localcommands.archetype:ATSchemaField
+
+      extraction_plugin = zopeskel.localcommands.plone_pas:ExtractionPlugin
+      authentication_plugin = zopeskel.localcommands.plone_pas:AuthenticationPlugin
+      challenge_plugin = zopeskel.localcommands.plone_pas:ChallengePlugin
+      credentials_reset_plugin = zopeskel.localcommands.plone_pas:CredentialsResetPlugin
+      user_adder_plugin = zopeskel.localcommands.plone_pas:UserAdderPlugin
+      role_assigner_plugin = zopeskel.localcommands.plone_pas:RoleAssignerPlugin
+      user_factory_plugin = zopeskel.localcommands.plone_pas:UserFactoryPlugin
+      anonymous_user_factory_plugin = zopeskel.localcommands.plone_pas:AnonymousUserFactoryPlugin
+      properties_plugin = zopeskel.localcommands.plone_pas:PropertiesPlugin
+      groups_plugin = zopeskel.localcommands.plone_pas:GroupsPlugin
+      roles_plugin = zopeskel.localcommands.plone_pas:RolesPlugin
+      update_plugin = zopeskel.localcommands.plone_pas:UpdatePlugin
+      validation_plugin = zopeskel.localcommands.plone_pas:ValidationPlugin
+      user_enumeration_plugin = zopeskel.localcommands.plone_pas:UserEnumerationPlugin
+      group_enumeration_plugin = zopeskel.localcommands.plone_pas:GroupEnumerationPlugin
+      role_enumeration_plugin = zopeskel.localcommands.plone_pas:RoleEnumerationPlugin
       """,
       )

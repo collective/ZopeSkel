@@ -1,0 +1,33 @@
+==================
+plone_pas template
+==================
+
+Check that the directory does not exist::
+
+    >>> rmdir(tempdir, 'plone.example')
+
+Go to a directory::
+
+    >>> cd(tempdir)
+
+Then use paster::
+
+    >>> sh('paster create -t plone_pas plone.example --no-interactive')
+    paster create -t plone_pas plone.example --no-interactive
+    ...
+
+Let's check the content::
+
+    >>> package_dir = os.path.join(tempdir, 'plone.example', 
+    ...                            'plone', 'pas', 'ploneexample')
+    >>> ls(package_dir)
+    README.txt
+    __init__.py
+    browser
+    configure.zcml
+    install.py
+    interface.py
+    plugin.py
+    plugins
+    tests.py
+

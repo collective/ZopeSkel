@@ -1,0 +1,31 @@
+from AccessControl.SecurityInfo import ClassSecurityInfo
+
+from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
+
+
+class ValidationPlugin( BasePlugin ):
+    """ Specify allowable values for user properties.
+
+    o E.g., constrain minimum password length, allowed characters, etc.
+
+    o Operate on entire property sets, not individual properties.
+    """
+
+    security = ClassSecurityInfo()
+
+    security.declarePrivate('validateUserInfo')
+    def validateUserInfo( user, set_id, set_info ):
+        """ -> ( error_info_1, ... error_info_N )
+
+        o Returned values are dictionaries, containing at least keys:
+
+          'id' -- the ID of the property, or None if the error is not
+                  specific to one property.
+
+          'error' -- the message string, suitable for display to the user.
+        """
+
+        \#add your code here
+
+        pass
+

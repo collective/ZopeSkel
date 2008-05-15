@@ -28,4 +28,4 @@ Let's check the content::
     skins
     tests
     version.txt
-
+    zopeskel.txt

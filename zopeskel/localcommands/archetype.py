@@ -1,18 +1,21 @@
 """
-Local templates
+Local templates for the archetype zopeskel project
 """
 import os
 from zopeskel.base import var
 from zopeskel.localcommands import ZopeSkelLocalTemplate
 
+class ArchetypeSubTemplate(ZopeSkelLocalTemplate):
+    use_cheetah = True
+    parent_templates = ['archetype']
 
-class Portlet(ZopeSkelLocalTemplate):
+
+class Portlet(ArchetypeSubTemplate):
     """
     A plone 3 portlet skeleton
     """
-    _template_dir = 'templates/portlet'
+    _template_dir = 'templates/archetype/portlet'
     summary = "A Plone 3 portlet"
-    use_cheetah = True
 
     vars = [
       var('portlet_name', 'Portlet name (human readable)',  default="Example portlet"),
@@ -31,13 +34,12 @@ class Portlet(ZopeSkelLocalTemplate):
         vars['dotted_name'] = "%s.portlets" % vars['package_dotted_name']
 
 
-class View(ZopeSkelLocalTemplate):
+class View(ArchetypeSubTemplate):
     """
     A browser view skeleton
     """
-    _template_dir = 'templates/view'
+    _template_dir = 'templates/archetype/view'
     summary = "A browser view skeleton"
-    use_cheetah = True
 
     vars = [
       var('view_name', 'Browser view name',  default="Example"),
@@ -52,13 +54,12 @@ class View(ZopeSkelLocalTemplate):
         vars['view_filename'] = vars['view_name'].lower()
 
 
-class ZCMLMetaDirective(ZopeSkelLocalTemplate):
+class ZCMLMetaDirective(ArchetypeSubTemplate):
     """
     A zcml meta directive skeleton
     """
-    _template_dir = 'templates/zcmlmeta'
+    _template_dir = 'templates/archetype/zcmlmeta'
     summary = "A ZCML meta directive skeleton"
-    use_cheetah = True
 
     vars = [
       var('directive_name', 'The directive name',  default="mydirective"),
@@ -74,14 +75,13 @@ class ZCMLMetaDirective(ZopeSkelLocalTemplate):
         vars['directive_class_name'] = vars['directive_name'].title()
 
 
-class ContentType(ZopeSkelLocalTemplate):
+class ContentType(ArchetypeSubTemplate):
     """
     A Content Type skeleton
     """
 
-    _template_dir = 'templates/contenttype'
+    _template_dir = 'templates/archetype/contenttype'
     summary = "A content type skeleton"
-    use_cheetah = True
 
     vars = [
         var('contenttype_name', 'Content type name ', default='Example Type'),
@@ -106,14 +106,13 @@ class ContentType(ZopeSkelLocalTemplate):
         
         
         
-class ATSchemaField(ZopeSkelLocalTemplate):
+class ATSchemaField(ArchetypeSubTemplate):
     """
     A handy AT schema builder
     """
 
-    _template_dir = 'templates/atschema'
+    _template_dir = 'templates/archetype/atschema'
     summary = "A handy AT schema builder"
-    use_cheetah = True
     marker_name = "Your Archetypes field definitions here ..."
 
     vars = [

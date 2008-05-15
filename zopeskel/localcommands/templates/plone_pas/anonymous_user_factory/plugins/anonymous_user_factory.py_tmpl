@@ -1,0 +1,22 @@
+from AccessControl.SecurityInfo import ClassSecurityInfo
+
+from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
+
+
+class AnonymousUserFactoryPlugin( BasePlugin ):
+    """ Create a new anonymous IPropertiedUser.
+    """
+
+    security = ClassSecurityInfo()
+
+    security.declarePrivate('createAnonymousUser')
+    def createAnonymousUser():
+        """ Return an anonymous user, if possible.
+
+        o Return None to allow another plugin, or the default, to fire.
+        """
+
+        \#add your code here
+
+        pass
+

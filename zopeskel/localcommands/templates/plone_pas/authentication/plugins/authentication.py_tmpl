@@ -1,0 +1,32 @@
+from AccessControl.SecurityInfo import ClassSecurityInfo
+
+from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
+
+
+class AuthenticationPlugin( BasePlugin ):
+
+    """ Map credentials to a user ID.
+    """
+
+    security = ClassSecurityInfo()
+
+    security.declarePrivate('authenticateCredentials')
+    def authenticateCredentials( credentials ):
+
+        """ credentials -> (userid, login)
+
+        o 'credentials' will be a mapping, as returned by IExtractionPlugin.
+
+        o Return a  tuple consisting of user ID (which may be different 
+          from the login name) and login
+
+        o If the credentials cannot be authenticated, return None.
+        """
+
+        user_id = ''
+        user_login = ''
+
+        \#add your code here
+
+        return (user_id, user_login)
+

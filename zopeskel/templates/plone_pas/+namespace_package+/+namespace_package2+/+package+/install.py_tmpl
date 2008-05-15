@@ -1,0 +1,40 @@
+from AccessControl.Permissions import manage_users
+from Products.PageTemplates.PageTemplateFile import PageTemplateFile
+from Products.PluggableAuthService import registerMultiPlugin
+
+import plugin
+
+manage_add_${package}_form = PageTemplateFile('browser/add_plugin', 
+                            globals(), __name__='manage_add_${package}_form' )
+
+
+def manage_add_${package}_helper( dispatcher, id, title=None, REQUEST=None ):
+    ''' Add an ${package} Helper to the PluggableAuthentication Service.
+    '''
+
+    sp = plugin.${multiplugin_name}Helper( id, title )
+    dispatcher._setObject( sp.getId(), sp )
+
+    if REQUEST is not None:
+        REQUEST['RESPONSE'].redirect( '%s/manage_workspace'
+                                      '?manage_tabs_message='
+                                      '${package}Helper+added.'
+                                      % dispatcher.absolute_url() )
+
+
+def register_${package}_plugin():
+    try:
+        registerMultiPlugin(plugin.${multiplugin_name}Helper.meta_type)
+    except RuntimeError:
+        # make refresh users happy
+        pass
+
+
+def register_${package}_plugin_class(context):
+    context.registerClass(plugin.${multiplugin_name}Helper,
+                          permission = manage_users,
+                          constructors = (manage_add_${package}_form,
+                                          manage_add_${package}_helper),
+                          visibility = None,
+                          icon='browser/icon.gif'
+                         )

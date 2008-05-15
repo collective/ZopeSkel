@@ -1,3 +1,4 @@
+import os
 from paste.script import templates
 from paste.script.command import BadCommand
 from paste.script.templates import BasicPackage
@@ -29,7 +30,18 @@ def get_var(vars, name):
 
 class BaseTemplate(templates.Template):
     """Base template for all ZopeSkel templates"""
-    pass
+    
+    #make all ZopeSkel templates localcommand ready
+    egg_plugins = ['ZopeSkel']
+
+    #this is just to be able to write a zopeskel.txt file containing
+    #the name of the parent template. it will be used by addcontent command
+    #to list the apropriate subtemplates for the generated project.
+    #the post method is not a condidate because many templates ovveride it
+    def run(self, command, output_dir, vars):
+        templates.Template.run(self, command, output_dir, vars)
+        open(os.path.join(output_dir, 'zopeskel.txt'), 
+             'w').write(os.sys.argv[3])
 
 def cleanupStylsheets(dirpath, filenames):
     for prefix in ('base', 'generated', 'portlets', 'public'):

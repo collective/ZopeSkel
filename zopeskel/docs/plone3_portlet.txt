@@ -26,4 +26,4 @@ Let's check the content::
     plone.example.egg-info
     setup.cfg
     setup.py
-
+    zopeskel.txt

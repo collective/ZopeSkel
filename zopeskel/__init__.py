@@ -13,4 +13,5 @@ from zopeskel.plone3_portlet import Plone3Portlet
 from zopeskel.plone25_buildout import Plone25Buildout
 from zopeskel.plone3_theme import Plone3Theme
 from zopeskel.silva_buildout import SilvaBuildout
+from zopeskel.plone_pas import PlonePas
 

@@ -14,10 +14,6 @@ from paste.script import copydir
 class ZopeSkelLocalCommand(command.Command):
     """paster command to add content skeleton to plone project"""
 
-    def __init__(self, name):
-        command.Command.__init__(self, name)
-
-
     max_args = 2
     usage = "[template name]"
     summary = "Adds plone content types to your project"
@@ -27,7 +23,13 @@ class ZopeSkelLocalCommand(command.Command):
     parser.add_option('-l', '--list',
                       action='store_true',
                       dest='listcontents',
-                      help="List available templates")
+                      help="List available templates for the current project")
+
+    parser.add_option('-a', '--list-all',
+                      action='store_true',
+                      dest='listallcontents',
+                      help="List all templates regardless of the current project")
+
     parser.add_option('-q', '--no-interactive',
                       action="count",
                       dest="no_interactive",
@@ -43,8 +45,13 @@ class ZopeSkelLocalCommand(command.Command):
         (options, args) = self.parser.parse_args()
 
         if options.listcontents:
-            self._list_available_templates()
+            self._list_sub_templates()
             return
+
+        if options.listallcontents:
+            self._list_sub_templates(show_all=True)
+            return
+
         if options.no_interactive:
             self.interactive = False
             #return
@@ -103,33 +110,56 @@ class ZopeSkelLocalCommand(command.Command):
         # localcommand in the package dir. 
         package = os.path.basename(os.path.abspath(os.path.curdir))
 
-        # If the package dir is not in the list of directories, 
-        # then we should stay with the old behavior.
-        if package not in dirnames:
-            package = dirnames[0]
-            if package == '.svn':
-                package = dirnames[1]
+        # If the package dir is not in the list of inner_packages, 
+        # then:
+        #    if there is only one package in the list, we take it
+        #    else ask the user to pick a package from the list
+        inner_packages = [d for d in dirnames if d != '.svn']
+        if package not in inner_packages:
+            package = inner_packages[0]
+            if len(inner_packages) > 1:
+                package = self.challenge('Please choose one package to inject content into %s' % inner_packages)
 
         return namespace_package, namespace_package2, package
 
-    def _list_available_templates(self):
+    def _list_sub_templates(self, show_all=False):
         """
         lists available templates
         """
         templates = []
+        parent_template = None 
+
+        egg_info_dir = pluginlib.find_egg_info_dir(os.getcwd())
+        zopeskel_txt = os.path.join(os.path.dirname(egg_info_dir), 'zopeskel.txt')
+        if os.path.exists(zopeskel_txt):
+            parent_template = open(zopeskel_txt).read() or None
+
         for entry in self._all_entry_points():
             try:
-                templates.append(entry.load()(entry.name))
+                t = entry.load()(entry.name)
+                if show_all or \
+                   parent_template is None or \
+                   parent_template in t.parent_templates:
+                    templates.append(t)
             except Exception, e:
                 # We will not be stopped!
                 print 'Warning: could not load entry point %s (%s: %s)' % (
                     entry.name, e.__class__.__name__, e)
+
+        print 'Available templates:'
+        if not templates:
+            print '  No template'
+            return
+     
         max_name = max([len(t.name) for t in templates])
         templates.sort(lambda a, b: cmp(a.name, b.name))
-        print 'Available templates:'
         for template in templates:
+            _marker = " "
+            if not parent_template is None and parent_template not in template.parent_templates:
+                _marker = "N"
             # @@: Wrap description
-            print '  %s:%s  %s' % (
+            print '  %s %s:%s  %s' % (
+                _marker,
                 template.name,
                 ' '*(max_name-len(template.name)),
                 template.summary)
@@ -181,6 +211,7 @@ class ZopeSkelLocalTemplate(templates.Template):
     """
 
     marker_name = "extra stuff goes here"
+    parent_templates = None
 
     def run(self, command, output_dir, vars):
         """

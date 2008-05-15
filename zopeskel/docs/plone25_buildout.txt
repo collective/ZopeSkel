@@ -26,4 +26,5 @@ Let's check the content::
     products
     src
     var
+    zopeskel.txt
 

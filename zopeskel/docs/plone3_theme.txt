@@ -28,4 +28,4 @@ Let's check the content::
     plonetheme
     setup.cfg
     setup.py
-
+    zopeskel.txt
