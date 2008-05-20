@@ -13,7 +13,7 @@ class BasicNamespace(BaseTemplate):
              default='plone'), 
         var('package', 'The package contained namespace package (like example)',
             default='example'),
-        var('version', 'Version', default='0.1'),
+        var('version', 'Version', default='1.0'),
         var('description', 'One-line description of the package'),
         var('long_description', 'Multi-line description (in reST)'),
         var('author', 'Author name'),

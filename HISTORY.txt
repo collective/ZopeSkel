@@ -4,6 +4,10 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
+* Use 1.0 as default version number for all templates. This is a more sensible
+  default than 0.1 since we start of with dev-versions anyway.
+  [wichert]
+
 * sub-templates per ZopeSkel template: Only sub-templates related to the parent
   template is visible with the -l option
   [mustapha]

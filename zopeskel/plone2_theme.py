@@ -26,7 +26,7 @@ class Plone2Theme(BaseTemplate):
     use_cheetah = True
 
     vars = copy.deepcopy(BasicPackage.vars)
-    get_var(vars, 'version').default = '0.1'
+    get_var(vars, 'version').default = '1.0'
     get_var(vars, 'description').default = 'An installable theme for Plone'
     get_var(vars, 'author').default = 'Plone Collective'
     get_var(vars, 'author_email').default = 'product-developers@lists.plone.org'
