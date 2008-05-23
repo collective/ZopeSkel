@@ -14,12 +14,12 @@ Check that the `addcontent` command is not globaly available::
 BaseTemplate except those which are not eggs (ie: plone3_buildout).
 Let's for example take the basic_namespace template::
 
-    >>> sh('paster create -t basic_namespace plone.example --no-interactive')
+    >>> paster('create -t basic_namespace plone.example --no-interactive')
     paster create -t basic_namespace plone.example --no-interactive
     ...
     >>> p_dir = os.path.join(tempdir, 'plone.example')
     >>> cd(p_dir)
-    >>> sh('paster help')
+    >>> paster('help')
     paster help
     ...
     <BLANKLINE>
@@ -30,7 +30,7 @@ Let's for example take the basic_namespace template::
 
 Let's see what sub-templates are avaiblable for this kind of projects::
 
-    >>> sh('paster addcontent --list')
+    >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
         No template
@@ -41,12 +41,12 @@ Let's create an archetype project::
 
     >>> rmdir(tempdir, 'plone.example')
     >>> cd(tempdir)
-    >>> sh('paster create -t archetype plone.example --no-interactive')
+    >>> paster('create -t archetype plone.example --no-interactive')
     paster create -t archetype plone.example --no-interactive
     ...
     >>> p_dir = os.path.join(tempdir, 'plone.example')
     >>> cd(p_dir)
-    >>> sh('paster help')
+    >>> paster('help')
     paster help
     ...
     <BLANKLINE>
@@ -57,7 +57,7 @@ Let's create an archetype project::
 
 What sub-templates are available for an archetype based project ?::
 
-    >>> sh('paster addcontent --list')
+    >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
       atschema:     A handy AT schema builder
@@ -68,7 +68,7 @@ What sub-templates are available for an archetype based project ?::
 
 Now we can add a portlet to our project::
 
-    >>> sh('paster addcontent --no-interactive portlet')
+    >>> paster('addcontent --no-interactive portlet')
     paster addcontent --no-interactive portlet
     Recursing into portlets
     ...

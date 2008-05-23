@@ -12,7 +12,7 @@ Go to a directory::
 
 Then use paster::
 
-    >>> sh('paster create -t recipe plone.recipe.example --no-interactive')
+    >>> paster('create -t recipe plone.recipe.example --no-interactive')
     paster create -t recipe plone.recipe.example --no-interactive
     ...
 

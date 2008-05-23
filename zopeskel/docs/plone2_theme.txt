@@ -12,7 +12,7 @@ Go to a directory::
 
 Then use paster::
 
-    >>> sh('paster create -t plone2_theme plone.example --no-interactive')
+    >>> paster('create -t plone2_theme plone.example --no-interactive')
     paster create -t plone2_theme plone.example --no-interactive
     ...
 

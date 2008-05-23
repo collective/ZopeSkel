@@ -6,17 +6,15 @@ Build an archetype from scratch, and use paster to add a contenttype::
 
     >>> rmdir(tempdir, 'plone.example')
     >>> cd(tempdir)
-    >>> sh('paster create -t archetype plone.example --no-interactive')
+    >>> paster('create -t archetype plone.example --no-interactive')
     paster create -t archetype plone.example --no-interactive
     ...
     >>> cd('plone.example')
-    >>> sh('paster addcontent contenttype --no-interactive') # doctest: +REPORT_NDIFF
+    >>> paster('addcontent contenttype --no-interactive') # doctest: +ELLIPSIS
     paster addcontent contenttype --no-interactive
     ...
-    File 'Example_Type.xml' already exists: skipped
-          Inserting from types.xml_insert into .../plone.example/plone/ploneexample/profiles/default/types.xml
+          Inserting from types.xml_insert into...
     ...
-    <BLANKLINE>
     >>> content_dir = os.path.join(tempdir, 'plone.example', 
     ...                            'plone', 'ploneexample', 'content')
     
@@ -29,7 +27,7 @@ Check for the file::
 
 Check to see that atschema is available::
 
-    >>> sh('paster addcontent --list')
+    >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
       atschema:     A handy AT schema builder
@@ -41,9 +39,9 @@ Check to see that atschema is available::
     
 Now add a schema field via paster::
 
-    >>> sh('paster addcontent atschema --no-interactive')
-    paster addcontent atschema --no-interactive
-    ...
+	>>> paster('addcontent atschema --no-interactive')
+	paster addcontent atschema --no-interactive
+	...
 	
 Check that the schema was inserted::
 

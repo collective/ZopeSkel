@@ -12,7 +12,7 @@ Go to a directory::
 
 Then use paster::
 
-    >>> sh('paster create -t plone3_buildout buildout --no-interactive')
+    >>> paster('create -t plone3_buildout buildout --no-interactive')
     paster create -t plone3_buildout buildout --no-interactive
     ...
 
