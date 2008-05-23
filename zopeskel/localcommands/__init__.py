@@ -42,8 +42,8 @@ class ZopeSkelLocalCommand(command.Command):
         command method
         """
         self.interactive = 1
-        (options, args) = self.parser.parse_args()
-
+        options, args = self.options, self.args
+        
         if options.listcontents:
             self._list_sub_templates()
             return
@@ -54,9 +54,8 @@ class ZopeSkelLocalCommand(command.Command):
 
         if options.no_interactive:
             self.interactive = False
-            #return
 
-        if len(args) != 2:
+        if len(args) < 1:
             print "\n\tError: Need a template name\n"
             return
 
@@ -72,7 +71,7 @@ class ZopeSkelLocalCommand(command.Command):
                                        self.template_vars['package'])
 
         templates = []
-        self._extend_templates(templates, args[1])
+        self._extend_templates(templates, args[0])
 
         templates = [tmpl for name, tmpl in templates]
         for tmpl in templates[::-1]:
@@ -136,7 +135,8 @@ class ZopeSkelLocalCommand(command.Command):
 
         for entry in self._all_entry_points():
             try:
-                t = entry.load()(entry.name)
+                entry_point = entry.load()
+                t = entry_point(entry.name)
                 if show_all or \
                    parent_template is None or \
                    parent_template in t.parent_templates:

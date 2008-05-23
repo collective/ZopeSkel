@@ -10,7 +10,7 @@ import sys
 import os
 import shutil
 import popen2
-import StringIO
+import tempfile
 
 from zope.testing import doctest
 
@@ -21,22 +21,28 @@ def rmdir(*args):
     if os.path.isdir(dirname):
         shutil.rmtree(dirname)
 
+def paster(cmd):
+    print "paster %s" % cmd
+    from paste.script import command
+    args = cmd.split()
+    options, args = command.parser.parse_args(args)
+    options.base_parser = command.parser
+    command.system_plugins.extend(options.plugins or [])
+    commands = command.get_commands()
+    command_name = args[0]
+    if command_name not in commands:
+        command = command.NotFoundCommand
+    else:
+        command = commands[command_name].load()
+    runner = command(command_name)
+    runner.run(args[1:])
+
 def read_sh(cmd):
     _cmd = cmd
     old = sys.stdout 
     child_stdout_and_stderr, child_stdin = popen2.popen4(_cmd)
     child_stdin.close()
     return child_stdout_and_stderr.read()
-
-def sh(cmd):
-    _cmd = cmd
-    print cmd
-    # launch command 2 times to see what append and be able 
-    # to test in doc tests
-    os.system(_cmd)
-    child_stdout_and_stderr, child_stdin = popen2.popen4(_cmd)
-    child_stdin.close()
-    print child_stdout_and_stderr.read()
 
 def ls(*args):
     dirname = os.path.join(*args)
@@ -67,7 +73,8 @@ def touch(*args, **kwargs):
     open(filename, 'w').write(kwargs.get('data',''))
 
 execdir = os.path.abspath(os.path.dirname(sys.executable))
-tempdir = os.getenv('TEMP','/tmp')
+
+tempdir = tempfile.gettempdir()
 
 def doc_suite(test_dir, setUp=None, tearDown=None, globs=None):
     """Returns a test suite, based on doctests found in /doctest."""
