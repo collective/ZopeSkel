@@ -37,11 +37,11 @@ class BaseTemplate(templates.Template):
     #this is just to be able to write a zopeskel.txt file containing
     #the name of the parent template. it will be used by addcontent command
     #to list the apropriate subtemplates for the generated project.
-    #the post method is not a condidate because many templates ovveride it
+    #the post method is not a candidate because many templates override it
     def run(self, command, output_dir, vars):
         templates.Template.run(self, command, output_dir, vars)
         open(os.path.join(output_dir, 'zopeskel.txt'),
-             'w').write(os.sys.argv[3])
+             'w').write(self.name)
 
 def cleanupStylsheets(dirpath, filenames):
     for prefix in ('base', 'generated', 'portlets', 'public'):
