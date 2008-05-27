@@ -4,7 +4,11 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
-* Make plone3_portlet respect pep8 (and pyflakes).
+* Fixed typos in archetyps and plone3 portlets: 'portletBotomLeft'
+  should have been 'portletBottomLeft' with two 't's.
+  [maurits]
+
+* Made plone3_portlet respect pep8 (and pyflakes).
   [maurits]
 
 * Use 1.0 as default version number for all templates. This is a more sensible
