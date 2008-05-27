@@ -11,6 +11,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from ${dotted_name} import ${portlet_type_name}MessageFactory as _
 
+
 class I${portlet_type_name}(IPortletDataProvider):
     """A portlet
 
@@ -56,6 +57,7 @@ class Assignment(base.Assignment):
         """
         return "${portlet_name}"
 
+
 class Renderer(base.Renderer):
     """Portlet renderer.
 
@@ -66,8 +68,6 @@ class Renderer(base.Renderer):
 
     render = ViewPageTemplateFile('${portlet_filename}.pt')
 
-# NOTE: If this portlet does not have any configurable parameters, you can
-# inherit from NullAddForm and remove the form_fields variable.
 
 class AddForm(base.AddForm):
     """Portlet add form.
@@ -75,20 +75,24 @@ class AddForm(base.AddForm):
     This is registered in configure.zcml. The form_fields variable tells
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
+
+    NOTE: If this portlet does not have any configurable parameters, you can
+    inherit from NullAddForm and remove the form_fields variable.
     """
     form_fields = form.Fields(I${portlet_type_name})
 
     def create(self, data):
         return Assignment(**data)
 
-# NOTE: IF this portlet does not have any configurable parameters, you can
-# remove this class definition and delete the editview attribute from the
-# <plone:portlet /> registration in configure.zcml
 
 class EditForm(base.EditForm):
     """Portlet edit form.
 
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
+
+    NOTE: IF this portlet does not have any configurable parameters, you can
+    remove this class definition and delete the editview attribute from the
+    <plone:portlet /> registration in configure.zcml
     """
     form_fields = form.Fields(I${portlet_type_name})

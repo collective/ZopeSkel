@@ -4,6 +4,9 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
+* Make plone3_portlet respect pep8 (and pyflakes).
+  [maurits]
+
 * Use 1.0 as default version number for all templates. This is a more sensible
   default than 0.1 since we start of with dev-versions anyway.
   [wichert]
