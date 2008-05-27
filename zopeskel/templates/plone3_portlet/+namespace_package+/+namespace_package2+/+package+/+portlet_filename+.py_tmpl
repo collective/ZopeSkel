@@ -69,15 +69,17 @@ class Renderer(base.Renderer):
     render = ViewPageTemplateFile('${portlet_filename}.pt')
 
 
+# NOTE: If this portlet does not have any configurable parameters, you
+# can inherit from base.NullAddForm in this next class and remove the
+# form_fields variable.
+
+
 class AddForm(base.AddForm):
     """Portlet add form.
 
     This is registered in configure.zcml. The form_fields variable tells
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
-
-    NOTE: If this portlet does not have any configurable parameters, you can
-    inherit from NullAddForm and remove the form_fields variable.
     """
     form_fields = form.Fields(I${portlet_type_name})
 
@@ -85,14 +87,15 @@ class AddForm(base.AddForm):
         return Assignment(**data)
 
 
+# NOTE: If this portlet does not have any configurable parameters, you
+# can remove the EditForm class definition and delete the editview
+# attribute from the <plone:portlet /> registration in configure.zcml
+
+
 class EditForm(base.EditForm):
     """Portlet edit form.
 
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
-
-    NOTE: IF this portlet does not have any configurable parameters, you can
-    remove this class definition and delete the editview attribute from the
-    <plone:portlet /> registration in configure.zcml
     """
     form_fields = form.Fields(I${portlet_type_name})
