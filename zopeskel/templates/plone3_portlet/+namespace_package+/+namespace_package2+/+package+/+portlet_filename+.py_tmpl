@@ -67,11 +67,6 @@ class Renderer(base.Renderer):
     render = ViewPageTemplateFile('${portlet_filename}.pt')
 
 
-# NOTE: If this portlet does not have any configurable parameters, you
-# can inherit from base.NullAddForm in this next class and remove the
-# form_fields variable.
-
-
 class AddForm(base.AddForm):
     """Portlet add form.
 
@@ -83,6 +78,17 @@ class AddForm(base.AddForm):
 
     def create(self, data):
         return Assignment(**data)
+
+
+# NOTE: If this portlet does not have any configurable parameters, you
+# can use the next AddForm implementation instead of the previous.
+
+# class AddForm(base.NullAddForm):
+#     """Portlet add form.
+#     """
+#
+#     def create(self):
+#         return Assignment()
 
 
 # NOTE: If this portlet does not have any configurable parameters, you
