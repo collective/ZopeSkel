@@ -4,6 +4,9 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
+* Added a BUILDBOT.txt file.
+  [tarek]
+
 * plone3_portlet: added commented out alternative AddForm for when
   there are no configurable parameters.  That was shorter than listing
   all the changes (where we forgot one).
