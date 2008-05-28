@@ -4,6 +4,10 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
+* Added note to profiles.zcml of plone2.5_theme that
+  five.registerPackage needs Five version 1.4.
+  [maurits]
+
 * Added a BUILDBOT.txt file.
   [tarek]
 
