@@ -22,6 +22,13 @@ class Plone25Theme(Plone):
     get_var(vars, 'keywords').default = 'web zope plone theme'
     vars = vars[:2] + theme_vars + vars[2:]
 
+    def pre(self, command, output_dir, vars):
+        if vars['skinname'] == '':
+            # A title is needed in profiles.zcml otherwise adding a
+            # Plone Site will throw an error when displaying the
+            # extension profiles.
+            vars['skinname'] = 'Custom Plone 2.5 skin'
+
     def post(self, command, output_dir, vars):
         np, p = vars['namespace_package'], vars['package']
         sdir = os.path.join(output_dir, np, p, 'skins')
