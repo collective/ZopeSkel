@@ -1,8 +1,6 @@
 """
 Local templates for the plone PAS zopeskel project
 """
-import os
-from zopeskel.base import var
 from zopeskel.localcommands import ZopeSkelLocalTemplate
 
 class PlonePasSubTemplate(ZopeSkelLocalTemplate):

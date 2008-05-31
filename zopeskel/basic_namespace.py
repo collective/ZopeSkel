@@ -1,5 +1,4 @@
 from zopeskel.base import var
-from zopeskel.base import get_var
 from zopeskel.base import BaseTemplate
 
 class BasicNamespace(BaseTemplate):

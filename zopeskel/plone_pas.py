@@ -2,7 +2,6 @@ import copy
 
 from zopeskel.nested_namespace import NestedNamespace
 from zopeskel.base import get_var
-from zopeskel.base import var
 
 class PlonePas(NestedNamespace):
     _template_dir = 'templates/plone_pas'
