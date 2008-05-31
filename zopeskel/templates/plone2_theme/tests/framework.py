@@ -41,6 +41,10 @@ __version__ = '0.2.3'
 
 # Save start state
 #
+
+import os
+import sys
+
 __SOFTWARE_HOME = os.environ.get('SOFTWARE_HOME', '')
 __INSTANCE_HOME = os.environ.get('INSTANCE_HOME', '')
 
