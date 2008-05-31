@@ -4,6 +4,16 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
+* Reduced the number of questions to generate an atschema and used 
+  the MessageFactory instead of declaring an i18n_domain attribute
+  [mustapha]
+
+* Fixed missing imports in plone2_theme
+  [mustapha]
+
+* Removed unused imports in plone_pas
+  [mustapha]
+
 * In plone2.5_theme: when the skinname is empty, replace it with a
   default text, otherwise adding a Plone Site will throw an error when
   displaying the extension profiles.

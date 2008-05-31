@@ -29,12 +29,9 @@ Check to see that atschema is available::
 
     >>> paster('addcontent --list')
     paster addcontent --list
-    Available templates:
+    ...
       atschema:     A handy AT schema builder
-      contenttype:  A content type skeleton
-      portlet:      A Plone 3 portlet
-      view:         A browser view skeleton
-      zcmlmeta:     A ZCML meta directive skeleton
+    ...
     <BLANKLINE>
     
 Now add a schema field via paster::
