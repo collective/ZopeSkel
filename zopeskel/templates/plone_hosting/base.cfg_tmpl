@@ -10,12 +10,12 @@ parts =
     varnish-build
     varnish
 #end if
+    supervisor
 find-links =
     http://dist.plone.org
     http://download.zope.org/ppix/
     http://effbot.org/downloads
 eggs =
-    elementtree
 develop =
 
 [plone]
@@ -40,7 +40,7 @@ zope2-location = \${zope2:location}
 zeo-address = 127.0.0.1:${zeo_port}
 
 [instance]
-recipe = plone.recipe.zope2instance
+recipe = plone.recipe.zope2instance >=2.0
 zope2-location = \${zope2:location}
 debug-mode = off
 verbose-security = off
@@ -51,6 +51,7 @@ http-address = 127.0.0.1:${http_port}
 eggs =
     \${buildout:eggs}
     \${plone:eggs}
+    elementtree
 zcml =
 products =
     \${buildout:directory}/products
@@ -75,3 +76,8 @@ backends = \${instance:http-address}
 bind = 127.0.0.1:${proxy_port}
 cache-size = 512M
 #end if
+
+[supervisor]
+recipe = zc.recipe.egg
+eggs = supervisor
+

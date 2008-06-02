@@ -4,6 +4,9 @@ Changelog
 Version 1.11 - unreleased
 -------------------------
 
+* Switch plone_hosting template to using supervisord to manage processes.
+  [wichert]
+
 * Reduced the number of questions to generate an atschema and used 
   the MessageFactory instead of declaring an i18n_domain attribute
   [mustapha]
