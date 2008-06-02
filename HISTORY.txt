@@ -5,6 +5,7 @@ Version 1.11 - unreleased
 -------------------------
 
 * Switch plone_hosting template to using supervisord to manage processes.
+  Merged from Jarn's bones package.
   [wichert]
 
 * Reduced the number of questions to generate an atschema and used 
