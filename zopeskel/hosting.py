@@ -81,6 +81,7 @@ class StandardHosting(templates.Template):
         return result
 
     def pre(self, command, output_dir, vars):
+        vars["output_dir"]=os.path.abspath(output_dir)
         plone=vars["plone"]
         if plone.startswith("3."):
             vars["plone_recipe"]="plone.recipe.plone"
@@ -108,7 +109,7 @@ class StandardHosting(templates.Template):
 
 
     def post(self, command, output_dir, vars):
-        output_dir=os.path.abspath(output_dir)
+        output_dir=vars["output_dir"]
         if vars["buildout"]:
             self._buildout(output_dir)
         self.show_summary(vars)
