@@ -8,6 +8,10 @@ All services are controlled using the supervisord_ process manager. Supervisord
 takes care of starting all daemons, restarting them when needed and can
 optionally provide a web interface allowing for easy remote management.
 
+To start supervisord starts its daemon ``bin/supervisord``. This will
+automatically start the ZEO server, Zope and, if enabled, Varnish. You
+start, stop and restart those via the ``bin/supervisorctl`` utility.
+
 To start all processes automatically on system boot it is necessary to
 start supervisord as part of the system boot process. This can easily
 be done by adding a crontab entry to the account used for your site::
