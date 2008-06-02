@@ -4,6 +4,11 @@ Changelog
 Version 2.1
 -----------
 
+* Revert BaseTemplate usage from the hosting template (changeset
+  57368 from Tarek). It was not used and break the buildout. This fixes
+  http://plone.org/products/zopeskel/issues/8
+  [wichert]
+
 * Replace the generic README in the plone_hosting template with documentation
   that is important for deployments. 
   [wichert]

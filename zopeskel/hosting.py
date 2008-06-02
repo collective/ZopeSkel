@@ -4,8 +4,7 @@ import socket
 import subprocess
 import sys
 
-from zopeskel.base import templates
-from zopeskel.base import BaseTemplate
+from paste.script import templates
 from zopeskel.base import BadCommand
 from zopeskel.base import var
 
@@ -18,7 +17,7 @@ plone25s = {
         "2.5"  : "http://heanet.dl.sourceforge.net/sourceforge/plone/Plone-2.5.tar.gz",
         }
 
-class StandardHosting(BaseTemplate):
+class StandardHosting(templates.Template):
     _template_dir = "templates/plone_hosting"
     use_cheetah = True
     summary = "Plone hosting: buildout with ZEO and any Plone version"
@@ -58,7 +57,7 @@ class StandardHosting(BaseTemplate):
 
 
     def check_vars(self, vars, cmd):
-        result=templates.Template.check_vars(self, vars, cmd)
+        result=super(StandardHosting, self).check_vars(vars, cmd)
 
         try:
             base_port=int(vars["base_port"])
