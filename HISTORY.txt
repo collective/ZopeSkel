@@ -4,6 +4,10 @@ Changelog
 Version 2.1
 -----------
 
+* Replace the generic README in the plone_hosting template with documentation
+  that is important for deployments. 
+  [wichert]
+
 * Add log rotation support to the hosting buildout. Merged from Jarn's
   bones package.
   [wichert]
