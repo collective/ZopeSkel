@@ -110,7 +110,6 @@ class StandardHosting(BaseTemplate):
 
     def post(self, command, output_dir, vars):
         output_dir=os.path.abspath(output_dir)
-        os.chmod(os.path.join(output_dir, "bin", "control"), 0755)
         if vars["buildout"]:
             self._buildout(output_dir)
         self.show_summary(vars)
