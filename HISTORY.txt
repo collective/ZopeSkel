@@ -9,7 +9,7 @@ Version 2.1
 -----------
 
 * Revert BaseTemplate usage from the hosting template (changeset
-  57368 from Tarek). It was not used and break the buildout. This fixes
+  57368 from Tarek). It was not used and broke the buildout. This fixes
   http://plone.org/products/zopeskel/issues/8
   [wichert]
 
