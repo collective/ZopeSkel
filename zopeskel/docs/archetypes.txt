@@ -21,6 +21,7 @@ Let's check the content::
     >>> package_dir = os.path.join(tempdir, 'plone.example', 
     ...                            'plone', 'ploneexample')
     >>> ls(package_dir)
+    README.txt
     __init__.py
     browser
     config.py
