@@ -4,6 +4,8 @@ Changelog
 Version 2.2
 -----------
 
+* Add supervisorctl configuration.
+  [wichert]
 
 Version 2.1
 -----------

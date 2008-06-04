@@ -2,6 +2,12 @@
 file=%(here)s/../var/supervisor.sock
 chmod=0600
 
+[supervisorctl]
+serverurl=unix://%(here)s/../var/supervisor.sock
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory=supervisor.rpcinterface:make_main_rpcinterface
+
 [supervisord]
 logfile=%(here)s/../var/log/supervisord.log
 logfile_maxbytes=5MB
