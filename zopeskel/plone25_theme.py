@@ -4,6 +4,7 @@ import os
 from zopeskel.plone import Plone
 from zopeskel.plone2_theme import theme_vars
 from zopeskel.base import get_var
+from zopeskel.plone2_theme import cleanupStylsheets
 
 class Plone25Theme(Plone):
     _template_dir = 'templates/plone2.5_theme'
@@ -27,9 +28,11 @@ class Plone25Theme(Plone):
             # A title is needed in profiles.zcml otherwise adding a
             # Plone Site will throw an error when displaying the
             # extension profiles.
-            vars['skinname'] = 'Custom Plone 2.5 skin'
+            vars['skinname'] = 'Custom Theme'
+        super(Plone25Theme, self).pre(command, output_dir, vars)
 
     def post(self, command, output_dir, vars):
-        np, p = vars['namespace_package'], vars['package']
-        sdir = os.path.join(output_dir, np, p, 'skins')
-
+        if str(vars['empty_styles']) == 'False':
+            np, p = vars['namespace_package'], vars['package']
+            cleanupStylsheets(os.path.join(output_dir, np, p, 'skins'))
+        super(Plone25Theme, self).post(command, output_dir, vars)

@@ -18,5 +18,3 @@ class Plone3Theme(Plone25Theme):
     def pre(self, command, output_dir, vars):
         vars['timestamp'] = datetime.date.today().strftime("%Y%m%d")
         super(Plone3Theme, self).pre(command, output_dir, vars)
-
-

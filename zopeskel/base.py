@@ -42,12 +42,3 @@ class BaseTemplate(templates.Template):
         templates.Template.run(self, command, output_dir, vars)
         open(os.path.join(output_dir, 'zopeskel.txt'),
              'w').write(self.name)
-
-def cleanupStylsheets(dirpath, filenames):
-    for prefix in ('base', 'generated', 'portlets', 'public'):
-        filename = prefix + '.css.dtml'
-        if filename in filenames:
-            print "Removing %s from %s%s" %(filename, dirpath, os.sep)
-            os.remove(os.path.join(dirpath, filename))
-
-

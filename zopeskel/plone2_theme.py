@@ -6,6 +6,20 @@ from zopeskel.base import get_var
 from zopeskel.base import var
 from zopeskel.base import BasicPackage
 
+TARGET_STYLESHEETS = (
+    'base.css.dtml',
+    'generated.css.dtml',
+    'portlets.css.dtml',
+    'public.css.dtml'
+    )
+
+def cleanupStylsheets(skinsdir, targets=TARGET_STYLESHEETS):
+    for dirpath, dirnames, filenames in os.walk(skinsdir):
+        for target in [t for t in targets if t in filenames]:
+            print "Removing %s from %s%s" %(target, dirpath, os.sep)
+            os.remove(os.path.join(dirpath, target))
+
+
 theme_vars = [
     var('skinname',
         "The skin selection to be added to 'portal_skins' (like 'My Theme')"),
@@ -34,11 +48,13 @@ class Plone2Theme(BaseTemplate):
     get_var(vars, 'keywords').default = 'web zope plone theme'
     vars = theme_vars + vars[:3] + vars[4:6]
 
+    def pre(self, command, output_dir, vars):
+        if vars['skinname'] == '':
+            # It is always good to have a name for the skin.
+            vars['skinname'] = 'Custom Skin'
+        super(Plone2Theme, self).pre(command, output_dir, vars)
+
     def post(self, command, output_dir, vars):
         if str(vars['empty_styles']) == 'False':
-            skinsdir = os.path.join(output_dir, 'skins')
-            for dirpath, dirnames, filenames in os.walk(skinsdir):
-                cleanupStylsheets(dirpath, filenames)
-
-
-
+            cleanupStylsheets(os.path.join(output_dir, 'skins'))
+        super(Plone2Theme, self).post(command, output_dir, vars)
