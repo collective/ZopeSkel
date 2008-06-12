@@ -4,6 +4,9 @@ Changelog
 Version 2.2
 -----------
 
+* Remove useless spans from the portlet template.
+  [wichert]
+
 * Add supervisorctl configuration.
   [wichert]
 
