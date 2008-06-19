@@ -13,11 +13,6 @@ version = ${repr($version) or "0.0.0"}
 long_description = (
     read('README.txt')
     + '\n' +
-    'Change history\n'
-    '**************\n'
-    + '\n' + 
-    read('CHANGES.txt')
-    + '\n' +
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
@@ -28,7 +23,12 @@ long_description = (
     + '\n' +
     read('CONTRIBUTORS.txt')
     + '\n' +
-    'Download\n'
+    'Change history\n'
+    '**************\n'
+    + '\n' + 
+    read('CHANGES.txt')
+    + '\n' +
+   'Download\n'
     '********\n'
     )
 entry_point = '$namespace_package.$namespace_package2.${package}:Recipe'
