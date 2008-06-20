@@ -1,4 +1,5 @@
 import os
+import ConfigParser
 from paste.script import templates
 from paste.script.command import BadCommand
 from paste.script.templates import BasicPackage
@@ -28,17 +29,41 @@ def get_var(vars, name):
     else:
         raise ValueError("No such var: %r" % name)
 
+
+def update_setup_cfg(path, section, option, value):
+    
+    parser = ConfigParser.ConfigParser()
+    if os.path.exists(path):
+        parser.read(path)
+
+    if not parser.has_section(section):
+        parser.add_section(section)
+        parser.set(section, option, value)
+        parser.write(open(path, 'w'))
+
+
 class BaseTemplate(templates.Template):
     """Base template for all ZopeSkel templates"""
 
-    #make all ZopeSkel templates localcommand ready
-    egg_plugins = ['ZopeSkel']
+    #a zopeskel template has to set this to True if it wants to use 
+    #localcommand
+    use_local_commands = False
 
-    #this is just to be able to write a zopeskel.txt file containing
-    #the name of the parent template. it will be used by addcontent command
-    #to list the apropriate subtemplates for the generated project.
-    #the post method is not a candidate because many templates override it
+    #this is just to be able to add ZopeSkel to the list of paster_plugins if
+    #the use_local_commands is set to true and to write a zopeskel section in 
+    #setup.cfg file containing the name of the parent template. 
+    #it will be used by addcontent command to list the apropriate subtemplates 
+    #for the generated project. the post method is not a candidate because 
+    #many templates override it
     def run(self, command, output_dir, vars):
+
+        if self.use_local_commands and 'ZopeSkel' not in self.egg_plugins:
+            self.egg_plugins.append('ZopeSkel')
+
         templates.Template.run(self, command, output_dir, vars)
-        open(os.path.join(output_dir, 'zopeskel.txt'),
-             'w').write(self.name)
+
+        setup_cfg = os.path.join(output_dir, 'setup.cfg')
+        if self.use_local_commands:
+            update_setup_cfg(setup_cfg, 'zopeskel', 'template', self.name)
+                 
+

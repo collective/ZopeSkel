@@ -5,6 +5,7 @@
 
 import os
 import subprocess
+import ConfigParser
 import pkg_resources
 from paste.script import command, pluginlib
 from paste.script import templates
@@ -129,9 +130,16 @@ class ZopeSkelLocalCommand(command.Command):
         parent_template = None
 
         egg_info_dir = pluginlib.find_egg_info_dir(os.getcwd())
-        zopeskel_txt = os.path.join(os.path.dirname(egg_info_dir), 'zopeskel.txt')
-        if os.path.exists(zopeskel_txt):
-            parent_template = open(zopeskel_txt).read() or None
+        setup_cfg = os.path.join(os.path.dirname(egg_info_dir), 'setup.cfg')
+
+        parent_template = None
+        if os.path.exists(setup_cfg):
+            parser = ConfigParser.ConfigParser()
+            parser.read(setup_cfg)
+            try:
+                parent_template = parser.get('zopeskel', 'template') or None
+            except:
+                pass
 
         for entry in self._all_entry_points():
             try:
@@ -153,10 +161,14 @@ class ZopeSkelLocalCommand(command.Command):
 
         max_name = max([len(t.name) for t in templates])
         templates.sort(lambda a, b: cmp(a.name, b.name))
+ 
         for template in templates:
             _marker = " "
-            if not parent_template is None and parent_template not in template.parent_templates:
-                _marker = "N"
+            if not template.parent_templates:
+               _marker = '?'
+            elif parent_template not in template.parent_templates:
+               _marker = 'N'
+
             # @@: Wrap description
             print '  %s %s:%s  %s' % (
                 _marker,
@@ -211,7 +223,8 @@ class ZopeSkelLocalTemplate(templates.Template):
     """
 
     marker_name = "extra stuff goes here"
-    parent_templates = None
+    #list of templates this subtemplate is related to
+    parent_templates = []
 
     def run(self, command, output_dir, vars):
         """

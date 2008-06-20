@@ -4,8 +4,17 @@ Changelog
 Version 2.3
 -----------
 
+* Added ``use_local_commands`` attribute (a la use_cheetah). A zopeskel
+  template that wants to use local commands has to set it to True 
+  [mustapha]
 
+* Get rid of zopeskel.txt and use setup.cfg to store the parent template name
+  [mustapha]
 
+* Sub-templates may define a parent_template attribute with the list of 
+  templates that can use it
+
+* Fixed tests and  updated docs [mustapha]
 
 Version 2.2
 -----------

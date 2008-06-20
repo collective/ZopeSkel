@@ -10,12 +10,13 @@ Check that the `addcontent` command is not globaly available::
     >>> help_text.find('addcontent') == -1
     True
 
-`addcontent` is active for all ZopeSkel templates that inherit from
-BaseTemplate except those which are not eggs (ie: plone3_buildout).
-Let's for example take the basic_namespace template::
+`addcontent` is active for all ZopeSkel templates that have ``use_local_commands``
+attribute set to true.
 
-    >>> paster('create -t basic_namespace plone.example --no-interactive')
-    paster create -t basic_namespace plone.example --no-interactive
+Let's for example take the archetype template::
+
+    >>> paster('create -t archetype plone.example --no-interactive')
+    paster create -t archetype plone.example --no-interactive
     ...
     >>> p_dir = os.path.join(tempdir, 'plone.example')
     >>> cd(p_dir)
@@ -33,7 +34,11 @@ Let's see what sub-templates are avaiblable for this kind of projects::
     >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
-        No template
+        atschema:     A handy AT schema builder
+        contenttype:  A content type skeleton
+        portlet:      A Plone 3 portlet
+        view:         A browser view skeleton
+        zcmlmeta:     A ZCML meta directive skeleton
     <BLANKLINE>
 
 OK for the basic_namespace based project there is no sub-template available.

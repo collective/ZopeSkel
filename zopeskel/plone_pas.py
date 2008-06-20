@@ -8,6 +8,7 @@ class PlonePas(NestedNamespace):
     summary = "A Plone PAS project"
     required_templates = ['nested_namespace']
     use_cheetah = True
+    use_local_commands = True
 
     vars = copy.deepcopy(NestedNamespace.vars)
     get_var(vars, 'namespace_package2').default = 'pas'

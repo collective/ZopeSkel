@@ -81,14 +81,49 @@ and check the available commands::
 You get a new section called ``ZopeSkel local commands`` with one command
 called ``addcontent``. This new section is only available if paster detects
 that your project is ``addcontent`` aware (more about this later) .
-To see the list of available templates from this command::
 
-  myproject$ paster addcontent --list
+To see the list of available templates for a zopeskel template, create 
+a project based on that template and run ``paster addcontent -l``::
+
+  $ paster create -t archetype myproject
+  $ cd myproject
+  myproject$ paster addcontent -l
   Available templates:
-    contenttype:  A content type skeleton
-    portlet:      A Plone 3 portlet
-    view:         A browser view skeleton
-    zcmlmeta:     A ZCML meta directive skeleton
+      atschema:     A handy AT schema builder
+      contenttype:  A content type skeleton
+      portlet:      A Plone 3 portlet
+      view:         A browser view skeleton
+      zcmlmeta:     A ZCML meta directive skeleton
+
+You get only the templates related to the type of your project. If you want
+to see all templates even those that are not related to the type of your 
+project::
+
+  myproject$ paster addcontent -a
+  Available templates:
+    N anonymous_user_factory_plugin:  A Plone PAS AnonymousUserFactory Plugin
+      atschema:                       A handy AT schema builder
+    N authentication_plugin:          A Plone PAS Authentication Plugin
+    N challenge_plugin:               A Plone PAS Challenge Plugin
+      contenttype:                    A content type skeleton
+    N credentials_reset_plugin:       A Plone PAS CredentialsReset Plugin
+    N extraction_plugin:              A Plone PAS Extraction Plugin
+    N group_enumeration_plugin:       A Plone PAS GroupEnumeration Plugin
+    N groups_plugin:                  A Plone PAS Groups Plugin
+      portlet:                        A Plone 3 portlet
+    N properties_plugin:              A Plone PAS Properties Plugin
+    N role_assigner_plugin:           A Plone PAS RoleAssigner Plugin
+    N role_enumeration_plugin:        A Plone PAS RoleEnumeration Plugin
+    N roles_plugin:                   A Plone PAS Roles Plugin
+    N update_plugin:                  A Plone PAS Update Plugin
+    N user_adder_plugin:              A Plone PAS UserAdder Plugin
+    N user_enumeration_plugin:        A Plone PAS UserEnumeration Plugin
+    N user_factory_plugin:            A Plone PAS UserFactory Plugin
+    N validation_plugin:              A Plone PAS Validation Plugin
+      view:                           A browser view skeleton
+      zcmlmeta:                       A ZCML meta directive skeleton
+
+``N`` means: not related to the type of your project.
 
 To add a portlet to your project, run the following command from anywhere
 inside your project (you don't need to be in the project's root folder)::
@@ -201,6 +236,7 @@ Now, take a look to the python part. Here is the Portlet class::
       _template_dir = 'templates/portlet'
       summary = "A Plone 3 portlet"
       use_cheetah = True
+      parent_templates = ['archetype']
 
       vars = []
       vars.append(var('portlet_name',
@@ -225,15 +261,20 @@ Now, take a look to the python part. Here is the Portlet class::
 
         vars['dotted_name'] = "%s.portlets" % vars['package_dotted_name']
 
-Three things to say here:
+Notes:
 
 1. Your template class has to inherit from ``ZopeSkelLocalTemplate``
 
-2. You get the package_namespace, package_namespace2, package and
+2. You template class may define a ``parent_templates`` attribute with
+   the list of zopeskel templates that can use this sub-template. This
+   attribute will be used for selection when you run ``addcontent -l``
+   or ``addcontent -a``
+
+3. You get the package_namespace, package_namespace2, package and
    package_dotted_name of the parent package for free in the vars argument
    of the "pre" method.
 
-3. The ZopeSkelLocalTemplate class defines an attribute named ``marker_name``
+4. The ZopeSkelLocalTemplate class defines an attribute named ``marker_name``
    like this::
 
      marker_name = "extra stuff goes here"
@@ -270,14 +311,20 @@ Enable ``addcontent`` in other ZopeSkel templates
 -------------------------------------------------
 
 To enable ``addcontent`` command in your current project add a line with
-``ZopeSkel`` to your ``paster_plugins.txt`` file of your egg-info folder.
+``ZopeSkel`` to your ``paster_plugins.txt`` file of your egg-info directory
+and edit your setup.cfg file and add a new section called ``zopeskel`` with
+a ``template`` option containing the name of the template you used to generate
+your current projet::
 
-For the moment the ``addcontent`` command is only enabled for ZopeSkel's
-archetype template. You can enable ``addcontent`` command for other ZopeSkel
-templates by addinng an ``egg_plugins`` attribute to the template class
-like this::
+    [zopeskel]
+    template = archetype
 
-    egg_plugins = ['ZopeSkel']
+For the moment the ``addcontent`` command is only enabled for the archetype 
+and plone_pas templates. You can enable ``addcontent`` command for other 
+ZopeSkel templates by addinng a ``use_local_commands`` attribute to the 
+template class and set it to 'True'::
+
+    use_local_commands = True
 
 
 /Mustapha

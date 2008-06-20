@@ -8,6 +8,7 @@ class Archetype(Plone):
     summary = 'A Plone project that uses Archetypes'
     required_templates = ['plone']
     use_cheetah = True
+    use_local_commands = True
 
     vars = copy.deepcopy(Plone.vars)
     vars.insert(0, var('title',
