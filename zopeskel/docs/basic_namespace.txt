@@ -1,13 +1,10 @@
 ========================
 basic_namespace template
-=======================
-
-Check that the directory does not exist::
-
-    >>> rmdir(tempdir, 'plone.example')
+========================
 
 Go to a directory::
 
+    >>> tempdir = get_tempdir()
     >>> cd(tempdir)
 
 Then use paster::

@@ -4,7 +4,7 @@ atschema builder
 
 Build an archetype from scratch, and use paster to add a contenttype::
 
-    >>> rmdir(tempdir, 'plone.example')
+    >>> tempdir = get_tempdir()
     >>> cd(tempdir)
     >>> paster('create -t archetype plone.example --no-interactive')
     paster create -t archetype plone.example --no-interactive

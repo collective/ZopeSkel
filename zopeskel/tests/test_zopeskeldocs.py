@@ -79,9 +79,20 @@ def touch(*args, **kwargs):
 
 execdir = os.path.abspath(os.path.dirname(sys.executable))
 
-tempdir = tempfile.gettempdir()
 
-def doc_suite(test_dir, setUp=None, tearDown=None, globs=None):
+temp_dirs = []
+
+def get_tempdir():
+    tmp_dir = tempfile.mkdtemp()
+    temp_dirs.append(tmp_dir)
+    return tmp_dir
+
+def tearDown(context):
+    for dir_ in temp_dirs:
+        shutil.rmtree(dir_, ignore_errors=True)
+    temp_dirs[:] = []
+
+def doc_suite(test_dir, setUp=None, tearDown=tearDown, globs=None):
     """Returns a test suite, based on doctests found in /doctest."""
     suite = []
     if globs is None:

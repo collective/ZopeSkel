@@ -1,7 +1,7 @@
 Local commands:
 ==============
 
-    >>> rmdir(tempdir, 'plone.example')
+    >>> tempdir = get_tempdir()
     >>> cd(tempdir)
 
 Check that the `addcontent` command is not globaly available::
