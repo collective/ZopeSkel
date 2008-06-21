@@ -4,6 +4,12 @@ Changelog
 Version 2.3
 -----------
 
+* Modified buildout.cf to test only zopeskel [mustapha]
+
+* fixed the paster test function: overwrite option should default to True for
+  the create command 
+  [mustapha]
+
 * Added ``use_local_commands`` attribute (a la use_cheetah). A zopeskel
   template that wants to use local commands has to set it to True 
   [mustapha]
