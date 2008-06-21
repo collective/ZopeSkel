@@ -24,6 +24,11 @@ def rmdir(*args):
 def paster(cmd):
     print "paster %s" % cmd
     from paste.script import command
+    #the overwite option for the create command defaults to True
+    #but in the paste.script.command it defaults to False.
+    #so we fixe it here
+    if 'create' in cmd:
+        cmd += " --overwrite=True"
     args = cmd.split()
     options, args = command.parser.parse_args(args)
     options.base_parser = command.parser
