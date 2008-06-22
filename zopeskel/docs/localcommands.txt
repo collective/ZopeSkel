@@ -1,9 +1,6 @@
 Local commands:
 ==============
 
-    >>> tempdir = get_tempdir()
-    >>> cd(tempdir)
-
 Check that the `addcontent` command is not globaly available::
 
     >>> help_text = read_sh('paster help')
@@ -18,39 +15,7 @@ Let's for example take the archetype template::
     >>> paster('create -t archetype plone.example --no-interactive')
     paster create -t archetype plone.example --no-interactive
     ...
-    >>> p_dir = os.path.join(tempdir, 'plone.example')
-    >>> cd(p_dir)
-    >>> paster('help')
-    paster help
-    ...
-    <BLANKLINE>
-    ZopeSkel local commands:
-      addcontent   Adds plone content types to your project
-    <BLANKLINE>
-    <BLANKLINE>
-
-Let's see what sub-templates are avaiblable for this kind of projects::
-
-    >>> paster('addcontent --list')
-    paster addcontent --list
-    Available templates:
-        atschema:     A handy AT schema builder
-        contenttype:  A content type skeleton
-        portlet:      A Plone 3 portlet
-        view:         A browser view skeleton
-        zcmlmeta:     A ZCML meta directive skeleton
-    <BLANKLINE>
-
-OK for the basic_namespace based project there is no sub-template available.
-Let's create an archetype project::
-
-    >>> rmdir(tempdir, 'plone.example')
-    >>> cd(tempdir)
-    >>> paster('create -t archetype plone.example --no-interactive')
-    paster create -t archetype plone.example --no-interactive
-    ...
-    >>> p_dir = os.path.join(tempdir, 'plone.example')
-    >>> cd(p_dir)
+    >>> cd('plone.example')
     >>> paster('help')
     paster help
     ...
@@ -80,12 +45,12 @@ Now we can add a portlet to our project::
 
 Test if we have the new files::
 
-    >>> ls(p_dir, 'plone', 'ploneexample', 'portlets')
+    >>> ls('plone', 'ploneexample', 'portlets')
     __init__.py
     configure.zcml
     exampleportlet.pt
     exampleportlet.py
-    >>> ls(p_dir, 'plone', 'ploneexample', 'tests')
+    >>> ls('plone', 'ploneexample', 'tests')
     __init__.py
     base_exampleportlet.py
     doc_tests.py
@@ -93,7 +58,7 @@ Test if we have the new files::
 
 Check that the existing files like profile/portlets are updated::
 
-    >>> cat(p_dir, 'plone', 'ploneexample', 'profiles', 'default', 'portlets.xml')
+    >>> cat('plone', 'ploneexample', 'profiles', 'default', 'portlets.xml')
     <?xml version="1.0"?>
     ...
        <portlet

@@ -4,19 +4,16 @@ atschema builder
 
 Build an archetype from scratch, and use paster to add a contenttype::
 
-    >>> tempdir = get_tempdir()
-    >>> cd(tempdir)
-    >>> paster('create -t archetype plone.example1 --no-interactive')
-    paster create -t archetype plone.example1 --no-interactive
+    >>> paster('create -t archetype plone.example --no-interactive')
+    paster create -t archetype plone.example --no-interactive
     ...
-    >>> cd('plone.example1')
+    >>> cd('plone.example')
     >>> paster('addcontent contenttype --no-interactive') # doctest: +ELLIPSIS
     paster addcontent contenttype --no-interactive
     ...
           Inserting from types.xml_insert into...
     ...
-    >>> content_dir = os.path.join(tempdir, 'plone.example1', 
-    ...                            'plone', 'ploneexample1', 'content')
+    >>> content_dir = os.path.join('plone', 'ploneexample', 'content')
     
 Check for the file::
 
@@ -36,13 +33,12 @@ Check to see that atschema is available::
     
 Now add a schema field via paster::
 
-	>>> paster('addcontent atschema --no-interactive')
-	paster addcontent atschema --no-interactive
-	...
+    >>> paster('addcontent atschema --no-interactive')
+    paster addcontent atschema --no-interactive
+    ...
 	
 Check that the schema was inserted::
 
-    >>> cd(content_dir)
     >>> print open(os.path.join(content_dir, 'exampletype.py')).read()
     """Definition of the Example Type content type
     """
@@ -52,4 +48,3 @@ Check that the schema was inserted::
     atapi.registerType(ExampleType, PROJECTNAME)
     <BLANKLINE>
 
-	

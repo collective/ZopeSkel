@@ -21,6 +21,7 @@ def rmdir(*args):
     if os.path.isdir(dirname):
         shutil.rmtree(dirname)
 
+
 def paster(cmd):
     print "paster %s" % cmd
     from paste.script import command
@@ -28,7 +29,7 @@ def paster(cmd):
     #but in the paste.script.command it defaults to False.
     #so we fixe it here
     if 'create' in cmd:
-        cmd += " --overwrite=True"
+        cmd += " --overwrite=1"
     args = cmd.split()
     options, args = command.parser.parse_args(args)
     options.base_parser = command.parser
@@ -42,12 +43,14 @@ def paster(cmd):
     runner = command(command_name)
     runner.run(args[1:])
 
+
 def read_sh(cmd):
     _cmd = cmd
     old = sys.stdout 
     child_stdout_and_stderr, child_stdin = popen2.popen4(_cmd)
     child_stdin.close()
     return child_stdout_and_stderr.read()
+
 
 def ls(*args):
     dirname = os.path.join(*args)
@@ -58,6 +61,7 @@ def ls(*args):
     else:
         print 'No directory named %s' % dirname
 
+
 def cd(*args):
     dirname = os.path.join(*args)
     os.chdir(dirname)
@@ -66,6 +70,7 @@ def cd(*args):
 def config(filename):
     return os.path.join(current_dir, filename)
 
+
 def cat(*args):
     filename = os.path.join(*args)
     if os.path.isfile(filename):
@@ -73,26 +78,44 @@ def cat(*args):
     else:
         print 'No file named %s' % filename
 
+
 def touch(*args, **kwargs):
     filename = os.path.join(*args)
     open(filename, 'w').write(kwargs.get('data',''))
 
-execdir = os.path.abspath(os.path.dirname(sys.executable))
+
+class ZopeSkelLayer:
+
+    temp_dir = None
+
+    @classmethod
+    def testSetUp(self):
+        self.temp_dir = tempfile.mkdtemp()
+        cd(self.temp_dir)
+      
+    @classmethod
+    def testTearDown(self):
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
+        self.temp_dir = None
+
+        from pkg_resources import working_set as ws
+        #cleanup entries in the working set
+        for k, v in ws.by_key.items():
+            if not os.path.exists(v.location):
+                del ws.by_key[k]
+
+        for i in reversed(range(len(ws.entries))):
+            if not os.path.exists(ws.entries[i]):
+                del ws.entries[i]
+
+        sys.path = ws.entries[:]
+        #clean up egg_plugins attribute to get rid of PasteScript warnings
+        #this happens only in tests :(
+        from zopeskel.base import BaseTemplate
+        BaseTemplate.egg_plugins = []
 
 
-temp_dirs = []
-
-def get_tempdir():
-    tmp_dir = tempfile.mkdtemp()
-    temp_dirs.append(tmp_dir)
-    return tmp_dir
-
-def tearDown(context):
-    for dir_ in temp_dirs:
-        shutil.rmtree(dir_, ignore_errors=True)
-    temp_dirs[:] = []
-
-def doc_suite(test_dir, setUp=None, tearDown=tearDown, globs=None):
+def doc_suite(test_dir, setUp=None, tearDown=None, globs=None):
     """Returns a test suite, based on doctests found in /doctest."""
     suite = []
     if globs is None:
@@ -121,7 +144,9 @@ def doc_suite(test_dir, setUp=None, tearDown=tearDown, globs=None):
 
 def test_suite():
     """returns the test suite"""
-    return doc_suite(current_dir)
+    suite = doc_suite(current_dir)
+    suite.layer = ZopeSkelLayer
+    return suite
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')

@@ -56,7 +56,7 @@ class BaseTemplate(templates.Template):
     #for the generated project. the post method is not a candidate because 
     #many templates override it
     def run(self, command, output_dir, vars):
-
+        
         if self.use_local_commands and 'ZopeSkel' not in self.egg_plugins:
             self.egg_plugins.append('ZopeSkel')
 

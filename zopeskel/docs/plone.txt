@@ -2,12 +2,7 @@
 plone template
 ==============
 
-Go to a directory::
-
-    >>> tempdir = get_tempdir()
-    >>> cd(tempdir)
-
-Then use paster::
+Use paster::
 
     >>> paster('create -t plone plone.example --no-interactive')
     paster create -t plone plone.example --no-interactive
@@ -15,7 +10,7 @@ Then use paster::
 
 Let's check the content::
 
-    >>> package_dir = os.path.join(tempdir, 'plone.example', 
+    >>> package_dir = os.path.join('plone.example', 
     ...                            'plone', 'ploneexample')
     >>> ls(package_dir)
     __init__.py

@@ -2,12 +2,7 @@
 recipe template
 ===============
 
-Go to a directory::
-
-    >>> tempdir = get_tempdir()
-    >>> cd(tempdir)
-
-Then use paster::
+Use paster::
 
     >>> paster('create -t recipe plone.recipe.example --no-interactive')
     paster create -t recipe plone.recipe.example --no-interactive
@@ -15,7 +10,7 @@ Then use paster::
 
 Let's check the content::
 
-    >>> package_dir = os.path.join(tempdir, 'plone.recipe.example', 
+    >>> package_dir = os.path.join('plone.recipe.example', 
     ...                            'plone', 'recipe', 'plonerecipeexample')
     >>> ls(package_dir)
     README.txt
@@ -49,7 +44,7 @@ Let's check how the recipe looks like::
 
 Now let's try to run the recipe own tests::
 
-    >>> recipe_dir = os.path.join(tempdir, 'plone.recipe.example')
+    >>> recipe_dir = 'plone.recipe.example'
     >>> cd(recipe_dir)
     >>> import sys
     >>> python_ = sys.executable
