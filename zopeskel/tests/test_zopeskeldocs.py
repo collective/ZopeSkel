@@ -109,10 +109,6 @@ class ZopeSkelLayer:
                 del ws.entries[i]
 
         sys.path = ws.entries[:]
-        #clean up egg_plugins attribute to get rid of PasteScript warnings
-        #this happens only in tests :(
-        from zopeskel.base import BaseTemplate
-        BaseTemplate.egg_plugins = []
 
 
 def doc_suite(test_dir, setUp=None, tearDown=None, globs=None):
