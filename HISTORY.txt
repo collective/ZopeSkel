@@ -4,6 +4,14 @@ Changelog
 Version 2.3
 -----------
 
+* Added ZopeSkel test layer with the apropriate testSetup and testTearDown.
+  The steps in the top of each test file is not anymore needed: delete 
+  tempdir/plone.example and then cd to tempdir.
+  [mustapha]
+
+* The zope2product option in the archetype template should defaults to true
+  [mustapha]
+
 * Modified buildout.cf to test only zopeskel [mustapha]
 
 * fixed the paster test function: overwrite option should default to True for
