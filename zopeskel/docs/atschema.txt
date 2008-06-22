@@ -6,17 +6,17 @@ Build an archetype from scratch, and use paster to add a contenttype::
 
     >>> tempdir = get_tempdir()
     >>> cd(tempdir)
-    >>> paster('create -t archetype plone.example --no-interactive')
-    paster create -t archetype plone.example --no-interactive
+    >>> paster('create -t archetype plone.example1 --no-interactive')
+    paster create -t archetype plone.example1 --no-interactive
     ...
-    >>> cd('plone.example')
+    >>> cd('plone.example1')
     >>> paster('addcontent contenttype --no-interactive') # doctest: +ELLIPSIS
     paster addcontent contenttype --no-interactive
     ...
           Inserting from types.xml_insert into...
     ...
-    >>> content_dir = os.path.join(tempdir, 'plone.example', 
-    ...                            'plone', 'ploneexample', 'content')
+    >>> content_dir = os.path.join(tempdir, 'plone.example1', 
+    ...                            'plone', 'ploneexample1', 'content')
     
 Check for the file::
 
