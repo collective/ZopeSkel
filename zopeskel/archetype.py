@@ -1,6 +1,7 @@
 import copy
 
 from zopeskel.plone import Plone
+from zopeskel.base import get_var
 from zopeskel.base import var
 
 class Archetype(Plone):
@@ -15,5 +16,6 @@ class Archetype(Plone):
                        'The title of the project',
                        default='Plone Example'))
 
-
+    #zope2product should always defaults to True
+    get_var(vars, 'zope2product').default = True
 
