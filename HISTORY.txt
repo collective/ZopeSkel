@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 2.3
+Version 2.3 (unreleased)
 -----------
 
 * Added ZopeSkel test layer with the apropriate testSetup and testTearDown.
@@ -9,26 +9,29 @@ Version 2.3
   tempdir/plone.example and then cd to tempdir.
   [mustapha]
 
-* The zope2product option in the archetype template should defaults to true
+* The zope2product option in the archetype template should defaults to true.
   [mustapha]
 
-* Modified buildout.cf to test only zopeskel [mustapha]
+* Modified buildout.cf to test only zopeskel.
+  [mustapha]
 
 * fixed the paster test function: overwrite option should default to True for
-  the create command 
+  the create command .
   [mustapha]
 
 * Added ``use_local_commands`` attribute (a la use_cheetah). A zopeskel
-  template that wants to use local commands has to set it to True 
+  template that wants to use local commands has to set it to True .
   [mustapha]
 
-* Get rid of zopeskel.txt and use setup.cfg to store the parent template name
+* Get rid of zopeskel.txt and use setup.cfg to store the parent template name.
   [mustapha]
 
 * Sub-templates may define a parent_template attribute with the list of 
-  templates that can use it
+  templates that can use it.
+  [mustapha]
 
-* Fixed tests and  updated docs [mustapha]
+* Fixed tests and updated docs.
+  [mustapha]
 
 Version 2.2
 -----------
