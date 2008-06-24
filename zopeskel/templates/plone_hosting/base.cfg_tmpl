@@ -6,7 +6,7 @@ parts =
     zeo
     instance
     zopepy
-#if $proxy_port
+#if $proxy
     varnish-build
     varnish
 #end if
@@ -65,7 +65,7 @@ interpreter = zopepy
 extra-paths = \${zope2:location}/lib/python
 scripts = zopepy
 
-#if $proxy_port
+#if $proxy
 [varnish-build]
 recipe = plone.recipe.varnish:build
 url = http://puzzle.dl.sourceforge.net/sourceforge/varnish/varnish-1.1.2.tar.gz

@@ -4,6 +4,10 @@ Changelog
 Version 2.3 (unreleased)
 -----------
 
+* Fix problem in the hosting template: varnish was always enabled
+  even if not desired.
+  [wichert]
+
 * Added ZopeSkel test layer with the apropriate testSetup and testTearDown.
   The steps in the top of each test file is not anymore needed: delete 
   tempdir/plone.example and then cd to tempdir.
