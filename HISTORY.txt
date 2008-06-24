@@ -1,34 +1,46 @@
 Changelog
 =========
 
-Version 2.3
------------
+2.4 - Unreleased
+----------------
+
+
+
+2.3 - June 24, 2008
+-------------------
+
+* Fix problem in the hosting template: varnish was always enabled
+  even if not desired.
+  [wichert]
 
 * Added ZopeSkel test layer with the apropriate testSetup and testTearDown.
   The steps in the top of each test file is not anymore needed: delete 
   tempdir/plone.example and then cd to tempdir.
   [mustapha]
 
-* The zope2product option in the archetype template should defaults to true
+* Make the zope2product option in the archetype template default to true.
   [mustapha]
 
-* Modified buildout.cf to test only zopeskel [mustapha]
+* Modified buildout.cf to only test zopeskel.
+  [mustapha]
 
-* fixed the paster test function: overwrite option should default to True for
-  the create command 
+* Fixed the paster test function: overwrite option should default to True for
+  the create command.
   [mustapha]
 
 * Added ``use_local_commands`` attribute (a la use_cheetah). A zopeskel
-  template that wants to use local commands has to set it to True 
+  template that wants to use local commands has to set it to True .
   [mustapha]
 
-* Get rid of zopeskel.txt and use setup.cfg to store the parent template name
+* Get rid of zopeskel.txt and use setup.cfg to store the parent template name.
   [mustapha]
 
 * Sub-templates may define a parent_template attribute with the list of 
-  templates that can use it
+  templates that can use it.
+  [mustapha]
 
-* Fixed tests and  updated docs [mustapha]
+* Fixed tests and updated docs.
+  [mustapha]
 
 Version 2.2
 -----------
