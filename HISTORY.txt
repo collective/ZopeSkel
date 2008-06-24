@@ -1,8 +1,13 @@
 Changelog
 =========
 
-Version 2.3 (unreleased)
------------
+2.4 - Unreleased
+----------------
+
+
+
+2.3 - June 24, 2008
+-------------------
 
 * Fix problem in the hosting template: varnish was always enabled
   even if not desired.
