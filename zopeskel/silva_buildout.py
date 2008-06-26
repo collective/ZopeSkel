@@ -32,7 +32,7 @@ class SilvaBuildout(BaseTemplate):
             'Should verbose security be "on" or "off"?',
             default='off'),
         var('silva_layout',
-            'Include the new Silva Layout (filesystem based layout), "yes" or "no"?',
+            'Include the new Silva Layout (filesystem based layout, only for Silva stable), "yes" or "no"?',
             default='yes'),
         ]
 

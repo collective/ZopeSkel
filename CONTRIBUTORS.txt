@@ -7,6 +7,9 @@ Contributors:
 
     - Mustapha Benali : added the addcontent local command,
       some sub-templates and tests
+ 
+    - Sylvain Viollon : add and update the Silva buildout
+      template.
 
     - Please guys, add your name here !
 

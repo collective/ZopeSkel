@@ -4,7 +4,9 @@ Changelog
 2.4 - Unreleased
 ----------------
 
-
+* Silva layout have been merged with Silva all in the development
+  buildout.
+  [thefunny]
 
 2.3 - June 24, 2008
 -------------------
