@@ -1,0 +1,41 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+     xmlns:browser="http://namespaces.zope.org/browser"
+     xmlns:kss="http://namespaces.zope.org/kss"
+     xmlns:zcml="http://namespaces.zope.org/zcml"
+     >
+
+    <!-- Including this configuration
+         will activate this plugin inside zope.
+    -->
+
+    <!-- Include demo setup conditionally -->
+    <include zcml:condition="installed kss.demo" package=".demo" />
+
+    <!-- Third party library dependencies -->
+
+    <!-- browser:resource
+        file="3rd_party/myfile.js"
+        name="myfile.js"
+        /-->
+
+   <!-- Event types -->
+
+    <!-- kss:eventtype
+        name="${package}-myevent"
+        jsfile="javascript/myfile.js"
+        /-->
+
+    <!-- Client actions & commands -->
+
+    <!-- kss:action
+        name="${package}-myaction"
+        jsfile="javascript/myfile.js"
+        command_factory="selector"
+        params_mandatory=""
+        params_optional=""
+        /-->
+
+
+    <!-- Command sets -->
+
+</configure>

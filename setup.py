@@ -49,6 +49,7 @@ setup(name='ZopeSkel',
       recipe = zopeskel:Recipe
       silva_buildout = zopeskel:SilvaBuildout
       plone_pas = zopeskel:PlonePas
+      kss_plugin = zopeskel:KssPlugin
 
       [paste.paster_command]
       addcontent = zopeskel.localcommands:ZopeSkelLocalCommand
