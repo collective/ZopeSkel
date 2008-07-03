@@ -4,6 +4,9 @@ Changelog
 2.4 - Unreleased
 ----------------
 
+* Added kss plugin template
+  [gotcha, jfroche, adrien01]
+
 * Silva layout have been merged with Silva all in the development
   buildout.
   [thefunny]
