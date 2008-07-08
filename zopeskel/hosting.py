@@ -28,7 +28,7 @@ class StandardHosting(templates.Template):
             var("base_port", "Base port number", default=8000),
             var("proxy", "Install a proxy server", default="no"),
             var("plone", "Plone version (2.5, 2.5.1, 3.0, 3.0.1, etc.)",
-                default="3.1.2"),
+                default="3.1.3"),
             var("buildout", "Run buildout", default="yes"),
             ]
 
