@@ -33,12 +33,15 @@ class StandardHosting(templates.Template):
             ]
 
     def _buildout(self, output_dir):
-        os.chdir(output_dir)
-        print "Bootstrapping the buildout"
-        subprocess.call([sys.executable, "bootstrap.py"])
-        print "Configuring the buildout"
-        subprocess.call(["bin/buildout", "-n"])
-
+        olddir=os.getcwd()
+        try:
+            os.chdir(output_dir)
+            print "Bootstrapping the buildout"
+            subprocess.call([sys.executable, "bootstrap.py"])
+            print "Configuring the buildout"
+            subprocess.call(["bin/buildout", "-n"])
+        finally:
+            os.chdir(olddir)
 
     def _checkPortAvailable(self, port):
         s=socket.socket()

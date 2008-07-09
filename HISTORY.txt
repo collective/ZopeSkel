@@ -4,6 +4,10 @@ Changelog
 2.4 - Unreleased
 ----------------
 
+* Restore the cwd after running buildout in the hosting recipe so further
+  processing works correctly.
+  [wichert]
+
 * Add a hook in the hosting template to not show the summary. This
   can be used by derived templates that want to show their own summary
   or show it at a later point.
