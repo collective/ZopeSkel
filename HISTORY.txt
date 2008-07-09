@@ -1,7 +1,11 @@
 Changelog
 =========
 
-2.4 - Unreleased
+2.5 - Unreleased
+----------------
+
+
+2.4 - July 9, 2008
 ----------------
 
 * Restore the cwd after running buildout in the hosting recipe so further
