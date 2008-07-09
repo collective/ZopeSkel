@@ -112,5 +112,7 @@ class StandardHosting(templates.Template):
         output_dir=vars["output_dir"]
         if vars["buildout"]:
             self._buildout(output_dir)
+        if not vars.get("hide_summary", False):
+            self.show_summary(vars)
         self.show_summary(vars)
 
