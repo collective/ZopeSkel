@@ -1,5 +1,5 @@
-'''Class: ${multiplugin_name}Helper
-'''
+"""Class: ${multiplugin_name}Helper
+"""
 
 from AccessControl.SecurityInfo import ClassSecurityInfo
 from App.class_init import default__class_init__ as InitializeClass
@@ -12,9 +12,9 @@ import plugins
 
 class ${multiplugin_name}Helper( # -*- implemented plugins -*-
                                ):
-    '''Multi-plugin
+    """Multi-plugin
 
-    '''
+    """
 
     meta_type = '${package} Helper'
     security = ClassSecurityInfo()

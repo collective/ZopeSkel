@@ -100,16 +100,3 @@ before checking in; they can be run like::
 
     $ python setup.py test
 
-You can also set a test environment using the buildout bootstrap::
-
-    $ python boostrap.py
-    $ bin/buildout
-
-You will then have a `test` script available::
-
-    $ bin/test
-
-You can even run just one test::
-
-    $ bin/test -t silva_buildout
-

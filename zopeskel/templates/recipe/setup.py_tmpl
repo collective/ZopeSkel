@@ -48,7 +48,7 @@ setup(name=${repr($project)},
         'Topic :: Software Development :: Libraries :: Python Modules',
         #from zopeskel.base import LICENSE_CATEGORIES
         #if $license_name.strip() in $LICENSE_CATEGORIES
-        ${$repr($LICENSE_CATEGORIES[$license_name.strip()])},
+        $repr($LICENSE_CATEGORIES[$license_name.strip()]),
         #end if
         ],
       keywords=${repr($keywords) or $empty},
