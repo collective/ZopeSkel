@@ -1,8 +1,12 @@
 Changelog
 =========
 
-2.5 - Unreleased
+2.6 - Unreleased
 ----------------
+
+
+2.5 - July 15, 2008
+-------------------
 
 * Hosting template:
   - fix test for Varnish-support in the supervisord configuration.
@@ -15,7 +19,7 @@ Changelog
 
 
 2.4 - July 9, 2008
-----------------
+------------------
 
 * Restore the cwd after running buildout in the hosting recipe so further
   processing works correctly.
