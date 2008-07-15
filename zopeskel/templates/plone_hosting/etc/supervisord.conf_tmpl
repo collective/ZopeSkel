@@ -36,6 +36,9 @@ autostart= true
 autorestart = true
 priority = 500
 
+[groups]
+programs = instance1
+
 #if $proxy
 [program:varnish]
 command = %(here)s/../bin/varnish -F

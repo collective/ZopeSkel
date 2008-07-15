@@ -4,9 +4,14 @@ Changelog
 2.5 - Unreleased
 ----------------
 
-* Hosting template: fix test for Varnish-support in the supervisord
-  configuration.
-  [wichert]
+* Hosting template:
+  - fix test for Varnish-support in the supervisord configuration.
+    [wichert]
+
+  - Rename the instance part to instances1 and add an instances group. This
+    makes it possible to upgrade to multiple instances later on without
+    having to break invocations.
+    [wichert]
 
 
 2.4 - July 9, 2008

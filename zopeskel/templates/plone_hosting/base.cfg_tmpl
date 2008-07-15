@@ -4,7 +4,7 @@ parts =
     zope2
     productdistros
     zeo
-    instance
+    instance1
     zopepy
 #if $proxy
     varnish-build
@@ -39,7 +39,7 @@ recipe = plone.recipe.zope2zeoserver
 zope2-location = \${zope2:location}
 zeo-address = 127.0.0.1:${zeo_port}
 
-[instance]
+[instance1]
 recipe = plone.recipe.zope2instance >=2.0
 zope2-location = \${zope2:location}
 debug-mode = off
