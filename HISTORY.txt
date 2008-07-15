@@ -1,12 +1,16 @@
 Changelog
 =========
 
+2.7
+---
+
+
 2.6 - July 15, 2008
 -------------------
 
 * Hosting template:
 
-  - Corrected one last reference to instance to instance1 in the zopepy eggs
+  - Corrected one last reference of instance to instance1 in the zopepy eggs
     option of the plone_hosting template.
     [hannosch]
 
@@ -22,7 +26,6 @@ Changelog
     makes it possible to upgrade to multiple instances later on without
     having to break invocations.
     [wichert]
-
 
 2.4 - July 9, 2008
 ------------------
