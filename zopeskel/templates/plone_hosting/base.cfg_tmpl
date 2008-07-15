@@ -60,7 +60,7 @@ products =
 
 [zopepy]
 recipe = zc.recipe.egg
-eggs = \${instance:eggs}
+eggs = \${instance1:eggs}
 interpreter = zopepy
 extra-paths = \${zope2:location}/lib/python
 scripts = zopepy
