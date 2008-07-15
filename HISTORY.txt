@@ -4,6 +4,10 @@ Changelog
 2.5 - Unreleased
 ----------------
 
+* Hosting template: fix test for Varnish-support in the supervisord
+  configuration.
+  [wichert]
+
 
 2.4 - July 9, 2008
 ----------------
