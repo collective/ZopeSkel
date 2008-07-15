@@ -4,6 +4,10 @@ Changelog
 2.7
 ---
 
+* Hosting template:
+
+  - Corrected hide_summary option, to not show the summary twice.
+    [hannosch]
 
 2.6 - July 15, 2008
 -------------------
