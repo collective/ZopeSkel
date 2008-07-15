@@ -1,8 +1,10 @@
 Changelog
 =========
 
-2.6 - Unreleased
-----------------
+2.6 - July 15, 2008
+-------------------
+
+* Hosting template:
 
   - Corrected one last reference to instance to instance1 in the zopepy eggs
     option of the plone_hosting template.
@@ -367,4 +369,3 @@ Version 1.2
   This provides a convenient way to create a buildout for all Plone 2.5 and
   3.0 versions with ZEO and optional Varnish based caching.
   [wichert]
-
