@@ -18,7 +18,7 @@ urls =
 nested-packages =
 version-suffix-packages =
 
-[instance]
+[instance1]
 eggs =
     \${buildout:eggs}
     \${plone:eggs}
