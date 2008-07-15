@@ -5,6 +5,7 @@ Changelog
 -------------------
 
 * Hosting template:
+
   - fix test for Varnish-support in the supervisord configuration.
     [wichert]
 
