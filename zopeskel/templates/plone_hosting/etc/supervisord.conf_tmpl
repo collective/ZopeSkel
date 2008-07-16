@@ -28,7 +28,7 @@ startsecs = 10
 priority = 100
 
 [program:instance1]
-command = %(here)s/../bin/instance console
+command = %(here)s/../bin/instance1 console
 startsecs = 60
 priority = 2
 redirect_stderr = true

@@ -72,7 +72,7 @@ url = http://puzzle.dl.sourceforge.net/sourceforge/varnish/varnish-1.1.2.tar.gz
 
 [varnish]
 recipe = plone.recipe.varnish:instance
-backends = \${instance:http-address}
+backends = \${instance1:http-address}
 bind = 127.0.0.1:${proxy_port}
 cache-size = 512M
 #end if

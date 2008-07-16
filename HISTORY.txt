@@ -4,6 +4,11 @@ Changelog
 2.7
 ---
 
+* Hosting template:
+
+  - Corrected even more references of instance to instance1.
+    [hannosch]
+
 
 2.6.1 - July 16, 2008
 ---------------------
