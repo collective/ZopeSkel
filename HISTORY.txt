@@ -6,7 +6,8 @@ Changelog
 
 * Hosting template:
 
-  - Corrected even more references of instance to instance1.
+  - Corrected even more references of instance to instance1 in proxy support
+    and logrotate handling.
     [hannosch]
 
 

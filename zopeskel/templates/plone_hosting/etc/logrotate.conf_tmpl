@@ -10,10 +10,8 @@ ${output_dir}/var/log/zeo.log {
     endscript
 }
 
-${output_dir}/var/log/instance*.log {
+${output_dir}/var/log/instance1.log {
     postrotate
-        /bin/kill -USR2 \$(cat ${output_dir}/var/instance.pid)
+        /bin/kill -USR2 \$(cat ${output_dir}/var/instance1.pid)
     endscript
 }
-
-
