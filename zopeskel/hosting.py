@@ -69,7 +69,7 @@ class StandardHosting(templates.Template):
 
         result["zeo_port"]=base_port
         result["proxy_port"]=base_port+1
-        result["http_port"]=base_port+2
+        result["http_port"]=base_port+10
         result["proxy"]=vars["proxy"].lower() in [ "yes", "true", "on" ]
         result["buildout"]=vars["buildout"].lower() in [ "yes", "true", "on" ]
 

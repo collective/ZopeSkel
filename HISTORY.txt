@@ -6,6 +6,10 @@ Changelog
 
 * Hosting template:
 
+  - Changed the http_port to start at base_port + 10, to make room for
+    additional services.
+    [hannosch]
+
   - Corrected hide_summary option, to not show the summary twice.
     [hannosch]
 
