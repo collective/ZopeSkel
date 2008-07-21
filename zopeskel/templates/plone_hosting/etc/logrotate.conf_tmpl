@@ -5,7 +5,7 @@ create
 compress
 
 ${output_dir}/var/log/zeo.log {
-    postrate
+    postrotate
         ${output_dir}/bin/zeo logreopen
     endscript
 }

@@ -4,6 +4,11 @@ Changelog
 2.7
 ---
 
+* Hosting template:
+
+  - Corrected a typo in the logrotate template, which prevented the zeo log
+    to be rotated.
+    [hannosch]
 
 2.6.2 - July 16, 2008
 ---------------------
