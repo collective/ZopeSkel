@@ -6,6 +6,9 @@ Changelog
 
 * Hosting template:
 
+  - Switch default Plone version to 3.1.4.
+    [wichert]
+
   - Corrected a typo in the logrotate template, which prevented the zeo log
     to be rotated.
     [hannosch]
