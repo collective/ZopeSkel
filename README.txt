@@ -80,9 +80,8 @@ plone_hosting
   If you configure a proxy port a varnish_ cache server will be installed
   and configured as well.
 
-  To manage the ZEO server, Zope instance and, if chosen, Varnish server
-  a simple ''bin/control'' script is created which can be used to quickly
-  start, stop and restart the entire Plone deployment.
+  supervisord_ is used to manage the ZEO server, Zope instance and, if chosen,
+  Varnish server.
 
 silva_buildout
   A basic buildout Silva instance.
@@ -90,6 +89,7 @@ silva_buildout
 
 .. _buildout: http://plone.org/documentation/tutorial/buildout
 .. _varnish: http://varnish.projects.linpro.no
+.. _supervisord: http://www.supervisord.org
 
 
 Testing
