@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.7
----
+2.7 - July 25, 2008
+-------------------
 
 * Hosting template:
 
@@ -12,6 +12,7 @@ Changelog
   - Corrected a typo in the logrotate template, which prevented the zeo log
     to be rotated.
     [hannosch]
+
 
 2.6.2 - July 16, 2008
 ---------------------
