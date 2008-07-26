@@ -30,7 +30,7 @@ in all common Linux distributions. To setup log rotation you will need to
 add an entry to the crontab entry for the account user for your site::
 
   # Rotate plone.org logfiles at 06:00
-  0 6 * * * /usr/sbin/logrotate /srv/plone.org/etc/logrotate.conf
+  0 6 * * * /usr/sbin/logrotate --state /srv/plone.org/var/logrotate.status /srv/plone.org/etc/logrotate.conf
 
 
 Selecting product and package versions
