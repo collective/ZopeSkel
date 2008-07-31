@@ -1,8 +1,12 @@
 Changelog
 =========
 
-2.8
----
+2.9 - Unreleased
+----------------
+
+
+2.8 - July 31, 2008
+-------------------
 
 * Generate logrotate configuration file using collective.recipe.template
   so it does not need to contain absolute paths. This makes it possible
