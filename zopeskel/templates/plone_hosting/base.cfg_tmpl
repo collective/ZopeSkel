@@ -10,6 +10,7 @@ parts =
     varnish-build
     varnish
 #end if
+    logrotate
     supervisor
 find-links =
     http://dist.plone.org
@@ -76,6 +77,11 @@ backends = \${instance1:http-address}
 bind = 127.0.0.1:${proxy_port}
 cache-size = 512M
 #end if
+
+[logrotate]
+recipe = collective.recipe.template
+input = templates/logrotate.conf
+output = \${buildout:directory}/etc/logrotate.conf
 
 [supervisor]
 recipe = zc.recipe.egg

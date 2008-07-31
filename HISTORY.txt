@@ -4,6 +4,15 @@ Changelog
 2.8
 ---
 
+* Generate logrotate configuration file using collective.recipe.template
+  so it does not need to contain absolute paths. This makes it possible
+  to move the generated buildout around, or install it on other machines
+  with different filesystem layouts.
+  [wichert]
+
+* Also rotate instance1-Z2.log.
+  [wichert]
+
 * Update documentation for hosting template to note that logrotate needs
   to be told where to put its status file.
   [wichert]
