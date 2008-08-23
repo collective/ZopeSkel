@@ -10,7 +10,7 @@ class GroupsPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('getGroupsForPrincipal')
-    def getGroupsForPrincipal( principal, request=None ):
+    def getGroupsForPrincipal( self, principal, request=None ):
         """ principal -> ( group_1, ... group_N )
 
         o Return a sequence of group names to which the principal

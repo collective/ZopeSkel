@@ -10,7 +10,7 @@ class UserFactoryPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('createUser')
-    def createUser( user_id, name ):
+    def createUser( self, user_id, name ):
         """ Return a user, if possible.
 
         o Return None to allow another plugin, or the default, to fire.

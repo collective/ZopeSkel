@@ -10,7 +10,7 @@ class AnonymousUserFactoryPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('createAnonymousUser')
-    def createAnonymousUser():
+    def createAnonymousUser(self):
         """ Return an anonymous user, if possible.
 
         o Return None to allow another plugin, or the default, to fire.

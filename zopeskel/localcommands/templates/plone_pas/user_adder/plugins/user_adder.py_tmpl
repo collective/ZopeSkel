@@ -10,7 +10,7 @@ class UserAdderPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('doAddUser')
-    def doAddUser( login, password ):
+    def doAddUser( self, login, password ):
         """ Add a user record to a User Manager, with the given login
             and password
 

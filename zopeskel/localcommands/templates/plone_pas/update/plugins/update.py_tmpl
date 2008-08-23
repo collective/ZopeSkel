@@ -10,7 +10,7 @@ class UpdatePlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('updateUserInfo')
-    def updateUserInfo( user, set_id, set_info ):
+    def updateUserInfo( self, user, set_id, set_info ):
         """ Update backing store for 'set_id' using 'set_info'.
         """
 

@@ -12,7 +12,8 @@ class UserEnumerationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('enumerateUsers')
-    def enumerateUsers( id=None
+    def enumerateUsers( self
+                      , id=None
                       , login=None
                       , exact_match=False
                       , sort_by=None

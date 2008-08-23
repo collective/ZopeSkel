@@ -10,7 +10,7 @@ class RolesPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('getRoles ForPrincipal')
-    def getRolesForPrincipal( principal, request=None ):
+    def getRolesForPrincipal( self, principal, request=None ):
         """ principal -> ( role_1, ... role_N )
 
         o Return a sequence of role names which the principal has.

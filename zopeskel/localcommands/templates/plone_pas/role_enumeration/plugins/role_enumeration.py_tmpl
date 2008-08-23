@@ -10,7 +10,8 @@ class RoleEnumerationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('enumerateRoles')
-    def enumerateRoles( id=None
+    def enumerateRoles( self 
+                      , id=None
                       , exact_match=False
                       , sort_by=None
                       , max_results=None

@@ -11,7 +11,7 @@ class AuthenticationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('authenticateCredentials')
-    def authenticateCredentials( credentials ):
+    def authenticateCredentials( self, credentials ):
 
         """ credentials -> (userid, login)
 

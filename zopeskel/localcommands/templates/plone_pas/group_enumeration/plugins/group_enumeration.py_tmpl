@@ -12,7 +12,8 @@ class GroupEnumerationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('enumerateGroups')
-    def enumerateGroups( id=None
+    def enumerateGroups( self
+                       , id=None
                        , exact_match=False
                        , sort_by=None
                        , max_results=None

@@ -19,7 +19,7 @@ class ChallengePlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('challenge')
-    def challenge( request, response ):
+    def challenge( self, request, response ):
 
         """ Assert via the response that credentials will be gathered.
 

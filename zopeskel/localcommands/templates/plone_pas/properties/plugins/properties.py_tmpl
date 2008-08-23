@@ -10,7 +10,7 @@ class PropertiesPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('getPropertiesForUser')
-    def getPropertiesForUser( user, request=None ):
+    def getPropertiesForUser( self, user, request=None ):
         """ user -> {}
 
         o User will implement IPropertiedUser.

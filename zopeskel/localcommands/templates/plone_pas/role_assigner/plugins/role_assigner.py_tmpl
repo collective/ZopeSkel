@@ -10,7 +10,7 @@ class RoleAssignerPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('doAssignRoleToPrincipal')
-    def doAssignRoleToPrincipal( principal_id, role ):
+    def doAssignRoleToPrincipal( self, principal_id, role ):
         """ Create a principal/role association in a Role Manager
 
         o Return a Boolean indicating whether the role was assigned or not
@@ -23,7 +23,7 @@ class RoleAssignerPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('doRemoveRoleFromPrincipal')
-    def doRemoveRoleFromPrincipal( principal_id, role ):
+    def doRemoveRoleFromPrincipal( self, principal_id, role ):
         """ Remove a principal/role association from a Role Manager
 
         o Return a Boolean indicating whether the role was removed or not

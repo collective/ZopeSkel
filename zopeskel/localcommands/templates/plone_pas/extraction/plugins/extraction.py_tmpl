@@ -11,7 +11,7 @@ class ExtractionPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('extractCredentials')
-    def extractCredentials( request ):
+    def extractCredentials( self, request ):
 
         """ request -> {...}
 
