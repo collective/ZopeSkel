@@ -5,6 +5,12 @@ Changelog
 ----------------
 
 
+* Update silva buildout to reflect changes in Silva 2.1 as stable
+  version, and 2.2 as development: SilvaLayout is not shipped anymore
+  as an extra distribution but integrated in Silva all. Remove
+  question, and update buildout.cfg template.
+  [thefunny]
+
 2.8 - July 31, 2008
 -------------------
 

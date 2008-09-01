@@ -85,7 +85,7 @@ to do is to add it to the "eggs" option under the main "[buildout]" section:
 
  [buildout]
  ...
- eggs =
+ eggs +=
     my.package
 
 If it's listed somewhere else than the Python Package Index, you can add a link
@@ -93,9 +93,7 @@ telling buildout where to find it in the 'find-links' option:
 
  [buildout]
  ...
- find-links =
-    http://download.zope.org/distribution/
-    http://effbot.org/downloads
+ find-links +=
     http://some.host.com/packages
 
 Using existing old-style products
@@ -138,14 +136,9 @@ and cvs is also supported:
 
  [buildout]
  ...
- parts =
-    PILwoTK
-    zope2
+ parts +=
     myproduct
     productdistros
-    silva-layout
-    silva-all
-    instance
 
 Note that "myproduct" comes before the "instance" part. You then
 need to add a new section to buildout.cfg:
@@ -159,12 +152,9 @@ list of directories that are scanned for products:
 
  [instance]
  ...
- products =
-    ${buildout:directory}/products
+ products +=
     ${myproduct:location}
     ${productdistros:location}
-    ${silva-all:location}
-    ${silva-layout:location}
 
 Without this last step, the "myproduct" part is simply managing an svn
 checkout and could potentially be used for something else instead.
@@ -188,9 +178,6 @@ Python (http://python.org)
 
   - You also want the pywin32 extensions available from
     http://downloads.sourceforge.net/pywin32/pywin32-210.win32-py2.4.exe?modtime=1159009237&big_mirror=0
-
-  - And as a last step you want to download the Python imaging library available
-    from http://effbot.org/downloads/PIL-1.1.6.win32-py2.4.exe
 
   - If you develop Zope based applications you will usually only need Python 2.4
     at the moment, so it's easiest to put the Python binary on the systems PATH,

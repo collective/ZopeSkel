@@ -1,14 +1,8 @@
 [buildout]
-parts =
-    PILwoTK
 #if not $zope2_install
+parts -=
     zope2
 #end if
-#if $silva_layout == 'yes' and $silva_distribution == 'stable'
-    silva-layout
-#end if
-    silva-all
-    instance
 
 extends =
     https://svn.infrae.com/buildout/silva/${silva_distribution}.cfg
@@ -35,22 +29,5 @@ debug-mode = on
 verbose-security = on
 #else
 \#verbose-security = on
-#end if
-
-\# If you want Zope to know about any additional eggs, list them here.
-\# This should include any development eggs you listed in develop-eggs above,
-\# e.g. eggs = \${buildout:eggs} my.package
-eggs =
-    PILwoTK
-
-\# If you want to register ZCML slugs for any packages, list them here.
-\# e.g. zcml = my.package my.other.package
-zcml =
-
-products =
-    \${buildout:directory}/products
-    \${silva-all:location}
-#if $silva_layout == 'yes' and $silva_distribution == 'stable'
-    \${silva-layout:location}
 #end if
 

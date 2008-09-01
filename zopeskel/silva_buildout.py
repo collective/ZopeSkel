@@ -31,9 +31,6 @@ class SilvaBuildout(BaseTemplate):
         var('verbose_security',
             'Should verbose security be "on" or "off"?',
             default='off'),
-        var('silva_layout',
-            'Include the new Silva Layout (filesystem based layout, only for Silva stable), "yes" or "no"?',
-            default='yes'),
         ]
 
     def check_vars(self, vars, cmd):
