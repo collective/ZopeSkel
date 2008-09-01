@@ -1,9 +1,8 @@
 Changelog
 =========
 
-2.9 - Unreleased
-----------------
-
+2.9 - September, 1st 
+--------------------
 
 * Update silva buildout to reflect changes in Silva 2.1 as stable
   version, and 2.2 as development: SilvaLayout is not shipped anymore
