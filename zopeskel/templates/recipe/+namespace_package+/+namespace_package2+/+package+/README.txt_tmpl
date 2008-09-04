@@ -52,7 +52,7 @@ We'll start by creating a buildout that uses the recipe::
 
 Running the buildout gives us::
 
-    >>> print 'start', system(buildout) # doctest:+ELLIPSIS
+    >>> print 'start', system(buildout) 
     start...
     Installing test1.
     Unused options for test1: 'option2' 'option1'.
