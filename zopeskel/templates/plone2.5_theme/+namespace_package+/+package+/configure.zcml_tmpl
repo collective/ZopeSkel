@@ -5,7 +5,7 @@
 
   <include package="Products.GenericSetup" file="meta.zcml" />
 
-#if str($zope2product) == 'True'
+#if str($zope2product) == 'True' and $namespace_package != 'Products'
   <!-- Note: this needs at least Five 1.4. -->
   <five:registerPackage package="." initialize=".initialize" />
 
