@@ -1,0 +1,1 @@
+<include package="${namespace_package}.${namespace_package2}.${package}" />

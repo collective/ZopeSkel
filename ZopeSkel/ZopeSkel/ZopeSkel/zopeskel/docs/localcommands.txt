@@ -1,0 +1,71 @@
+Local commands:
+==============
+
+Check that the `addcontent` command is not globaly available::
+
+    >>> help_text = read_sh('paster help')
+    >>> help_text.find('addcontent') == -1
+    True
+
+`addcontent` is active for all ZopeSkel templates that have ``use_local_commands``
+attribute set to true.
+
+Let's for example take the archetype template::
+
+    >>> paster('create -t archetype plone.example --no-interactive')
+    paster create -t archetype plone.example --no-interactive
+    ...
+    >>> cd('plone.example')
+    >>> paster('help')
+    paster help
+    ...
+    <BLANKLINE>
+    ZopeSkel local commands:
+      addcontent   Adds plone content types to your project
+    <BLANKLINE>
+    <BLANKLINE>
+
+What sub-templates are available for an archetype based project ?::
+
+    >>> paster('addcontent --list')
+    paster addcontent --list
+    Available templates:
+      atschema:     A handy AT schema builder
+      contenttype:  A content type skeleton
+      portlet:      A Plone 3 portlet
+      view:         A browser view skeleton
+      zcmlmeta:     A ZCML meta directive skeleton
+
+Now we can add a portlet to our project::
+
+    >>> paster('addcontent --no-interactive portlet')
+    paster addcontent --no-interactive portlet
+    Recursing into portlets
+    ...
+
+Test if we have the new files::
+
+    >>> ls('plone', 'ploneexample', 'portlets')
+    __init__.py
+    configure.zcml
+    exampleportlet.pt
+    exampleportlet.py
+    >>> ls('plone', 'ploneexample', 'tests')
+    __init__.py
+    base_exampleportlet.py
+    doc_tests.py
+    test_exampleportlet.py
+
+Check that the existing files like profile/portlets are updated::
+
+    >>> cat('plone', 'ploneexample', 'profiles', 'default', 'portlets.xml')
+    <?xml version="1.0"?>
+    ...
+       <portlet
+         addview="plone.ploneexample.portlets.ExamplePortlet"
+         title="Example portlet"
+         description=""
+       />
+    ...
+
+

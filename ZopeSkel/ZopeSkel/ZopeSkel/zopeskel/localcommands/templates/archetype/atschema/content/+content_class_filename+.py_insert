@@ -1,0 +1,14 @@
+
+    atapi.${field_type}Field(
+        name='${field_name}',
+        storage = atapi.AnnotationStorage(),
+        required=False,
+        #searchable=1,
+        #default='',
+        #schemata ='default',
+        widget=atapi.${widget_type}Widget(
+            label=_(u"${field_name}"),
+            description=_(u"Description of ${field_name}"),
+        ),
+    ),
+

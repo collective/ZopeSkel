@@ -1,0 +1,6 @@
+#
+
+#if str($zope2product) == 'True'
+def initialize(context):
+    """Initializer called when used as a Zope 2 product."""
+#end if

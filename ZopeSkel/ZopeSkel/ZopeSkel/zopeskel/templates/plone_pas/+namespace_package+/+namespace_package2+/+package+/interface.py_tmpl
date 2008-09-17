@@ -1,0 +1,5 @@
+from Products.PluggableAuthService import interfaces
+  
+class I${multiplugin_name}Helper(# -*- implemented plugins -*-
+                                ):
+    """interface for ${multiplugin_name}Helper."""

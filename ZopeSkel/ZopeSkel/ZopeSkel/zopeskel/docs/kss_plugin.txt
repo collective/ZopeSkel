@@ -1,0 +1,44 @@
+==============
+plone template
+==============
+
+Use paster::
+
+    >>> paster('create -t kss_plugin kss.plugin.example package=example --no-interactive')
+    paster create -t kss_plugin kss.plugin.example package=example --no-interactive
+    ...
+
+Let's check the content::
+
+    >>> ls('kss.plugin.example')
+    README.txt
+    docs
+    kss
+    kss.plugin.example.egg-info
+    setup.cfg
+    setup.py
+
+    >>> ls('kss.plugin.example', 'kss')
+    __init__.py
+    plugin
+
+    >>> ls('kss.plugin.example', 'kss', 'plugin')
+    __init__.py
+    example
+
+    >>> ls('kss.plugin.example', 'kss', 'plugin', 'example')
+    3rd_party
+    __init__.py
+    configure.zcml
+    demo
+    javascript
+    kss.plugin.example-configure.zcml
+    tests
+
+    >>> ls('kss.plugin.example', 'kss', 'plugin', 'example', 'demo')
+    __init__.py
+    configure.zcml
+    example.kss
+    example.pt
+    zopeconfig.py
+

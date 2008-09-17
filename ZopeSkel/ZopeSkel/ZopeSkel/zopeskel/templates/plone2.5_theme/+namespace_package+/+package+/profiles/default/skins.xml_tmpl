@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+#if str($include_doc) == 'True'
+<!-- This file holds the setup configuration for the portal_skins tool -->
+
+<!-- Change the value of these parameters to modify portal_skins behavior:
+     - allow_any: change it to True if you want users to be able to select the
+       skin to use from their personal preferences management page. In the
+       ZMI, this value is known as 'Skin flexibility'.
+     - cookie_persistence: change it to True if you want to make the skin cookie
+       persist indefinitely. In the ZMI, this value is known as 'Skin Cookie
+       persistence'.
+  -->
+#end if
+<object name="portal_skins" allow_any="False" cookie_persistence="False"
+   default_skin="${skinname}">
+
+#if str($include_doc) == 'True'
+ <!-- This list registers the folders that are stored in the skins directory
+      of your product (on the filesystem) as Filesystem Directory Views within
+      the portal_skins tool, so that they become usable as skin layers.
+   -->
+#end if
+ <object name="${package}_images"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_images"/>
+ <object name="${package}_custom_images"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_custom_images"/>
+ <object name="${package}_styles"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_styles"/>
+ <object name="${package}_custom_styles"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_custom_styles"/>
+ <object name="${package}_templates"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_templates"/>
+ <object name="${package}_custom_templates"
+    meta_type="Filesystem Directory View"
+    directory="${package}/skins/${package}_custom_templates"/>
+
+#if str($include_doc) == 'True'
+ <!-- A skin-path in this file corresponds to a Skin Selection in the
+     'Properties' tab of the portal_skins tool, in the ZMI.
+     You can define for each new skin path the layers that it holds. A new
+     skin can be based on another existing one by using the 'based-on'
+     attribute.
+     The definition of a layer accepts these parameters:
+       - name: quite self explanatory, the name of the layer.
+       - insert-before: name of the layer before which it must be added.
+       - insert-after: name of the layer after which it must be added.
+       Note: insert-before (and -after) accepts the value "*" which means
+       "all".
+   -->
+#end if
+ <skin-path name="${skinname}">
+  <layer name="custom"/>
+  <layer name="${package}_styles"/>
+  <layer name="kupu_tests"/>
+  <layer name="CMFPlacefulWorkflow"/>
+  <layer name="PasswordReset"/>
+  <layer name="kupu_plone"/>
+  <layer name="kupu"/>
+  <layer name="ATContentTypes"/>
+  <layer name="ATReferenceBrowserWidget"/>
+  <layer name="archetypes"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="ResourceRegistries"/>
+  <layer name="gruf"/>
+  <layer name="plone_ecmascript"/>
+  <layer name="plone_wysiwyg"/>
+  <layer name="plone_prefs"/>
+  <layer name="plone_portlets"/>
+#if $skinbase == "Plone Tableless"
+  <layer name="plone_tableless"/>
+#end if
+  <layer name="plone_templates"/>
+  <layer name="plone_styles"/>
+  <layer name="plone_form_scripts"/>
+  <layer name="plone_scripts"/>
+  <layer name="plone_forms"/>
+  <layer name="plone_images"/>
+  <layer name="plone_content"/>
+  <layer name="plone_login"/>
+  <layer name="plone_deprecated"/>
+  <layer name="plone_3rdParty"/>
+  <layer name="cmf_legacy"/>
+ </skin-path>
+
+ <skin-path name="*">
+  <layer name="${package}_images"
+     insert-after="custom"/>
+  <layer name="${package}_templates"
+     insert-after="${package}_images"/>
+ </skin-path>
+
+ <skin-path name="${skinname}">
+  <layer name="${package}_custom_images"
+      insert-before="${package}_images"/>
+  <layer name="${package}_custom_templates"
+      insert-after="${package}_custom_images"/>
+  <layer name="${package}_custom_styles"
+      insert-after="${package}_custom_templates"/>
+ </skin-path>
+
+</object>
