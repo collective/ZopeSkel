@@ -1,0 +1,4 @@
+This folder holds CSS and Filesystem Properties Object (commonly
+'base_properties.props') files that are registered for the
+'${skinname}' Skin Selection only.
+They act as replacement for the default Plone (or 3rd party product) ones.

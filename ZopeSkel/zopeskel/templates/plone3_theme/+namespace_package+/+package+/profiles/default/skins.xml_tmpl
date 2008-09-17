@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+#if str($include_doc) == 'True'
+<!-- This file holds the setup configuration for the portal_skins tool -->
+
+<!-- Change the value of these parameters to modify portal_skins behavior:
+     - allow_any: change it to True if you want users to be able to select the
+       skin to use from their personal preferences management page. In the
+       ZMI, this value is known as 'Skin flexibility'.
+     - cookie_persistence: change it to True if you want to make the skin cookie
+       persist indefinitely. In the ZMI, this value is known as 'Skin Cookie
+       persistence'.
+       -->
+#end if
+<object name="portal_skins" allow_any="False" cookie_persistence="False"
+   default_skin="$skinname">
+
+#if str($include_doc) == 'True'
+ <!-- This list registers the folders that are stored in the skins directory
+      of your product (on the filesystem) as Filesystem Directory Views within
+      the portal_skins tool, so that they become usable as skin layers.
+      -->
+#end if
+ <object name="${namespace_package}_${package}_custom_images"
+    meta_type="Filesystem Directory View"
+    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_images"/>
+ <object name="${namespace_package}_${package}_custom_templates"
+    meta_type="Filesystem Directory View"
+    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_custom_templates"/>
+ <object name="${namespace_package}_${package}_styles"
+    meta_type="Filesystem Directory View"
+    directory="${namespace_package}.${package}:skins/${namespace_package}_${package}_styles"/>
+
+#if str($include_doc) == 'True'
+ <!-- A skin-path in this file corresponds to a Skin Selection in the
+     'Properties' tab of the portal_skins tool, in the ZMI.
+     You can define for each new skin path the layers that it holds. A new
+     skin can be based on another existing one by using the 'based-on'
+     attribute.
+     The definition of a layer accepts these parameters:
+       - name: quite self explanatory, the name of the layer.
+       - insert-before: name of the layer before which it must be added.
+       - insert-after: name of the layer after which it must be added.
+       Note: insert-before (and -after) accepts the value "*" which means
+       "all".
+       -->
+#end if
+ <skin-path name="$skinname" based-on="$skinbase">
+  <layer name="${namespace_package}_${package}_custom_images"
+     insert-after="custom"/>
+  <layer name="${namespace_package}_${package}_custom_templates"
+     insert-after="${namespace_package}_${package}_custom_images"/>
+  <layer name="${namespace_package}_${package}_styles"
+     insert-after="${namespace_package}_${package}_custom_templates"/>
+ </skin-path>
+
+</object>

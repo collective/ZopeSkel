@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="${namespace_package}.${namespace_package2}.${package}.${portlet_type_name}"
+   title="${portlet_name}"
+   description="${description}"
+   />
+
+</portlets>

@@ -1,0 +1,49 @@
+[unix_http_server]
+file=%(here)s/../var/supervisor.sock
+chmod=0600
+
+[supervisorctl]
+serverurl=unix://%(here)s/../var/supervisor.sock
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory=supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisord]
+logfile=%(here)s/../var/log/supervisord.log
+logfile_maxbytes=5MB
+logfile_backups=10
+loglevel=info
+pidfile=%(here)s/../var/supervisord.pid ;
+childlogdir=%(here)s/../var/log
+nodaemon=false              ; (start in foreground if true;default false)
+minfds=1024                 ; (min. avail startup file descriptors;default 1024)
+minprocs=200                ; (min. avail process descriptors;default 200)
+directory=%(here)s
+
+[program:zeo]
+command = %(here)s/../bin/zeo fg
+autostart= true
+autorestart = true
+startsecs = 10
+priority = 100
+
+[program:instance1]
+command = %(here)s/../bin/instance1 console
+startsecs = 60
+priority = 2
+redirect_stderr = true
+autostart= true
+autorestart = true
+priority = 500
+
+[groups]
+programs = instance1
+
+#if $proxy
+[program:varnish]
+command = %(here)s/../bin/varnish -F
+autostart= true
+autorestart = true
+priority = 1000
+#end if
+

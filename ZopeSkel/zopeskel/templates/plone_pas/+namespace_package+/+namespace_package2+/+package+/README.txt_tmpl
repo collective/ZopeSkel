@@ -1,0 +1,44 @@
+Tests for ${namespace_package}.${namespace_package2}.${package}
+
+test setup
+----------
+
+    >>> from Testing.ZopeTestCase import user_password
+    >>> from Products.Five.testbrowser import Browser
+    >>> browser = Browser()
+
+Plugin setup
+------------
+
+    >>> acl_users_url = "%s/acl_users" % self.portal.absolute_url()
+    >>> browser.addHeader('Authorization', 'Basic %s:%s' % ('portal_owner', user_password))
+    >>> browser.open("%s/manage_main" % acl_users_url)
+    >>> browser.url
+    'http://nohost/plone/acl_users/manage_main'
+    >>> form = browser.getForm(index=0)
+    >>> select = form.getControl(name=':action')
+
+${namespace_package}.${namespace_package2}.${package} should be in the list of installable plugins:
+
+    >>> '${multiplugin_name} Helper' in select.displayOptions
+    True
+
+and we can select it:
+
+    >>> select.getControl('${multiplugin_name} Helper').click()
+    >>> select.displayValue
+    ['${multiplugin_name} Helper']
+    >>> select.value
+    ['manage_addProduct/${namespace_package}.${namespace_package2}.${package}/manage_add_${package}_helper_form']
+
+we add '${multiplugin_name} Helper' to acl_users:
+
+    >>> from ${namespace_package}.${namespace_package2}.${package}.plugin import ${multiplugin_name}Helper
+    >>> myhelper = ${multiplugin_name}Helper('myplugin', '${multiplugin_name} Helper')
+    >>> self.portal.acl_users['myplugin'] = myhelper
+
+and so on. Continue your tests here
+
+    >>> 'ALL OK'
+    'ALL OK'
+

@@ -1,0 +1,17 @@
+Initial author - Daniel Nouri
+
+Contributors:
+
+    - Tarek Ziadé : refactored templates in separated files,
+      added the test framework and the recipe template.
+
+    - Mustapha Benali : added the addcontent local command,
+      some sub-templates and tests
+ 
+    - Sylvain Viollon : add and update the Silva buildout
+      template.
+
+    - Please guys, add your name here !
+
+See HISTORY for full details.
+

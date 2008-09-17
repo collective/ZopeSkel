@@ -1,0 +1,92 @@
+GLOBALS = globals()
+
+#if str($include_doc) == 'True'
+# CHANGE this tuple of python dictionaries to list the different skin
+#  selections and their associated specific layers.
+#   'name' (required): the name of the new skin.
+#     This will be what the user sees when choosing skins, and will be the
+#     name of a property in portal_skins.
+#   'base' (required): the name of the skin selection on which the new one
+#     is based.
+#   'layers' (optional): the name of the specific layers for the skin
+#     selection. By default (if the value is empty or if the key is absent
+#     from the dictionnary), all the folders in 'skins/' will be listed
+#     underneath 'custom' in the new skin selection layers.
+#end if
+SKINSELECTIONS = (
+    {'name': '$skinname',
+     'base': '$skinbase',
+     },
+    )
+
+#if str($include_doc) == 'True'
+# CHANGE it to False if you don't want the new skin selection to be selected
+#  at installation.
+#end if
+SELECTSKIN = True
+
+#if str($include_doc) == 'True'
+# CHANGE it to the name of the skin selection that must be set as default in
+#  case SELECTSKIN is set to True.
+#end if
+DEFAULTSKIN = '$skinname'
+
+#if str($include_doc) == 'True'
+# CHANGE this tuple of python dictionnaries to list the stylesheets that
+#  will be registered with the portal_css tool.
+#  'id' (required):
+#    it must respect the name of the css or DTML file (case sensitive).
+#    '.dtml' suffixes must be ignored.
+#  'expression' (optional - default: ''): a tal condition.
+#  'media' (optional - default: ''): possible values: 'screen', 'print',
+#    'projection', 'handheld'...
+#  'rel' (optional - default: 'stylesheet')
+#  'title' (optional - default: '')
+#  'rendering' (optional - default: 'import'): 'import', 'link' or 'inline'.
+#  'enabled' (optional - default: True): boolean
+#  'cookable' (optional - default: True): boolean (aka 'merging allowed')
+#  See registerStylesheet() arguments in
+#  ResourceRegistries/tools/CSSRegistry.py
+#  for the latest list of all available keys and default values.
+#end if
+STYLESHEETS = (
+    {'id': '${package}.css', 'media': 'screen', 'rendering': 'import'},
+        )
+
+#if str($include_doc) == 'True'
+# CHANGE this tuple of python dictionnaries to list the javascripts that
+#  will be registered with the portal_javascripts tool.
+#  'id' (required): same rules as for stylesheets.
+#  'expression' (optional - default: ''): a tal condition.
+#  'inline' (optional - default: False): boolean
+#  'enabled' (optional - default: True): boolean
+#  'cookable' (optional - default: True): boolean (aka 'merging allowed')
+#  See registerScript() arguments in ResourceRegistries/tools/JSRegistry.py
+#  for the latest list of all available keys and default values.
+JAVASCRIPTS = (
+#    {'id': '${package}.js.dtml',},
+        )
+#else
+JAVASCRIPTS = ()
+#end if
+
+#if str($include_doc) == 'True'
+# CHANGE it to True if you want users to be able to select the skin to use
+#  from their personal preferences management page.
+#  In the ZMI, this value is known as 'Skin flexibility'.
+#end if
+ALLOWSELECTION = False
+
+#if str($include_doc) == 'True'
+# CHANGE it to True if you want to make the skin cookie persist indefinitely.
+#  In the ZMI, this value is known as 'Skin Cookie persistence'.
+#end if
+PERSISTENTCOOKIE = False
+
+#if str($include_doc) == 'True'
+# CHANGE it to True if you want portal_skins properties to be reset to Plone
+#  default values when the product is uninstalled:
+#  Default Skin: 'Plone Default', Skin flexibility: False,
+#  Skin Cookie persistence: False.
+#end if
+RESETSKINTOOL = False
