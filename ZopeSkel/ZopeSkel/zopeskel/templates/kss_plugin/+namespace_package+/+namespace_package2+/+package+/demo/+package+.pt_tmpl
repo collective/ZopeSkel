@@ -1,0 +1,18 @@
+<html tal:define="viewname string:${package}">
+  <head>
+    <!-- add your third party resources here -->
+
+    <!-- link rel="stylesheet" type="text/css"
+          tal:attributes="href string:\${context/@@absolute_url}/++resource++${package}.css"/-->
+
+    <metal:header use-macro="context/@@header_macros/header_resources" />
+
+  </head>
+  <body>
+    <p metal:use-macro="context/@@body_macros/header">header</p>
+    <!-- START of demo content -->
+
+    <h2>Demo of ${package}:</h2>
+    <div id="description">${description}</div>
+  </body>
+</html>

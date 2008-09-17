@@ -1,0 +1,25 @@
+# This is the zc.buildout configuration
+# For more information on managing your Plone instance using buildout please
+# see http://plone.org/documentation/tutorial/buildout
+
+[buildout]
+extends = base.cfg
+versions = versions
+eggs =
+develop =
+
+[versions]
+#if $plone_recipe == "plone.recipe.plone"
+${plone_recipe} = ${plone_recipe_version}
+#end if
+
+[productdistros]
+urls =
+nested-packages =
+version-suffix-packages =
+
+[instance1]
+eggs =
+    \${buildout:eggs}
+    \${plone:eggs}
+zcml =

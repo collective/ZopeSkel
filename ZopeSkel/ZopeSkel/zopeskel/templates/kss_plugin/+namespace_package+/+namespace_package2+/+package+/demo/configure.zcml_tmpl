@@ -1,0 +1,33 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:kss="http://namespaces.zope.org/kss"
+           i18n_domain="kss"
+           >
+
+  <!-- Set up the demo utility, needed for registration -->
+  <!-- utility
+    name="${package}"
+    factory=".zopeconfig.KSSDemos"
+    provides="kss.demo.interfaces.IKSSDemoResource"
+    permission="zope.Public"
+    /-->
+
+  <!-- Set up resources needed for the demo -->
+  <!-- browser:page
+      for="kss.demo.interfaces.ISimpleContent"
+      template="${package}.pt"
+      name="${package}.html"
+      permission="zope2.View"
+      /-->
+
+  <browser:resource
+    file="${package}.kss"
+    name="${package}.kss"
+    />
+
+  <!-- browser:resource
+    file="${package}.css"
+    name="${package}.css"
+    /-->
+
+</configure>

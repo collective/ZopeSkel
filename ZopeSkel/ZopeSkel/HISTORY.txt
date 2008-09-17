@@ -1,0 +1,441 @@
+Changelog
+=========
+
+2.10 - September, 17th
+----------------------
+
+* Fixed a small bug that made most templates create a package that was showing
+  twice in the Plone quick installer is the top level namespace package was
+  called 'Products'.
+  Bug was fixed in the 'plone' template (since version 1.5), now in other ones
+  where needed too.
+  [davconvent]
+
+2.9 - September, 1st 
+--------------------
+
+* Update silva buildout to reflect changes in Silva 2.1 as stable
+  version, and 2.2 as development: SilvaLayout is not shipped anymore
+  as an extra distribution but integrated in Silva all. Remove
+  question, and update buildout.cfg template.
+  [thefunny]
+
+2.8 - July 31, 2008
+-------------------
+
+* Generate logrotate configuration file using collective.recipe.template
+  so it does not need to contain absolute paths. This makes it possible
+  to move the generated buildout around, or install it on other machines
+  with different filesystem layouts.
+  [wichert]
+
+* Also rotate instance1-Z2.log.
+  [wichert]
+
+* Update documentation for hosting template to note that logrotate needs
+  to be told where to put its status file.
+  [wichert]
+
+
+2.7 - July 25, 2008
+-------------------
+
+* Hosting template:
+
+  - Switch default Plone version to 3.1.4.
+    [wichert]
+
+  - Corrected a typo in the logrotate template, which prevented the zeo log
+    to be rotated.
+    [hannosch]
+
+
+2.6.2 - July 16, 2008
+---------------------
+
+* Hosting template:
+
+  - Corrected even more references of instance to instance1 in proxy support
+    and logrotate handling.
+    [hannosch]
+
+
+2.6.1 - July 16, 2008
+---------------------
+
+* Hosting template:
+
+  - Changed the http_port to start at base_port + 10, to make room for
+    additional services.
+    [hannosch]
+
+  - Corrected hide_summary option, to not show the summary twice.
+    [hannosch]
+
+2.6 - July 15, 2008
+-------------------
+
+* Hosting template:
+
+  - Corrected one last reference of instance to instance1 in the zopepy eggs
+    option of the plone_hosting template.
+    [hannosch]
+
+2.5 - July 15, 2008
+-------------------
+
+* Hosting template:
+
+  - fix test for Varnish-support in the supervisord configuration.
+    [wichert]
+
+  - Rename the instance part to instance1 and add an instances group. This
+    makes it possible to upgrade to multiple instances later on without
+    having to break invocations.
+    [wichert]
+
+2.4 - July 9, 2008
+------------------
+
+* Restore the cwd after running buildout in the hosting recipe so further
+  processing works correctly.
+  [wichert]
+
+* Add a hook in the hosting template to not show the summary. This
+  can be used by derived templates that want to show their own summary
+  or show it at a later point.
+  [wichert]
+
+* Set default Plone version to 3.1.3.
+  [wichert]
+
+* Added kss plugin template
+  [gotcha, jfroche, adrien01]
+
+* Silva layout have been merged with Silva all in the development
+  buildout.
+  [thefunny]
+
+2.3 - June 24, 2008
+-------------------
+
+* Fix problem in the hosting template: varnish was always enabled
+  even if not desired.
+  [wichert]
+
+* Added ZopeSkel test layer with the apropriate testSetup and testTearDown.
+  The steps in the top of each test file is not anymore needed: delete 
+  tempdir/plone.example and then cd to tempdir.
+  [mustapha]
+
+* Make the zope2product option in the archetype template default to true.
+  [mustapha]
+
+* Modified buildout.cf to only test zopeskel.
+  [mustapha]
+
+* Fixed the paster test function: overwrite option should default to True for
+  the create command.
+  [mustapha]
+
+* Added ``use_local_commands`` attribute (a la use_cheetah). A zopeskel
+  template that wants to use local commands has to set it to True .
+  [mustapha]
+
+* Get rid of zopeskel.txt and use setup.cfg to store the parent template name.
+  [mustapha]
+
+* Sub-templates may define a parent_template attribute with the list of 
+  templates that can use it.
+  [mustapha]
+
+* Fixed tests and updated docs.
+  [mustapha]
+
+Version 2.2
+-----------
+
+* Install Plone 3.1.2 by default.
+  [wichert]
+
+* Remove useless spans from the portlet template.
+  [wichert]
+
+* Add supervisorctl configuration.
+  [wichert]
+
+
+Version 2.1
+-----------
+
+* Revert BaseTemplate usage from the hosting template (changeset
+  57368 from Tarek). It was not used and broke the buildout. This fixes
+  http://plone.org/products/zopeskel/issues/8
+  [wichert]
+
+* Replace the generic README in the plone_hosting template with documentation
+  that is important for deployments. 
+  [wichert]
+
+* Add log rotation support to the hosting buildout. Merged from Jarn's
+  bones package.
+  [wichert]
+
+
+Version 2.0
+-----------
+
+* Switch plone_hosting template to using supervisord to manage processes.
+  Merged from Jarn's bones package.
+  [wichert]
+
+* Reduced the number of questions to generate an atschema and used 
+  the MessageFactory instead of declaring an i18n_domain attribute
+  [mustapha]
+
+* Fixed missing imports in plone2_theme
+  [mustapha]
+
+* Removed unused imports in plone_pas
+  [mustapha]
+
+* In plone2.5_theme: when the skinname is empty, replace it with a
+  default text, otherwise adding a Plone Site will throw an error when
+  displaying the extension profiles.
+  [maurits]
+
+* Added note to profiles.zcml of plone2.5_theme that
+  five.registerPackage needs Five version 1.4.
+  [maurits]
+
+* Added a BUILDBOT.txt file.
+  [tarek]
+
+* plone3_portlet: added commented out alternative AddForm for when
+  there are no configurable parameters.  That was shorter than listing
+  all the changes (where we forgot one).
+  [maurits]
+
+* Fixed typos in archetyps and plone3 portlets: 'portletBotomLeft'
+  should have been 'portletBottomLeft' with two 't's.
+  [maurits]
+
+* Made plone3_portlet respect pep8 (and pyflakes).
+  [maurits]
+
+* Use 1.0 as default version number for all templates. This is a more sensible
+  default than 0.1 since we start of with dev-versions anyway.
+  [wichert]
+
+* sub-templates per ZopeSkel template: Only sub-templates related to the parent
+  template is visible with the -l option
+  [mustapha]
+
+* added -a (--list-all) option to show all subtemplates regardless of the
+  current project. Subtemplates that are not for the type of the current
+  project are prefixed with N
+  [mustapha]
+
+* Fixed the recreation of the paster_plugins.txt metadata file for archetype.
+  For now we have to run 2 times the egg_info command to get the paster_plugins
+  file recreated (setuptools problem: nice task to fix) 
+  [mustapha]
+
+* fixed the case of many inner packages: ask the user to choose a packe to
+  inject content into if the command is run outside of an inner package
+  [mustapha]
+
+* make all ZopeSkel templates that inherits from BaseTemplate addcontent aware
+  [mustapha]
+
+* Added plone_pas template for PlonePas projects and many subtemplates
+  [mustapha]
+
+* regrouped archetype subtemplates in templates/archetype
+  [mustapha]
+
+* added and fixed tests
+  [mustapha]
+
+
+Version 1.10
+------------
+
+* Install Plone 3.1.1 as default option.
+  [wichert]
+  
+* Fixed a problem with ZopeSkel localcommands when we have multiple 
+  projects, it was getting the first directory always and sometimes
+  the package dir was not the first directory, so when running the
+  addcontent in the package it was creating the contents in the wrong
+  dir. Thanks to wichert for pointing me this file.
+  [dsa]  
+
+* Update the hosting template to make running of buildout optional.
+  [wichert]
+
+* Update the hosting template to test if a port is already in use and
+  abort if so.
+  [wichert]
+
+* Update the hosting template to only ask for a single base port number.
+  [wichert]
+
+* Fix broken creation of Plone 3.1(.x) sites.
+  [wichert]
+
+
+Version 1.9
+-----------
+
+* Install Plone 3.1 as default option.
+  [wichert]
+
+* Fixed a missing 'import os' in the plone2_theme template. [davisagli]
+
+* Fix an ambiguous question in the silva_buildout template, and update
+  the generated README file. [thefunny]
+
+
+Version 1.8 
+-----------
+
+* fixed the recipe template buildout.cfg generation, thanks Kai ;)
+  [tarek]
+
+Version 1.7
+-----------
+
+* Update the templates to have README.txt and HISTORY.txt in valid
+  restructured format and use those as the package's long description.
+  This automatically gives packages a more readable page on PyPI
+  (and PSC with Tarek's excellent changes).
+  [wichert]
+
+* Adjust the trove classifiers on the packages to not claim incorrect
+  frameworks: we should only claim frameworks on which the package
+  can run directly. So, for example, do not claim Zope2 of we also need
+  Plone on top of Zope2.
+  [wichert]
+  
+
+Version 1.6
+-----------
+
+* Add templates for a Silva buildout.
+  [thefunny]
+
+* Add a metadata.xml to all generated GenericSetup profiles. This is
+  required by new versions of GenericSetup.
+  [wichert]
+
+* For nested namespace packages we need to declare both namespace
+  levels as namespace packages. This is a requirement for current
+  versions of setuptools.
+  [wichert]
+
+* Use Plone 3.0.6 as default version for new Plone hosting buildouts
+  [wichert]
+
+
+Version 1.5.1
+-------------
+
+* Fix #2 (missing import in 'hosting.py') at
+  http://plone.org/products/zopeskel/issues/2
+  [nouri]
+
+Version 1.5
+-----------
+
+* added a new local command into archetype template to inject
+  new content types [spanky] 
+
+* added a doctest for each template, and refactored the package
+  so we have one python module per template [tarek] 
+
+* Refactored the zc.buildout recipe to provide structured documention
+  that will render nicely on PyPI, added comments for recipe authors
+  to help writing documentation and tests and added a working doctest
+  skeleton. Implemented automatic license classifiers for common
+  licenses in the generated setup.py. The mapping is in zopeskel.base
+  and can be used for other templates also.
+  [dokai]
+
+* The 'five:registerPackage' ZCML directive is added in a project based on the
+  'plone' template only if the top level namespace package is not
+  called 'Products'. This avoids having the product loaded twice in Zope.
+  [davconvent]
+
+* Added paragraph about old style Zope 2 Product installation in the
+  INSTALL.txt_tmpl file of the plone template.
+  The paragraph will be added to the installation instructions if the top
+  level namespace package is called 'Products'.
+  [davconvent]
+
+Version 1.4
+-----------
+
+* Set the version number for plone.recipe.plone in a new versions part in
+  buildout.cfg. That works around a buildout bug: buildout breaks if you change
+  the revision pin for a recipe.
+  [wichert]
+
+* Fixed bug: when running 'paster create' with --no-interactive option, 
+  the package variable given in the command line is ignored.
+  [Mustapha]
+
+Version 1.3.4
+-------------
+
+* Added MANIFEST.in to prevent bad releases from svn exports.
+  [fschulze]
+
+Version 1.3.3
+-------------
+
+* Move to the newly released Varnish 1.1.2.
+  [wichert]
+
+* Remove bad import which broke localcommand support.
+  [deo]
+
+* Remove unneeded imports and whitespace cleanup.
+  [deo]
+
+Version 1.3.2
+-------------
+
+* Small fix in plone3_theme that did not install correctly with easy_install
+  because of some files missing the the egg informations (added MANIFEST.in).
+  [davconvent]
+
+Version 1.3.1
+-------------
+
+* Added 'addcontent' local command to make possible injecting content types 
+  in ZopeSkel projects and make the Archetype template 'addcontent' aware.
+  [mustapha]
+
+* Updated to Plone 3.0.4.
+  [fschulze]
+
+* Rerelease because of a bad egg.
+  [fschulze]
+
+Version 1.3
+-----------
+
+* added the `recipe` template
+  [tarek]
+
+* Add Plone 2.5.5.
+  [wichert]
+
+Version 1.2
+-----------
+
+* Merge a slightly stripped down version of the Jarn Plone hosting template.
+  This provides a convenient way to create a buildout for all Plone 2.5 and
+  3.0 versions with ZEO and optional Varnish based caching.
+  [wichert]

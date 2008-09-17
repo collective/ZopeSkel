@@ -1,0 +1,20 @@
+==============
+plone template
+==============
+
+Use paster::
+
+    >>> paster('create -t silva_buildout buildout --no-interactive')
+    paster create -t silva_buildout buildout --no-interactive
+    ...
+
+Let's check the content::
+
+    >>> package_dir = 'buildout'
+    >>> ls(package_dir)
+    README.txt
+    bootstrap.py
+    buildout.cfg
+    products
+    src
+    var
