@@ -1,2 +1,0 @@
-recursive-include ${namespace_package} *
-global-exclude *pyc

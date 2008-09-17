@@ -1,3 +1,0 @@
-
-class $(interface_name)(Interface):
-    """$(contenttype_description)"""
