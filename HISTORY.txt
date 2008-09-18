@@ -10,10 +10,9 @@ Changelog
 ----------------------
 
 * Fixed a small bug that made most templates create a package that was showing
-  twice in the Plone quick installer is the top level namespace package was
-  called 'Products'.
-  Bug was fixed in the 'plone' template (since version 1.5), now in other ones
-  where needed too.
+  twice in the Plone quick installer if the top level namespace package was
+  called 'Products'. Bug was fixed in the 'plone' template (since version 1.5),
+  now in other ones where needed too.
   [davconvent]
 
 2.9 - September, 1st 
