@@ -50,6 +50,7 @@ setup(name='ZopeSkel',
       silva_buildout = zopeskel:SilvaBuildout
       plone_pas = zopeskel:PlonePas
       kss_plugin = zopeskel:KssPlugin
+      zope2_buildout = zopeskel:Zope2Buildout
 
       [paste.paster_command]
       addcontent = zopeskel.localcommands:ZopeSkelLocalCommand

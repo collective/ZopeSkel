@@ -15,3 +15,4 @@ from zopeskel.plone3_theme import Plone3Theme
 from zopeskel.silva_buildout import SilvaBuildout
 from zopeskel.plone_pas import PlonePas
 from zopeskel.kss_plugin import KssPlugin
+from zopeskel.zope2_buildout import Zope2Buildout
