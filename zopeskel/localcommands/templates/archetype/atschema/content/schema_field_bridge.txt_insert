@@ -1,0 +1,9 @@
+    #*
+    This template is added to the main content type template, through a non-standard
+    ZopeSkel method! 
+    *#
+    #if $field_type == 'Reference'
+    ${field_name} = atapi.ATReferenceFieldProperty('${field_name}')
+    #else
+    ${field_name} = atapi.ATFieldProperty('${field_name}')
+    #end if
