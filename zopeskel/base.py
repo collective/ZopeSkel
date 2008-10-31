@@ -65,5 +65,26 @@ class BaseTemplate(templates.Template):
         setup_cfg = os.path.join(output_dir, 'setup.cfg')
         if self.use_local_commands:
             update_setup_cfg(setup_cfg, 'zopeskel', 'template', self.name)
-                 
 
+    def _map_boolean(self, responses):
+        for var in self.vars:
+            if var.name in responses and var.default in [True, False]:
+                value = responses[var.name]
+
+                #Get rid of bonus whitespace
+                if type(value)==str:
+                    value = value.strip()
+
+                #Map special cases to correct values.
+                if value in ['t','T','y','Y']: 
+                    value = True
+                elif value in ['f','F','n','N']:
+                    value = False
+
+                responses[var.name]=value
+        return responses
+
+    def check_vars(self, vars, cmd):
+        responses = super(BaseTemplate, self).check_vars(vars, cmd)
+
+        return self._map_boolean(responses)

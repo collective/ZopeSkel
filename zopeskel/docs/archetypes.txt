@@ -10,7 +10,7 @@ Use paster::
 
 Let's check the content::
 
-    >>> package_dir = os.path.join('plone.example', 
+    >>> package_dir = os.path.join('plone.example',
     ...                            'plone', 'ploneexample')
     >>> ls(package_dir)
     README.txt
@@ -19,16 +19,23 @@ Let's check the content::
     config.py
     configure.zcml
     content
-    interfaces.py
+    interfaces
+    locales
     portlets
     profiles
     tests
-    tests.py
 
-Let's check how the `content` folder::
+Let's check the 'content' folder content::
 
     >>> content_dir = os.path.join(package_dir, 'content')
     >>> ls(content_dir)
     __init__.py
     configure.zcml
 
+Let's check the 'tests' folder content::
+
+    >>> tests_dir = os.path.join(package_dir, 'tests')
+    >>> ls(tests_dir)
+    __init__.py
+    base.py
+    test_doctest.py

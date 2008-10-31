@@ -1,37 +1,40 @@
-${project} Installation
-=======================
+#set $full_package_name = "%s.%s.%s" % ($namespace_package, $namespace_package2, $package)
+#set $header_text = "%s Installation" % $project
+#set $header_line = "-" * len($header_text)
+$header_text
+$header_line
 
- * When you're reading this you have probably already run
-   ``easy_install ${project}``. Find out how to install setuptools
-   (and EasyInstall) here:
-   http://peak.telecommunity.com/DevCenter/EasyInstall
+* When you're reading this you have probably already run
+  ``easy_install ${project}``. Find out how to install setuptools
+  (and EasyInstall) here:
+  http://peak.telecommunity.com/DevCenter/EasyInstall
 
- * Create a file called ``${project}-configure.zcml`` in the
-   ``/path/to/instance/etc/package-includes`` directory.  The file
-   should only contain this::
+* Create a file called ``${project}-configure.zcml`` in the
+  ``/path/to/instance/etc/package-includes`` directory.  The file
+  should only contain this:
 
-       <include package="${namespace_package}.${namespace_package2}.${package}" />
+    <include package="${full_package_name}" />
 
 Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
 recipe to manage your project, you can do this:
 
- * Add ``${project}`` to the list of eggs to install, e.g.:
+* Add ``${full_package_name}`` to the list of eggs to install, e.g.:
 
     [buildout]
     ...
     eggs =
         ...
-        ${project}
+        ${full_package_name}
 
-  * Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
+* Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
 
     [instance]
     recipe = plone.recipe.zope2instance
     ...
     zcml =
-        ${project}
+        ${full_package_name}
 
-  * Re-run buildout, e.g. with:
+* Re-run buildout, e.g. with:
 
     $ ./bin/buildout
 

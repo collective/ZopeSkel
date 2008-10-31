@@ -37,7 +37,7 @@ class ZopeSkelLocalCommand(command.Command):
                       default=0)    
 
     template_vars = {}
-
+    
     def command(self):
         """
         command method
@@ -63,14 +63,9 @@ class ZopeSkelLocalCommand(command.Command):
         (self.template_vars['namespace_package'],
          self.template_vars['namespace_package2'],
          self.template_vars['package']) = self.get_parent_namespace_packages()
-
-        dest_dir = os.path.join(
-                       os.path.dirname(
-                           pluginlib.find_egg_info_dir(os.getcwd())),
-                                       self.template_vars['namespace_package'],
-                                       self.template_vars['namespace_package2'],
-                                       self.template_vars['package'])
-
+        
+        dest_dir = self.dest_dir()
+        
         templates = []
         self._extend_templates(templates, args[0])
 
@@ -82,7 +77,17 @@ class ZopeSkelLocalCommand(command.Command):
             if self.verbose:
                 print 'Creating template %s' % tmpl.name
             tmpl.run(self, dest_dir, self.template_vars)
-
+        
+    
+    def dest_dir(self):
+        dest_dir = os.path.join(
+                   os.path.dirname(
+                       pluginlib.find_egg_info_dir(os.getcwd())),
+                                   self.template_vars['namespace_package'],
+                                   self.template_vars['namespace_package2'],
+                                   self.template_vars['package'])
+        return dest_dir
+    
     def get_parent_namespace_packages(self):
         """
         return the project namespaces and package name.
@@ -165,9 +170,9 @@ class ZopeSkelLocalCommand(command.Command):
         for template in templates:
             _marker = " "
             if not template.parent_templates:
-               _marker = '?'
+                _marker = '?'
             elif parent_template not in template.parent_templates:
-               _marker = 'N'
+                _marker = 'N'
 
             # @@: Wrap description
             print '  %s %s:%s  %s' % (

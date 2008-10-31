@@ -4,64 +4,64 @@
     i18n_domain="${namespace_package}.${package}">
 
 #if str($include_doc) == 'True'
-    <!-- '$skinname' Zope 3 browser layer
-      Register views, viewlets and resources for this layer to make sure
-      they only apply to the '${skinname}' theme.
-      You can also use this layer to override default Plone browser views
-      and viewlets only within the '${skinname}' theme.
-      -->
+  <!-- '$skinname' Zope 3 browser layer
+    Register views, viewlets and resources for this layer to make sure
+    they only apply to the '${skinname}' theme.
+    You can also use this layer to override default Plone browser views
+    and viewlets only within the '${skinname}' theme.
+  -->
 #else
-    <!-- '$skinname' Zope 3 browser layer -->
+  <!-- '$skinname' Zope 3 browser layer -->
 #end if
-    <interface
-        interface=".interfaces.IThemeSpecific"
-        type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="$skinname"
-        />
-
-    <!-- Viewlets registration -->
+  <interface
+      interface=".interfaces.IThemeSpecific"
+      type="zope.publisher.interfaces.browser.IBrowserSkinType"
+      name="$skinname"
+      />
+  
+  <!-- Viewlets registration -->
 #if str($include_doc) == 'True'
-<!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
-     <browser:viewlet
-         name="${namespace_package}.someviewlet"
-         manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
-         class=".viewlets.SomeViewlet"
-         layer=".interfaces.IThemeSpecific"
-         permission="zope2.View"
-         />
--->
+  <!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
+  <browser:viewlet
+      name="${namespace_package}.someviewlet"
+      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+      class=".viewlets.SomeViewlet"
+      layer=".interfaces.IThemeSpecific"
+      permission="zope2.View"
+      />
+  -->
 
 #end if
-    <!-- Zope 3 browser resources -->
-
-#if str($include_doc) == 'True'
-    <!-- Resource directory for images
-      See ${namespace_package}/${package}/browser/images/README.txt
-      for more information about registering images as Zope 3 browser
-      resources.
-      -->
-#else
-    <!-- Resource directory for images -->
-#end if
-    <browser:resourceDirectory
-        name="${namespace_package}.${package}.images"
-        directory="images"
-        layer=".interfaces.IThemeSpecific"
-        />
+  <!-- Zope 3 browser resources -->
 
 #if str($include_doc) == 'True'
-    <!-- Resource directory for stylesheets
-      See ${namespace_package}/${package}/browser/stylesheets/README.txt
-      for more information about registering stylesheets as Zope 3 browser
-      resources.
-      -->
+  <!-- Resource directory for images
+    See ${namespace_package}/${package}/browser/images/README.txt
+    for more information about registering images as Zope 3 browser
+    resources.
+  -->
 #else
-    <!-- Resource directory for stylesheets -->
+  <!-- Resource directory for images -->
 #end if
-    <browser:resourceDirectory
-        name="${namespace_package}.${package}.stylesheets"
-        directory="stylesheets"
-        layer=".interfaces.IThemeSpecific"
-        />
+  <browser:resourceDirectory
+      name="${namespace_package}.${package}.images"
+      directory="images"
+      layer=".interfaces.IThemeSpecific"
+      />
+
+#if str($include_doc) == 'True'
+  <!-- Resource directory for stylesheets
+    See ${namespace_package}/${package}/browser/stylesheets/README.txt
+    for more information about registering stylesheets as Zope 3 browser
+    resources.
+  -->
+#else
+  <!-- Resource directory for stylesheets -->
+#end if
+  <browser:resourceDirectory
+      name="${namespace_package}.${package}.stylesheets"
+      directory="stylesheets"
+      layer=".interfaces.IThemeSpecific"
+      />
 
 </configure>

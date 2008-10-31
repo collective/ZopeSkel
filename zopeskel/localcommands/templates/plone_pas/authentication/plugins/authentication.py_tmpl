@@ -1,17 +1,14 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class AuthenticationPlugin( BasePlugin ):
-
+class AuthenticationPlugin(BasePlugin):
     """ Map credentials to a user ID.
     """
-
     security = ClassSecurityInfo()
 
     security.declarePrivate('authenticateCredentials')
-    def authenticateCredentials( self, credentials ):
+    def authenticateCredentials(self, credentials):
 
         """ credentials -> (userid, login)
 
@@ -22,7 +19,6 @@ class AuthenticationPlugin( BasePlugin ):
 
         o If the credentials cannot be authenticated, return None.
         """
-
         user_id = ''
         user_login = ''
 

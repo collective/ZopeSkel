@@ -1,16 +1,14 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class PropertiesPlugin( BasePlugin ):
+class PropertiesPlugin(BasePlugin):
     """ Return a property set for a user.
     """
-
     security = ClassSecurityInfo()
 
     security.declarePrivate('getPropertiesForUser')
-    def getPropertiesForUser( self, user, request=None ):
+    def getPropertiesForUser(self, user, request=None):
         """ user -> {}
 
         o User will implement IPropertiedUser.

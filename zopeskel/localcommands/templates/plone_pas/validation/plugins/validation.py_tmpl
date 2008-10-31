@@ -1,9 +1,8 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class ValidationPlugin( BasePlugin ):
+class ValidationPlugin(BasePlugin):
     """ Specify allowable values for user properties.
 
     o E.g., constrain minimum password length, allowed characters, etc.
@@ -14,8 +13,8 @@ class ValidationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('validateUserInfo')
-    def validateUserInfo( self, user, set_id, set_info ):
-        """ -> ( error_info_1, ... error_info_N )
+    def validateUserInfo(self, user, set_id, set_info):
+        """-> ( error_info_1, ... error_info_N )
 
         o Returned values are dictionaries, containing at least keys:
 

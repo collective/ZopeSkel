@@ -1,21 +1,18 @@
 Changelog
 =========
 
-2.11 - Unreleased
+2.10 - Unreleased
 -----------------
 
+* Nearly at the end of the creation of a ZopeSkel template, the local commands
+  available for that template are displayed. [jaraco, markvl]
+
+* The Plone template now has local commands. (Basically moved them
+  from the archetype templates to plone templates and made them
+  available for both. [markvl]
 
 
-2.10 - September, 17th
-----------------------
-
-* Fixed a small bug that made most templates create a package that was showing
-  twice in the Plone quick installer if the top level namespace package was
-  called 'Products'. Bug was fixed in the 'plone' template (since version 1.5),
-  now in other ones where needed too.
-  [davconvent]
-
-2.9 - September, 1st 
+2.9 - September, 1st
 --------------------
 
 * Update silva buildout to reflect changes in Silva 2.1 as stable
@@ -128,7 +125,7 @@ Changelog
   [wichert]
 
 * Added ZopeSkel test layer with the apropriate testSetup and testTearDown.
-  The steps in the top of each test file is not anymore needed: delete 
+  The steps in the top of each test file is not anymore needed: delete
   tempdir/plone.example and then cd to tempdir.
   [mustapha]
 
@@ -149,7 +146,7 @@ Changelog
 * Get rid of zopeskel.txt and use setup.cfg to store the parent template name.
   [mustapha]
 
-* Sub-templates may define a parent_template attribute with the list of 
+* Sub-templates may define a parent_template attribute with the list of
   templates that can use it.
   [mustapha]
 
@@ -178,7 +175,7 @@ Version 2.1
   [wichert]
 
 * Replace the generic README in the plone_hosting template with documentation
-  that is important for deployments. 
+  that is important for deployments.
   [wichert]
 
 * Add log rotation support to the hosting buildout. Merged from Jarn's
@@ -193,7 +190,7 @@ Version 2.0
   Merged from Jarn's bones package.
   [wichert]
 
-* Reduced the number of questions to generate an atschema and used 
+* Reduced the number of questions to generate an atschema and used
   the MessageFactory instead of declaring an i18n_domain attribute
   [mustapha]
 
@@ -242,7 +239,7 @@ Version 2.0
 
 * Fixed the recreation of the paster_plugins.txt metadata file for archetype.
   For now we have to run 2 times the egg_info command to get the paster_plugins
-  file recreated (setuptools problem: nice task to fix) 
+  file recreated (setuptools problem: nice task to fix)
   [mustapha]
 
 * fixed the case of many inner packages: ask the user to choose a packe to
@@ -267,13 +264,13 @@ Version 1.10
 
 * Install Plone 3.1.1 as default option.
   [wichert]
-  
-* Fixed a problem with ZopeSkel localcommands when we have multiple 
+
+* Fixed a problem with ZopeSkel localcommands when we have multiple
   projects, it was getting the first directory always and sometimes
   the package dir was not the first directory, so when running the
   addcontent in the package it was creating the contents in the wrong
   dir. Thanks to wichert for pointing me this file.
-  [dsa]  
+  [dsa]
 
 * Update the hosting template to make running of buildout optional.
   [wichert]
@@ -301,7 +298,7 @@ Version 1.9
   the generated README file. [thefunny]
 
 
-Version 1.8 
+Version 1.8
 -----------
 
 * fixed the recipe template buildout.cfg generation, thanks Kai ;)
@@ -321,7 +318,7 @@ Version 1.7
   can run directly. So, for example, do not claim Zope2 of we also need
   Plone on top of Zope2.
   [wichert]
-  
+
 
 Version 1.6
 -----------
@@ -353,10 +350,10 @@ Version 1.5
 -----------
 
 * added a new local command into archetype template to inject
-  new content types [spanky] 
+  new content types [spanky]
 
 * added a doctest for each template, and refactored the package
-  so we have one python module per template [tarek] 
+  so we have one python module per template [tarek]
 
 * Refactored the zc.buildout recipe to provide structured documention
   that will render nicely on PyPI, added comments for recipe authors
@@ -385,7 +382,7 @@ Version 1.4
   the revision pin for a recipe.
   [wichert]
 
-* Fixed bug: when running 'paster create' with --no-interactive option, 
+* Fixed bug: when running 'paster create' with --no-interactive option,
   the package variable given in the command line is ignored.
   [Mustapha]
 
@@ -417,7 +414,7 @@ Version 1.3.2
 Version 1.3.1
 -------------
 
-* Added 'addcontent' local command to make possible injecting content types 
+* Added 'addcontent' local command to make possible injecting content types
   in ZopeSkel projects and make the Archetype template 'addcontent' aware.
   [mustapha]
 

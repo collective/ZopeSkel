@@ -17,28 +17,38 @@ Simply run this script in a directory containing a buildout.cfg.
 The script accepts buildout command-line options, so you can
 use the -c option to specify an alternate configuration file.
 
-$Id$
+$Id: bootstrap.py 85041 2008-03-31 15:57:30Z andreasjung $
 """
 
 import os, shutil, sys, tempfile, urllib2
 
 tmpeggs = tempfile.mkdtemp()
 
-ez = {}
-exec urllib2.urlopen('http://peak.telecommunity.com/dist/ez_setup.py'
-                     ).read() in ez
-ez['use_setuptools'](to_dir=tmpeggs, download_delay=0)
+try:
+    import pkg_resources
+except ImportError:
+    ez = {}
+    exec urllib2.urlopen('http://peak.telecommunity.com/dist/ez_setup.py'
+                         ).read() in ez
+    ez['use_setuptools'](to_dir=tmpeggs, download_delay=0)
 
-import pkg_resources
+    import pkg_resources
+
+if sys.platform == 'win32':
+    def quote(c):
+        if ' ' in c:
+            return '"%s"' % c # work around spawn lamosity on windows
+        else:
+            return c
+else:
+    def quote (c):
+        return c
 
 cmd = 'from setuptools.command.easy_install import main; main()'
-if sys.platform == 'win32':
-    cmd = '"%s"' % cmd # work around spawn lamosity on windows
-
-ws = pkg_resources.working_set
+ws  = pkg_resources.working_set
 assert os.spawnle(
-    os.P_WAIT, sys.executable, sys.executable,
-    '-c', cmd, '-mqNxd', tmpeggs, 'zc.buildout',
+    os.P_WAIT, sys.executable, quote (sys.executable),
+    '-c', quote (cmd), '-mqNxd', quote (tmpeggs), 'zc.buildout',
     dict(os.environ,
          PYTHONPATH=
          ws.find(pkg_resources.Requirement.parse('setuptools')).location

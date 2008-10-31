@@ -1,14 +1,26 @@
 
     atapi.${field_type}Field(
-        name='${field_name}',
-        storage = atapi.AnnotationStorage(),
-        required=False,
-        #searchable=1,
-        #default='',
-        #schemata ='default',
+        '${field_name}',
+        storage=atapi.AnnotationStorage(),
         widget=atapi.${widget_type}Widget(
-            label=_(u"${field_name}"),
-            description=_(u"Description of ${field_name}"),
+            label=_(u"${field_label}"),
+            description=_(u"${field_desc}"),
         ),
+#if str($required) == 'True'
+        required=${required},
+#end if
+#if str($default) != '' and str($field_type) != 'Computed'
+        default=_(u"${default}"),
+#end if
+#if str($field_type) == 'Reference'
+        relationship='${content_class_filename}_${field_name}',
+        allowed_types=(), # specify portal type names here ('Example Type',)
+        multiValued=False,
+#end if
+#if str($field_type) == 'Computed'
+        expression = '',
+#end if
+#if $a_validator
+        validators=($a_validator),
+#end if  
     ),
-

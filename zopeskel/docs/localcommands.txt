@@ -1,6 +1,14 @@
 Local commands:
 ==============
 
+PasteScript supports the notion of local commands. These are commands
+that can be executed from within a project. See the ``localcommands``
+directory in ZopeSkel for more information.
+
+
+Plone
+-----
+
 Check that the `addcontent` command is not globaly available::
 
     >>> help_text = read_sh('paster help')
@@ -10,10 +18,10 @@ Check that the `addcontent` command is not globaly available::
 `addcontent` is active for all ZopeSkel templates that have ``use_local_commands``
 attribute set to true.
 
-Let's for example take the archetype template::
+Let's for example take the plone template::
 
-    >>> paster('create -t archetype plone.example --no-interactive')
-    paster create -t archetype plone.example --no-interactive
+    >>> paster('create -t plone plone.example --no-interactive')
+    paster create -t plone plone.example --no-interactive
     ...
     >>> cd('plone.example')
     >>> paster('help')
@@ -24,17 +32,19 @@ Let's for example take the archetype template::
       addcontent   Adds plone content types to your project
     <BLANKLINE>
     <BLANKLINE>
-
-What sub-templates are available for an archetype based project ?::
+    
+What sub-templates are available for a plone based project ?::
 
     >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
-      atschema:     A handy AT schema builder
-      contenttype:  A content type skeleton
+      form:         A form skeleton
+      formfields:   Schema fields for a form
+      i18nlocale:   An i18n locale directory structure
       portlet:      A Plone 3 portlet
       view:         A browser view skeleton
       zcmlmeta:     A ZCML meta directive skeleton
+
 
 Now we can add a portlet to our project::
 
@@ -53,7 +63,6 @@ Test if we have the new files::
     >>> ls('plone', 'ploneexample', 'tests')
     __init__.py
     base_exampleportlet.py
-    doc_tests.py
     test_exampleportlet.py
 
 Check that the existing files like profile/portlets are updated::
@@ -69,3 +78,66 @@ Check that the existing files like profile/portlets are updated::
     ...
 
 
+Now add a new i18n locales directory structure to the project::
+
+    >>> paster('addcontent --no-interactive i18nlocale')
+    paster addcontent --no-interactive i18nlocale
+    Recursing into locales
+    ...
+
+Test if we have the new files::
+
+    >>> ls('plone', 'ploneexample', 'locales')
+    nl
+
+Let's try to add a form to our project::
+
+    >>> paster('addcontent --no-interactive form')
+    paster addcontent --no-interactive form
+    Recursing into browser
+    ...
+
+Test if we have the new files::
+
+    >>> ls('plone', 'ploneexample', 'browser')
+    __init__.py
+    configure.zcml
+    exampleform.py
+
+
+
+Go back to the top level directory to have a more or less clean slate
+for the following tests.
+    >>> cd('..')
+
+Archetype
+---------
+
+An archetype based project has other localcommands available::
+
+    >>> paster('create -t archetype archetype.example --no-interactive')
+    paster create -t archetype archetype.example --no-interactive
+    ...
+    >>> cd('archetype.example')
+    >>> paster('help')
+    paster help
+    ...
+    <BLANKLINE>
+    ZopeSkel local commands:
+      addcontent   Adds plone content types to your project
+    <BLANKLINE>
+    <BLANKLINE>
+
+What sub-templates are available for an archetype based project ?::
+
+    >>> paster('addcontent --list')
+    paster addcontent --list
+    Available templates:
+      atschema:     A handy AT schema builder
+      contenttype:  A content type skeleton
+      form:         A form skeleton
+      formfields:   Schema fields for a form
+      i18nlocale:   An i18n locale directory structure
+      portlet:      A Plone 3 portlet
+      view:         A browser view skeleton
+      zcmlmeta:     A ZCML meta directive skeleton

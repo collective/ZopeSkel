@@ -1,10 +1,9 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class UserEnumerationPlugin( BasePlugin ):
-    """ Allow querying users by ID, and searching for users.
+class UserEnumerationPlugin(BasePlugin):
+    """Allow querying users by ID, and searching for users.
 
     o XXX:  can these be done by a single plugin?
     """
@@ -12,15 +11,14 @@ class UserEnumerationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('enumerateUsers')
-    def enumerateUsers( self
-                      , id=None
-                      , login=None
-                      , exact_match=False
-                      , sort_by=None
-                      , max_results=None
-                      , **kw
-                      ):
-        """ -> ( user_info_1, ... user_info_N )
+    def enumerateUsers(self,
+                       id=None,
+                       login=None,
+                       exact_match=False,
+                       sort_by=None,
+                       max_results=None,
+                       **kw):
+        """-> ( user_info_1, ... user_info_N )
 
         o Return mappings for users matching the given criteria.
 

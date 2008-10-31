@@ -1,25 +1,23 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class ChallengePlugin( BasePlugin ):
+class ChallengePlugin(BasePlugin):
+    """Initiate a challenge to the user to provide credentials.
+    
+    Challenge plugins have an attribute 'protocol' representing
+    the protocol the plugin operates under, defaulting to None.
 
-    """ Initiate a challenge to the user to provide credentials.
-
-        Challenge plugins have an attribute 'protocol' representing
-        the protocol the plugin operates under, defaulting to None.
-
-        Plugins operating under the same protocol will all be given an
-        attempt to fire. The first plugin of a protocol group that
-        successfully fires establishes the protocol of the overall
-        challenge.
+    Plugins operating under the same protocol will all be given an
+    attempt to fire. The first plugin of a protocol group that
+    successfully fires establishes the protocol of the overall
+    challenge.
     """
 
     security = ClassSecurityInfo()
 
     security.declarePrivate('challenge')
-    def challenge( self, request, response ):
+    def challenge(self, request, response):
 
         """ Assert via the response that credentials will be gathered.
 

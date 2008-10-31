@@ -3,24 +3,20 @@ from AccessControl.SecurityInfo import ClassSecurityInfo
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class ExtractionPlugin( BasePlugin ):
-
-    """ Extracts login name and credentials from a request.
+class ExtractionPlugin(BasePlugin):
+    """Extracts login name and credentials from a request.
     """
-
     security = ClassSecurityInfo()
 
     security.declarePrivate('extractCredentials')
-    def extractCredentials( self, request ):
-
-        """ request -> {...}
+    def extractCredentials(self, request):
+        """request -> {...}
 
         o Return a mapping of any derived credentials.
 
         o Return an empty mapping to indicate that the plugin found no
           appropriate credentials.
         """
- 
         creds = {}
 
         \#add your code here

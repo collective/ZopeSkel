@@ -1,3 +1,4 @@
+import os
 import copy
 
 from zopeskel.plone import Plone
@@ -19,3 +20,11 @@ class Archetype(Plone):
     #zope2product should always defaults to True
     get_var(vars, 'zope2product').default = True
 
+    def post(self, command, output_dir, vars):
+        # Remove tests.py -- we already have a tests/ package
+        path = os.path.join(output_dir,
+                            vars['namespace_package'],
+                            vars['package'])
+        os.remove(os.path.join(path, 'tests.py'))
+
+        super(Archetype, self).post(command, output_dir, vars)

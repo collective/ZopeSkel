@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-version = '2.11'
+version = '2.10'
 
 setup(name='ZopeSkel',
       version=version,
       description="A collection of skeletons for quickstarting Zope projects.",
-      long_description=open('README.txt').read() + "\n" + 
+      long_description=open('README.txt').read() + "\n" +
                        open('HISTORY.txt').read(),
       classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -50,17 +50,20 @@ setup(name='ZopeSkel',
       silva_buildout = zopeskel:SilvaBuildout
       plone_pas = zopeskel:PlonePas
       kss_plugin = zopeskel:KssPlugin
-      zope2_buildout = zopeskel:Zope2Buildout
 
       [paste.paster_command]
       addcontent = zopeskel.localcommands:ZopeSkelLocalCommand
-      
+
       [zopeskel.zopeskel_sub_template]
-      portlet = zopeskel.localcommands.archetype:Portlet
-      view = zopeskel.localcommands.archetype:View
-      zcmlmeta = zopeskel.localcommands.archetype:ZCMLMetaDirective
+      portlet = zopeskel.localcommands.plone:Portlet
+      view = zopeskel.localcommands.plone:View
+      zcmlmeta = zopeskel.localcommands.plone:ZCMLMetaDirective
+      i18nlocale = zopeskel.localcommands.plone:I18nLocale
+
       contenttype = zopeskel.localcommands.archetype:ContentType
       atschema = zopeskel.localcommands.archetype:ATSchemaField
+      form = zopeskel.localcommands.plone:Form
+      formfields = zopeskel.localcommands.plone:FormFields
 
       extraction_plugin = zopeskel.localcommands.plone_pas:ExtractionPlugin
       authentication_plugin = zopeskel.localcommands.plone_pas:AuthenticationPlugin

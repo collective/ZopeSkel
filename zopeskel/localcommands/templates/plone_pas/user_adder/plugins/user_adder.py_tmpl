@@ -1,16 +1,15 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class UserAdderPlugin( BasePlugin ):
+class UserAdderPlugin(BasePlugin):
     """ Create a new user record in a User Manager
     """
 
     security = ClassSecurityInfo()
 
     security.declarePrivate('doAddUser')
-    def doAddUser( self, login, password ):
+    def doAddUser(self, login, password):
         """ Add a user record to a User Manager, with the given login
             and password
 

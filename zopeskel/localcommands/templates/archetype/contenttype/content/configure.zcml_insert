@@ -1,13 +1,10 @@
-    <class class=".${content_class_filename}.${contenttype_classname}">
-
-        <require
-            permission="zope2.View"
-            interface="..interfaces.${interface_name}"
-            />
-
-        <require
-            permission="cmf.ModifyPortalContent"
-            set_schema="..interfaces.${interface_name}"
-            />
-
-    </class>
+  <class class=".${content_class_filename}.${contenttype_classname}">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.${interface_name}"
+        />
+    <require
+        permission="cmf.ModifyPortalContent"
+        set_schema="..interfaces.${interface_name}"
+        />
+  </class>

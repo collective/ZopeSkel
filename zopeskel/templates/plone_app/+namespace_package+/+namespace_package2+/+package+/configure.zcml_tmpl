@@ -4,7 +4,7 @@
     i18n_domain="${namespace_package}.${namespace_package2}.${package}">
 
 #if str($zope2product) == 'True'
-    <five:registerPackage package="." initialize=".initialize" />
+  <five:registerPackage package="." initialize=".initialize" />
 #end if
 
 </configure>

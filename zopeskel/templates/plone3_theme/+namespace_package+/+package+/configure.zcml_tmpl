@@ -4,13 +4,11 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="${namespace_package}.${package}">
 
-#if str($zope2product) == 'True' and $namespace_package != 'Products'
-   <five:registerPackage package="." initialize=".initialize" />
-
+#if str($zope2product) == 'True'
+  <five:registerPackage package="." initialize=".initialize" />
 #end if
-   <include package=".browser" />
-
-   <include file="skins.zcml" />
-   <include file="profiles.zcml" />
+  <include package=".browser" />
+  <include file="skins.zcml" />
+  <include file="profiles.zcml" />
 
 </configure>

@@ -4,8 +4,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="${namespace_package}.${namespace_package2}.${package}">
 
-    <five:registerPackage package="." initialize=".initialize" />
-
-    <include package=".browser" />
+  <five:registerPackage package="." initialize=".initialize" />
+  <include package=".browser" />
 
 </configure>

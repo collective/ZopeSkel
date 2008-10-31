@@ -1,16 +1,14 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class RoleAssignerPlugin( BasePlugin ):
+class RoleAssignerPlugin(BasePlugin):
     """ Assign a role to an identified principal
     """
-
     security = ClassSecurityInfo()
 
     security.declarePrivate('doAssignRoleToPrincipal')
-    def doAssignRoleToPrincipal( self, principal_id, role ):
+    def doAssignRoleToPrincipal(self, principal_id, role):
         """ Create a principal/role association in a Role Manager
 
         o Return a Boolean indicating whether the role was assigned or not
@@ -20,10 +18,8 @@ class RoleAssignerPlugin( BasePlugin ):
 
         pass
 
-    security = ClassSecurityInfo()
-
     security.declarePrivate('doRemoveRoleFromPrincipal')
-    def doRemoveRoleFromPrincipal( self, principal_id, role ):
+    def doRemoveRoleFromPrincipal(self, principal_id, role):
         """ Remove a principal/role association from a Role Manager
 
         o Return a Boolean indicating whether the role was removed or not

@@ -1,10 +1,9 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
 class GroupEnumerationPlugin( BasePlugin ):
-    """ Allow querying groups by ID, and searching for groups.
+    """Allow querying groups by ID, and searching for groups.
 
     o XXX:  can these be done by a single plugin?
     """
@@ -12,14 +11,12 @@ class GroupEnumerationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('enumerateGroups')
-    def enumerateGroups( self
-                       , id=None
-                       , exact_match=False
-                       , sort_by=None
-                       , max_results=None
-                       , **kw
-                       ):
-
+    def enumerateGroups(self,
+                        id=None,
+                        exact_match=False,
+                        sort_by=None,
+                        max_results=None,
+                        **kw):
         """ -> ( group_info_1, ... group_info_N )
 
         o Return mappings for groups matching the given criteria.

@@ -8,6 +8,7 @@ class Plone(BasicNamespace):
     _template_dir = 'templates/plone'
     summary = "A Plone project"
     required_templates = ['basic_namespace']
+    use_local_commands = True
     use_cheetah = True
     vars = copy.deepcopy(BasicNamespace.vars)
     get_var(vars, 'namespace_package').default = 'plone'

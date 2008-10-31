@@ -1,5 +1,4 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
@@ -10,14 +9,12 @@ class RoleEnumerationPlugin( BasePlugin ):
     security = ClassSecurityInfo()
 
     security.declarePrivate('enumerateRoles')
-    def enumerateRoles( self 
-                      , id=None
-                      , exact_match=False
-                      , sort_by=None
-                      , max_results=None
-                      , **kw
-                      ):
-
+    def enumerateRoles(self,
+                      id=None,
+                      exact_match=False,
+                      sort_by=None,
+                      max_results=None,
+                      **kw):
         """ -> ( role_info_1, ... role_info_N )
 
         o Return mappings for roles matching the given criteria.

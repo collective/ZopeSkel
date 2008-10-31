@@ -1,28 +1,31 @@
-${project} Installation
-==========================
+#set $full_package_name = "%s.%s" % ($namespace_package, $package)
+#set $header_text = "%s Installation" % $project
+#set $header_line = "-" * len($header_text)
+$header_text
+$header_line
 
 To install ${project} into the global Python environment (or a workingenv),
 using a traditional Zope 2 instance, you can do this:
 
- * When you're reading this you have probably already run 
-   ``easy_install ${project}``. Find out how to install setuptools
-   (and EasyInstall) here:
-   http://peak.telecommunity.com/DevCenter/EasyInstall
+* When you're reading this you have probably already run 
+  ``easy_install ${project}``. Find out how to install setuptools
+  (and EasyInstall) here:
+  http://peak.telecommunity.com/DevCenter/EasyInstall
 
 #if str($zope2product) == 'True'
- * If you are using Zope 2.9 (not 2.10), get `pythonproducts`_ and install it 
-   via::
+* If you are using Zope 2.9 (not 2.10), get `pythonproducts`_ and install it 
+  via::
 
-       python setup.py install --home /path/to/instance
+    python setup.py install --home /path/to/instance
 
-   into your Zope instance.
+into your Zope instance.
 
 #end if
- * Create a file called ``${project}-configure.zcml`` in the
-   ``/path/to/instance/etc/package-includes`` directory.  The file
-   should only contain this::
+* Create a file called ``${project}-configure.zcml`` in the
+  ``/path/to/instance/etc/package-includes`` directory.  The file
+  should only contain this::
 
-       <include package="${namespace_package}.${package}" />
+    <include package="${full_package_name}" />
 
 #if str($zope2product) == 'True'
 .. _pythonproducts: http://plone.org/products/pythonproducts
@@ -32,24 +35,24 @@ using a traditional Zope 2 instance, you can do this:
 Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
 recipe to manage your project, you can do this:
 
- * Add ``${project}`` to the list of eggs to install, e.g.:
- 
+* Add ``${project}`` to the list of eggs to install, e.g.:
+
     [buildout]
     ...
     eggs =
         ...
-        ${project}
-        
-  * Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
-  
+        ${full_package_name}
+       
+* Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
+
     [instance]
     recipe = plone.recipe.zope2instance
     ...
     zcml =
-        ${project}
-        
-  * Re-run buildout, e.g. with:
-  
+        ${full_package_name}
+      
+* Re-run buildout, e.g. with:
+
     $ ./bin/buildout
         
 You can skip the ZCML slug if you are going to explicitly include the package

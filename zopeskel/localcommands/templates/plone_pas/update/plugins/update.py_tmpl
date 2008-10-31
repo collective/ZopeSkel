@@ -1,16 +1,14 @@
 from AccessControl.SecurityInfo import ClassSecurityInfo
-
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-class UpdatePlugin( BasePlugin ):
+class UpdatePlugin(BasePlugin):
     """ Allow the user or the application to update the user's properties.
     """
-
     security = ClassSecurityInfo()
 
     security.declarePrivate('updateUserInfo')
-    def updateUserInfo( self, user, set_id, set_info ):
+    def updateUserInfo(self, user, set_id, set_info):
         """ Update backing store for 'set_id' using 'set_info'.
         """
 

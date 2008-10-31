@@ -82,7 +82,7 @@ You get a new section called ``ZopeSkel local commands`` with one command
 called ``addcontent``. This new section is only available if paster detects
 that your project is ``addcontent`` aware (more about this later) .
 
-To see the list of available templates for a zopeskel template, create 
+To see the list of available templates for a zopeskel template, create
 a project based on that template and run ``paster addcontent -l``::
 
   $ paster create -t archetype myproject
@@ -91,12 +91,15 @@ a project based on that template and run ``paster addcontent -l``::
   Available templates:
       atschema:     A handy AT schema builder
       contenttype:  A content type skeleton
+      form:         A form skeleton
+      formfields:   Schema fields for a form
+      i18nlocale:   An i18n locale directory structure
       portlet:      A Plone 3 portlet
       view:         A browser view skeleton
       zcmlmeta:     A ZCML meta directive skeleton
 
 You get only the templates related to the type of your project. If you want
-to see all templates even those that are not related to the type of your 
+to see all templates even those that are not related to the type of your
 project::
 
   myproject$ paster addcontent -a
@@ -108,8 +111,11 @@ project::
       contenttype:                    A content type skeleton
     N credentials_reset_plugin:       A Plone PAS CredentialsReset Plugin
     N extraction_plugin:              A Plone PAS Extraction Plugin
+      form:                           A form skeleton
+      formfields:                     Schema fields for a form
     N group_enumeration_plugin:       A Plone PAS GroupEnumeration Plugin
     N groups_plugin:                  A Plone PAS Groups Plugin
+      i18nlocale:                     An i18n locale directory structure
       portlet:                        A Plone 3 portlet
     N properties_plugin:              A Plone PAS Properties Plugin
     N role_assigner_plugin:           A Plone PAS RoleAssigner Plugin
@@ -304,7 +310,7 @@ and our templates have to be added under that section. If you look in the
 setup.py file of ZopeSkel to the entry_points argument, you will find::
 
     [zopeskel.zopeskel_sub_template]
-    portlet = zopeskel.localcommands.templates:Portlet
+    portlet = zopeskel.localcommands.plone:Portlet
 
 
 Enable ``addcontent`` in other ZopeSkel templates
@@ -319,12 +325,28 @@ your current projet::
     [zopeskel]
     template = archetype
 
-For the moment the ``addcontent`` command is only enabled for the archetype 
-and plone_pas templates. You can enable ``addcontent`` command for other 
-ZopeSkel templates by addinng a ``use_local_commands`` attribute to the 
-template class and set it to 'True'::
+For the moment the ``addcontent`` command is only enabled for the
+archetype, plone and plone_pas templates. You can enable
+``addcontent`` command for other ZopeSkel templates by addinng a
+``use_local_commands`` attribute to the template class and set it to
+'True'::
 
     use_local_commands = True
+
+Forthermore, you need to make sure the ZopeSkel template's name is in
+the ``parent_templates`` list of the command(s) you went to enable. To
+enable the portlet template for the plone template::
+
+  from zopeskel import var
+  from zopeskel.localcommands import ZopeSkelLocalTemplate
+
+  class Portlet(ZopeSkelLocalTemplate):
+      """
+      A plone 3 portlet skeleton
+      """
+      ...
+      parent_templates = ['archetype', 'plone']
+      ...
 
 
 /Mustapha
