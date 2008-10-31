@@ -1,0 +1,36 @@
+#for $i in range(3)
+
+   name = schema.TextLine(
+        title=u'Name',
+        required=True)
+
+    description = schema.Text(
+        title=u'Description of your sprint work',
+        required=True)
+
+    status = schema.Text(
+        title=u'Status',
+        required=True)
+#end for    
+
+##    atapi.${field_type}Field('${field_name}',
+##        storage=atapi.AnnotationStorage(),
+##       widget=atapi.${widget_type}Widget(
+##            label=_(u"${field_label}"),
+##            description=_(u"${field_desc}"),
+##        ),
+###if str($required) == 'True'
+##        required=${required},
+###end if
+###if str($default) != '' and str($field_type) != 'Computed'
+##		default=_(u"${default}"),
+###end if
+###if str($field_type) == 'Reference'
+##        relationship='${content_class_filename}_${field_name}',
+##        allowed_types=(), # specify portal type names here ('Example Type',)
+##        multiValued=False,
+###end if
+###if str($field_type) == 'Computed'
+##        expression = '',
+###end if
+##    ),

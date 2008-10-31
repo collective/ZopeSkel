@@ -1,0 +1,17 @@
+#<configure 
+#    xmlns="http://namespaces.zope.org/zope"
+#    xmlns:browser="http://namespaces.zope.org/browser"
+#    i18n_domain="${package_dotted_name}">
+#
+#  <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+      for="*"
+      name="${view_filename}_view"
+      class=".${view_filename}view.${view_classname}View"
+      template="${view_filename}view.pt"
+      allowed_interface=".${view_filename}view.I${view_classname}View"
+      permission="zope.Public"
+      />
+
+#</configure>

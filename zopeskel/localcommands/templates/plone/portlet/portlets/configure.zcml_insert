@@ -1,0 +1,24 @@
+#<configure 
+#    xmlns="http://namespaces.zope.org/zope"
+#    xmlns:plone="http://namespaces.plone.org/plone"
+#    i18n_domain="${package_dotted_name}">
+#
+#  <!-- Ensure Plone's portlets ZCML has already been processed; without
+#       this, we may get a permission lookup error
+#  -->
+#  <include package="plone.app.portlets" />
+#
+#  <!-- -*- extra stuff goes here -*- -->
+
+  <plone:portlet
+      name="${dotted_name}.${portlet_type_name}"
+      interface=".${portlet_filename}.I${portlet_type_name}"
+      assignment=".${portlet_filename}.Assignment"
+      view_permission="zope2.View"
+      edit_permission="cmf.ManagePortal"
+      renderer=".${portlet_filename}.Renderer"
+      addview=".${portlet_filename}.AddForm"
+      editview=".${portlet_filename}.EditForm"
+      />
+
+#</configure>

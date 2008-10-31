@@ -1,0 +1,20 @@
+from zope import interface, schema
+from zope.formlib import form
+from Products.Five.formlib import formbase
+
+from ${package_dotted_name} import ${package}MessageFactory as _
+
+class I${form_name}FormSchema(interface.Interface):
+    # -*- extra stuff goes here -*-
+
+class ${form_name}Form(formbase.PageForm):
+    form_fields = form.FormFields(I${form_name}FormSchema)
+    label = u'Report of Sprint work'
+    description = u'Report of the work that has been done.'
+
+    @form.action('Save')
+    def action_save(self, action, data):
+        pass
+
+        # Put in your stuff
+
