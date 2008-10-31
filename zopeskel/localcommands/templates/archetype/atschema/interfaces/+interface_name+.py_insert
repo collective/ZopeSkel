@@ -1,0 +1,8 @@
+    ${field_name} = schema.${zopeschema_type}(
+        title=_(u"${field_label}"), 
+        required=${required},
+        description=_(u"${field_desc}"),
+        #if str($zopeschema_type) == 'Object'
+        schema=Interface, # specify the interface(s) of the addable types here
+        #end if
+    )

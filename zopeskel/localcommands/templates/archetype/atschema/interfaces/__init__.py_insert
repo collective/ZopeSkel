@@ -1,0 +1,1 @@
+from ${contenttype_classname} import ${interface_name}
