@@ -38,7 +38,7 @@ version-suffix-packages = Plone-2.5.5.tar.gz
 #if not $zope2_install
 [zope2]
 recipe = plone.recipe.zope2install
-url = http://www.zope.org/Products/Zope/2.9.8/Zope-2.9.8-final.tgz
+url = http://www.zope.org/Products/Zope/2.9.10/Zope-2.9.10-final.tgz
 #end if
 
 \# Use this section to download additional old-style products.

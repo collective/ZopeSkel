@@ -4,6 +4,13 @@ Changelog
 2.10 - Unreleased
 -----------------
 
+* Update plone2.5_template's buildout.cfg_tmpl to use Zope 2.9.10. This release
+  incorporates Hotfix-2008-08-12. Defaulting to a known insecure Zope seems 
+  unwise for people that may be updating legacy environments into buildout, since
+  they're likely to forget to include the hotfix.  Url to 2.9.10 hard-coded (as 
+  opposed to the more elegantly self-aware plone.recipe.plone approach) per the 
+  practice of a plone.recipe.distros plone part. [andrewb]
+
 * Nearly at the end of the creation of a ZopeSkel template, the local commands
   available for that template are displayed. [jaraco, markvl]
 
