@@ -10,6 +10,8 @@ Contributors:
  
     - Sylvain Viollon : add and update the Silva buildout
       template.
+    
+    - Alan Hoey : add the zope2_buildout template.
 
     - Please guys, add your name here !
 

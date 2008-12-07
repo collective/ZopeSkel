@@ -4,6 +4,10 @@ Changelog
 2.11 - Unreleased
 -----------------
 
+* Link to appropriate PyPI pages for recipes used. [MatthewWilkes]
+
+* Add a Zope 2 without Plone buildout template. [evilbungle]
+
 * Reconciling HISTORY.txt to mirror what can be found at the following:
   http://pypi.python.org/pypi/ZopeSkel/2.10.  Release of 2.10 was clobbered
   due to what looks like a merge at r74790 [andrewb]

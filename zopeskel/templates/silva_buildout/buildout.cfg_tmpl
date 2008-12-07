@@ -12,6 +12,8 @@ extends =
 develop =
 
 [instance]
+\# For more information on this step and configuration options see:
+\# http://pypi.python.org/pypi/plone.recipe.zope2instance
 recipe = plone.recipe.zope2instance
 #if $zope2_install
 zope2-location = ${zope2_install}

@@ -22,6 +22,8 @@ develop =
 
 #if not $zope2_install
 [zope2]
+\# For more information on this step and configuration options see:
+\# http://pypi.python.org/pypi/plone.recipe.zope2install
 recipe = plone.recipe.zope2install
 url = http://www.zope.org/Products/Zope/${zope2_version}/Zope-${zope2_version}-final.tgz
 #end if
@@ -35,12 +37,16 @@ url = http://www.zope.org/Products/Zope/${zope2_version}/Zope-${zope2_version}-f
 \# If any archives extract to a product directory with a version suffix, list
 \# the archive name under 'version-suffix-packages'.
 [productdistros]
+\# For more information on this step and configuration options see:
+\# http://pypi.python.org/pypi/plone.recipe.distros
 recipe = plone.recipe.distros
 urls =
 nested-packages =
 version-suffix-packages =
 
 [instance]
+\# For more information on this step and configuration options see:
+\# http://pypi.python.org/pypi/plone.recipe.zope2instance
 recipe = plone.recipe.zope2instance
 #if $zope2_install
 zope2-location = ${zope2_install}
@@ -75,6 +81,8 @@ products =
     \${productdistros:location}
 
 [zopepy]
+\# For more information on this step and configuration options see:
+\# http://pypi.python.org/pypi/zc.recipe.egg
 recipe = zc.recipe.egg
 eggs = \${instance:eggs}
 interpreter = zopepy
