@@ -63,7 +63,7 @@ setup(name='ZopeSkel',
       contenttype = zopeskel.localcommands.archetype:ContentType
       atschema = zopeskel.localcommands.archetype:ATSchemaField
       form = zopeskel.localcommands.plone:Form
-      formfields = zopeskel.localcommands.plone:FormFields
+      formfield = zopeskel.localcommands.plone:FormField
 
       extraction_plugin = zopeskel.localcommands.plone_pas:ExtractionPlugin
       authentication_plugin = zopeskel.localcommands.plone_pas:AuthenticationPlugin

@@ -6,8 +6,8 @@
     
     <browser:page
         for="*"
-        name="${form_name}"
-        class=".${form_filename}form.${form_name}Form"
+        name="${form_filename}"
+        class=".${form_filename}.${form_name}"
         permission="zope.Public" />
 
 #</configure>

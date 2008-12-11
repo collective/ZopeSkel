@@ -106,8 +106,12 @@ class Form(PloneSubTemplate):
     summary = "A form skeleton"
 
     vars = [
-      var('form_name', 'Form name',  default="Example"),
-           ]
+        var('form_name', 'Form class name',  default="ExampleForm"),
+        var('form_label', "Form Title", default='Example Form'),
+        var('form_description', "Form Description", default=''),
+        var('form_actions', 'Comma separated list of form actions', default="Submit"),
+        var('form_invariants', 'Comma separated list of invariants', default=""), 
+        ]
 
     def pre(self, command, output_dir, vars):
         """
@@ -115,7 +119,10 @@ class Form(PloneSubTemplate):
         and package_dotted_name of the parent package here. you get them
         for free in the vars argument
         """
+        splitCSV = lambda in_str: [x.strip() for x in in_str.split(",")]
         vars['form_filename'] = vars['form_name'].lower()
+        vars['form_actions'] = splitCSV(vars['form_actions'])
+        vars['form_invariants'] = splitCSV(vars['form_invariants'].strip())
         
         
 class Z3cForm(PloneSubTemplate):
@@ -137,18 +144,39 @@ class Z3cForm(PloneSubTemplate):
         """
         vars['form_filename'] = vars['form_name'].lower()
 
-class FormFields(PloneSubTemplate):
+class FormField(PloneSubTemplate):
     """
-    A template to add form fields
+    A template to add a form field to a form. Essentially this 
+    adds a field to Zope 3 schema. 
     """
-    _template_dir = 'templates/archetype/formfields'
-    summary = "Schema fields for a form"
+    _template_dir = 'templates/plone/formfield'
+    summary = "Schema field for a form"
 
+    _supported_fields = [
+        ("Bool", "Field containin a truth value."), 
+        ("Text", "Field containing unicode text."), 
+        ("TextLine", "Field containing a single line of unicode text."), 
+        ("Datetime", "Field containing a DateTime."),
+        ("Date", "Field containing a date."),
+        ("Choice", "Obect from a source or vocabulary."),
+        ("Password", "Field containing a unicode string without newlines that is a password.")
+        ]
+    _field_description = "\n".join(
+        [" "* 25 + x[0].lower() + " : " + x[1] for x in _supported_fields]
+         )
+        
     vars = [
-      var('form_filename', "Name of the form file (in /browser)", default="example"),
-      var('form_fields_str', 'Enter the form fields. To enter multiple fields at a time please enter a \
-      comma-separated list of "name:type" pairs. Possible types are: text,textline,int',  default="examplefield:text"),
-           ]
+        var('form_filename', "Name of the file containing the form in browser.", default="exampleform"),
+        var('field_name', "Name of the field (this should be a unique identifier).", default='examplefield'),
+        var('field_type', "Type of field. Use one of the following \n\n"+_field_description + "\n", default='textline'),
+        var('field_title', '', default='A short summary or label'),
+        var('field_description', 'A description of the field (to be displayed as a hint)', default=''),
+        var('field_required', 'Tells whether a field requires its value to exist (True/False)', default=False),
+        var('field_readonly', "If true, the field's value cannot be changed (True/False)", default=False),
+        var('field_default', 'The field default value may be None or a legal field value', default='None'),
+        var('field_missing_value', 'If a field has no assigned value, set it to this value', default=''),
+        var('field_constraint', 'Specify the name of a function to use for validation', default=''),
+        ]
 
     def pre(self, command, output_dir, vars):
         """
@@ -156,6 +184,20 @@ class FormFields(PloneSubTemplate):
         and package_dotted_name of the parent package here. you get them
         for free in the vars argument
         """
-        vars['form_fields'] = [[y.strip() for y in x.strip().split(":")] 
-                               for x in vars['form_fields_str'].split(",")]
+        # XXX this should be handled by _map_boolean in base.py 
+        # but this template does not inherit from BaseTemplate 
+        for var in FormField.vars:
+            if var.name in vars and (type(vars[var.name])==str) and var.default in [True, False, None]:
+                lowered = vars[var.name].lower().strip() 
+                if lowered in ['t', 'y', 'true']:
+                    vars[var.name] = True
+                elif lowered in ['f', 'n', 'false']:
+                    vars[var.name] = False
+                elif lowered == 'none': 
+                    vars[var.name] = None 
+
+        # make the field type case insensitive, if the field type is not in the list of enumerated types
+	# simple use the provided one 
+        vars['field_type'] = dict([(x[0].lower(), x) for x in self._supported_fields]).get(vars['field_type'].lower(), (vars['field_type'],))[0]
+
 

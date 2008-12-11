@@ -1,0 +1,35 @@
+from zope import interface, schema
+from zope.formlib import form
+from Products.Five.formlib import formbase
+from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
+
+from ${package_dotted_name} import ${package}MessageFactory as _
+
+class I${form_name}Schema(interface.Interface):
+    # -*- extra stuff goes here -*-
+
+#for $invariant in $form_invariants
+#if $invariant
+    @interface.invariant
+    def invariant_${invariant}(input):
+        pass
+	# Check input values example:
+	# if input.name != 'value':
+        #    raise interface.Invalid(_(u"Some error occurred !"))
+#end if
+#end for
+
+class ${form_name}(formbase.PageForm):
+    form_fields = form.FormFields(I${form_name}Schema)
+    label = _(u'${form_label}')
+    description = _(u'${form_description}')
+
+#for $action in $form_actions
+    @form.action('${action}')
+    def action${action}(self, action, data):
+        pass
+        # Put the action handler code here 
+
+#end for
+
+

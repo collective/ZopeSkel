@@ -1,0 +1,20 @@
+
+    ${field_name} = schema.${field_type}(
+        title=u'${field_title}',
+        description=u'${field_description}',
+        required=${field_required},
+        readonly=${field_readonly},
+        default=${field_default},
+#if str($field_missing_value).strip()
+        missing_value=${field_missing_value},
+#end if 
+#if str($field_constraint)
+        constraint=${field_constraint},
+#end if
+#if $field_type == 'Choice'
+        vocabulary=SimpleVocabulary((
+            SimpleTerm(value=1, token='Option 1', title='Title 1'),
+            SimpleTerm(value=2, token='Option 2', title='Title 2')
+            ))	
+#end if 
+        )

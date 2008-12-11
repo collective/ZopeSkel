@@ -1,5 +1,6 @@
 import os
 import ConfigParser
+from paste.script import pluginlib
 from paste.script import templates
 from paste.script.command import BadCommand
 from paste.script.templates import BasicPackage
@@ -65,6 +66,48 @@ class BaseTemplate(templates.Template):
         setup_cfg = os.path.join(output_dir, 'setup.cfg')
         if self.use_local_commands:
             update_setup_cfg(setup_cfg, 'zopeskel', 'template', self.name)
+
+    def print_subtemplate_notice(self, output_dir=None):
+            """Print a notice about local commands begin availabe (if this is
+            indeed the case).
+    
+    
+            Unfortunately for us, at this stage in the process, the
+            egg_info directory has not yet been created (and won't be
+            within the scope of this template running [see
+            paste.script.create_distro.py]), so we're cannot show which
+            subtemplates are available.
+            """
+            plugins = pluginlib.resolve_plugins(['ZopeSkel'])
+            commands = pluginlib.load_commands_from_plugins(plugins)
+            if not commands:
+                return
+            commands = commands.items()
+            commands.sort()
+            longest = max([len(n) for n, c in commands])
+            print_commands = []
+            for name, command in commands:
+                name = name + ' ' * (longest - len(name))
+                print_commands.append('  %s  %s' % (name,
+                                                    command.load().summary))
+            print_commands = '\n'.join(print_commands)
+            print '-' * 78
+            print """\
+The project you just created has local commands. These can be used from within
+the product.
+
+usage: paster COMMAND
+
+Commands:
+%s
+
+For more information: paster help COMMAND""" % print_commands
+            print '-' * 78
+
+    def post(self, *args, **kargs):
+        if self.use_local_commands:
+            self.print_subtemplate_notice()
+        templates.Template.post(self, *args, **kargs)
 
     def _map_boolean(self, responses):
         for var in self.vars:

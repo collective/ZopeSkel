@@ -13,7 +13,8 @@ Contributors:
     
     - Alan Hoey : add the zope2_buildout template.
 
-    - Please guys, add your name here !
+    - Josh Johnson : enhanced the atschema local command, did all the merging
+      and some after work from the 2008 DC sprint.
 
 See HISTORY for full details.
 
