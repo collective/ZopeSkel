@@ -55,6 +55,7 @@ class ${contenttype_classname}(base.ATCTContent):
     implements(${interface_name})
 
     portal_type = "${contenttype_name}"
+    meta_type = "${contenttype_name}"
     schema = ${schema_name}
 
     title = atapi.ATFieldProperty('title')
