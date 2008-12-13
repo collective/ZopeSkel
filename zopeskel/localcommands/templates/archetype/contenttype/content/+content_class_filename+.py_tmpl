@@ -54,7 +54,6 @@ class ${contenttype_classname}(base.ATCTContent):
     """${contenttype_description}"""
     implements(${interface_name})
 
-    portal_type = "${contenttype_name}"
     meta_type = "${contenttype_name}"
     schema = ${schema_name}
 
