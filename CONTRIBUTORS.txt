@@ -7,14 +7,16 @@ Contributors:
 
     - Mustapha Benali : added the addcontent local command,
       some sub-templates and tests
- 
+
     - Sylvain Viollon : add and update the Silva buildout
       template.
-    
+
     - Alan Hoey : add the zope2_buildout template.
 
     - Josh Johnson : enhanced the atschema local command, did all the merging
       and some after work from the 2008 DC sprint.
+
+    - Emanuel Sartor : added test infrastructure to the archetype template.
 
 See HISTORY for full details.
 

@@ -26,6 +26,13 @@ Changelog
   from the archetype templates to plone templates and made them
   available for both. [markvl]
 
+* Added base test setup to the archetype template. Added wiring code that runs
+  README.txt as a doctest. [esartor]
+
+* Added tests to the addcontent contenttype command. These ammend the
+  README.txt file for each content type providing basic tests for creating,
+  editing and removing instances of the added content type. [esartor]
+
 
 2.10 - September, 17th
 ----------------------
