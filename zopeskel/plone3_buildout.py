@@ -8,6 +8,9 @@ class Plone3Buildout(BaseTemplate):
     use_cheetah = True
 
     vars = [
+        var('plone_version',
+            "Which Plone version to install",
+            default="3.2"),
         var('zope2_install',
             'Path to Zope 2 installation; leave blank to fetch one',
             default=''),
@@ -30,6 +33,11 @@ class Plone3Buildout(BaseTemplate):
             default='off'),
         ]
 
+    def pre(self, command, output_dir, vars):
+        vars['oldplone'] = vars['plone_version'].startswith("3.0") or \
+                            vars['plone_version'].startswith("3.1")
+        super(Plone3Buildout, self).pre(command, output_dir, vars)
+    
     def post(self, command, output_dir, vars):
         print "-----------------------------------------------------------"
         print "Generation finished"

@@ -1,6 +1,8 @@
 [buildout]
 parts =
+#if $oldplone
     plone
+#end if
 #if not $zope2_install
     zope2
 #end if
@@ -8,31 +10,48 @@ parts =
     instance
     zopepy
 
+#if not $oldplone
+\# Change the number here to change the version of Plone being used
+extends = http://dist.plone.org/release/${plone_version}/versions.cfg
+versions = versions
+#end if
+
 \# Add additional egg download sources here. dist.plone.org contains archives
 \# of Plone packages.
 find-links =
+#if not $oldplone
+    http://dist.plone.org/release/${plone_version}
+#else
     http://dist.plone.org
+#end if
     http://download.zope.org/ppix/
     http://download.zope.org/distribution/
     http://effbot.org/downloads
 
 \# Add additional eggs here
+#if $oldplone
 \# elementtree is required by Plone
+#end if
 eggs =
+#if $oldplone
     elementtree
+#end if
 
 \# Reference any eggs you are developing here, one per line
 \# e.g.: develop = src/my.package
 develop =
 
+
+#if $oldplone
 [plone]
 \# For more information on this step and configuration options see:
 \# http://pypi.python.org/pypi/plone.recipe.plone
-recipe = plone.recipe.plone>=3.1.1,<3.2dev
+recipe = plone.recipe.plone==${plone_version}
 #if $plone_products_install
 \# By overriding the download URLs and making them an empty list, we
 \# Make sure our own products directory takes precedence
 urls =
+#end if
 #end if
 
 #if not $zope2_install
@@ -40,7 +59,14 @@ urls =
 \# For more information on this step and configuration options see:
 \# http://pypi.python.org/pypi/plone.recipe.zope2install
 recipe = plone.recipe.zope2install
+fake-zope-eggs = true
+additional-fake-eggs = 
+    ZODB3
+#if $oldplone
 url = \${plone:zope2-url}
+#else
+url = http://www.zope.org/Products/Zope/2.10.6/Zope-2.10.6-final.tgz
+#end if
 #end if
 
 \# Use this section to download additional old-style products.
@@ -83,10 +109,16 @@ verbose-security = on
 
 \# If you want Zope to know about any additional eggs, list them here.
 \# This should include any development eggs you listed in develop-eggs above,
-\# e.g. eggs = \${buildout:eggs} \${plone:eggs} my.package
+\# e.g. eggs = Plone my.package
 eggs =
+#if not $oldplone
+    Plone
+    \${buildout:eggs}
+#else
     \${buildout:eggs}
     \${plone:eggs}
+#end if
+    
 
 \# If you want to register ZCML slugs for any packages, list them here.
 \# e.g. zcml = my.package my.other.package
@@ -95,10 +127,12 @@ zcml =
 products =
     \${buildout:directory}/products
     \${productdistros:location}
+#if $oldplone
 #if not $plone_products_install
     \${plone:products}
 #else
     ${plone_products_install}
+#end if
 #end if
 
 [zopepy]

@@ -4,6 +4,10 @@ Changelog
 2.11 - Unreleased
 -----------------
 
+* Modify plone3_buildout template to ask for a Plone version.  If the version
+  is 3.0 or 3.1 it uses the plone install recipe, otherwise it uses the Plone
+  egg from the cheeseshop. [MatthewWilkes]
+
 * Link to appropriate PyPI pages for recipes used. [MatthewWilkes]
 
 * Add a Zope 2 without Plone buildout template. [evilbungle]
