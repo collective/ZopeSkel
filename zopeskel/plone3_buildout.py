@@ -36,6 +36,12 @@ class Plone3Buildout(BaseTemplate):
     def pre(self, command, output_dir, vars):
         vars['oldplone'] = vars['plone_version'].startswith("3.0") or \
                             vars['plone_version'].startswith("3.1")
+        vars['veryoldplone'] = vars['plone_version'].startswith("2.")
+        if vars['veryoldplone']:
+            vars['zope2_version'] = "2.9.10"
+        vars['newplone'] = not vars['veryoldplone'] and not vars['oldplone']
+        if vars['newplone']:
+            vars['zope2_version'] = "2.10.6"
         super(Plone3Buildout, self).pre(command, output_dir, vars)
     
     def post(self, command, output_dir, vars):

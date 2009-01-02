@@ -1,6 +1,6 @@
 [buildout]
 parts =
-#if $oldplone
+#if not $newplone
     plone
 #end if
 #if not $zope2_install
@@ -10,7 +10,7 @@ parts =
     instance
     zopepy
 
-#if not $oldplone
+#if $newplone
 \# Change the number here to change the version of Plone being used
 extends = http://dist.plone.org/release/${plone_version}/versions.cfg
 versions = versions
@@ -19,7 +19,7 @@ versions = versions
 \# Add additional egg download sources here. dist.plone.org contains archives
 \# of Plone packages.
 find-links =
-#if not $oldplone
+#if $newplone
     http://dist.plone.org/release/${plone_version}
 #else
     http://dist.plone.org
@@ -29,11 +29,11 @@ find-links =
     http://effbot.org/downloads
 
 \# Add additional eggs here
-#if $oldplone
+#if not $newplone
 \# elementtree is required by Plone
 #end if
 eggs =
-#if $oldplone
+#if not $newplone
     elementtree
 #end if
 
@@ -54,6 +54,16 @@ urls =
 #end if
 #end if
 
+#if $veryoldplone
+[plone]
+\# For more information on this step and configuration options see:
+\# http://pypi.python.org/pypi/plone.recipe.distros
+recipe = plone.recipe.distros
+urls = http://launchpad.net/plone/2.5/${plone_version}/+download/Plone-${plone_version}.tar.gz
+nested-packages = Plone-${plone_version}.tar.gz
+version-suffix-packages = Plone-${plone_version}.tar.gz
+#end if
+
 #if not $zope2_install
 [zope2]
 \# For more information on this step and configuration options see:
@@ -65,7 +75,7 @@ additional-fake-eggs =
 #if $oldplone
 url = \${plone:zope2-url}
 #else
-url = http://www.zope.org/Products/Zope/2.10.6/Zope-2.10.6-final.tgz
+url = http://www.zope.org/Products/Zope/${zope2_version}/Zope-${zope2_version}-final.tgz
 #end if
 #end if
 
@@ -111,12 +121,16 @@ verbose-security = on
 \# This should include any development eggs you listed in develop-eggs above,
 \# e.g. eggs = Plone my.package
 eggs =
-#if not $oldplone
+#if $newplone
     Plone
     \${buildout:eggs}
-#else
+#end if
+#if $oldplone
     \${buildout:eggs}
     \${plone:eggs}
+#end if
+#if $veryoldplone
+    \${buildout:eggs}
 #end if
     
 
@@ -130,6 +144,13 @@ products =
 #if $oldplone
 #if not $plone_products_install
     \${plone:products}
+#else
+    ${plone_products_install}
+#end if
+#end if
+#if $veryoldplone
+#if not $plone_products_install
+    \${plone:location}
 #else
     ${plone_products_install}
 #end if
