@@ -4,6 +4,10 @@ Changelog
 2.11 - Unreleased
 -----------------
 
+* fix zopeskel/docs/localcommands.txt [yboussard]
+
+* Modify zopeskel/templates/plone/+namespace_package+/+package+/tests.py_tmpl to init egg as product if it is a zope2 products [yboussard]
+
 * Modify plone3_buildout template to ask for a Plone version.  If the version
   is 3.0 or 3.1 it uses the plone install recipe, otherwise it uses the Plone
   egg from the cheeseshop. [MatthewWilkes]

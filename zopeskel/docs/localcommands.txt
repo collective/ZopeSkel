@@ -38,13 +38,13 @@ What sub-templates are available for a plone based project ?::
     >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
-      form:         A form skeleton
-      formfields:   Schema fields for a form
-      i18nlocale:   An i18n locale directory structure
-      portlet:      A Plone 3 portlet
-      view:         A browser view skeleton
-      zcmlmeta:     A ZCML meta directive skeleton
-
+        form:        A form skeleton
+        formfield:   Schema field for a form
+        i18nlocale:  An i18n locale directory structure
+        portlet:     A Plone 3 portlet
+        view:        A browser view skeleton
+        zcmlmeta:    A ZCML meta directive skeleton
+    
 
 Now we can add a portlet to our project::
 
@@ -133,11 +133,11 @@ What sub-templates are available for an archetype based project ?::
     >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
-      atschema:     A handy AT schema builder
-      contenttype:  A content type skeleton
-      form:         A form skeleton
-      formfields:   Schema fields for a form
-      i18nlocale:   An i18n locale directory structure
-      portlet:      A Plone 3 portlet
-      view:         A browser view skeleton
-      zcmlmeta:     A ZCML meta directive skeleton
+        atschema:     A handy AT schema builder
+        contenttype:  A content type skeleton
+        form:         A form skeleton
+        formfield:    Schema field for a form
+        i18nlocale:   An i18n locale directory structure
+        portlet:      A Plone 3 portlet
+        view:         A browser view skeleton
+        zcmlmeta:     A ZCML meta directive skeleton

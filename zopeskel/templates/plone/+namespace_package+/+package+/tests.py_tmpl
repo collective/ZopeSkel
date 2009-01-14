@@ -17,8 +17,12 @@ class TestCase(ptc.PloneTestCase):
         @classmethod
         def setUp(cls):
             fiveconfigure.debug_mode = True
+            #if str($zope2product) == 'True'
+            ztc.installPackage(${namespace_package}.${package})
+            #else
             zcml.load_config('configure.zcml',
                              ${namespace_package}.${package})
+            #end if
             fiveconfigure.debug_mode = False
 
         @classmethod
