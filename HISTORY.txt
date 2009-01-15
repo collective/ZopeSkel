@@ -4,50 +4,67 @@ Changelog
 2.11 - Unreleased
 -----------------
 
-* fix zopeskel/docs/localcommands.txt [yboussard]
+* fix zopeskel/docs/localcommands.txt
+  [yboussard]
 
-* Modify zopeskel/templates/plone/+namespace_package+/+package+/tests.py_tmpl to init egg as product if it is a zope2 products [yboussard]
+* Modify zopeskel/templates/plone/+namespace_package+/+package+/tests.py_tmpl
+  to init egg as product if it is a zope2 products.
+  [yboussard]
 
 * Modify plone3_buildout template to ask for a Plone version.  If the version
   is 3.0 or 3.1 it uses the plone install recipe, otherwise it uses the Plone
-  egg from the cheeseshop. [MatthewWilkes]
+  egg from the cheeseshop.
+  [MatthewWilkes]
 
-* Link to appropriate PyPI pages for recipes used. [MatthewWilkes]
+* Link to appropriate PyPI pages for recipes used.
+  [MatthewWilkes]
 
-* Add a Zope 2 without Plone buildout template. [evilbungle]
+* Add a Zope 2 without Plone buildout template.
+  [evilbungle]
 
 * Reconciling HISTORY.txt to mirror what can be found at the following:
   http://pypi.python.org/pypi/ZopeSkel/2.10.  Release of 2.10 was clobbered
-  due to what looks like a merge at r74790 [andrewb]
+  due to what looks like a merge at r74790.
+  [andrewb]
 
-* Update plone2.5_template's buildout.cfg_tmpl to use Zope 2.9.10. This release
-  incorporates Hotfix-2008-08-12. Defaulting to a known insecure Zope seems 
-  unwise for people that may be updating legacy environments into buildout, since
-  they're likely to forget to include the hotfix.  Url to 2.9.10 hard-coded (as 
-  opposed to the more elegantly self-aware plone.recipe.plone approach) per the 
-  practice of a plone.recipe.distros plone part. [andrewb]
+* Update plone2.5_template's buildout.cfg_tmpl to use Zope 2.9.10. This
+  release incorporates Hotfix-2008-08-12. Defaulting to a known insecure
+  Zope seems unwise for people that may be updating legacy environments into
+  buildout, since they're likely to forget to include the hotfix.  Url to
+  2.9.10 hard-coded (as opposed to the more elegantly self-aware
+  plone.recipe.plone approach) per the practice of a plone.recipe.distros
+  plone part.
+  [andrewb]
 
-* Nearly at the end of the creation of a ZopeSkel template, the local commands
-  available for that template are displayed. [jaraco, markvl]
+* Nearly at the end of the creation of a ZopeSkel template, the local
+  commands available for that template are displayed.
+  [jaraco, markvl]
 
 * The Plone template now has local commands. (Basically moved them
   from the archetype templates to plone templates and made them
-  available for both. [markvl]
+  available for both.
+  [markvl]
 
-* Added base test setup to the archetype template. Added wiring code that runs
-  README.txt as a doctest. [esartor]
+* Added base test setup to the archetype template. Added wiring code that
+  runs README.txt as a doctest.
+  [esartor]
 
 * Added tests to the addcontent contenttype command. These ammend the
   README.txt file for each content type providing basic tests for creating,
-  editing and removing instances of the added content type. [esartor]
+  editing and removing instances of the added content type.
+  [esartor]
 
 
 2.10 - September, 17th
 ----------------------
 
-* Fixed a small bug that made most templates create a package that was showing twice in the Plone quick
-  installer is the top level namespace package was called 'Products'. Bug was fixed in the 'plone' 
-  template (since version 1.5), now in other ones where needed too. [davconvent]
+* Fixed a small bug that made most templates create a package that was
+* showing twice in the Plone quick
+  installer is the top level namespace package was called 'Products'. Bug
+  was fixed in the 'plone' template (since version 1.5), now in other ones
+  where needed too.
+  [davconvent]
+
 
 2.9 - September, 1st
 --------------------
