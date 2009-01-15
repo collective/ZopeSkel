@@ -8,10 +8,10 @@ Changelog
   [yboussard]
 
 * Modify zopeskel/templates/plone/+namespace_package+/+package+/tests.py_tmpl
-  to init egg as product if it is a zope2 products.
+  to init egg as product if it is a Zop e2 product.
   [yboussard]
 
-* Modify plone3_buildout template to ask for a Plone version.  If the version
+* Modify plone3_buildout template to ask for a Plone version. If the version
   is 3.0 or 3.1 it uses the plone install recipe, otherwise it uses the Plone
   egg from the cheeseshop.
   [MatthewWilkes]
@@ -23,14 +23,14 @@ Changelog
   [evilbungle]
 
 * Reconciling HISTORY.txt to mirror what can be found at the following:
-  http://pypi.python.org/pypi/ZopeSkel/2.10.  Release of 2.10 was clobbered
+  http://pypi.python.org/pypi/ZopeSkel/2.10. Release of 2.10 was clobbered
   due to what looks like a merge at r74790.
   [andrewb]
 
 * Update plone2.5_template's buildout.cfg_tmpl to use Zope 2.9.10. This
   release incorporates Hotfix-2008-08-12. Defaulting to a known insecure
   Zope seems unwise for people that may be updating legacy environments into
-  buildout, since they're likely to forget to include the hotfix.  Url to
+  buildout, since they're likely to forget to include the hotfix. Url to
   2.9.10 hard-coded (as opposed to the more elegantly self-aware
   plone.recipe.plone approach) per the practice of a plone.recipe.distros
   plone part.
