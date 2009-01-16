@@ -27,7 +27,7 @@ setup(name='ZopeSkel',
       zip_safe=False,
       install_requires=[
         "PasteScript",
-        "Cheetah",
+        "Cheetah>1.0",
       ],
       tests_require=['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript'],
       test_suite='zopeskel.tests.test_zopeskeldocs.test_suite',
