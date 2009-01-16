@@ -4,6 +4,9 @@ Changelog
 2.11 - Unreleased
 -----------------
 
+* added a version requirement for Cheetah (>1.0)
+  [tarek]
+
 * fix zopeskel/docs/localcommands.txt
   [yboussard]
 
