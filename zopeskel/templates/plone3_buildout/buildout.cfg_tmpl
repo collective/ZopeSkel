@@ -74,8 +74,12 @@ additional-fake-eggs =
     ZODB3
 #if $oldplone
 url = \${plone:zope2-url}
-#else
+#end if
+#if $veryoldplone
 url = http://www.zope.org/Products/Zope/${zope2_version}/Zope-${zope2_version}-final.tgz
+#end if
+#if $newplone
+url = \${versions:zope2-url}
 #end if
 #end if
 

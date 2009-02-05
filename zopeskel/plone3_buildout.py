@@ -10,7 +10,7 @@ class Plone3Buildout(BaseTemplate):
     vars = [
         var('plone_version',
             "Which Plone version to install",
-            default="3.2"),
+            default="3.2.1"),
         var('zope2_install',
             'Path to Zope 2 installation; leave blank to fetch one',
             default=''),
@@ -40,8 +40,6 @@ class Plone3Buildout(BaseTemplate):
         if vars['veryoldplone']:
             vars['zope2_version'] = "2.9.10"
         vars['newplone'] = not vars['veryoldplone'] and not vars['oldplone']
-        if vars['newplone']:
-            vars['zope2_version'] = "2.10.6"
         super(Plone3Buildout, self).pre(command, output_dir, vars)
     
     def post(self, command, output_dir, vars):
