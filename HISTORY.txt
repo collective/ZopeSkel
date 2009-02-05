@@ -1,8 +1,11 @@
 Changelog
 =========
 
-2.11 - Unreleased
+2.12 - Unreleased
 -----------------
+
+2.11 - February, 5th
+--------------------
 
 * Make the Plone 3 buildout default to Plone 3.2.1, and pick up 
   ${versions:zope2-url} for Plone > 3.1
