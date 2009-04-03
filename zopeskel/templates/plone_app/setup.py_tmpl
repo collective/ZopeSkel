@@ -12,7 +12,6 @@ setup(name=${repr($project)},
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords=${repr($keywords) or $empty},
       author=${repr($author) or $empty},

@@ -4,6 +4,9 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* Removed the useless `Python Modules` trove classifier from all templates.
+  [hannosch]
+
 2.11 - February, 5th
 --------------------
 
