@@ -16,5 +16,4 @@ Let's check the content::
     collective
     docs
     plone.example.egg-info
-    setup.cfg
     setup.py

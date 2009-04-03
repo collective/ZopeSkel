@@ -39,8 +39,9 @@ def update_setup_cfg(path, section, option, value):
 
     if not parser.has_section(section):
         parser.add_section(section)
-        parser.set(section, option, value)
-        parser.write(open(path, 'w'))
+
+    parser.set(section, option, value)
+    parser.write(open(path, 'w'))
 
 
 class BaseTemplate(templates.Template):

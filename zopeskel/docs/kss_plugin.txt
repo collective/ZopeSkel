@@ -15,7 +15,6 @@ Let's check the content::
     docs
     kss
     kss.plugin.example.egg-info
-    setup.cfg
     setup.py
 
     >>> ls('kss.plugin.example', 'kss')
