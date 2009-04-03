@@ -4,6 +4,11 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* Removed the setup.cfg from all templates. It makes the common operation of
+  tagging and releasing packages harder with little benefit. It can be easily
+  added by those who know about this particular feature.
+  [hannosch]
+
 * Removed the useless `Python Modules` trove classifier from all templates.
   [hannosch]
 
