@@ -4,6 +4,9 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* Make the Plone 3 buildout default to Plone 3.2.2.
+  [maurits]
+
 * Removed the setup.cfg from all templates. It makes the common operation of
   tagging and releasing packages harder with little benefit. It can be easily
   added by those who know about this particular feature.
