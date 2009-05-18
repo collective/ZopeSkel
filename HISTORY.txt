@@ -29,7 +29,7 @@ Changelog
   [yboussard]
 
 * Modify zopeskel/templates/plone/+namespace_package+/+package+/tests.py_tmpl
-  to init egg as product if it is a Zop e2 product.
+  to init egg as product if it is a Zope2 product.
   [yboussard]
 
 * Modify plone3_buildout template to ask for a Plone version. If the version
