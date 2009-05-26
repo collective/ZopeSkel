@@ -1,3 +1,4 @@
+#set $full_package_name = "%s.%s.%s" % ($namespace_package, $namespace_package2, $package)
 ${project} Installation
 =======================
 
@@ -18,7 +19,7 @@ ${project} Installation
    ``/path/to/instance/etc/package-includes`` directory.  The file
    should only contain this::
 
-       <include package="${namespace_package}.${namespace_package2}.${package}" />
+       <include package="${full_package_name}" />
 
 #if str($zope2product) == 'True'
 .. _pythonproducts: http://plone.org/products/pythonproducts
@@ -41,7 +42,7 @@ recipe to manage your project, you can do this:
     recipe = plone.recipe.zope2instance
     ...
     zcml =
-        ${project}
+        ${full_package_name}
 
   * Re-run buildout, e.g. with:
 

@@ -4,6 +4,13 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* In the plone_app and plone3_portlet templates use the full package
+  name instead of the project name in zcml lines in the generated
+  INSTALL.txt.  The project/package/egg name may be 'silly' when the
+  package structure is far/better/name, which means the zcml needs to
+  be 'far.better.name'.  Thanks to Espen Moe-Nilssen for spotting this.
+  [maurits]
+
 * Make the Plone 3 buildout default to Plone 3.2.2.
   [maurits]
 
