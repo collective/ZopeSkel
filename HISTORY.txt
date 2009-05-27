@@ -4,6 +4,11 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* In the plone template fix the generated INSTALL.txt: when telling
+  users to add $project to the eggs, the example snippet should indeed
+  add $project and not the $full_package_name.
+  [maurits]
+
 * In the plone_app and plone3_portlet templates use the full package
   name instead of the project name in zcml lines in the generated
   INSTALL.txt.  The project/package/egg name may be 'silly' when the

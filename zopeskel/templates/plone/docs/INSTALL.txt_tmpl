@@ -41,7 +41,7 @@ recipe to manage your project, you can do this:
     ...
     eggs =
         ...
-        ${full_package_name}
+        ${project}
        
 * Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
 
