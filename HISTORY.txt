@@ -4,6 +4,10 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* In the plone3_theme say that we are creating a theme for Plone 3,
+  not specifically for 3.0.
+  [maurits]
+
 * In the plone template fix the generated INSTALL.txt: when telling
   users to add $project to the eggs, the example snippet should indeed
   add $project and not the $full_package_name.
