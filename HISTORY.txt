@@ -6,7 +6,8 @@ Changelog
 
 * plone3_theme: made the generated viewlet.pt not crash when the
   accompanying view has not been changed so has no computed_value.
-  [maurits]
+  Added some inline documentation there and fixed example
+  registration.  [maurits]
 
 * In the plone3_theme say that we are creating a theme for Plone 3,
   not specifically for 3.0.
