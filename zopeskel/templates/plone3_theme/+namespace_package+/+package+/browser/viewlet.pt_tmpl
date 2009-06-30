@@ -1,1 +1,1 @@
-<div tal:content="view/computed_value"/>
+<div tal:content="view/computed_value|nothing"/>
