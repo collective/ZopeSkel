@@ -25,7 +25,7 @@
   <browser:viewlet
       name="${namespace_package}.someviewlet"
       manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
-      class=".viewlets.SomeViewlet"
+      class=".viewlets.MyViewlet"
       layer=".interfaces.IThemeSpecific"
       permission="zope2.View"
       />
