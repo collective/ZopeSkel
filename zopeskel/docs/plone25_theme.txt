@@ -13,9 +13,29 @@ Let's check the content::
     >>> package_dir = 'plone.example'
     >>> ls(package_dir)
     MANIFEST.in
+    Paste-...egg
+    PasteDeploy-...egg
+    PasteScript-...egg
     Products
     README.txt
     docs
     plone.example.egg-info
     setup.cfg
     setup.py
+
+And inside the package::
+
+    >>> package_dir = os.path.join('plone.example',
+    ...                            'Products', 'ploneexample')
+    >>> ls(package_dir)
+    Extensions
+    __init__.py
+    config.py
+    configure.zcml
+    locales
+    profiles
+    profiles.zcml
+    setuphandlers.py
+    skins
+    tests.py
+    version.txt

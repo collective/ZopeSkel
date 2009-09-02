@@ -4,6 +4,15 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* remove the custom `egg_info.writer` and keywords for `paster_plugins`
+  since this has been an entry point of PasteScript since 1.6.3, using
+  the `setup_requires` as per the change log found here:
+  http://pythonpaste.org/script/news.html#id4
+  
+  This solves an issue where the distutils would go into an infinite
+  loop when you add a new `install_requires` package
+  [claytron]
+
 * plone3_theme: made the generated viewlet.pt not crash when the
   accompanying view has not been changed so has no computed_value.
   Added some inline documentation there and fixed example

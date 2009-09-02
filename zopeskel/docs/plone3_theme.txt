@@ -13,6 +13,9 @@ Let's check the content::
     >>> package_dir = 'plone.example'
     >>> ls(package_dir)
     MANIFEST.in
+    Paste-...egg
+    PasteDeploy-...egg
+    PasteScript-...egg
     README.txt
     docs
     plone.example-configure.zcml
@@ -20,3 +23,20 @@ Let's check the content::
     plonetheme
     setup.cfg
     setup.py
+
+And the actual content of the theme::
+
+    >>> package_dir = os.path.join('plone.example',
+    ...                            'plonetheme', 'ploneexample')
+    >>> ls(package_dir)
+    __init__.py
+    browser
+    configure.zcml
+    locales
+    profiles
+    profiles.zcml
+    setuphandlers.py
+    skins
+    skins.zcml
+    tests.py
+    version.txt
