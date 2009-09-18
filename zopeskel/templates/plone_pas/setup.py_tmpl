@@ -66,6 +66,9 @@ setup(name=${repr($project)},
       test_suite = '$namespace_package.$namespace_package2.${package}.tests.test_docs.test_suite',
       entry_points="""
       # -*- entry_points -*- #
+
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       setup_requires=["PasteScript"],
       paster_plugins = ["ZopeSkel"],
