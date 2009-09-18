@@ -4,6 +4,12 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* Declare a dependency on elementtree.  It's not a direct dependency
+  of ZopeSkel, but ZopeSkel depends on Cheetah which depends on
+  Markdown, which has an install-time dependency on elementtree but
+  doesn't declare that.
+  [davisagli]
+
 * remove the custom `egg_info.writer` and keywords for `paster_plugins`
   since this has been an entry point of PasteScript since 1.6.3, using
   the `setup_requires` as per the change log found here:
