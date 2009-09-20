@@ -4,6 +4,12 @@ Changelog
 2.12 - Unreleased
 -----------------
 
+* Remove the options fake-zope-eggs=true and
+  additional-fake-eggs=ZODB3 in the plone3_buildout template since
+  fake-zope-eggs is enabled by default in
+  plone.recipe.zope2install>=3.0, with ZODB3 among the default "fake
+  zope eggs".  [dukebody]
+
 * Declare a dependency on elementtree.  It's not a direct dependency
   of ZopeSkel, but ZopeSkel depends on Cheetah which depends on
   Markdown, which has an install-time dependency on elementtree but

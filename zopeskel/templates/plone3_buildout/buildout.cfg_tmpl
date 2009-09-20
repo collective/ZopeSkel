@@ -69,9 +69,6 @@ version-suffix-packages = Plone-${plone_version}.tar.gz
 \# For more information on this step and configuration options see:
 \# http://pypi.python.org/pypi/plone.recipe.zope2install
 recipe = plone.recipe.zope2install
-fake-zope-eggs = true
-additional-fake-eggs = 
-    ZODB3
 #if $oldplone
 url = \${plone:zope2-url}
 #end if
