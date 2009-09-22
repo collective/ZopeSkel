@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.12 - Unreleased
------------------
+2.12 - September 23rd, 2009
+---------------------------
 
 * Remove the options fake-zope-eggs=true and
   additional-fake-eggs=ZODB3 in the plone3_buildout template since
