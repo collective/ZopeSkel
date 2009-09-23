@@ -10,7 +10,7 @@ class Plone3Buildout(BaseTemplate):
     vars = [
         var('plone_version',
             "Which Plone version to install",
-            default="3.2.2"),
+            default="3.3.1"),
         var('zope2_install',
             'Path to Zope 2 installation; leave blank to fetch one',
             default=''),
