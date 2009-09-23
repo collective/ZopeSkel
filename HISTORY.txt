@@ -4,6 +4,10 @@ Changelog
 2.13 - Unreleased
 -----------------
 
+* Remove old import_steps.xml from profiles/default/ in plone3_theme template,
+  the various import step in registered in profile.zcml now.
+  [vincentfretin]
+
 * For plone3_theme, plone3_portlet an archetype templates,
   start profile version at 1 to follow current convention.
   [vincentfretin]

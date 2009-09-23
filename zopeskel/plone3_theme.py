@@ -16,5 +16,4 @@ class Plone3Theme(Plone25Theme):
     get_var(vars, 'description').default = 'An installable theme for Plone 3'
 
     def pre(self, command, output_dir, vars):
-        vars['timestamp'] = datetime.date.today().strftime("%Y%m%d")
         super(Plone3Theme, self).pre(command, output_dir, vars)

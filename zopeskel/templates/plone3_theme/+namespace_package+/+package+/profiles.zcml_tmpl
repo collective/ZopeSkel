@@ -11,4 +11,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:importStep
+      name="${namespace_package}.${package}.various"
+      title="${skinname}: miscellaneous import steps"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler="${namespace_package}.${package}.setuphandlers.setupVarious">
+    <depends name="skins"/>
+  </genericsetup:importStep>
+
 </configure>
