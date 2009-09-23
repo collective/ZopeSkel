@@ -4,6 +4,10 @@ Changelog
 2.13 - Unreleased
 -----------------
 
+* Modify HISTORY.txt convention in basic_namespace and nested_namespace
+  templates. Use now "1.0dev (unreleased)" and '-' for changelog items.
+  [vincentfretin]
+
 * Fix trove classifiers list url in all setup.py_tmpl
   [vincentfretin]
 
