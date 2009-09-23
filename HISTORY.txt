@@ -4,6 +4,15 @@ Changelog
 2.13 - Unreleased
 -----------------
 
+* Remove http://download.zope.org/ppix/,
+  http://download.zope.org/distribution/, and 
+  http://effbot.org/downloads from find-links in the plone3_buildout template.
+  Only Pypi or http://dist.plone.org/release/${plone_version}
+  is really needed.
+  Add http://dist.plone.org/thirdparty for alternative location for 
+  elementree, PILwoTk, markdown, python-ldap.
+  [vincentfretin]
+
 
 2.12 - September 23rd, 2009
 ---------------------------

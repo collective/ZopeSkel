@@ -24,9 +24,7 @@ find-links =
 #else
     http://dist.plone.org
 #end if
-    http://download.zope.org/ppix/
-    http://download.zope.org/distribution/
-    http://effbot.org/downloads
+    http://dist.plone.org/thirdparty
 
 \# Add additional eggs here
 #if not $newplone
