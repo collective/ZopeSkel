@@ -4,6 +4,12 @@ Changelog
 2.13 - Unreleased
 -----------------
 
+* plone3_buildout: added 'fake-zope-eggs = true' to the zope2 part, as
+  otherwise you get e.g. 'ImportError: No module named ImplPython'
+  when using a plone.recipe.zope2install < 3.0, like pinned by Plone
+  3.2 versions.cfg.
+  [maurits]
+
 * Make the Plone 3 buildout template default to Plone 3.3.1.
   [dukebody]
 
