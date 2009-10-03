@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.13 - Unreleased
+2.14 - Unreleased
 -----------------
 
 
@@ -9,9 +9,9 @@ Changelog
 -------------------
 
 * Pinned Cheetah to <= 2.2.1 and eliminated install_requires for elementtree
- (markdown not a requirement for Cheetah 2.2.1). Allows zopeskel to easy_install
- with python 2.4. Can remove pinning when markdown is fixed.
- [cbcunc]
+  (markdown not a requirement for Cheetah 2.2.1). Allows zopeskel to easy_install
+  with python 2.4. Can remove pinning when markdown is fixed.
+  [cbcunc]
 
 * plone3_buildout: added 'fake-zope-eggs = true' to the zope2 part, as
   otherwise you get e.g. 'ImportError: No module named ImplPython'
