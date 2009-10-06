@@ -9,7 +9,7 @@ manage_add_${package}_form = PageTemplateFile('browser/add_plugin',
 
 
 def manage_add_${package}_helper( dispatcher, id, title=None, REQUEST=None ):
-    """"Add an ${package} Helper to the PluggableAuthentication Service.""""
+    """Add an ${package} Helper to the PluggableAuthentication Service."""
 
     sp = plugin.${multiplugin_name}Helper( id, title )
     dispatcher._setObject( sp.getId(), sp )

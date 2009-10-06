@@ -4,6 +4,10 @@ Changelog
 2.14 - Unreleased
 -----------------
 
+* Remove extra quotes in a plone_pas template file, which were
+  generating a syntax error.
+  [dukebody]
+
 
 2.13 - October, 3rd
 -------------------
