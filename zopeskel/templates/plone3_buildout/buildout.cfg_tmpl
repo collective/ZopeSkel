@@ -110,11 +110,11 @@ version-suffix-packages =
 \# http://pypi.python.org/pypi/plone.recipe.zope2instance
 recipe = plone.recipe.zope2instance
 #if $zope2_install
-zope2-location = ${zope2_install}
-#else
 #if not $eggifiedzope
-zope2-location = \${zope2:location}
+zope2-location = ${zope2_install}
 #end if
+#else
+zope2-location = \${zope2:location}
 #end if
 user = ${zope_user}:${zope_password}
 http-address = ${http_port}
