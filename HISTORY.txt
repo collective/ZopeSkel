@@ -4,6 +4,10 @@ Changelog
 2.14 - Unreleased
 -----------------
 
+* Use the eggified Zope 2.12.1 for buildouts targeting Plone 4.x. Bump 3.x
+  default version to 3.3.2.
+  [MatthewWilkes]
+
 * Use distribute for Plone buildouts
   [MatthewWilkes]
 

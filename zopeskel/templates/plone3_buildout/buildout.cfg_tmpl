@@ -1,6 +1,6 @@
 [buildout]
 parts =
-#if not $newplone
+#if not $eggifiedplone
     plone
 #end if
 #if not $zope2_install
@@ -10,16 +10,21 @@ parts =
     instance
     zopepy
 
-#if $newplone
+#if $eggifiedplone
 \# Change the number here to change the version of Plone being used
-extends = http://dist.plone.org/release/${plone_version}/versions.cfg
-versions = versions
+extends = 
+#if $eggifiedzope
+    http://download.zope.org/Zope2/index/${zope2_version}/versions.cfg
 #end if
+    http://dist.plone.org/release/${plone_version}/versions.cfg
+#end if
+versions = versions
+
 
 \# Add additional egg download sources here. dist.plone.org contains archives
 \# of Plone packages.
 find-links =
-#if $newplone
+#if $eggifiedplone
     http://dist.plone.org/release/${plone_version}
 #else
     http://dist.plone.org
@@ -27,11 +32,11 @@ find-links =
     http://dist.plone.org/thirdparty
 
 \# Add additional eggs here
-#if not $newplone
+#if not $eggifiedplone
 \# elementtree is required by Plone
 #end if
 eggs =
-#if not $newplone
+#if not $eggifiedplone
     elementtree
 #end if
 
@@ -39,8 +44,13 @@ eggs =
 \# e.g.: develop = src/my.package
 develop =
 
+#if not $eggifiedzope
+[versions]
+\# Version pins for new style products go here
+plone.recipe.zope2instance = 3.6
+#end if
 
-#if $oldplone
+#if $tarballs
 [plone]
 \# For more information on this step and configuration options see:
 \# http://pypi.python.org/pypi/plone.recipe.plone
@@ -52,7 +62,7 @@ urls =
 #end if
 #end if
 
-#if $veryoldplone
+#if $z29tarballs
 [plone]
 \# For more information on this step and configuration options see:
 \# http://pypi.python.org/pypi/plone.recipe.distros
@@ -68,13 +78,13 @@ version-suffix-packages = Plone-${plone_version}.tar.gz
 \# http://pypi.python.org/pypi/plone.recipe.zope2install
 recipe = plone.recipe.zope2install
 fake-zope-eggs = true
-#if $oldplone
+#if $tarballs
 url = \${plone:zope2-url}
 #end if
-#if $veryoldplone
+#if $z29tarballs
 url = http://www.zope.org/Products/Zope/${zope2_version}/Zope-${zope2_version}-final.tgz
 #end if
-#if $newplone
+#if $eggifiedplone
 url = \${versions:zope2-url}
 #end if
 #end if
@@ -102,7 +112,9 @@ recipe = plone.recipe.zope2instance
 #if $zope2_install
 zope2-location = ${zope2_install}
 #else
+#if not $eggifiedzope
 zope2-location = \${zope2:location}
+#end if
 #end if
 user = ${zope_user}:${zope_password}
 http-address = ${http_port}
@@ -116,23 +128,27 @@ verbose-security = on
 #else
 \#verbose-security = on
 #end if
-
+#if $eggifiedzope
+blob-storage = var/blobstorage
+#end if
 \# If you want Zope to know about any additional eggs, list them here.
 \# This should include any development eggs you listed in develop-eggs above,
 \# e.g. eggs = Plone my.package
 eggs =
-#if $newplone
+#if $eggifiedzope
+    Zope2
+#end if
+#if $eggifiedplone
     Plone
     \${buildout:eggs}
 #end if
-#if $oldplone
+#if $tarballs
     \${buildout:eggs}
     \${plone:eggs}
 #end if
-#if $veryoldplone
+#if $z29tarballs
     \${buildout:eggs}
 #end if
-    
 
 \# If you want to register ZCML slugs for any packages, list them here.
 \# e.g. zcml = my.package my.other.package
@@ -141,14 +157,14 @@ zcml =
 products =
     \${buildout:directory}/products
     \${productdistros:location}
-#if $oldplone
+#if $tarballs
 #if not $plone_products_install
     \${plone:products}
 #else
     ${plone_products_install}
 #end if
 #end if
-#if $veryoldplone
+#if $z29tarballs
 #if not $plone_products_install
     \${plone:location}
 #else
@@ -162,9 +178,11 @@ products =
 recipe = zc.recipe.egg
 eggs = \${instance:eggs}
 interpreter = zopepy
+#if not $eggifiedzope
 #if $zope2_install
 extra-paths = ${zope2_install}/lib/python
 #else
 extra-paths = \${zope2:location}/lib/python
+#end if
 #end if
 scripts = zopepy
