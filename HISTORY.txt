@@ -5,8 +5,8 @@ Changelog
 -----------------
 
 
-2.14.2 - November, 19th
------------------------
+2.14.2 - December, 8th
+----------------------
 
 * Back out untested, undocumented changes from paris sprint that broke some 
   templates
