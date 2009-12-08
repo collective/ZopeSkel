@@ -5,6 +5,18 @@ Changelog
 -----------------
 
 
+2.14.2 - November, 19th
+-----------------------
+
+* Back out untested, undocumented changes from paris sprint that broke some 
+  templates
+  [MatthewWilkes]
+
+2.14.1 - November, 19th
+-----------------------
+
+* Fix packaging error
+  [MatthewWilkes]
 
 2.14 - November, 19th
 ---------------------
