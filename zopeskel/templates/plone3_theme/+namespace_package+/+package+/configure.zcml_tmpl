@@ -2,7 +2,6 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:cmf="http://namespaces.zope.org/cmf"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="${namespace_package}.${package}">
 
 #if str($zope2product) == 'True'
@@ -11,6 +10,5 @@
   <include package=".browser" />
   <include file="skins.zcml" />
   <include file="profiles.zcml" />
-  <i18n:registerTranslations directory="locales" />
 
 </configure>
