@@ -4,6 +4,8 @@ Changelog
 2.15 - Unreleased
 -----------------
 
+* Use the eggified Zope 2.12.2 for buildouts targeting Plone 4.x.
+  [maurits]
 
 2.14.2 - December, 8th
 ----------------------

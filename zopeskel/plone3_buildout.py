@@ -43,7 +43,7 @@ class Plone3Buildout(BaseTemplate):
         vars['eggifiedzope'] = vars['plone_version'].startswith("4.")
         if vars['eggifiedzope']:
             vars['zope2_install'] = True
-            vars['zope2_version'] = "2.12.1"
+            vars['zope2_version'] = "2.12.2"
         super(Plone3Buildout, self).pre(command, output_dir, vars)
     
     def post(self, command, output_dir, vars):
