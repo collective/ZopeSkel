@@ -7,6 +7,10 @@ Changelog
 * Use the eggified Zope 2.12.2 for buildouts targeting Plone 4.x.
   [maurits]
 
+* Remove unnecessary 'title' argument from jsregistry.xml example.
+  This fixes http://plone.org/products/zopeskel/issues/18.  
+  [dukebody]
+
 2.14.2 - December, 8th
 ----------------------
 
