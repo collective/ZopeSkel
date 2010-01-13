@@ -4,7 +4,8 @@ Changelog
 2.15 - Unreleased
 -----------------
 
-* Use the eggified Zope 2.12.2 for buildouts targeting Plone 4.x.
+* Use the eggified Zope 2.12.3 for buildouts targeting Plone 4.x.
+  Use 2.9.12 for buildouts targeting Plone 2.x.
   [maurits]
 
 * Remove unnecessary 'title' argument from jsregistry.xml example.
