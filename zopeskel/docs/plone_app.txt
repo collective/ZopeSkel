@@ -4,14 +4,14 @@ plone_app template
 
 Use paster::
 
-    >>> paster('create -t plone_app plone.example --no-interactive')
-    paster create -t plone_app plone.example --no-interactive
+    >>> paster('create -t plone_app plone.app.example --no-interactive')
+    paster create -t plone_app plone.app.example --no-interactive
     ...
 
 Let's check the content::
 
-    >>> package_dir = os.path.join('plone.example', 
-    ...                            'plone', 'app', 'ploneexample')
+    >>> package_dir = os.path.join('plone.app.example', 
+    ...                            'plone', 'app', 'example')
     >>> ls(package_dir)
     __init__.py
     configure.zcml

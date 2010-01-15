@@ -4,8 +4,8 @@ plone template
 
 Use paster::
 
-    >>> paster('create -t kss_plugin kss.plugin.example package=example --no-interactive')
-    paster create -t kss_plugin kss.plugin.example package=example --no-interactive
+    >>> paster('create -t kss_plugin kss.plugin.example --no-interactive')
+    paster create -t kss_plugin kss.plugin.example --no-interactive
     ...
 
 Let's check the content::

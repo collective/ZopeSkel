@@ -3,10 +3,13 @@ import os
 import socket
 import subprocess
 import sys
+import copy
 
 from paste.script import templates
 from zopeskel.base import BadCommand
-from zopeskel.base import var
+from zopeskel.base import BaseTemplate, EASY, EXPERT
+from zopeskel.vars import var, IntVar, BooleanVar, StringVar
+from zopeskel import abstract_buildout
 
 plone25s = {
         "2.5.5": "https://launchpad.net/plone/2.5/2.5.5/+download/Plone-2.5.5.tar.gz",
@@ -17,19 +20,85 @@ plone25s = {
         "2.5"  : "http://heanet.dl.sourceforge.net/sourceforge/plone/Plone-2.5.tar.gz",
         }
 
-class StandardHosting(templates.Template):
+class StandardHosting(abstract_buildout.AbstractBuildout):
     _template_dir = "templates/plone_hosting"
     use_cheetah = True
     summary = "Plone hosting: buildout with ZEO and any Plone version"
     required_templates = []
+    help = """
+This template helps you to create an entire zope hosting setup, including
+ZEO and a single Zope client instance.  If you desire, it can also install
+and set up the Varnish Caching/Proxy Server.    
+"""
 
+    vars = copy.deepcopy(abstract_buildout.AbstractBuildout.vars);
     vars = [
-            var("zope_password", "Initial Zope admin password", default="admin"),
-            var("base_port", "Base port number", default=8000),
-            var("proxy", "Install a proxy server", default="no"),
-            var("plone", "Plone version (2.5, 2.5.1, 3.0, 3.0.1, etc.)",
-                default="3.1.4"),
-            var("buildout", "Run buildout", default="yes"),
+
+        abstract_buildout.VAR_ZOPE_USER,
+        abstract_buildout.VAR_ZOPE_PASSWD, 
+
+        IntVar(
+            "base_port", 
+            title="Base Port #",
+            description="# to use as base for Zope/ZEO/proxy ports",
+            modes=(EASY, EXPERT),
+            page="Main",
+            default=8000,
+            help="""
+For standardization, rather than selecting ports for Zope, ZEO, and
+a proxy individually, these are tied together numerically.
+
+ZEO port = Base + 0 | Proxy port = Base + 1 | HTTP port = Base + 10
+
+If the ports specified by any of these numbers are already in use or
+otherwise unavailable, this template will inform you of the problem and
+exit with an error.  If this happens, please try another number for
+'Base Port #'
+""",
+            ),
+            
+        BooleanVar(
+            "proxy",
+            title="Install proxy server?",
+            description="Should a proxy server be installed?",
+            default=False,
+            help=""" 
+If you ask for a proxy server to be installed, this template will include
+the Varnish Caching/Proxy server.  If you wish to use a different proxy
+server, please answer False and install your own.  
+""",
+            ),
+
+        StringVar(
+            "plone",
+            title="Plone Version",
+            description="Version to install (2.5, 2.5.1, 3.0, 3.0.1, etc)",
+            default="3.1.4",
+            help="""
+You can use this template to install any version of Plone from 2.5 on.  
+In general it is advisable to use the most recent version of Plone.  You
+can find a list of stable Plone releases at 
+
+http://plone.org/products/plone/releases/
+
+""",
+            ),
+
+        BooleanVar(
+            "buildout",
+            title="Run Buildout?",
+            description="Should bin/buildout command be executed?",
+            default=True,
+            help="""
+Would you like this template to automatically run the buildut command as soon
+as it finishes creating the required files?
+
+If you intend on adding any specific third-party products or modifying the
+buildout in any way, you should answer 'False'.  Then make your modifications
+and run `python bootstrap.py` followed by `bin/buildout`.
+""",
+            ),
+
             ]
 
     def _buildout(self, output_dir):
@@ -62,16 +131,10 @@ class StandardHosting(templates.Template):
     def check_vars(self, vars, cmd):
         result=super(StandardHosting, self).check_vars(vars, cmd)
 
-        try:
-            base_port=int(vars["base_port"])
-        except ValueError:
-            raise BadCommand("Illegal base port number: %s" % vars["base_port"])
-
+        base_port=result["base_port"]
         result["zeo_port"]=base_port
         result["proxy_port"]=base_port+1
         result["http_port"]=base_port+10
-        result["proxy"]=vars["proxy"].lower() in [ "yes", "true", "on" ]
-        result["buildout"]=vars["buildout"].lower() in [ "yes", "true", "on" ]
 
         self._checkPortAvailable(result["zeo_port"])
         self._checkPortAvailable(result["http_port"])
@@ -92,6 +155,7 @@ class StandardHosting(templates.Template):
         else:
             vars["plone_recipe"]="plone.recipe.plone25install"
             vars["plone_url"]=plone25s[plone]
+        super(StandardHosting, self).pre(command, output_dir, vars)
 
     def show_summary(self, vars):
         print
@@ -107,7 +171,7 @@ class StandardHosting(templates.Template):
         else:
             print "  Proxy port: disabled"
         print
-        print "  Zope admin user    :  admin"
+        print "  Zope admin user    :  %s" % vars["zope_user"]
         print "  Zope admin password:  %s" % vars["zope_password"]
 
 
@@ -117,3 +181,4 @@ class StandardHosting(templates.Template):
             self._buildout(output_dir)
         if not vars.get("hide_summary", False):
             self.show_summary(vars)
+        super(StandardHosting, self).post(command, output_dir, vars)

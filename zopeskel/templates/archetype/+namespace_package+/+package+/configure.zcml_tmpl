@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="${namespace_package}.${package}">
 #if str($zope2product) == 'True'
 
@@ -12,6 +13,7 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
+  <i18n:registerTranslations directory="locales" />
   
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile

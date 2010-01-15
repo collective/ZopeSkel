@@ -46,7 +46,7 @@ debug-mode = off
 verbose-security = off
 zeo-client = True
 zeo-address = \${zeo:zeo-address}
-user = admin:${zope_password}
+user = ${zope_user}:${zope_password}
 http-address = 127.0.0.1:${http_port}
 eggs =
     \${buildout:eggs}

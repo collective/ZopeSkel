@@ -20,5 +20,13 @@ Contributors:
     
     - Matthew Wilkes : Plone buildout refactoring and general maintenance.
 
+    - Joel Burton : created the zopeskel script.
+
+    - Cris Ewing : tested the zopeskel script.
+
+    - Chris Calloway : created the zopeskel.doctools package.
+
+    - Chris Rossi : create the zopeskel.webui package.
+
 See HISTORY for full details.
 

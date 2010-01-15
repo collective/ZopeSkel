@@ -55,23 +55,23 @@ Now we can add a portlet to our project::
 
 Test if we have the new files::
 
-    >>> ls('plone', 'ploneexample', 'portlets')
+    >>> ls('plone', 'example', 'portlets')
     __init__.py
     configure.zcml
     exampleportlet.pt
     exampleportlet.py
-    >>> ls('plone', 'ploneexample', 'tests')
+    >>> ls('plone', 'example', 'tests')
     __init__.py
     base_exampleportlet.py
     test_exampleportlet.py
 
 Check that the existing files like profile/portlets are updated::
 
-    >>> cat('plone', 'ploneexample', 'profiles', 'default', 'portlets.xml')
+    >>> cat('plone', 'example', 'profiles', 'default', 'portlets.xml')
     <?xml version="1.0"?>
     ...
        <portlet
-         addview="plone.ploneexample.portlets.ExamplePortlet"
+         addview="plone.example.portlets.ExamplePortlet"
          title="Example portlet"
          description=""
        />
@@ -87,7 +87,7 @@ Now add a new i18n locales directory structure to the project::
 
 Test if we have the new files::
 
-    >>> ls('plone', 'ploneexample', 'locales')
+    >>> ls('plone', 'example', 'locales')
     nl
 
 Let's try to add a form to our project::
@@ -99,7 +99,7 @@ Let's try to add a form to our project::
 
 Test if we have the new files::
 
-    >>> ls('plone', 'ploneexample', 'browser')
+    >>> ls('plone', 'example', 'browser')
     __init__.py
     configure.zcml
     exampleform.py

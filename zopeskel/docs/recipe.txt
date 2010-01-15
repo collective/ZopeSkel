@@ -11,7 +11,7 @@ Use paster::
 Let's check the content::
 
     >>> package_dir = os.path.join('plone.recipe.example', 
-    ...                            'plone', 'recipe', 'plonerecipeexample')
+    ...                            'plone', 'recipe', 'example')
     >>> ls(package_dir)
     README.txt
     __init__.py
@@ -22,7 +22,7 @@ Let's check how the recipe looks like::
     >>> recipe = open(os.path.join(package_dir, '__init__.py')).read()
     >>> print recipe
     # -*- coding: utf-8 -*-
-    """Recipe plonerecipeexample"""
+    """Recipe example"""
     <BLANKLINE>
     class Recipe(object):
         """zc.buildout recipe"""
@@ -49,7 +49,7 @@ Now let's try to run the recipe own tests::
     >>> import sys
     >>> python_ = sys.executable
     >>> res = read_sh('%s setup.py test' % python_)
-    >>> res.strip().endswith('OK')
+    >>> 'doctest: readme.txt ... ok' in res.strip().lower()
     True
 
 And the dedicated buildout `test` script (to be fixed)::

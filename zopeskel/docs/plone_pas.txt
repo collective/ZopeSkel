@@ -4,14 +4,14 @@ plone_pas template
 
 Use paster::
 
-    >>> paster('create -t plone_pas plone.example --no-interactive')
-    paster create -t plone_pas plone.example --no-interactive
+    >>> paster('create -t plone_pas plone.pas.example --no-interactive')
+    paster create -t plone_pas plone.pas.example --no-interactive
     ...
 
 Let's check the content::
 
-    >>> package_dir = os.path.join('plone.example',
-    ...                            'plone', 'pas', 'ploneexample')
+    >>> package_dir = os.path.join('plone.pas.example',
+    ...                            'plone', 'pas', 'example')
     >>> ls(package_dir)
     README.txt
     __init__.py

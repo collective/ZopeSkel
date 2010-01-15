@@ -11,7 +11,7 @@ Use paster::
 Let's check the content::
 
     >>> package_dir = os.path.join('plone.example', 
-    ...                            'plone', 'ploneexample')
+    ...                            'plone', 'example')
     >>> ls(package_dir)
     __init__.py
     configure.zcml

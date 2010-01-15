@@ -4,6 +4,99 @@ Changelog
 2.15 - Unreleased
 -----------------
 
+* Template summaries (one-line descriptions) were improved.
+  [pupq]
+
+* Templates now have an optional help attribute, which is a rich description of
+  the template and its purpose. Help has been provided for all the ZopeSkel
+  templates.
+  [pupq/cewing]
+
+* Variables (questions in templates) now have a human-facing "title" attribute
+  which can be shown instead of the (uglier + more opaque) actual variable
+  name. Titles have been written for questions.
+  [pupq]
+
+* Variables now have optional help attribute, which is a rich description of
+  the variable. This can be shown in pastescript UIs.
+  [pupq]
+
+* Interactive help has been added, so that you can enter "?" at any question to
+  receive the rich help for that question.
+  [cewing]
+
+* "Modes" have been implemented--easy, expert, and all--to reduce the number of
+  questions posed to beginning users. For example, technical questions (like
+  "namespace package 2") are now shown only in expert mode.
+  [cewing/pupq]
+
+* The project name (eg, "plone.app.example") is now split into pieces to become
+  the default values for namespace packages names ("plone", "app", "example").
+  [pupq]
+
+* Templates can provide an ndot attribute that signals how many namespaces
+  ("dots") are expected in the project name. When invoked through new zopeskel
+  front-end script, names that don't support that pattern are rejected with
+  help (eg, creating a plone_app with "plone.example" would be rejected, as a
+  2-namespaced-name, "plone.foo.example", is expected)
+  [pupq]
+
+* Rather than having to use the checkvar() and post() methods, templates can
+  now support messages that appear pre-questions and post-generation.
+  Appropriate warnings and where-to-go help has been added.
+  [cewing]
+
+* Abstract classes for zope2 products and buildouts have been added; this
+  simplifies inheritance of common attrs, and provides appropriate places for
+  future common logic.
+  [pupq]
+
+* A front-end script, 'zopeskel', has been added. This has high-level, friendly
+  help, and an improved command line interface for the task of template usage.
+  It can provide a friendly list of templates and a verbosely-detailed list of
+  templates.
+  [pupq/cewing/chrisrossi]
+
+* Users can have a "$HOME/.zopeskel" script with default values for questions,
+  either on a all-template or template-by-template basis.
+  [pupq]
+
+* The "zopeskel" script can emit a sample ".zopeskel" file, for editing.
+  [pupq/cbc]
+
+* A simple HTML help generator can produce a listing of templates, fields, and
+  subtemplates. This will be useful for maintaining an HTML "reference guide"
+  to the ZopeSkel templates. Find this in the zopeskel.doctools package.
+  [pupq/cbc]
+
+* Currently-failing unit tests were fixed.
+  [pupq/cewing]
+
+* New unit tests were written for new features.
+  [cewing]
+  
+* New and repaired unit tests were added into the default test suite
+  [cewing]
+
+* Rather than using a generic var() class for all variables ("questions"),
+  subclasses for different types of variables--string, boolean, choices,
+  etc.--were added. These normalize their own values and provide validation.
+  Therefore, users will get earlier/better feedback on inappropriate values.
+  [pupq/cewing]
+
+* A proposal for splitting the project into zopeskel.* packages was added.
+  [pupq/cbc]
+
+* Where questions were duplicated across different templates, they were
+  consolidated for consistency into one place, and referred to from other
+  places.
+  [pupq]
+
+* A real-time tool for generating graphs of dependencies and template
+  inheritance was written, suitable for including in high-level documentation.
+  Find this in the zopeskel.doctools package.
+  [cbc]
+
 * Use the eggified Zope 2.12.3 for buildouts targeting Plone 4.x.
   Use 2.9.12 for buildouts targeting Plone 2.x.
   [maurits]
@@ -73,11 +166,11 @@ Changelog
   [vincentfretin]
 
 * Remove http://download.zope.org/ppix/,
-  http://download.zope.org/distribution/, and 
+  http://download.zope.org/distribution/, and
   http://effbot.org/downloads from find-links in the plone3_buildout template.
   Only Pypi or http://dist.plone.org/release/${plone_version}
   is really needed.
-  Add http://dist.plone.org/thirdparty for alternative location for 
+  Add http://dist.plone.org/thirdparty for alternative location for
   elementree, PILwoTk, markdown, python-ldap.
   [vincentfretin]
 
@@ -101,7 +194,7 @@ Changelog
   since this has been an entry point of PasteScript since 1.6.3, using
   the `setup_requires` as per the change log found here:
   http://pythonpaste.org/script/news.html#id4
-  
+
   This solves an issue where the distutils would go into an infinite
   loop when you add a new `install_requires` package
   [claytron]
@@ -141,7 +234,7 @@ Changelog
 2.11 - February, 5th
 --------------------
 
-* Make the Plone 3 buildout default to Plone 3.2.1, and pick up 
+* Make the Plone 3 buildout default to Plone 3.2.1, and pick up
   ${versions:zope2-url} for Plone > 3.1
   [MatthewWilkes]
 
@@ -218,6 +311,7 @@ Changelog
   as an extra distribution but integrated in Silva all. Remove
   question, and update buildout.cfg template.
   [thefunny]
+
 
 2.8 - July 31, 2008
 -------------------

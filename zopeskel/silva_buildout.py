@@ -1,52 +1,44 @@
-from zopeskel.base import BaseTemplate
-from zopeskel.base import BadCommand
-from zopeskel.base import var
-from zopeskel.base import templates
+import copy
+
+from zopeskel import abstract_buildout
+from zopeskel.base import var, EASY, EXPERT
+from zopeskel.vars import StringVar, StringChoiceVar
 
 
-class SilvaBuildout(BaseTemplate):
+class SilvaBuildout(abstract_buildout.AbstractBuildout):
     _template_dir = 'templates/silva_buildout'
     summary = "A buildout for Silva projects"
+    help = """
+This template creates an installation of Silva 
+(http://www.infrae.com/products/silva).
+"""
+    post_run_msg = """
+Generation finished.
+
+You probably want to run python bootstrap.py and then edit
+buildout.cfg before running bin/buildout -v".
+
+See README.txt for details.
+"""
     required_templates = []
     use_cheetah = True
 
-    vars = [
-        var('zope2_install',
-            'Path to Zope 2 installation; leave blank to fetch one',
-            default=''),
-        var('silva_distribution',
-            'Silva version to install, "stable" or "development"',
-            default="stable"),
-        var('zope_user',
-            'Zope root admin user',
-            default='admin'),
-        var('zope_password',
-            'Zope root admin password'),
-        var('http_port',
-            'HTTP port',
-            default=8080),
-        var('debug_mode',
-            'Should debug mode be "on" or "off"?',
-            default='off'),
-        var('verbose_security',
-            'Should verbose security be "on" or "off"?',
-            default='off'),
+    vars = copy.deepcopy(abstract_buildout.AbstractBuildout.vars)
+    vars.extend([
+        abstract_buildout.VAR_Z2_INSTALL,
+        StringChoiceVar(
+            'silva_distribution',
+            title='Silva Distribution',
+            description='Version of Silva to install, "stable" or "development"',
+            default="stable",
+            modes=(EASY, EXPERT),
+            page='Main',
+            choices=('stable','development'),
+            ),
+        abstract_buildout.VAR_ZOPE_USER,
+        abstract_buildout.VAR_ZOPE_PASSWD,
+        abstract_buildout.VAR_HTTP,
+        abstract_buildout.VAR_DEBUG_MODE,
+        abstract_buildout.VAR_VERBOSE_SEC,
         ]
-
-    def check_vars(self, vars, cmd):
-        result = templates.Template.check_vars(self, vars, cmd)
-        if not (vars['silva_distribution'] in ['stable', 'development']):
-            raise BadCommand("Unknown silva distribution %s" % vars['silva_distribution'])
-        return result
-
-    def post(self, command, output_dir, vars):
-        print "-----------------------------------------------------------"
-        print "Generation finished"
-        print "You probably want to run python bootstrap.py and then edit"
-        print "buildout.cfg before running bin/buildout -v"
-        print
-        print "See README.txt for details"
-        print "-----------------------------------------------------------"
-
-
-
+    )

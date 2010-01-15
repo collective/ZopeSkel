@@ -1,19 +1,20 @@
 import copy 
-from zopeskel.basic_namespace import BasicNamespace
 from zopeskel.base import get_var
-from zopeskel.base import var
+from zopeskel.vars import var, BooleanVar
+from zopeskel import abstract_zope
 
-class BasicZope(BasicNamespace):
+
+class BasicZope(abstract_zope.AbstractZope):
     _template_dir = 'templates/basic_zope'
     summary = "A Zope project"
+    help = """
+This creates a Zope project without any specific Plone features.
+"""
     required_templates = ['basic_namespace']
     use_cheetah = True
 
-    vars = copy.deepcopy(BasicNamespace.vars)
+    vars = copy.deepcopy(abstract_zope.AbstractZope.vars)
     get_var(vars, 'namespace_package').default = 'myzopelib'
     get_var(vars, 'package').default = 'example'
-    vars.insert(2, var('zope2product',
-                       'Are you creating a Zope 2 Product?',
-                       default=False))
 
 

@@ -4,16 +4,16 @@ plone template
 
 Use paster::
 
-    >>> paster('create -t plone3_portlet plone.example --no-interactive')
-    paster create -t plone3_portlet plone.example --no-interactive
+    >>> paster('create -t plone3_portlet collective.portlet.example --no-interactive')
+    paster create -t plone3_portlet collective.portlet.example --no-interactive
     ...
 
 Let's check the content::
 
-    >>> package_dir = 'plone.example'
+    >>> package_dir = 'collective.portlet.example'
     >>> ls(package_dir)
     README.txt
     collective
+    collective.portlet.example.egg-info
     docs
-    plone.example.egg-info
     setup.py

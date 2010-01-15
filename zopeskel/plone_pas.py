@@ -1,21 +1,24 @@
 import copy
 
-from zopeskel.nested_namespace import NestedNamespace
+from zopeskel import abstract_zope
 from zopeskel.base import get_var
 
-class PlonePas(NestedNamespace):
+class PlonePas(abstract_zope.AbstractNestedZope):
     _template_dir = 'templates/plone_pas'
-    summary = "A Plone PAS project"
+    summary = "A project for a Plone PAS plugin"
+    help = """
+This create a project for developing a PAS ('pluggable authentication
+system') plugin.
+"""
+    category = "Plone Development"
     required_templates = ['nested_namespace']
     use_cheetah = True
     use_local_commands = True
 
-    vars = copy.deepcopy(NestedNamespace.vars)
+    vars = copy.deepcopy(abstract_zope.AbstractNestedZope.vars)
     get_var(vars, 'namespace_package2').default = 'pas'
-    get_var(vars, 'author').default = 'Plone Foundation'
-    get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
-    get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
 
     def pre(self, command, output_dir, vars):
       vars['multiplugin_name'] = vars['package'].title()
+      super(PlonePas, self).pre(command, output_dir, vars)
 

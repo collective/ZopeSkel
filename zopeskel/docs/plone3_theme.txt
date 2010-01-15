@@ -4,30 +4,27 @@ plone template
 
 Use paster::
 
-    >>> paster('create -t plone3_theme plone.example --no-interactive')
-    paster create -t plone3_theme plone.example --no-interactive
+    >>> paster('create -t plone3_theme plonetheme.example --no-interactive')
+    paster create -t plone3_theme plonetheme.example --no-interactive
     ...
 
 Let's check the content::
 
-    >>> package_dir = 'plone.example'
+    >>> package_dir = 'plonetheme.example'
     >>> ls(package_dir)
     MANIFEST.in
-    Paste-...egg
-    PasteDeploy-...egg
-    PasteScript-...egg
     README.txt
     docs
-    plone.example-configure.zcml
-    plone.example.egg-info
     plonetheme
+    plonetheme.example-configure.zcml
+    plonetheme.example.egg-info
     setup.cfg
     setup.py
 
 And the actual content of the theme::
 
-    >>> package_dir = os.path.join('plone.example',
-    ...                            'plonetheme', 'ploneexample')
+    >>> package_dir = os.path.join('plonetheme.example',
+    ...                            'plonetheme', 'example')
     >>> ls(package_dir)
     __init__.py
     browser

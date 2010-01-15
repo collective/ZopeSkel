@@ -11,6 +11,7 @@ setup(name='ZopeSkel',
         "Development Status :: 5 - Production/Stable",
         "Framework :: Zope2",
         "Framework :: Zope3",
+        "Framework :: Plone",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
@@ -29,7 +30,7 @@ setup(name='ZopeSkel',
         "Cheetah>1.0,<=2.2.1",
       ],
       tests_require=['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript'],
-      test_suite='zopeskel.tests.test_zopeskeldocs.test_suite',
+      test_suite='zopeskel.tests.test_all.test_suite',
       entry_points="""
       [paste.paster_create_template]
       basic_namespace = zopeskel:BasicNamespace
@@ -80,5 +81,8 @@ setup(name='ZopeSkel',
       user_enumeration_plugin = zopeskel.localcommands.plone_pas:UserEnumerationPlugin
       group_enumeration_plugin = zopeskel.localcommands.plone_pas:GroupEnumerationPlugin
       role_enumeration_plugin = zopeskel.localcommands.plone_pas:RoleEnumerationPlugin
+
+      [console_scripts]
+      zopeskel = zopeskel.zopeskel_script:run
       """,
       )

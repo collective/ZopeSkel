@@ -1,20 +1,22 @@
 import copy
 
-from zopeskel.nested_namespace import NestedNamespace
 from zopeskel.base import get_var
 from zopeskel.base import var
+from zopeskel import abstract_zope
 
-class PloneApp(NestedNamespace):
+class PloneApp(abstract_zope.AbstractNestedZope):
     _template_dir = 'templates/plone_app'
-    summary = "A Plone App project"
+    summary = "A project for Plone products with a nested namespace (2 dots in name)"
+    help = """
+This creates a Plone project (to create a Plone *site*, you probably
+want to use the one of the templates for a buildout).
+
+To create a Plone project with a name like 'mycompany.myproject' (1 dot,
+a 'basic namespace'), use the 'plone' template instead.
+"""
     required_templates = ['nested_namespace']
     use_cheetah = True
+    category = "Plone Development"
 
-    vars = copy.deepcopy(NestedNamespace.vars)
-    vars.insert(3, var('zope2product',
-                       'Are you creating a Zope 2 Product?',
-                       default=True))
-    get_var(vars, 'author').default = 'Plone Foundation'
-    get_var(vars, 'author_email').default = 'plone-developers@lists.sourceforge.net'
-    get_var(vars, 'url').default = 'http://svn.plone.org/svn/plone/plone.app.example'
+    vars = copy.deepcopy(abstract_zope.AbstractNestedZope.vars)
 
