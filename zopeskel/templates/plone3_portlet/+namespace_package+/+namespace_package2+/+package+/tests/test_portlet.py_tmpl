@@ -100,7 +100,7 @@ class TestRenderer(TestCase):
                           assignment=${portlet_filename}.Assignment())
         r = r.__of__(self.folder)
         r.update()
-        output = r.render()
+        #output = r.render()
         # TODO: Test output
 
 

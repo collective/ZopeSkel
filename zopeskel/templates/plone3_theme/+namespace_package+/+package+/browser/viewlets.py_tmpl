@@ -1,7 +1,7 @@
+#if str($include_doc) == 'True'
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets.common import ViewletBase
 
-#if str($include_doc) == 'True'
 \# Sample code for a basic viewlet (In order to use it, you'll have to):
 \# - Un-comment the following useable piece of code (viewlet python class).
 \# - Rename the viewlet template file ('browser/viewlet.pt') and edit the
@@ -21,4 +21,7 @@ from plone.app.layout.viewlets.common import ViewletBase
 
 \#    def update(self):
 \#        self.computed_value = 'any output'
+#else
+\#from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+\#from plone.app.layout.viewlets.common import ViewletBase
 #end if

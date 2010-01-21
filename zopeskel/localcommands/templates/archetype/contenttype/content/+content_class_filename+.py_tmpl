@@ -1,7 +1,7 @@
 """Definition of the $contenttype_name content type
 """
 
-from zope.interface import implements, directlyProvides
+from zope.interface import implements
 
 from Products.Archetypes import atapi
 #if str($folderish) == 'True'
@@ -11,7 +11,7 @@ from Products.ATContentTypes.content import base
 #end if
 from Products.ATContentTypes.content import schemata
 
-from ${package_dotted_name} import ${package}MessageFactory as _
+\#from ${package_dotted_name} import ${package}MessageFactory as _
 from ${package_dotted_name}.interfaces import ${interface_name}
 from ${package_dotted_name}.config import PROJECTNAME
 
@@ -46,6 +46,7 @@ schemata.finalizeATCTSchema(
 schemata.finalizeATCTSchema(${schema_name}, moveDiscussion=False)
 #end if
 
+
 #if str($folderish) == 'True'
 class ${contenttype_classname}(folder.ATFolder):
 #else
@@ -59,7 +60,7 @@ class ${contenttype_classname}(base.ATCTContent):
 
     title = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
-    
+
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
 
 atapi.registerType(${contenttype_classname}, PROJECTNAME)

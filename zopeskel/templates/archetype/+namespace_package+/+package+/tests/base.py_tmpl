@@ -14,17 +14,16 @@ from Testing import ZopeTestCase as ztc
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 
-#
 # When ZopeTestCase configures Zope, it will *not* auto-load products
 # in Products/. Instead, we have to use a statement such as:
-# 
+#
 #   ztc.installProduct('SimpleAttachment')
-# 
+#
 # This does *not* apply to products in eggs and Python packages (i.e.
 # not in the Products.*) namespace. For that, see below.
-# 
+#
 # All of Plone's products are already set up by PloneTestCase.
-# 
+
 
 @onsetup
 def setup_product():
@@ -67,11 +66,13 @@ def setup_product():
 setup_product()
 ptc.setupPloneSite(products=['${namespace_package}.${package}'])
 
+
 class TestCase(ptc.PloneTestCase):
     """We use this base class for all the tests in this package. If
     necessary, we can put common utility or setup code in here. This
     applies to unit test cases.
     """
+
 
 class FunctionalTestCase(ptc.FunctionalTestCase):
     """We use this class for functional integration tests that use
