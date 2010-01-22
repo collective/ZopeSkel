@@ -11,7 +11,7 @@ from Products.ATContentTypes.content import base
 #end if
 from Products.ATContentTypes.content import schemata
 
-\#from ${package_dotted_name} import ${package}MessageFactory as _
+from ${package_dotted_name} import ${package}MessageFactory as _
 from ${package_dotted_name}.interfaces import ${interface_name}
 from ${package_dotted_name}.config import PROJECTNAME
 
