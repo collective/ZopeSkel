@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.15 - Unreleased
------------------
+2.15 - January 22, 2009
+-----------------------
 
 * Backed out a few changes from jaroel in favor of retaining working templates 
   OOTB
