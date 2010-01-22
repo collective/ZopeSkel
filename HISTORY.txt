@@ -3,6 +3,11 @@ Changelog
 
 2.15 - Unreleased
 -----------------
+
+* Backed out a few changes from jaroel in favor of retaining working templates 
+  OOTB
+  [cewing]
+
 * Made archetype, plone3_theme and plone3_portlet pass the PEP8 validator and
   pyflakes.
   [jaroel]
@@ -108,21 +113,21 @@ Changelog
   This fixes http://plone.org/products/zopeskel/issues/18.  
   [dukebody]
 
-2.14.2 - December, 8th
-----------------------
+2.14.2 - December 8th, 2009
+---------------------------
 
 * Back out untested, undocumented changes from paris sprint that broke some 
   templates
   [MatthewWilkes]
 
-2.14.1 - November, 19th
------------------------
+2.14.1 - November 19th, 2009
+----------------------------
 
 * Fix packaging error
   [MatthewWilkes]
 
-2.14 - November, 19th
----------------------
+2.14 - November 19th, 2009
+--------------------------
 
 * Use the eggified Zope 2.12.1 for buildouts targeting Plone 4.x. Bump 3.x
   default version to 3.3.2.
@@ -136,8 +141,8 @@ Changelog
   [dukebody]
 
 
-2.13 - October, 3rd
--------------------
+2.13 - October 3rd, 2009
+------------------------
 
 * Pinned Cheetah to <= 2.2.1 and eliminated install_requires for elementtree
   (markdown not a requirement for Cheetah 2.2.1). Allows zopeskel to easy_install
@@ -234,8 +239,8 @@ Changelog
 * Removed the useless `Python Modules` trove classifier from all templates.
   [hannosch]
 
-2.11 - February, 5th
---------------------
+2.11 - February 5th, 2009
+-------------------------
 
 * Make the Plone 3 buildout default to Plone 3.2.1, and pick up
   ${versions:zope2-url} for Plone > 3.1
@@ -295,8 +300,8 @@ Changelog
   [esartor]
 
 
-2.10 - September, 17th
-----------------------
+2.10 - September 17th, 2008
+---------------------------
 
 * Fixed a small bug that made most templates create a package that was
 * showing twice in the Plone quick
@@ -306,8 +311,8 @@ Changelog
   [davconvent]
 
 
-2.9 - September, 1st
---------------------
+2.9 - September 1st, 2008
+-------------------------
 
 * Update silva buildout to reflect changes in Silva 2.1 as stable
   version, and 2.2 as development: SilvaLayout is not shipped anymore
