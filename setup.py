@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '2.15dev'
+version = '2.16dev'
 
 setup(name='ZopeSkel',
       version=version,
@@ -22,6 +22,8 @@ setup(name='ZopeSkel',
       keywords='web zope command-line skeleton project',
       author='Daniel Nouri',
       author_email='daniel.nouri@gmail.com',
+      maintainer='Cris Ewing',
+      maintainer_email="cewing@uw.edu",
       url='http://svn.plone.org/svn/collective/ZopeSkel/trunk',
       packages=find_packages(exclude=['ez_setup']),
       include_package_data=True,
