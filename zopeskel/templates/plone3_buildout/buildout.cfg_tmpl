@@ -44,7 +44,7 @@ eggs =
 \# e.g.: develop = src/my.package
 develop =
 
-#if not $eggifiedzope
+#if not $eggifiedplone
 [versions]
 \# Version pins for new style products go here
 plone.recipe.zope2instance = 3.6
