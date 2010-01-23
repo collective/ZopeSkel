@@ -1,0 +1,7 @@
+Quick notes on todo for sprint left:
+
+- docs for new zopeskel command on plone.org
+
+- think about right syntax for local commands--should this come out of bin/zopeskel?
+  or should we have them use paster directly?
+
