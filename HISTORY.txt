@@ -4,7 +4,14 @@ Changelog
 2.16 - Unreleased
 -----------------
 
+* Fixed an issue with the plone template zcmlmeta local command to ensure that 
+  the proper directive was inserted into the top-level configure.zcml
+  [cewing]
 
+* Fixed the bug in the plone template that caused zcml errors when the 
+  i18nlocale local command had not been run:
+  (http://plone.org/products/zopeskel/issues/26)
+  [cewing]
 
 2.15 - January 22, 2010
 -----------------------
