@@ -7,6 +7,6 @@
 #if str($zope2product) == 'True' and $namespace_package != 'Products'
   <five:registerPackage package="." initialize=".initialize" />
 #end if
-  <i18n:registerTranslations directory="locales" />
-
+  <!-- -*- extra stuff goes here -*- -->
+  
 </configure>
