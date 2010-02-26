@@ -1,0 +1,4 @@
+#  # -*- extra stuff goes here -*- 
+from zope.i18nmessageid import MessageFactory
+
+${package}MessageFactory = MessageFactory('${namespace_package}.${package}')
