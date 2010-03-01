@@ -1,1 +1,1 @@
-    '$(contenttype_name)': '$(add_permission_name)',
+    '$(contenttype_classname)': '$(add_permission_name)',
