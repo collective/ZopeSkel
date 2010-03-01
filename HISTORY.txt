@@ -4,6 +4,16 @@ Changelog
 2.16 - Unreleased
 -----------------
 
+* Fixed the problem with generated archetypes content type meta_type names 
+  documented here: 
+  (http://plone.org/products/zopeskel/issues/22)
+  [cewing]
+
+* Updated tests for the plone template to include tests for the fixes to message 
+  factory, zcml sub-package include and i18n transaltion registration problems 
+  below
+  [cewing]
+
 * Cleaned up a number of issues with defining and importing a package-wide 
   MessageFactory in plone template local commands:
   (http://plone.org/products/zopeskel/issues/29)
