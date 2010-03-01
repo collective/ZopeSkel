@@ -50,6 +50,8 @@ Now we can add a portlet to our project::
 
     >>> paster('addcontent --no-interactive portlet')
     paster addcontent --no-interactive portlet
+    Inserting from __init__.py_insert into ...
+    Inserting from configure.zcml_insert into ...
     Recursing into portlets
     ...
 
@@ -76,12 +78,33 @@ Check that the existing files like profile/portlets are updated::
          description=""
        />
     ...
+    
+Adding a portlet via localcommand should update __init__.py to include 
+MessageFactory as well as defining a message factory for this project:
+
+    >>> cat('plone', 'example', '__init__.py')
+      # -*- extra stuff goes here -*- 
+    from zope.i18nmessageid import MessageFactory
+    <BLANKLINE>
+    exampleMessageFactory = MessageFactory('plone.example')
+    ...
+    
+The portlet localcommand should also update the root-level configure.zcml to insert an include package directive.  Make sure it has:
+
+    >>> cat('plone', 'example', 'configure.zcml')
+    <configure
+    ...
+    <BLANKLINE>
+      <include package=".portlets" />
+    <BLANKLINE>
+    ...
 
 
 Now add a new i18n locales directory structure to the project::
 
     >>> paster('addcontent --no-interactive i18nlocale')
     paster addcontent --no-interactive i18nlocale
+    Inserting from configure.zcml_insert into ...
     Recursing into locales
     ...
 
@@ -89,11 +112,23 @@ Test if we have the new files::
 
     >>> ls('plone', 'example', 'locales')
     nl
+    
+The i18nlocale localcommand should also update the root-level configure.zcml to register the locales directory translations.  Make sure it has:
+
+    >>> cat('plone', 'example', 'configure.zcml')
+    <configure
+    ...
+    <BLANKLINE>
+      <i18n:registerTranslations directory="locales" />
+    <BLANKLINE>
+    ...
 
 Let's try to add a form to our project::
 
     >>> paster('addcontent --no-interactive form')
     paster addcontent --no-interactive form
+    Inserting from __init__.py_insert into ...
+    ...
     Recursing into browser
     ...
 
@@ -103,6 +138,16 @@ Test if we have the new files::
     __init__.py
     configure.zcml
     exampleform.py
+    
+The form localcommand should also update the root-level configure.zcml to insert an include package directive.  Make sure it has:
+
+    >>> cat('plone', 'example', 'configure.zcml')
+    <configure
+    ...
+    <BLANKLINE>
+      <include package=".browser" />
+    <BLANKLINE>
+    ...
 
 
 
