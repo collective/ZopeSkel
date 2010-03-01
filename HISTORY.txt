@@ -4,6 +4,16 @@ Changelog
 2.16 - Unreleased
 -----------------
 
+* Cleaned up a number of issues with defining and importing a package-wide 
+  MessageFactory in plone template local commands:
+  (http://plone.org/products/zopeskel/issues/29)
+  [cewing]
+
+* Cleaned up a number of issues with importing sub-package zcml files after 
+  using local commands in the plone template: 
+  (http://plone.org/products/zopeskel/issues/28)
+  [cewing]
+
 * Fixed an issue with the plone template zcmlmeta local command to ensure that 
   the proper directive was inserted into the top-level configure.zcml
   [cewing]
