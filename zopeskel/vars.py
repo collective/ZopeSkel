@@ -1,3 +1,4 @@
+import sys
 from paste.script.templates import var as base_var
 
 
@@ -136,17 +137,49 @@ class OnOffVar(StringVar):
 
 class IntVar(var):
     """Integer values"""
-
+    
     _default_widget = 'string'
-
+    
     def validate(self, value):
         try:
             value = int(value)
         except ValueError:
             raise ValidationException("Not a valid int: %s" % value)
-
+        
         return value
+    
 
+MAXINT = sys.maxint
+MININT = -MAXINT-1
+class BoundedIntVar(IntVar):
+    """Integer values with allowed maximum and minimum values"""
+    
+    def __init__(self, *args, **kwargs):
+        if 'min' in kwargs:
+            self.min = kwargs.pop('min')
+        else:
+            self.min = MININT
+        
+        if 'max' in kwargs:
+            self.max = kwargs.pop('max')
+        else:
+            self.max = MAXINT
+            
+        super(BoundedIntVar, self).__init__(*args, **kwargs)
+    
+    def validate(self, value):
+        # first validate that value is an integer
+        try:
+            val = super(BoundedIntVar, self).validate(value)
+        except ValidationException, e:
+            raise e
+        
+        if not self.min <= val <= self.max:
+            msg = "%d does not fall within allowed bounds: %d:%d"
+            raise ValidationException(msg % (val, self.min, self.max))
+        
+        return val
+    
 
 class DottedVar(var):
     """Variable for 'dotted Python name', eg, 'foo.bar.baz'"""

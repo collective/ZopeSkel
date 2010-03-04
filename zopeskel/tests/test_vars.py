@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-
+import sys
 from zopeskel.vars import var, BooleanVar, StringVar, TextVar, DottedVar,\
-    OnOffVar, IntVar
+    OnOffVar, IntVar, BoundedIntVar
 from zopeskel.vars import ValidationException
 
 class test_var(unittest.TestCase):
@@ -96,6 +96,33 @@ class test_IntVar(unittest.TestCase):
         self.assertRaises(ValidationException, self.ivar.validate, 'one')
 
 
+class test_BoundedIntVar(unittest.TestCase):
+    """ verify functionality of the BoundedIntVar variable class
+    """
+    def setUp(self):
+        self.bivar = BoundedIntVar('name','description', min=3, max=10)
+        self.defaultminvar = BoundedIntVar('name', 'description', max=10)
+        self.defaultmaxvar = BoundedIntVar('name', 'description', min=3)
+        self.max = sys.maxint
+        self.min = -self.max-1
+    
+    def testValidation(self):
+        """ A BoundedIntVar should take values between min and max (inclusive)
+            If max is not provided, default to sys.maxint
+            if min is not provided, default to -sys.maxint-1
+        """
+        self.assertEqual(4, self.bivar.validate(4))
+        self.assertEqual(5, self.bivar.validate(5.9))
+        self.assertEqual(6, self.bivar.validate('6'))
+        
+        self.assertRaises(ValidationException, self.bivar.validate, 'four')
+        self.assertRaises(ValidationException, self.bivar.validate, 1)
+        self.assertRaises(ValidationException, self.bivar.validate, 11)
+        
+        self.assertEqual(self.max, self.defaultmaxvar.validate(self.max))
+        self.assertEqual(self.min, self.defaultminvar.validate(self.min))
+
+
 class test_StringVar(unittest.TestCase):
     """ verify functionality of the StringVar variable class
     """
@@ -157,6 +184,7 @@ def test_suite():
         unittest.makeSuite(test_BooleanVar),
         unittest.makeSuite(test_OnOffVar),
         unittest.makeSuite(test_IntVar),
+        unittest.makeSuite(test_BoundedIntVar),
         unittest.makeSuite(test_StringVar),
         unittest.makeSuite(test_TextVar),
         unittest.makeSuite(test_DottedVar),

@@ -2,7 +2,7 @@ import copy
 
 from zopeskel.base import BaseTemplate
 from zopeskel.base import var, EASY, EXPERT
-from zopeskel.vars import StringVar, BooleanVar, IntVar, OnOffVar
+from zopeskel.vars import StringVar, BooleanVar, IntVar, OnOffVar, BoundedIntVar
 
 VAR_PLONEVER = StringVar(
     'plone_version',
@@ -77,7 +77,7 @@ generated.
 """
     )
 
-VAR_HTTP = IntVar(
+VAR_HTTP = BoundedIntVar(
     'http_port',
     title='HTTP Port',
     description='Port that Zope will use for serving HTTP',
@@ -87,7 +87,9 @@ VAR_HTTP = IntVar(
     help="""
 This options lets you select the port # that Zope will use for serving
 HTTP.
-"""
+""",
+    min=1024,
+    max=65535,
     )
 
 VAR_DEBUG_MODE = OnOffVar(
