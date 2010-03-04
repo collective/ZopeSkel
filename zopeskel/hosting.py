@@ -23,12 +23,25 @@ plone25s = {
 class StandardHosting(abstract_buildout.AbstractBuildout):
     _template_dir = "templates/plone_hosting"
     use_cheetah = True
-    summary = "Plone hosting: buildout with ZEO and any Plone version"
+    summary = "Plone hosting: buildout with ZEO and Plone versions below 3.2"
     required_templates = []
     help = """
 This template helps you to create an entire zope hosting setup, including
 ZEO and a single Zope client instance.  If you desire, it can also install
 and set up the Varnish Caching/Proxy Server.    
+
+Please Note:
+Due to changes in the packaging of Plone, this template is not suitable
+for versions of Plone beyond 3.1.7.  If you are trying to use a later 
+version of plone, you will need to edit the buildout resulting from this
+template in order to have it work correctly.  Information related to these
+issues may be found here:
+
+http://plone.org/documentation/kb/repair-a-plone-3.1-buildout
+
+and here:
+
+http://plone.org/products/zopeskel/issues/25
 """
 
     vars = copy.deepcopy(abstract_buildout.AbstractBuildout.vars);
@@ -73,11 +86,14 @@ server, please answer False and install your own.
             "plone",
             title="Plone Version",
             description="Version to install (2.5, 2.5.1, 3.0, 3.0.1, etc)",
-            default="3.1.4",
+            default="3.1.7",
             help="""
-You can use this template to install any version of Plone from 2.5 on.  
-In general it is advisable to use the most recent version of Plone.  You
-can find a list of stable Plone releases at 
+You can use this template to install any version of Plone from 2.5 on. 
+Versions of Plone more recent than 3.1.7 will require some editing of the
+generated configuration files.  Please see the long description of this
+template (run 'zopskel --list') for more details.  In general it is 
+advisable to use the most recent version of Plone.  You can find a list of 
+stable Plone releases at 
 
 http://plone.org/products/plone/releases/
 
@@ -91,7 +107,10 @@ http://plone.org/products/plone/releases/
             default=True,
             help="""
 Would you like this template to automatically run the buildut command as soon
-as it finishes creating the required files?
+as it finishes creating the required files?  Please note that if you've chosen
+to build a version of Plone more recent than 3.1.7 running buildout will fail
+unless you make changes to the generated configuration files.  Please see the
+long description of this package (run 'zopeskel --list') for more details.
 
 If you intend on adding any specific third-party products or modifying the
 buildout in any way, you should answer 'False'.  Then make your modifications

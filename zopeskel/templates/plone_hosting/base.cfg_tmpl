@@ -17,6 +17,10 @@ find-links =
     http://effbot.org/downloads
 eggs =
 develop =
+versions = versions
+
+[versions]
+plone.recipe.zope2instance = 3.6
 
 [plone]
 recipe = ${plone_recipe}
@@ -40,7 +44,7 @@ zope2-location = \${zope2:location}
 zeo-address = 127.0.0.1:${zeo_port}
 
 [instance1]
-recipe = plone.recipe.zope2instance >=2.0
+recipe = plone.recipe.zope2instance
 zope2-location = \${zope2:location}
 debug-mode = off
 verbose-security = off
