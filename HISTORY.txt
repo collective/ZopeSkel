@@ -4,6 +4,21 @@ Changelog
 2.16 - Unreleased
 -----------------
 
+* Added a new 'BoundedIntVar' variable type.  It validates that the provided
+  argument is both an integer and between provided min and max values (inclusive 
+  on both ends).
+  [cewing]
+
+* Updated archetype and plone3_portlet templates to comply with pep8 and 
+  pyflakes validation at all stages of a skeleton build process.  Resolves the 
+  issue here: (http://plone.org/products/zopeskel/issues/24)
+  [cewing]
+
+* Added explanatory text to the plone_hosting template regarding the fact that 
+  it is unsuitable for use with plone versions later than 3.1.7, fixed    
+  http://plone.org/products/zopeskel/issues/25
+  [cewing]
+
 * Fixed the problem with generated archetypes content type meta_type names 
   documented here: 
   (http://plone.org/products/zopeskel/issues/22)
