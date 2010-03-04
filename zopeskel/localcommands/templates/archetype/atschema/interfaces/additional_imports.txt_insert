@@ -1,0 +1,7 @@
+#*
+This template is added to the main content type interface template, through a 
+non-standard ZopeSkel method! 
+*#
+from zope import schema
+
+from ${namespace_package}.${package} import ${package}MessageFactory as _

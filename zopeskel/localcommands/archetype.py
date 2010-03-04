@@ -164,16 +164,22 @@ class ATSchemaField(ArchetypeSubTemplate):
         interface_insert_template = open(os.path.join(self.template_dir(), 'interfaces/+interface_name+.py_insert')).read()
         atschema_insert_template = open(os.path.join(self.template_dir(),'content/+content_class_filename+.py_insert')).read()
         bridges_insert_template = open(os.path.join(self.template_dir(),'content/schema_field_bridge.txt_insert')).read()
+        content_messagefactory_insert_template = open(os.path.join(self.template_dir(), 'content/messagefactory_insert.txt_insert')).read()
+        interface_additional_imports_template = open(os.path.join(self.template_dir(), 'interfaces/additional_imports.txt_insert')).read()
 
         # insert_into_file really wants the inserted text to end with a newline
         interface_insert = str(cheetah_template(interface_insert_template, vars))+"\n"
         atschema_insert = str(cheetah_template(atschema_insert_template, vars))+"\n"
         bridges_insert = str(cheetah_template(bridges_insert_template, vars))+"\n"
+        content_messagefactory_insert = str(cheetah_template(content_messagefactory_insert_template, vars))+"\n"
+        interface_additional_imports = str(cheetah_template(interface_additional_imports_template, vars))+"\n"
 
         # self.write_files(command, output_dir, vars)
         command.insert_into_file(os.path.join(command.dest_dir(), 'content', '%s.py' % (vars['content_class_filename'])), self.marker_name, atschema_insert)
         command.insert_into_file(os.path.join(command.dest_dir(), 'interfaces', '%s.py' % (vars['content_class_filename'])), 'schema definition goes here', interface_insert)
         command.insert_into_file(os.path.join(command.dest_dir(), 'content', '%s.py' % (vars['content_class_filename'])), 'Your ATSchema to Python Property Bridges Here ...', bridges_insert)
+        command.insert_into_file(os.path.join(command.dest_dir(), 'content', '%s.py' % (vars['content_class_filename'])), 'Message Factory Imported Here', content_messagefactory_insert)
+        command.insert_into_file(os.path.join(command.dest_dir(), 'interfaces', '%s.py' % (vars['content_class_filename'])), 'Additional Imports Here', interface_additional_imports)
 
         self.post(command, output_dir, vars)
 

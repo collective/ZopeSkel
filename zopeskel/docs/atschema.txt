@@ -14,6 +14,7 @@ Build an archetype from scratch, and use paster to add a contenttype::
           Inserting from types.xml_insert into...
     ...
     >>> content_dir = os.path.join('plone', 'example', 'content')
+    >>> interfaces_dir = os.path.join('plone', 'example', 'interfaces')
     
 Check for the file::
 
@@ -37,14 +38,31 @@ Now add a schema field via paster::
     paster addcontent atschema --no-interactive
     ...
 	
-Check that the schema was inserted::
+Check that the schema and was inserted and that related imports were inserted::
 
-    >>> print open(os.path.join(content_dir, 'exampletype.py')).read()
+    >>> cat(os.path.join(content_dir, 'exampletype.py'))
     """Definition of the Example Type content type
     """
+    ...
+    from plone.example import exampleMessageFactory as _
     ... 
         atapi.StringField(...
     ...
     atapi.registerType(ExampleType, PROJECTNAME)
     <BLANKLINE>
+    
+Check that appropriate imports and a schema field were added to the interface file::
+
+    >>> cat(os.path.join(interfaces_dir, 'exampletype.py'))
+    from zope.interface import Interface
+    ...
+    from zope import schema
+    <BLANKLINE>
+    from plone.example import exampleMessageFactory as _
+    ...
+        newfield = schema.TextLine(
+    ...
+    <BLANKLINE>
+
+
 

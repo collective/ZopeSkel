@@ -1,0 +1,5 @@
+#*
+This template is added to the main content type template, through a non-standard
+ZopeSkel method! 
+*#
+from ${package_dotted_name} import ${package}MessageFactory as _
