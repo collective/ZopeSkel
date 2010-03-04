@@ -77,6 +77,8 @@ class test_base_template(unittest.TestCase):
         self.assertEqual(var.default, 'foo')
 
     def test_pages(self):
+        """ pagaes divide questions for a template into discreet sets for web GUI
+        """
         class MyTemplate(BaseTemplate):
             vars = BaseTemplate.vars + self.vars
 
@@ -135,6 +137,8 @@ class test_base_template(unittest.TestCase):
                             "%s does not appear to be a subclass of %s" % (new_template, c))
 
     def test_should_print_subcommands(self):
+        """ If a template has subcommands, they should be printed after the template runs
+        """
         n_template = BasicNamespace('tom')
         p_template = Plone('bob')
         a_template = Archetype('joe')
