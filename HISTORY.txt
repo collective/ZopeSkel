@@ -25,7 +25,7 @@ Changelog
   [cewing]
 
 * Updated tests for the plone template to include tests for the fixes to message 
-  factory, zcml sub-package include and i18n transaltion registration problems 
+  factory, zcml sub-package include and i18n translation registration problems
   below
   [cewing]
 
