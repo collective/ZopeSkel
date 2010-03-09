@@ -76,6 +76,7 @@ Check that the existing files like profile/portlets are updated::
          addview="plone.example.portlets.ExamplePortlet"
          title="Example portlet"
          description=""
+         i18n:attributes="title; description"
        />
     ...
     
