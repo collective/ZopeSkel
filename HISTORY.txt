@@ -48,6 +48,10 @@ Changelog
   (http://plone.org/products/zopeskel/issues/26)
   [cewing]
 
+* Improved i18n for portlets
+  (http://plone.org/products/zopeskel/issues/31)
+  [fRiSi]
+
 2.15 - January 22, 2010
 -----------------------
 

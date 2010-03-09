@@ -53,7 +53,7 @@ class Assignment(base.Assignment):
         """This property is used to give the title of the portlet in the
         "manage portlets" screen.
         """
-        return "${portlet_name}"
+        return _(u"${portlet_name}")
 
 
 class Renderer(base.Renderer):
