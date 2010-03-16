@@ -4,6 +4,7 @@
      of this file for more information.
   -->
 <portlets
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
   <!-- -*- extra stuff goes here -*- -->
 </portlets>
