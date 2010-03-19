@@ -292,7 +292,9 @@ def run():
     try:
         template_name, output_name, opts = process_args()
     except SyntaxError, e:
-        print "Error: There was a problem with your arguments: %s\n" % e
+        usage()
+        print "ERROR: There was a problem with your arguments: %s\n" % e
+        return
 
     rez = pkg_resources.iter_entry_points(
             'paste.paster_create_template',
