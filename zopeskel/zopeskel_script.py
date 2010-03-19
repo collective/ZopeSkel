@@ -16,6 +16,8 @@ Usage:
     zopeskel --list                List template verbosely, with details
     zopeskel --make-config-file    Output .zopeskel prefs file
 %s
+Warning:  use of the --svn-repository argument is not allowed with this script
+
 For further help information, please invoke this script with the
 option "--help".
 """
@@ -123,6 +125,21 @@ Notes:
    DEFAULT section using Python string formatting. In this example,
    we have a common set of keywords set in DEFAULT and extend it
    for the theming template by referring to the master list.
+
+
+Differences from the 'paster create' command
+--------------------------------------------
+
+1) The --svn-repository argument that can be provided to 'paster create' is not
+   allowed when using the zopeskel script.  It will raise an error.  The reasons
+   for this are discussed at length in the zopeskel mailing list and in the 
+   zopeskel issue tracker:
+   http://plone.org/products/zopeskel/issues/34
+   http://plone.org/products/zopeskel/issues/35
+   
+   If this argument is desired, the user should revert to calling 'paster create'
+   directly.  However, be warned that buildout templates will not work with the
+   argument due to assumptions in the base paster code.
 
 
 Questions
@@ -264,9 +281,27 @@ def process_args():
             output_name = arg
         elif eq_index > 0:
             key, val = arg.split('=')
+            # the --svn-repository argument to paster does some things that cause
+            # it to be pretty much incompatible with zopeskel. See the following
+            # zopeskel issues:
+            #     http://plone.org/products/zopeskel/issues/35
+            #     http://plone.org/products/zopeskel/issues/34
+            # For this reason, we are going to disallow using the --svn-repository 
+            # argument when using the zopeskel wrapper.  Those who wish to use it
+            # can still do so by going back to paster, with the caveat that there
+            # are some templates (particularly the buildout ones) for which the
+            # argument will always throw errors (at least until the problems are
+            # fixed upstream in paster itself).
+            if 'svn-repository' in key:
+                msg = 'for a number of reasons, the --svn-repository argument '
+                msg += 'is not allowed with the zopeskel script. '
+                msg += "Try --help for more information"
+                raise SyntaxError(msg)
             others[key] = val
         else:
             raise SyntaxError(arg)
+    
+    
 
     return template_name, output_name, others
 
