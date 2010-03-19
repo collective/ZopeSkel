@@ -2,9 +2,26 @@
 
 import unittest
 import sys
+import StringIO
 
-from zopeskel.zopeskel_script import checkdots, process_args, run
-from zopeskel.tests.test_zopeskeldocs import read_sh
+from zopeskel.zopeskel_script import checkdots, process_args, run, DESCRIPTION
+from zopeskel.ui import list_sorted_templates
+
+
+def capture_stdout(function):
+    def _capture_stdout(*args, **kw):
+        newout = StringIO.StringIO()
+        oldout = sys.stdout
+        sys.stdout = newout
+        try:
+            function(*args, **kw)
+        finally:
+            sys.stdout = oldout
+            newout.seek(0)
+            return newout.read()
+    return _capture_stdout
+    
+run = capture_stdout(run)
 
 class test_zopeskel(unittest.TestCase):
     """Tests for ZopeSkel script.
@@ -84,10 +101,54 @@ class test_zopeskel(unittest.TestCase):
 
     def test_script_errors(self):
         """Verify that the run method catches errors correctly"""
+        oldargv = sys.argv
         
         # non-existent templates are not caught until in 'run'
-        output = read_sh('zopeskel no-template my.package')
+        sys.argv = ['zopeskel', 'no-template', 'my.package']
+        output = run()
         self.failUnless('ERROR: No such template' in output)
+        
+        # calling the script with no arguments at all prints usage
+        sys.argv = sys.argv[:1]
+        output = run()
+        self.failUnless('Usage:' in output)
+        
+        sys.argv = oldargv
+
+    def test_script_features(self):
+        """Verify that the help features of the script function correctly"""
+        oldargv = sys.argv
+        
+        # --help produces the DESCRIPTION string 
+        sys.argv = ['zopeskel', '--help']
+        output = run()
+        self.failUnless(DESCRIPTION in output, '--help produces incorrect output: %s' % output)        
+        
+        # --list produces a verbose list of all templates by category
+        sys.argv = ['zopeskel', '--list']
+        output = run()
+        cats = list_sorted_templates()
+        catnames = cats.keys()
+        templates = sum(cats.values(), [])
+        tempnames = [t['name'] for t in templates]
+        tempsums = [t['summary'] for t in templates]
+        for cat in catnames:
+            self.failUnless(cat in output, '%s not in --list output' % cat)
+        for tname in tempnames:
+            self.failUnless(tname in output, '%s not in --list output' % tname)
+        for summary in tempsums:
+            self.failUnless(summary in output, '%s not in --list output' % summary)
+        
+        # --make-config-file produces a config file with headings for each template
+        sys.argv = ['zopeskel', '--make-config-file']
+        output = run()
+        for theading in ['[' + name + ']' for name in tempnames]:
+            self.failUnless(theading in output, '%s does not appear in .zopeskel' % theading)
+        
+        sys.argv = oldargv
+        
+        
+        
         
 
 def test_suite():
