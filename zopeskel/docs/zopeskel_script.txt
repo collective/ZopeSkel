@@ -1,0 +1,96 @@
+The zopeskel script:
+===================
+
+As of version 2.15 ZopeSkel now provides a simple-to-use script: 'bin/zopeskel'.  
+This script provides enhanced user functions like inline help for template setup 
+questions, immediate validation of the answers provided for those questions, 
+sorting of questions into 'skill levels', enhanced help text for each of the 
+available templates, and a simplified syntax.  The new script also provides the 
+possibility of using a defaults file to create presets based on template type as 
+well as a facility for creating an initial defaults file.
+
+Basic Usage:
+-----------
+
+Calling the script with no parameters will print basic usage information:
+
+    >>> usage_text = read_sh('zopeskel')
+    >>> print usage_text
+    <BLANKLINE>
+    Usage:
+    <BLANKLINE>
+    ...
+    
+You may also call the script with the --help flag to get the full-length help 
+text for the script:
+
+    >>> help_text = read_sh('zopeskel --help')
+    >>> print help_text
+    <BLANKLINE>
+    This script ...
+    ...
+    Invoking this script
+    ...
+    Interactive Help
+    ...
+    Providing defaults
+    ...
+    Differences from the 'paster create' command
+    ...
+    Questions
+    ...
+    <BLANKLINE>
+    <BLANKLINE>
+    
+Using the --list flag will print out a complete, categorized list of the 
+available templates:
+
+    >>> list_text = read_sh('zopeskel --list')
+    >>> print list_text
+    <BLANKLINE>
+    Plone Development
+    ...
+    Plone Theme Development
+    ...
+    Buildout
+    ...
+    Core Python
+    ...
+    Zope Development
+    ...
+    <BLANKLINE>
+    <BLANKLINE>
+    
+Basic usage expects the zopeskel command followed by a template name, an 
+optional project name, and optionally some pairs of var=val arguments.  If you 
+invoke the command incorrectly, you'll get back basic usage information, a list 
+of available templates by category, and optionally an error report:
+
+    >>> bad_try1 = read_sh('zopeskel')
+    >>> 'Usage:' in bad_try1
+    True
+    >>> 'Plone Development' in bad_try1
+    True
+    
+    >>> bad_try2 = read_sh('zopeskel imaginary_template')
+    >>> 'Usage:' in bad_try2
+    True
+    >>> 'Plone Development' in bad_try2
+    True
+    >>> 'ERROR: No such template:' in bad_try2
+    True
+    
+    >>> bad_try3 = read_sh('zopeskel archetype --no-var foo')
+    >>> 'Usage:' in bad_try3
+    True
+    >>> 'Plone Development' in bad_try3
+    True
+    >>> 'ERROR: There was a problem with your arguments:' in bad_try3
+    True
+    
+Interactive Help and Inline Validation:
+--------------------------------------
+
+The zopeskel script provides support for both interactive help and inline validation of the values you provide for the questions a template asks:
+
+
