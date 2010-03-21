@@ -42,7 +42,7 @@ class Assignment(base.Assignment):
     # some_field = u""
 
     # TODO: Add keyword parameters for configurable parameters here
-    # def __init__(self, some_field=u"):
+    # def __init__(self, some_field=u''):
     #    self.some_field = some_field
 
     def __init__(self):

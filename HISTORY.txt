@@ -4,6 +4,9 @@ Changelog
 2.16 - Unreleased
 -----------------
 
+* Fixed syntax error in generated portlet constructor code
+  [ajung]
+
 * Added a new 'BoundedIntVar' variable type.  It validates that the provided
   argument is both an integer and between provided min and max values (inclusive 
   on both ends).
