@@ -62,7 +62,7 @@ Changelog
   incompatibilities with the way zopeskel is used.  The argument is still
   allowed for users via 'paster create'.
   (http://plone.org/products/zopeskel/issues/34
-   http://plone.org/products/zopeskel/issues/35)
+  http://plone.org/products/zopeskel/issues/35)
   [cewing]
 
 * Added a 'Register Profile' question to the plone template so that users can 
