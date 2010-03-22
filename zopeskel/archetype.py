@@ -38,9 +38,12 @@ in Plone's Add/Remove products form.
 """
        )
        )
-
     #zope2product should always defaults to True
     get_var(vars, 'zope2product').default = True
+    #add_profile should always default to True for archetype packages
+    get_var(vars, 'add_profile').default = True
+    #add_profile need not appear as a question for archetype packages
+    get_var(vars, 'add_profile').modes = (EXPERT,)
 
     def post(self, command, output_dir, vars):
         # Remove tests.py -- we already have a tests/ package

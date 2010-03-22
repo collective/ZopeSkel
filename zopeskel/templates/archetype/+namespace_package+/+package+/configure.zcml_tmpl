@@ -1,11 +1,13 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
+#if str($add_profile) == 'True'
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+#end if
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="${namespace_package}.${package}">
+    
 #if str($zope2product) == 'True'
-
   <five:registerPackage package="." initialize=".initialize" />
 #end if
 
@@ -15,6 +17,7 @@
   <include package=".portlets" />
   <i18n:registerTranslations directory="locales" />
   
+#if str($add_profile) == 'True'
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
       name="default"
@@ -23,6 +26,7 @@
       description="${description}"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+#end if
   
   <!-- -*- extra stuff goes here -*- -->
 
