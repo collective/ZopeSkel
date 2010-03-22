@@ -3,6 +3,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="${namespace_package}.${package}">
 
+#if str($add_profile) == 'True'
   <genericsetup:registerProfile
       name="default"
       title="$skinname"
@@ -18,5 +19,6 @@
       handler="${namespace_package}.${package}.setuphandlers.setupVarious">
     <depends name="skins"/>
   </genericsetup:importStep>
+#end if
 
 </configure>

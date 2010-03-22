@@ -3,7 +3,7 @@ import os
 
 from zopeskel.plone import Plone
 from zopeskel.plone2_theme import theme_vars
-from zopeskel.base import get_var
+from zopeskel.base import get_var, EXPERT
 from zopeskel.plone2_theme import cleanupStylsheets
 
 class Plone25Theme(Plone):
@@ -20,6 +20,10 @@ This creates a project for a theme for Plone 2.5
     get_var(vars, 'namespace_package').default = 'Products'
     get_var(vars, 'description').default = 'An installable theme for Plone 2.5'
     get_var(vars, 'keywords').default = 'web zope plone theme'
+    #add_profile should always default to True for theme packages
+    get_var(vars, 'add_profile').default = True
+    #add_profile need not appear as a question for theme packages
+    get_var(vars, 'add_profile').modes = ()
     vars = vars[:3] + theme_vars + vars[3:]
 
     def pre(self, command, output_dir, vars):
