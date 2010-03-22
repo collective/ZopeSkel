@@ -1,8 +1,11 @@
 Changelog
 =========
 
-2.16 - Unreleased
+2.17 - Unreleased
 -----------------
+
+2.16 - March 22, 2010
+---------------------
 
 * Fixed syntax error in generated portlet constructor code
   [ajung]
@@ -61,8 +64,8 @@ Changelog
 * Disallowed use of the paster --svn-repository command due to some basic 
   incompatibilities with the way zopeskel is used.  The argument is still
   allowed for users via 'paster create'.
-  (http://plone.org/products/zopeskel/issues/34
-   http://plone.org/products/zopeskel/issues/35)
+  (http://plone.org/products/zopeskel/issues/34  
+  http://plone.org/products/zopeskel/issues/35)
   [cewing]
 
 * Added a 'Register Profile' question to the plone template so that users can 

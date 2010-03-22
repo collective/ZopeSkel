@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '2.16dev'
+version = '2.17dev'
 
 setup(name='ZopeSkel',
       version=version,
