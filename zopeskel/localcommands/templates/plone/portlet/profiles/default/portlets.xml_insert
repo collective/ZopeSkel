@@ -3,7 +3,9 @@
 #     be used to register completely new column types. See CMFPlone's version
 #     of this file for more information.
 #  -->
-#<portlets>
+#<portlets
+#    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+#    i18n:domain="plone">
 #	<!-- -*- extra stuff goes here -*- -->
 
    <!-- to have your portlet's title and description translated in 
