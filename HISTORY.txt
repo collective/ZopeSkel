@@ -65,6 +65,13 @@ Changelog
    http://plone.org/products/zopeskel/issues/35)
   [cewing]
 
+* Added a 'Register Profile' question to the plone template so that users can 
+  have a Generic Setup profile registered in the case that they plan on adding
+  things (like portlets) that require a GS Profile to install.  Adapted 
+  downstream templates archetype, plone25_theme and plone3_theme to use the new 
+  question
+  [cewing]
+
 2.15 - January 22, 2010
 -----------------------
 
