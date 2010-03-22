@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.16 - Unreleased
------------------
+2.16 - March 22, 2010
+---------------------
 
 * Fixed syntax error in generated portlet constructor code
   [ajung]
