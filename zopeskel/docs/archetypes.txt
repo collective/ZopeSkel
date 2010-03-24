@@ -20,7 +20,6 @@ Let's check the content::
     configure.zcml
     content
     interfaces
-    locales
     portlets
     profiles
     tests

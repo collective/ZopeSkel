@@ -29,7 +29,6 @@ And inside the package::
     __init__.py
     config.py
     configure.zcml
-    locales
     profiles
     profiles.zcml
     setuphandlers.py

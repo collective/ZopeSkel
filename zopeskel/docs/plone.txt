@@ -15,6 +15,5 @@ Let's check the content::
     >>> ls(package_dir)
     __init__.py
     configure.zcml
-    locales
     tests.py 
 
