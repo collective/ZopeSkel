@@ -4,6 +4,11 @@ Changelog
 2.17 - Unreleased
 -----------------
 
+* Set the GenericSetup profile version number in the generated
+  metadata.xml to 1000, which is better for the alphabetical ordering
+  that GS does.
+  [maurits]
+
 * Added "environment-vars = zope_i18n_compile_mo_files = true" to plone3_buildout
   template. This is enabled only for Plone 4 (eggifiedzope is true).
   [vincentfretin]
