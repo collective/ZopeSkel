@@ -38,12 +38,13 @@ What sub-templates are available for a plone based project ?::
     >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
-        form:        A form skeleton
-        formfield:   Schema field for a form
-        i18nlocale:  An i18n locale directory structure
-        portlet:     A Plone 3 portlet
-        view:        A browser view skeleton
-        zcmlmeta:    A ZCML meta directive skeleton
+        browserlayer:  A Plone browserlayer
+        form:          A form skeleton
+        formfield:     Schema field for a form
+        i18nlocale:    An i18n locale directory structure
+        portlet:       A Plone 3 portlet
+        view:          A browser view skeleton
+        zcmlmeta:      A ZCML meta directive skeleton
     
 
 Now we can add a portlet to our project::
@@ -151,6 +152,50 @@ The form localcommand should also update the root-level configure.zcml to insert
     ...
 
 
+Let's try to add a browserlayer to our project::
+    >>> paster('addcontent --no-interactive browserlayer')
+    paster addcontent --no-interactive browserlayer
+    A BrowserLayer is generally used in packages to be installed in a Plone Site.
+    If you didn't choose Register Profile option when creating this package
+    you should probably add a <genericsetup:registerProfile /> directive in
+    the main configure.zcml.
+    <BLANKLINE>
+      Recursing into browser 
+      ...
+        Inserting from configure.zcml_insert into ...
+      Recursing into interfaces
+      ...
+      Recursing into profiles
+        Recursing into default
+      ...
+
+Test if we have the new files::
+    >> ls('plone', 'example', 'browser')
+    __init__.py
+    configure.zcml
+
+    >> ls('plone', 'example', 'interfaces')
+    __init__.py
+    ploneexample.py
+
+Check that the existing files like profile/browserlayer are updated::
+    >>> cat('plone', 'example', 'profiles', 'default', 'browserlayer.xml')
+    <?xml version="1.0"?>
+    ...
+        <layer name="PloneExample"
+            interface="plone.example.interfaces.ploneexamplelayer.IPloneExampleLayer" />
+    ...
+
+    >>> cat('plone', 'example', 'browser', 'configure.zcml')
+    <configure
+    ...
+      <include package="plone.browserlayer" />
+    ...
+
+    >> cat('plone', 'example', 'interfaces', 'packagenamelayer.py')
+    ...
+    class IPloneExampleLayer(Interface):
+    ...
 
 Go back to the top level directory to have a more or less clean slate
 for the following tests.
@@ -179,11 +224,12 @@ What sub-templates are available for an archetype based project ?::
     >>> paster('addcontent --list')
     paster addcontent --list
     Available templates:
-        atschema:     A handy AT schema builder
-        contenttype:  A content type skeleton
-        form:         A form skeleton
-        formfield:    Schema field for a form
-        i18nlocale:   An i18n locale directory structure
-        portlet:      A Plone 3 portlet
-        view:         A browser view skeleton
-        zcmlmeta:     A ZCML meta directive skeleton
+        atschema:      A handy AT schema builder
+        browserlayer:  A Plone browserlayer
+        contenttype:   A content type skeleton
+        form:          A form skeleton
+        formfield:     Schema field for a form
+        i18nlocale:    An i18n locale directory structure
+        portlet:       A Plone 3 portlet
+        view:          A browser view skeleton
+        zcmlmeta:      A ZCML meta directive skeleton

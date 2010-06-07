@@ -1,0 +1,9 @@
+#<?xml version="1.0"?>
+#<layers>
+#    <!-- -*- extra stuff goes here -*- -->
+
+    <layer name="${layer_name}"
+        interface="${namespace_package}.${package}.interfaces.${interface_filename}.${interface_name}"
+    />
+#</layers>
+

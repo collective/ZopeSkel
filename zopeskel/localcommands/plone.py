@@ -201,3 +201,44 @@ class FormField(PloneSubTemplate):
         vars['field_type'] = dict([(x[0].lower(), x) for x in self._supported_fields]).get(vars['field_type'].lower(), (vars['field_type'],))[0]
 
 
+class BrowserLayer(PloneSubTemplate):
+    """
+    A browserlayer skeleton
+    """
+    _template_dir = 'templates/plone/browserlayer'
+    summary = "A Plone browserlayer"
+
+    vars = [
+        var('interface_name', 'Interface name for the browserlayer',  default="IMyPackageBrowserLayer"),
+        var('layer_name', "Browser layer name", default='MyPackage'), 
+        ]
+
+    def check_vars(self, vars, cmd):
+        """
+        Overloading check_vars to print welcome message and provide sensitive default values
+        """
+
+        print "A BrowserLayer is generally used in packages to be installed in a Plone Site."
+        print "If you didn't choose Register Profile option when creating this package"
+        print "you should probably add a <genericsetup:registerProfile /> directive in"
+        print "the main configure.zcml.\n"
+        package_dotted_name = [vars['namespace_package']]
+        if 'namespace_package2' in vars:
+            package_dotted_name.append(vars['namespace_package2'])
+        package_dotted_name.append(vars['package'])
+        
+        layer_name = ''.join([x.capitalize() for x in package_dotted_name])
+        self.vars[1].default = layer_name
+        self.vars[0].default = 'I%sLayer' % (layer_name)
+
+        return super(BrowserLayer, self).check_vars(vars, cmd)
+
+
+    def pre(self, command, output_dir, vars):
+        """
+        you can use package_namespace, package_namespace2, package
+        and package_dotted_name of the parent package here. you get them
+        for free in the vars argument
+        """
+        vars['interface_filename'] = vars['layer_name'].lower() + 'layer'
+

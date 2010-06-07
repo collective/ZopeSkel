@@ -1,0 +1,24 @@
+#<configure xmlns="http://namespaces.zope.org/zope"
+#           xmlns:browser="http://namespaces.zope.org/browser"
+#           i18n_domain="${namespace_package}.${package}">
+#
+#    <!-- -*- extra stuff goes here -*- -->
+
+    <!-- If you are using plone version 3.0, you will need to include the 
+         plone.browserlayer package in your buildout and uncomment the following
+         line in order to use ${interface_name} as a layer attribute -->
+    <!-- 
+    <include package="plone.browserlayer" />
+    -->
+    <!-- Example of browser component with ${interface_name} layer attribute -->
+    <!-- 
+    <browser:page
+        name="my-view"
+        for="*"
+        permission="zope.Public"
+        template="my-view.pt"
+        layer="..interfaces.${interface_name}"
+        />
+    -->
+
+#</configure>
