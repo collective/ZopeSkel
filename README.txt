@@ -31,12 +31,20 @@ project names and additional help. It is recommended to use this
 script, especially for new users, rather than using ``paster create``
 directly. (The resulting packages produced, however, are the same).
 
+For example, running the above command with the new script may be done like so::
+
+    zopeskel plone3_theme
+
+Doing so will allow you to validate the name you choose for your package as well as providing inline help for all of the questions you'll be asked.  For more information on this command, invoke the following::
+
+    zopeskel --help
+
 Available templates
 ===================
 
 To see details of the available templates::
 
-  zopeskel --list
+    zopeskel --list
 
 
 Testing
