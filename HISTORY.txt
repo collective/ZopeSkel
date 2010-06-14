@@ -4,6 +4,12 @@ Changelog
 2.17 - Unreleased
 -----------------
 
+* Added a pin for PasteScript>=1.7.2.  This solves an issue where using zopeskel 
+  with an early version of PasteScript resulted in a method signature mismatch 
+  on the paster command 'challenge' method.  Fixes issue #42
+  (http://plone.org/products/zopeskel/issues/42)
+  [cewing]
+
 * Fixed lingering problem in Archetypes template with registering a 'locales' 
   directory before one is created.  Users now need to add an i18nlocale via 
   addcontent in order to get this directory and have it registered via zcml.
