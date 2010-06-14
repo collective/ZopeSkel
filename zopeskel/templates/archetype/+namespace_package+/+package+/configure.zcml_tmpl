@@ -15,7 +15,6 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
-  <i18n:registerTranslations directory="locales" />
   
 #if str($add_profile) == 'True'
   <!-- Register the installation GenericSetup extension profile -->
