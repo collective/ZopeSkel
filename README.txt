@@ -22,7 +22,7 @@ breed' file layouts for starting Zope projects.
 .. _PasteScript: http://pythonpaste.org/script/
 
 zopeskel script
----------------
+===============
 
 A script, ``zopeskel``, is available. This acts as a wrapper for
 PasteScript's ``paster create``, hiding the newbie-error-prone syntax
