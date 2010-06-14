@@ -29,7 +29,7 @@ setup(name='ZopeSkel',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        "PasteScript",
+        "PasteScript>=1.7.2",
         "Cheetah>1.0,<=2.2.1",
       ],
       tests_require=['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript'],
