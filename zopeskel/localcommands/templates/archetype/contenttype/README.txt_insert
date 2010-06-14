@@ -85,7 +85,7 @@ Let's logout and then login as 'contributor', a portal member that has the
 contributor role assigned.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(portal_url + '/login_form')
     >>> browser.getControl(name='__ac_name').value = 'contributor'
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -114,7 +114,7 @@ Done! We added a new $contenttype_name content item logged in as contributor.
 Finally, let's login back as manager.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(portal_url + '/login_form')
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
