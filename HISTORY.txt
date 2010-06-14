@@ -97,7 +97,7 @@ Changelog
 * Disallowed use of the paster --svn-repository command due to some basic 
   incompatibilities with the way zopeskel is used.  The argument is still
   allowed for users via 'paster create'.
-  (http://plone.org/products/zopeskel/issues/34  
+  (http://plone.org/products/zopeskel/issues/34
   http://plone.org/products/zopeskel/issues/35)
   [cewing]
 
