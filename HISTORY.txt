@@ -4,21 +4,25 @@ Changelog
 2.18 - Unreleased
 -----------------
 
+* use i18n:domain plone for portlet title so it need not be translated twice
+  (fixes http://plone.org/products/zopeskel/issues/44)
+  [fRiSi]
+
 2.17 - June 14, 2010
 --------------------
 
-* Added a pin for PasteScript>=1.7.2.  This solves an issue where using zopeskel 
-  with an early version of PasteScript resulted in a method signature mismatch 
+* Added a pin for PasteScript>=1.7.2.  This solves an issue where using zopeskel
+  with an early version of PasteScript resulted in a method signature mismatch
   on the paster command 'challenge' method.  Fixes issue #42
   (http://plone.org/products/zopeskel/issues/42)
   [cewing]
 
-* Fixed lingering problem in Archetypes template with registering a 'locales' 
-  directory before one is created.  Users now need to add an i18nlocale via 
+* Fixed lingering problem in Archetypes template with registering a 'locales'
+  directory before one is created.  Users now need to add an i18nlocale via
   addcontent in order to get this directory and have it registered via zcml.
   [cewing]
 
-* Fixed dependency in Archetypes template doctests on the presence of the log-in 
+* Fixed dependency in Archetypes template doctests on the presence of the log-in
   portlet.  Tests now open the 'login_form' instead.  Resolves issue #40
   (http://plone.org/products/zopeskel/issues/40)
   [cewing]
@@ -26,7 +30,7 @@ Changelog
 * Added new browserlayer localcommand for plone and archetype templates.
   [marcosfromero]
 
-* Added stub locales directory for plone3_theme template, resolving issue #33 
+* Added stub locales directory for plone3_theme template, resolving issue #33
   (http://plone.org/products/zopeskel/issues/33)
   [cewing]
 
@@ -35,8 +39,8 @@ Changelog
   that GS does.
   [maurits]
 
-* Added "environment-vars = zope_i18n_compile_mo_files = true" to 
-  plone3_buildout template. This is enabled only for Plone 4 (eggifiedzope is 
+* Added "environment-vars = zope_i18n_compile_mo_files = true" to
+  plone3_buildout template. This is enabled only for Plone 4 (eggifiedzope is
   true).
   [vincentfretin]
 
@@ -47,45 +51,45 @@ Changelog
   [ajung]
 
 * Added a new 'BoundedIntVar' variable type.  It validates that the provided
-  argument is both an integer and between provided min and max values (inclusive 
+  argument is both an integer and between provided min and max values (inclusive
   on both ends).
   [cewing]
 
-* Updated archetype and plone3_portlet templates to comply with pep8 and 
-  pyflakes validation at all stages of a skeleton build process.  Resolves the 
+* Updated archetype and plone3_portlet templates to comply with pep8 and
+  pyflakes validation at all stages of a skeleton build process.  Resolves the
   issue here: (http://plone.org/products/zopeskel/issues/24)
   [cewing]
 
-* Added explanatory text to the plone_hosting template regarding the fact that 
-  it is unsuitable for use with plone versions later than 3.1.7, fixed    
+* Added explanatory text to the plone_hosting template regarding the fact that
+  it is unsuitable for use with plone versions later than 3.1.7, fixed
   http://plone.org/products/zopeskel/issues/25
   [cewing]
 
-* Fixed the problem with generated archetypes content type meta_type names 
-  documented here: 
+* Fixed the problem with generated archetypes content type meta_type names
+  documented here:
   (http://plone.org/products/zopeskel/issues/22)
   [cewing]
 
-* Updated tests for the plone template to include tests for the fixes to message 
+* Updated tests for the plone template to include tests for the fixes to message
   factory, zcml sub-package include and i18n translation registration problems
   below
   [cewing]
 
-* Cleaned up a number of issues with defining and importing a package-wide 
+* Cleaned up a number of issues with defining and importing a package-wide
   MessageFactory in plone template local commands:
   (http://plone.org/products/zopeskel/issues/29)
   [cewing]
 
-* Cleaned up a number of issues with importing sub-package zcml files after 
-  using local commands in the plone template: 
+* Cleaned up a number of issues with importing sub-package zcml files after
+  using local commands in the plone template:
   (http://plone.org/products/zopeskel/issues/28)
   [cewing]
 
-* Fixed an issue with the plone template zcmlmeta local command to ensure that 
+* Fixed an issue with the plone template zcmlmeta local command to ensure that
   the proper directive was inserted into the top-level configure.zcml
   [cewing]
 
-* Fixed the bug in the plone template that caused zcml errors when the 
+* Fixed the bug in the plone template that caused zcml errors when the
   i18nlocale local command had not been run:
   (http://plone.org/products/zopeskel/issues/26)
   [cewing]
@@ -97,24 +101,24 @@ Changelog
 * Improved test coverage of the zopeskel script
   [cewing]
 
-* Disallowed use of the paster --svn-repository command due to some basic 
+* Disallowed use of the paster --svn-repository command due to some basic
   incompatibilities with the way zopeskel is used.  The argument is still
   allowed for users via 'paster create'.
   (http://plone.org/products/zopeskel/issues/34
   http://plone.org/products/zopeskel/issues/35)
   [cewing]
 
-* Added a 'Register Profile' question to the plone template so that users can 
+* Added a 'Register Profile' question to the plone template so that users can
   have a Generic Setup profile registered in the case that they plan on adding
-  things (like portlets) that require a GS Profile to install.  Adapted 
-  downstream templates archetype, plone25_theme and plone3_theme to use the new 
+  things (like portlets) that require a GS Profile to install.  Adapted
+  downstream templates archetype, plone25_theme and plone3_theme to use the new
   question
   [cewing]
 
 2.15 - January 22, 2010
 -----------------------
 
-* Backed out a few changes from jaroel in favor of retaining working templates 
+* Backed out a few changes from jaroel in favor of retaining working templates
   OOTB
   [cewing]
 
@@ -192,7 +196,7 @@ Changelog
 
 * New unit tests were written for new features.
   [cewing]
-  
+
 * New and repaired unit tests were added into the default test suite
   [cewing]
 
@@ -220,13 +224,13 @@ Changelog
   [maurits]
 
 * Remove unnecessary 'title' argument from jsregistry.xml example.
-  This fixes http://plone.org/products/zopeskel/issues/18.  
+  This fixes http://plone.org/products/zopeskel/issues/18.
   [dukebody]
 
 2.14.2 - December 8th, 2009
 ---------------------------
 
-* Back out untested, undocumented changes from paris sprint that broke some 
+* Back out untested, undocumented changes from paris sprint that broke some
   templates
   [MatthewWilkes]
 

@@ -10,6 +10,9 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from ${package_dotted_name} import ${package}MessageFactory as _
 
+from zope.i18nmessageid import MessageFactory
+__ = MessageFactory("plone")
+
 class I${portlet_type_name}(IPortletDataProvider):
     """A portlet
 
@@ -53,7 +56,7 @@ class Assignment(base.Assignment):
         """This property is used to give the title of the portlet in the
         "manage portlets" screen.
         """
-        return _(u"${portlet_name}")
+        return __(u"${portlet_name}")
 
 
 class Renderer(base.Renderer):
