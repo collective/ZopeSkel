@@ -17,3 +17,47 @@ Let's check the content::
     configure.zcml
     tests.py 
 
+If we state that we want a GS profile, the template should create that for us::
+
+    >>> paster('create -t plone plone.example --no-interactive add_profile=True')
+    paster create -t plone plone.example --no-interactive add_profile=True
+    ...
+
+Check to ensure that the package structure is correct::
+
+    >>> package_dir = os.path.join('plone.example',
+    ...                             'plone', 'example')
+    >>> ls(package_dir)
+    __init__.py
+    configure.zcml
+    profiles
+    tests.py
+    
+The profiles directory should contain only a 'default' folder with a metadata.xml file inside::
+
+    >>> ls(package_dir, 'profiles')
+    default
+    >>> ls(package_dir, 'profiles', 'default')
+    metadata.xml
+
+We need to verify that the metadata.xml file looks correct and that the configure.zcml file now contains a profile registration::
+
+    >>> cat(package_dir, 'profiles', 'default', 'metadata.xml')
+    <?xml version="1.0"?>
+    <metadata>
+      <version>1000</version>
+    </metadata>
+    <BLANKLINE>
+    >>> cat(package_dir, 'configure.zcml')
+    <configure
+    ...
+      <genericsetup:registerProfile
+          name="default"
+          title="plone.example"
+          directory="profiles/default"
+          description="Installs the plone.example package"
+          provides="Products.GenericSetup.interfaces.EXTENSION"
+          />
+    ...
+
+

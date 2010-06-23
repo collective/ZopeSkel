@@ -1,4 +1,6 @@
 import copy
+import shutil
+import os
 
 from zopeskel.basic_zope import BasicZope
 from zopeskel.base import get_var
@@ -38,5 +40,24 @@ properly installed.
     ))
     get_var(vars, 'namespace_package').default = 'plone'
     get_var(vars, 'package').default = 'example'
+    
+    def post(self, command, output_dir, vars):
+        if vars['add_profile'] == False:
+            # if we do not want a profile, remove it.            
+            path = os.path.join(output_dir,
+                                vars['namespace_package'],
+                                vars['package'])
+            try:
+                shutil.rmtree(os.path.join(path, 'profiles'))
+            except OSError, e:
+                msg = """WARNING: Error in template rendering:
 
+%s
+
+Your package may have structural problems, please check before 
+using it.
+"""
+                self.post_run_msg = msg % str(e)
+            
+        super(Plone, self).post(command, output_dir, vars)
 
