@@ -13,6 +13,9 @@ Changelog
   (fixes http://plone.org/products/zopeskel/issues/44)
   [fRiSi]
 
+* use the correct name of package, so it can be used in package with 2 dots or 1 dots in package name 
+  [lucmult]
+
 2.17 - June 14, 2010
 --------------------
 
