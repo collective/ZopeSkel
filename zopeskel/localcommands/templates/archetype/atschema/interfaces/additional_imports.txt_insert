@@ -4,4 +4,4 @@ non-standard ZopeSkel method!
 *#
 from zope import schema
 
-from ${namespace_package}.${package} import ${package}MessageFactory as _
+from ${package_dotted_name} import ${package}MessageFactory as _
