@@ -18,7 +18,11 @@ The script accepts buildout command-line options, so you can
 use the -c option to specify an alternate configuration file.
 """
 
-import os, shutil, sys, tempfile, urllib2
+import os
+import shutil
+import sys
+import tempfile
+import urllib2
 from optparse import OptionParser
 
 tmpeggs = tempfile.mkdtemp()
@@ -62,12 +66,12 @@ try:
 except ImportError:
     ez = {}
     if USE_DISTRIBUTE:
-        exec urllib2.urlopen('http://python-distribute.org/distribute_setup.py'
-                         ).read() in ez
+        setup_url = 'http://python-distribute.org/distribute_setup.py'
+        exec urllib2.urlopen(setup_url).read() in ez
         ez['use_setuptools'](to_dir=tmpeggs, download_delay=0, no_fake=True)
     else:
-        exec urllib2.urlopen('http://peak.telecommunity.com/dist/ez_setup.py'
-                             ).read() in ez
+        ez_setup_url = 'http://peak.telecommunity.com/dist/ez_setup.py'
+        exec urllib2.urlopen(ez_setup_url).read() in ez
         ez['use_setuptools'](to_dir=tmpeggs, download_delay=0)
 
     if to_reload:
@@ -75,23 +79,22 @@ except ImportError:
     else:
         import pkg_resources
 
-if sys.platform == 'win32':
-    def quote(c):
+
+def quote(c):
+    if sys.platform == 'win32':
         if ' ' in c:
-            return '"%s"' % c # work around spawn lamosity on windows
-        else:
-            return c
-else:
-    def quote (c):
-        return c
+            return '"%s"' % c  # work around spawn lamosity on windows
+    return c
 
 cmd = 'from setuptools.command.easy_install import main; main()'
-ws  = pkg_resources.working_set
+ws = pkg_resources.working_set
 
 if USE_DISTRIBUTE:
     requirement = 'distribute'
 else:
     requirement = 'setuptools'
+
+pythonpath = ws.find(pkg_resources.Requirement.parse(requirement)).location
 
 if is_jython:
     import subprocess
@@ -99,19 +102,15 @@ if is_jython:
     assert subprocess.Popen([sys.executable] + ['-c', quote(cmd), '-mqNxd',
            quote(tmpeggs), 'zc.buildout' + VERSION],
            env=dict(os.environ,
-               PYTHONPATH=
-               ws.find(pkg_resources.Requirement.parse(requirement)).location
-               ),
+               PYTHONPATH=pythonpath),
            ).wait() == 0
 
 else:
     assert os.spawnle(
-        os.P_WAIT, sys.executable, quote (sys.executable),
-        '-c', quote (cmd), '-mqNxd', quote (tmpeggs), 'zc.buildout' + VERSION,
+        os.P_WAIT, sys.executable, quote(sys.executable),
+        '-c', quote(cmd), '-mqNxd', quote(tmpeggs), 'zc.buildout' + VERSION,
         dict(os.environ,
-            PYTHONPATH=
-            ws.find(pkg_resources.Requirement.parse(requirement)).location
-            ),
+            PYTHONPATH=pythonpath),
         ) == 0
 
 ws.add_entry(tmpeggs)
