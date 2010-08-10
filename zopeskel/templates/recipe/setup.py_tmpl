@@ -5,6 +5,7 @@ This module contains the tool of $project
 import os
 from setuptools import setup, find_packages
 
+
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
@@ -18,23 +19,23 @@ long_description = (
     + '\n' +
     read(${repr($namespace_package)}, ${repr($namespace_package2)}, ${repr($package)}, 'README.txt')
     + '\n' +
-    'Contributors\n' 
+    'Contributors\n'
     '************\n'
     + '\n' +
     read('CONTRIBUTORS.txt')
     + '\n' +
     'Change history\n'
     '**************\n'
-    + '\n' + 
+    + '\n' +
     read('CHANGES.txt')
     + '\n' +
    'Download\n'
-    '********\n'
-    )
+    '********\n')
+
 entry_point = '$namespace_package.$namespace_package2.${package}:Recipe'
 entry_points = {"zc.buildout": ["default = %s" % entry_point]}
 
-tests_require=['zope.testing', 'zc.buildout']
+tests_require = ['zope.testing', 'zc.buildout']
 
 setup(name=${repr($project)},
       version=version,
@@ -66,6 +67,6 @@ setup(name=${repr($project)},
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
-      test_suite = '$namespace_package.$namespace_package2.${package}.tests.test_docs.test_suite',
+      test_suite='$namespace_package.$namespace_package2.${package}.tests.test_docs.test_suite',
       entry_points=entry_points,
       )
