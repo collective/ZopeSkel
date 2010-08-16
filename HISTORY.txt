@@ -47,7 +47,7 @@ Changelog
   that GS does.
   [maurits]
 
-* Added "environment-vars = zope_i18n_compile_mo_files = true" to
+* Added "environment-vars = zope_i18n_compile_mo_files true" to
   plone3_buildout template. This is enabled only for Plone 4 (eggifiedzope is
   true).
   [vincentfretin]
