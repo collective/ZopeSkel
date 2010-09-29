@@ -4,10 +4,14 @@ Changelog
 2.18 - Unreleased
 -----------------
 
+* Add bin/zopeskel --version flag.  Reports current version of zopeskel
+  (http://plone.org/products/zopeskel/issues/48)
+  [cewing]
+
 * plone3_buildout: use Plone 3.3.5 by default.
   [maurits]
 
-* Fixed a problem with the generic setup profile in plone templates in which a 
+* Fixed a problem with the generic setup profile in plone templates in which a
   profile was registered in zcml, but no profiles directory was created.
   (http://plone.org/products/zopeskel/issues/46)
   [cewing]
@@ -16,7 +20,8 @@ Changelog
   (fixes http://plone.org/products/zopeskel/issues/44)
   [fRiSi]
 
-* use the correct name of package, so it can be used in package with 2 dots or 1 dots in package name 
+* use the correct name of package, so it can be used in package with 2 dots or
+  1 dots in package name
   [lucmult]
 
 2.17 - June 14, 2010
