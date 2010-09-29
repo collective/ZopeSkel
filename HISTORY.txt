@@ -17,7 +17,7 @@ Changelog
   [cewing]
 
 * use i18n:domain plone for portlet title so it need not be translated twice
-  (fixes http://plone.org/products/zopeskel/issues/44)
+  (http://plone.org/products/zopeskel/issues/44)
   [fRiSi]
 
 * use the correct name of package, so it can be used in package with 2 dots or
