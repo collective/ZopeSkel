@@ -21,6 +21,7 @@
         'inline'.
       - 'enabled' (optional - default: True): boolean
       - 'cookable' (optional - default: True): boolean (aka 'merging allowed')
+      - 'insert_before', 'insert_after' (optional - default: '') resource id
       See registerStylesheet() arguments in
       ResourceRegistries/tools/CSSRegistry.py for the latest list of all
       available keys and default values.
