@@ -15,6 +15,8 @@ Usage:
     zopeskel --help                Full help
     zopeskel --list                List template verbosely, with details
     zopeskel --make-config-file    Output .zopeskel prefs file
+    zopeskel --version             Print installed version
+    
 %s
 Warning:  use of the --svn-repository argument is not allowed with this script
 
@@ -203,6 +205,13 @@ def usage():
 def show_help():
     print DESCRIPTION
 
+def show_version():
+    try:
+        dist = pkg_resources.get_distribution('zopeskel')
+        print dist.version
+    except pkg_resources.DistributionNotFound:
+        print 'unable to identify zopeskel version'
+
 def list_verbose():
     """List templates verbosely, with full help."""
 
@@ -318,6 +327,10 @@ def run():
 
     if "--list" in sys.argv:
         list_verbose()
+        return
+
+    if "--version" in sys.argv:
+        show_version()
         return
 
     if len(sys.argv) == 1:

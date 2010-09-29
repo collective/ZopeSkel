@@ -145,6 +145,12 @@ class test_zopeskel(unittest.TestCase):
         for theading in ['[' + name + ']' for name in tempnames]:
             self.failUnless(theading in output, '%s does not appear in .zopeskel' % theading)
         
+        # --version should output a version number.  make sure it finds something
+        import pdb; pdb.set_trace( )
+        sys.argv = ['zopeskel', '--version']
+        output = run()
+        self.failIf('unable' in output)
+        
         sys.argv = oldargv
         
         
