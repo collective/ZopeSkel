@@ -1,8 +1,11 @@
 Changelog
 =========
 
-2.18 - Unreleased
------------------
+2.19dev - Unreleased
+--------------------
+
+2.18 - September 30, 2010
+-------------------------
 
 * Add bin/zopeskel --version flag.  Reports current version of zopeskel
   (http://plone.org/products/zopeskel/issues/48)
