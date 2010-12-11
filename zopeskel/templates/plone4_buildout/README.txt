@@ -1,32 +1,36 @@
-=======================
-Plone 4 buildout 
-=======================
+================================
+Plone 4 buildout for developers
+================================
 
 .. contents ::
 
 Introduction
 ------------
 
-Buildout is a tool which automatically downloads, installs and configures Python software.
+`Buildout <http://www.buildout.org>`_ is a tool which automatically downloads, installs and configures Python software.
 Plone developers prefer uses buildout based installation method - it makes it easy to work with source code and developing your own Plone add-ons.
+
+For production site installations please use `standard Plone installer <http://plone.org/download>`_.
 
 Prerequisitements
 -----------------
 
-What you need in order to use buildout with Plone 4
+What you need in order to use developer buildout with Plone 4
 
 * Experience of using command line tools
 
 * Experience of using text editor to work with configuration files (``buildout.cfg``)
 
-* GCC compiler to build native Python extensions
+* GCC compiler suite to build native Python extensions (Zope contains C code for optimized parts)
 
-* Python 2.6 (other versions are *not* ok)
+* Python 2.6 (other versions are *not* ok for Plone 4)
 
-* Python Imaging Library installed for your Python 2.6 interpreter (more below)
+* Python Imaging Library installed for your Python interpreter (more below)
 
 * Python `Distribute <http://pypi.python.org/pypi/distribute>`_ installation tool, provided by your operating system
   or installed by hand
+
+Read below from operating system specific instructions how to install these dependencies.
 
 Features
 --------
@@ -37,9 +41,16 @@ This buildout provides
 
 * ``paster`` command for creating Plone add-ons (different from system-wide installation)
 
-* ``test`` command for running unit tests
+* `test <http://pypi.python.org/pypi/zc.recipe.testrunner>`_ command for running unit tests 
 
-* ``i18ndude`` for translating Plone add-ons 
+* `i18ndude <http://pypi.python.org/pypi/i18ndude>`_  for managing text string translations in Python source code 
+
+* `omelette <http://pypi.python.org/pypi/collective.recipe.omelette>`_ buildout recipe which makes Python egg source code more browseable by using symlinks
+
+* `mr.developer <http://pypi.python.org/pypi/mr.developer>`_ command for managing source code checkouts and updates with buildout repeatable manner
+
+* `collective.developermanual <http://plone.org/documentation/manual/plone-community-developer-documentation>`_ - community managed developer manual for Plone
+  in source code form, ready for contributions
 
 Creating Plone 4 buildout installation
 ------------------------------------------
@@ -68,17 +79,23 @@ Now you can run buildout script which will download all Python packages
 
  bin/buildout
 
-If this succesfully completes you can start buildout in foreground mode::
+If this succesfully completes you can start buildout in foreground mode (Press *CTRL+C* to terminate)::
 
- bin/instance fg
+  bin/instance fg 
 
-Press *CTRL+C* to terminate the instance.
+Now you can login to your site
+
+	http://localhost:8080
 
 The default user is ``admin`` with password ``admin``. 
-Please follow these instructions to change admin password.
+After initial start-up admin password is stored in Data.fs databse file and value in ``buildout.cfg`` is ignored.
+Please follow these instructions to change admin password <http://manage.plone.org/documentation/kb/changing-the-admin-password>`_.
 
 Next steps
 ----------
+
+Creating your first add-on
+==========================
 
 Plone 4 buildout comes with ``bin/paster`` command for creating Plone add-ons.
 
@@ -86,25 +103,29 @@ Plone 4 buildout comes with ``bin/paster`` command for creating Plone add-ons.
 
 	When working with Plone add-ons, use paster command from buildout bin folder, not the system wide paster command.
 
+Create theme (applies for Plone 4 also)::
+	
+	bin/paster create -t plone3_theme plonetheme.mythemeid
+	
+Create Archetypes based content types package::
+
+	bin/paster create -t archetypes mycompanyid.content
+
+Create other Plone customizations::
+
+	bin/paster create -t plone mycompanyid.mypackageid
+
+More info
+
 * `Instructions how to use Paster command to create your own add-ons <http://collective-docs.plone.org/tutorials/paste.html>`_ 
 
-Installing Python 2.6
---------------------------------------
+Managing source code checkouts with buildout
+=============================================
 
-Please refer to your system instructions.
+`mr.developer buildout extension <http://pypi.python.org/pypi/mr.developer>`_ command which can be used with buildout to manage your source code repositories
+*mr.developer* makes source code checkout from multiple repositores a repeatable task.
 
-Installing Python Imaging Library
-----------------------------------
-
-Plone needs Python Imaging Library to be fully functional (image resizes). 
-Please follow your system instructions to install PIL.
-
-Alternatively, after configuring development versions 
-of libjpeg, zlib and libpng for your system you can do::
-
-	easy_install http://dist.repoze.org/PIL-1.1.6.tar.gz
-
-System specific dependencies installations
+Operating system specific instructions 
 -------------------------------------------
 
 Ubuntu/Debian
@@ -129,6 +150,9 @@ Then the following installs dependencies::
 	sudo port install python26 py26-pil wget #make sure to install and use python26 from macports
 	easy_install ZopeSkel
 
+When you run ``bootstrap.py``use the following command to make sure you are using Python interpreter from Macports::
+
+	python2.6 bootstrap.py
 
 Windows
 ========

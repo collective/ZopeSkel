@@ -4,7 +4,7 @@ from zopeskel import abstract_buildout
 
 class Plone4Buildout(abstract_buildout.AbstractBuildout):
     _template_dir = 'templates/plone4_buildout'
-    summary = "A buildout for Plone 4 installation"
+    summary = "A buildout for Plone 4 developer installation"
     help = """
 
 This template creates a Plone 4 buildout (for most users, a preferred
@@ -44,19 +44,13 @@ See README.txt for details.
            [ abstract_buildout.VAR_PLONEVER,           
              abstract_buildout.VAR_Z2_INSTALL,
              abstract_buildout.VAR_PLONE_PRODUCTS,
-             abstract_buildout.VAR_ZOPE_USER,
-             abstract_buildout.VAR_ZOPE_PASSWD,
-             abstract_buildout.VAR_HTTP,
-             abstract_buildout.VAR_DEBUG_MODE,
-             abstract_buildout.VAR_VERBOSE_SEC,
         ]
     )
 
     def pre(self, command, output_dir, vars):
-        vars['eggifiedzope'] = vars['plone_version'].startswith("4.")
-        if vars['eggifiedzope']:
-            vars['zope2_install'] = True
-            vars['zope2_version'] = "2.12.3"
+        vars['eggifiedzope'] = True
+        vars['zope2_install'] = True
+        vars['zope2_version'] = "2.12.3"
         super(Plone4Buildout, self).pre(command, output_dir, vars)
 
 
