@@ -4,6 +4,10 @@ Changelog
 2.19dev - Unreleased
 --------------------
 
+* Added plone4_buildout [miohtama]
+
+* Rewrote parts of README [miohtama]
+
 2.18 - September 30, 2010
 -------------------------
 

@@ -3,10 +3,10 @@
 Introduction
 ============
 
-ZopeSkel provides a collection of skeletons for quickstarting Plone 
+ZopeSkel provides a collection of project templates for Plone 
 and Zope development projects.
 
-This package provides `paster <http://pythonpaste.org/script/>`_ based templates for some common development needs.
+ZopeSkel uses `paster <http://pythonpaste.org/script/>`_ Python templating library internally.
 
 Installing ZopeSkel
 ====================	
@@ -57,10 +57,17 @@ To see details of the available templates::
 Using templates
 ===============
 
-Creating Plone 4 buildout (system-wide installation)::
+Creating Plone 4 buildout using system-wide ZopeSkel installation::
 
 	zopeskel plone4_buildout yourfoldername
 
+Then you can run buildout this::
+
+	cd yourfoldername
+	python bootstrap.py 
+	bin/buildout
+
+``plone4_buildout`` provides zopeskel command inside its ``bin`` folder. 	
 For example,to create a theme (Plone 3 or higher) call (buildout based installation)::
 
     bin/zopeskel plone3_theme src/plonetheme.yourcompanyid
@@ -82,7 +89,7 @@ project.
 
 .. note ::
 
-	To use local commands you need to use paster command directly - zopeskel does not support them yet.
+	To use local commands you need to use paster command directly - zopeskel command does not support them yet.
 
 
 How-to create content type and add fields into it using local commands
@@ -152,6 +159,10 @@ To execute ZopeSkel source code checkout in ZopeSkel trunk folder::
 To test plone4_buildout (hit enter to questions)::
 
 	rm -rf plone4testfolder ; python -c "import sys ; sys.path.append('.') ; from zopeskel import zopeskel_script ; zopeskel_script.run()"  plone4_buildout plone4testfolder  ; cd plone4testfolder ; python bootstrap.py ; bin/buildout -vvv ; cd ..
+
+.. note ::
+
+	Since buildout command takes a long time it is recommend to set-up a user buildout cache folder.
 
 More info
 =========
