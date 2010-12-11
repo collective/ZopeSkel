@@ -46,6 +46,7 @@ setup(name='ZopeSkel',
       plone3_theme = zopeskel:Plone3Theme
       plone2.5_buildout = zopeskel:Plone25Buildout
       plone3_buildout = zopeskel:Plone3Buildout
+      plone4_buildout = zopeskel:Plone4Buildout
       archetype = zopeskel:Archetype
       plone3_portlet = zopeskel:Plone3Portlet
       plone_hosting = zopeskel.hosting:StandardHosting
