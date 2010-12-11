@@ -9,6 +9,7 @@ parts =
     instance
     zopepy
     i18ndude
+    zopeskel
     test
     omelette
 
@@ -70,6 +71,14 @@ recipe = zc.recipe.testrunner
 defaults = ['--auto-color', '--auto-progress']
 eggs =
     \${instance:eggs}
+
+\# create ZopeSkel command
+[zopeskel]
+unzip = true
+recipe = zc.recipe.egg
+eggs =
+        ZopeSkel
+        \${instance:eggs}
 
 \# symlinks all Python source code to parts/omelette folder when buildout is run
 [omelette]

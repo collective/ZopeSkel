@@ -42,11 +42,12 @@ See README.txt for details.
     vars = copy.deepcopy(abstract_buildout.AbstractBuildout.vars)
     vars.extend(
            [ abstract_buildout.VAR_PLONEVER,           
-             abstract_buildout.VAR_Z2_INSTALL,
-             abstract_buildout.VAR_PLONE_PRODUCTS,
         ]
     )
-
+    
+    # Set default Plone 4 version
+    vars[1].default = "4.0.1"
+    
     def pre(self, command, output_dir, vars):
         vars['eggifiedzope'] = True
         vars['zope2_install'] = True

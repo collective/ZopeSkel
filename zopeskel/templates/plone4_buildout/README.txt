@@ -41,7 +41,7 @@ This buildout provides
 
 * ``paster`` command for creating Plone add-ons (different from system-wide installation)
 
-* `test <http://pypi.python.org/pypi/zc.recipe.testrunner>`_ command for running unit tests 
+* `test <http://plone.org/documentation/manual/plone-community-developer-documentation/testing-and-debugging/unit-testing>`_ command for running automatic test suites 
 
 * `i18ndude <http://pypi.python.org/pypi/i18ndude>`_  for managing text string translations in Python source code 
 
@@ -65,9 +65,9 @@ Install ZopeSkel template package for your system-wide Python using Distribute::
 
 You probably got here by running something like (replace *myplonefoldername* with the target folder where you want to Plone to be installed)::
 
- paster create -t plone4_buildout myplonefoldername
+ zopeskel plone4_buildout myplonefoldername
 
-Now, you need to run (please see remarks regarding choosing Python interpreter below)::
+Now, you need to run (please see remarks regarding your operating system below)::
 
  python bootstrap.py
 
@@ -77,7 +77,7 @@ associated with buildout, or you need to update ``buildout`` script itself to ne
 Now you can run buildout script which will download all Python packages
 (.egg files) and create ``parts/`` and ``var/`` folder structure ::
 
- bin/buildout
+  bin/buildout
 
 If this succesfully completes you can start buildout in foreground mode (Press *CTRL+C* to terminate)::
 
@@ -85,11 +85,11 @@ If this succesfully completes you can start buildout in foreground mode (Press *
 
 Now you can login to your site
 
-	http://localhost:8080
+  http://localhost:8080
 
 The default user is ``admin`` with password ``admin``. 
 After initial start-up admin password is stored in Data.fs databse file and value in ``buildout.cfg`` is ignored.
-Please follow these instructions to change admin password <http://manage.plone.org/documentation/kb/changing-the-admin-password>`_.
+Please follow `these instructions to change admin password <http://manage.plone.org/documentation/kb/changing-the-admin-password>`_.
 
 Next steps
 ----------
@@ -105,15 +105,15 @@ Plone 4 buildout comes with ``bin/paster`` command for creating Plone add-ons.
 
 Create theme (applies for Plone 4 also)::
 	
-	bin/paster create -t plone3_theme plonetheme.mythemeid
+	bin/zopeskel plone3_theme plonetheme.mythemeid
 	
 Create Archetypes based content types package::
 
-	bin/paster create -t archetypes mycompanyid.content
+	bin/zopeskel archetype mycompanyid.content
 
 Create other Plone customizations::
 
-	bin/paster create -t plone mycompanyid.mypackageid
+	bin/zopeskel plone mycompanyid.mypackageid
 
 More info
 
@@ -147,7 +147,7 @@ Install `Macports <http://www.macports.org/>`_.
 
 Then the following installs dependencies::
 
-	sudo port install python26 py26-pil wget #make sure to install and use python26 from macports
+	sudo port install python26 py26-pil py26-distribute wget 
 	easy_install ZopeSkel
 
 When you run ``bootstrap.py``use the following command to make sure you are using Python interpreter from Macports::
@@ -164,3 +164,10 @@ required to build native Python extensions.
 Please read
 
 * http://plone.org/documentation/kb/using-buildout-on-windows
+
+Other
+-----
+
+The orignal copy of these instructions is available at
+
+* https://svn.plone.org/svn/collective/ZopeSkel/trunk/zopeskel/templates/plone4_buildout/README.txt

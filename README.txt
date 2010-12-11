@@ -27,7 +27,7 @@ Buildout based installations
 
 For Plone project templates.
 
-Add to your *buildout.cfg*::
+Add to your ``buildout.cfg``::
 
         
         parts =
@@ -136,6 +136,10 @@ Since version 1.5, ZopeSkel has tests.  It's required to run these
 before checking in; they can be run like::
 
     python setup.py test
+
+To execute ZopeSkel source code checkout::
+
+	PYTHONPATH=. python -c "from zopeskel import zopeskel_script ; zopeskel_script.run()" 
 
 
 More info
