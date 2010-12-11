@@ -1,11 +1,11 @@
+# buildout.cfg file for Plone 4 development work
+# - for production installations please use http://plone.org/download
 #
 # Each part has more information about its recipe on PyPi
 # http://pypi.python.org/pypi 
 # ... just reach by the recipe name
 [buildout]
-parts =
-    zope2
-    productdistros
+parts =  
     instance
     zopepy
     i18ndude
@@ -49,8 +49,6 @@ eggs =
 \# http://plone.org/products/plone/roadmap/247 - this does not concern packages which name is Products.*
 zcml =
 
-products =
-    \${buildout:directory}/products
 
 \# zopepy commands allows you to Python scripts using PYTHONPATH including all the configured eggs
 [zopepy]

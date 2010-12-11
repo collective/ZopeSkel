@@ -151,7 +151,7 @@ To execute ZopeSkel source code checkout in ZopeSkel trunk folder::
 
 To test plone4_buildout (hit enter to questions)::
 
-	rm -rf plone4testfolder ; PYTHONPATH=. python -c "from zopeskel import zopeskel_script ; zopeskel_script.run()"  plone4_buildout plone4testfolder  ; cd plone4testfolder ; python bootstrap.py ; bin/buildout -vvv ; cd ..
+	rm -rf plone4testfolder ; python -c "import sys ; sys.path.append('.') ; from zopeskel import zopeskel_script ; zopeskel_script.run()"  plone4_buildout plone4testfolder  ; cd plone4testfolder ; python bootstrap.py ; bin/buildout -vvv ; cd ..
 
 More info
 =========
