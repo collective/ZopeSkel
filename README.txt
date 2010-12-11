@@ -57,13 +57,17 @@ To see details of the available templates::
 Using templates
 ===============
 
-For example,to create a theme (Plone 3 or higher) call::
+Creating Plone 4 buildout (system-wide installation)::
 
-    zopeskel plone3_theme src/plonetheme.yourcompanyid
+	zopeskel plone4_buildout yourfoldername
+
+For example,to create a theme (Plone 3 or higher) call (buildout based installation)::
+
+    bin/zopeskel plone3_theme src/plonetheme.yourcompanyid
 
 Alternatively, you can call the underlying ``paster`` subsystem directly (this method is more error prone)::
 
-	paster -t plone3_theme src/plonetheme.yourcompanyid 
+	bin/paster -t plone3_theme src/plonetheme.yourcompanyid 
 
 The command will ask a few questions such as desired package name and a description
 and output a complete package skeleton that you can immediately start using.
@@ -129,6 +133,10 @@ Then you can add new fields to that content type::
 	You need to rerun add-on product installer on Plone site  
 	if you want to make these changes effective.      
 
+More info
+
+* http://collective-docs.plone.org/tutorials/paste.html
+
 Testing
 =======
 
@@ -137,10 +145,13 @@ before checking in; they can be run like::
 
     python setup.py test
 
-To execute ZopeSkel source code checkout::
+To execute ZopeSkel source code checkout in ZopeSkel trunk folder::
 
 	PYTHONPATH=. python -c "from zopeskel import zopeskel_script ; zopeskel_script.run()" 
 
+To test plone4_buildout (hit enter to questions)::
+
+	rm -rf plone4testfolder ; PYTHONPATH=. python -c "from zopeskel import zopeskel_script ; zopeskel_script.run()"  plone4_buildout plone4testfolder  ; cd plone4testfolder ; python bootstrap.py ; bin/buildout -vvv ; cd ..
 
 More info
 =========
