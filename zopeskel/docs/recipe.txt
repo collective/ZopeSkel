@@ -48,8 +48,12 @@ Now let's try to run the recipe own tests::
     >>> cd(recipe_dir)
     >>> import sys
     >>> python_ = sys.executable
-    >>> res = read_sh('%s setup.py test' % python_)
-    >>> 'doctest: readme.txt ... ok' in res.strip().lower()
+    >>> res = read_sh('%s setup.py test' % python_).strip().lower()
+    >>> 'doctest: readme.txt' in res
+    True
+    >>> 'ran 1 test' in res
+    True
+    >>> res.endswith('ok')
     True
 
 And the dedicated buildout `test` script (to be fixed)::

@@ -15,7 +15,6 @@ Let's check the content::
     README.txt
     bootstrap.py
     buildout.cfg
-    products
     src
     var
 
