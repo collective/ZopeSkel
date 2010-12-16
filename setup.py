@@ -2,6 +2,8 @@ from setuptools import setup, find_packages
 
 version = '2.19dev'
 
+tests_require = ['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript']
+
 setup(name='ZopeSkel',
       version=version,
       description="A collection of skeletons for quickstarting Zope projects.",
@@ -32,7 +34,10 @@ setup(name='ZopeSkel',
         "PasteScript>=1.7.2",
         "Cheetah>1.0,<=2.2.1",
       ],
-      tests_require=['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript'],
+      tests_require=tests_require,
+      extras_require=dict(
+        test=tests_require
+      ),
       test_suite='zopeskel.tests.test_all.test_suite',
       entry_points="""
       [paste.paster_create_template]
