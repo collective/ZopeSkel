@@ -4,6 +4,10 @@ Changelog
 2.19dev - Unreleased
 --------------------
 
+* In every setup.py, replace '%3A' with ':', makin list_classifier url an url
+  which can actually be used.
+  [thet]
+
 * Added plone4_buildout [miohtama]
 
 * Rewrote parts of README [miohtama]
