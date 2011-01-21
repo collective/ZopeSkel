@@ -175,5 +175,9 @@ Source code
 
 * http://svn.plone.org/svn/collective/ZopeSkel/trunk
 
+Mailing List
+
+* http://lists.plone.org/mailman/listinfo/zopeskel
+
 Please contribute by submitting patches for what you consider 'best of
 breed' file layouts for starting Zope projects.
