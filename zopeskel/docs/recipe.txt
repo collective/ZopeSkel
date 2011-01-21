@@ -53,7 +53,7 @@ Now let's try to run the recipe own tests::
     True
     >>> 'ran 1 test' in res
     True
-    >>> res.endswith('ok')
+    >>> 'ok' in res[:-10]
     True
 
 And the dedicated buildout `test` script (to be fixed)::
