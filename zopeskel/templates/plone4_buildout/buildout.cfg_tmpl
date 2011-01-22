@@ -11,7 +11,7 @@ parts =
     i18ndude
     zopeskel
     test
-    omelette
+\#    omelette
 
 extends = 
     http://dist.plone.org/release/${plone_version}/versions.cfg
@@ -22,14 +22,19 @@ find-links =
     http://dist.plone.org/release/${plone_version}
     http://dist.plone.org/thirdparty
 
-extensions = mr.developer
+extensions = 
+    mr.developer
+    buildout.dumppickedversions
+    buildout.threatlevel
+
 sources = sources
 	
 versions = versions
 
 \# Reference any folders where you have Python egg source code under development here 
 \# e.g.: develop = src/my.package
-\# If you are using mr.developer develop command and have the source code in a repository mr.developer does this automatically for you
+\# If you are using the mr.developer extension and have the source code in a 
+\# repository mr.developer will handle this automatically for you
 develop =
 
 
@@ -45,12 +50,14 @@ blob-storage = var/blobstorage
 eggs =
 	Plone
 
-\# Some pre-Plone 3.3 packages might want you to register package name here in order their configure.zcml to be run
-\# http://plone.org/products/plone/roadmap/247 - this does not concern packages which name is Products.*
+\# Some pre-Plone 3.3 packages may need you to register the package name here in 
+\# order their configure.zcml to be run (http://plone.org/products/plone/roadmap/247)
+\# - this is never required for packages in the Products namespace (Products.*)
 zcml =
 
 
-\# zopepy commands allows you to Python scripts using PYTHONPATH including all the configured eggs
+\# zopepy commands allows you to execute Python scripts using a PYTHONPATH 
+\# including all the configured eggs
 [zopepy]
 recipe = zc.recipe.egg
 eggs = \${instance:eggs}
@@ -75,15 +82,19 @@ eggs =
 unzip = true
 recipe = zc.recipe.egg
 eggs =
-        ZopeSkel
-        \${instance:eggs}
+    ZopeSkel
+    \${instance:eggs}
 
 \# symlinks all Python source code to parts/omelette folder when buildout is run
-[omelette]
-recipe = collective.recipe.omelette
-eggs = \${instance:eggs}
+\# windows users will need to install additional software for this part to build 
+\# correctly.  See http://pypi.python.org/pypi/collective.recipe.omelette for
+\# relevant details.
+\# [omelette]
+\# recipe = collective.recipe.omelette
+\# eggs = \${instance:eggs}
 
-\# Put your mr.developer managed source code repositories here
+\# Put your mr.developer managed source code repositories here, see
+\# http://pypi.python.org/pypi/mr.developer for details on format for this part
 [sources]
 collective.developermanual = svn http://svn.plone.org/svn/collective/collective.developermanual
 

@@ -17,9 +17,9 @@ Prerequisitements
 
 What you need in order to use developer buildout with Plone 4
 
-* Experience of using command line tools
+* Experience using command line tools
 
-* Experience of using text editor to work with configuration files (``buildout.cfg``)
+* Experience using a text editor to work with configuration files (``buildout.cfg``)
 
 * GCC compiler suite to build native Python extensions (Zope contains C code for optimized parts)
 
