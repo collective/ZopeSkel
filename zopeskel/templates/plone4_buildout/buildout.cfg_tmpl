@@ -25,7 +25,6 @@ find-links =
 extensions = 
     mr.developer
     buildout.dumppickedversions
-    buildout.threatlevel
 
 sources = sources
 	
