@@ -10,27 +10,27 @@ ZopeSkel uses the `paster <http://pythonpaste.org/script/>`_ Python library
 internally.
 
 ABC of typical Plone site development
--======================================
+=======================================
 
-For a typical Plone site development the following path is recommended
+For a typical Plone site development the following developemtn path is recommended
 
 * Install ZopeSkel package to virtualenv, or otherwise
-  isolated from system Python installation on your local computer.
+  isolated from system Python installation, on your local computer.
 
-* Create a new Plone 4 development buildout using 
+* Create a new Plone 4 development installation using 
   plone4_buildout template
   
 * Create a new logic package for the content types, forms and logic of the site.
-  This can be done using Dexterity ZopeSkel template
-  `(more info) <http://collective-docs.plone.org/content/dexterity.html>`_
-
-* Create a new theme package for the site.
-  This can be done using XDV template
-  `(more info) <http://collective-docs.plone.org/templates_css_and_javascripts/xdv.html>`_
+  `This can be done using Dexterity ZopeSkel template <http://collective-docs.plone.org/content/dexterity.html>`_
+  (included in plone4_buildout)
+  
+* Create a new theme package for the site. 
+  `This can be done using XDV template <http://collective-docs.plone.org/templates_css_and_javascripts/xdv.html>`_
+  (included in plone4_buildout)
 
 * Test and develop on your local computer until everything is perfect 
  
-* Put created packages under version control (Subversion, Git) 
+* Put created packages under source code sversion control (Subversion, Git) 
   
 * Create a Plone installation on the production server. Plone Unified
   installer is the preferred method.
@@ -52,10 +52,24 @@ ZopeSkel can be installed in one of two ways: with `buildout
 Buildout installation 
 ---------------------------
 
+Here are instructions how to include ZopeSkel as a part of your 
+local buildout.cfg. 
+
+* You can use zopeskel to add new projects to your buildout src/ folder
+
+* You can use code skeleton local commands to add more content to your 
+  package
+
+.. note ::
+
+    plone4_buildout template has ZopeSkel and paster support out of the box
+    and this is not needed if you used plone4_buildout to create your buildout.cfg.
+
 Add to your ``buildout.cfg``::
         
     parts =
         ...
+        paster
         zopeskel
     
 
@@ -65,7 +79,17 @@ Add to your ``buildout.cfg``::
             ZopeSkel 
             ${instance:eggs}
 
-After building your buildout, this will leave ``zopeskel`` and ``paster`` 
+    [paster]
+    recipe = zc.recipe.egg
+    eggs =
+       ZopeSkel
+       PasteScript
+       PasteDeploy
+       ${instance:eggs}
+    entry-points = paster=paste.script.command:run
+
+
+After re-running buildout, you will have ``zopeskel`` and ``paster`` 
 commands in the ``bin`` directory of your buildout.
 
 Virtualenv installation
@@ -94,7 +118,7 @@ To see details of the available templates::
 
     zopeskel --list
     
-... or more info about how zopekskel works::
+More info about how zopeskel works::
 
 	zopeskel --help
 		    
@@ -154,10 +178,8 @@ functionality to an existing ZopeSkel generated project.
 Using local commands to create a content type package
 -----------------------------------------------------
 
-To use local commands you need to first include paster command in your buildout.cfg.
-*plone4_buildout* template includes this by default. For unified installer or
-older buildouts, 
-`refer to the documentation how to include it <http://collective-docs.plone.org/tutorials/paste.html>`_.
+To use local commands you need to first include paster command in your buildout.cfg
+as instructed above.
 
 Starting inside your Plone buildout, first create a new archetypes add-on::
 
