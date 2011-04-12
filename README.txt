@@ -9,13 +9,45 @@ and Zope development projects.
 ZopeSkel uses the `paster <http://pythonpaste.org/script/>`_ Python library
 internally.
 
+ABC of typical Plone site development
+-======================================
+
+For a typical Plone site development the following path is recommended
+
+* Install ZopeSkel package to virtualenv, or otherwise
+  isolated from system Python installation on your local computer.
+
+* Create a new Plone 4 development buildout using 
+  plone4_buildout template
+  
+* Create a new logic package for the content types, forms and logic of the site.
+  This can be done using Dexterity ZopeSkel template
+  `(more info) <http://collective-docs.plone.org/content/dexterity.html>`_
+
+* Create a new theme package for the site.
+  This can be done using XDV template
+  `(more info) <http://collective-docs.plone.org/templates_css_and_javascripts/xdv.html>`_
+
+* Test and develop on your local computer until everything is perfect 
+ 
+* Put created packages under version control (Subversion, Git) 
+  
+* Create a Plone installation on the production server. Plone Unified
+  installer is the preferred method.
+
+* Install your site customization packages on the production server
+
 Installing ZopeSkel
-===================
+====================
 
 ZopeSkel can be installed in one of two ways: with `buildout
 <http://www.buildout.org/>`_ or with `virtualenv
-<http://virtualenv.openplans.org/>`_. Despite existing documentation to the
-contrary, it is not recommended to install ZopeSkel in your system python.
+<http://virtualenv.openplans.org/>`_. 
+
+.. note ::
+
+    Despite existing documentation to the
+    contrary, it is not recommended to install ZopeSkel in your system python.
 
 Buildout installation 
 ---------------------------
@@ -54,7 +86,6 @@ environment::
 
 Once this is complete, you will be left with ``zopeskel`` and ``paster``
 commands in the ``bin`` directory inside your virtualenv.
-
 
 Available Templates
 ===================
@@ -113,7 +144,7 @@ functionality to an existing ZopeSkel generated project.
 
 	Local commands require using the ``paster`` command directly - the 
 	``zopeskel`` command does not support them yet.
-
+	
 .. note ::
 
     Not all ZopeSkel templates provide local commands.  In general, if local
@@ -123,7 +154,12 @@ functionality to an existing ZopeSkel generated project.
 Using local commands to create a content type package
 -----------------------------------------------------
 
-Starting inside your Plone buildout, first create an archetypes package::
+To use local commands you need to first include paster command in your buildout.cfg.
+*plone4_buildout* template includes this by default. For unified installer or
+older buildouts, 
+`refer to the documentation how to include it <http://collective-docs.plone.org/tutorials/paste.html>`_.
+
+Starting inside your Plone buildout, first create a new archetypes add-on::
 
     cd src
     ../bin/zopeskel archetype mycompanyid.mycustomcontenttypes
@@ -142,7 +178,7 @@ content type::
     Commands:
     ...
 
-    ZopeSkel local commands:
+    ... local commands:
 	    addcontent   Adds plone content types to your project
                 
 
@@ -195,6 +231,11 @@ Since version 1.5, ZopeSkel has tests.  It's required to run these
 before you check in any changes you make. They can be run like so::
 
     python setup.py test
+    
+Running trunk version
+----------------------
+
+If you are developing ZopeSkel itsel, instructions to run ZopeSkel from source check are in TRUNK.txt.
 
 More info
 =========
@@ -202,6 +243,10 @@ More info
 Issue tracker
 
 * http://plone.org/products/zopeskel/issues
+
+Plone and ZopeSkel related documentation
+
+* http://collective-docs.plone.org/tutorials/paste.html
 
 Source code
 

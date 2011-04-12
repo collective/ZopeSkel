@@ -6,6 +6,15 @@ Changelog
 
 * Remove buildout.threatlevel extension from plone4_buildout. [davisagli]
 
+* Made plone4_buildout simpler: now it only asks for Plone version [miohtama]
+
+* Various references to Internet documentation [miohtama]
+
+* Created a recommended path how ZopeSkel templates should be used to create a new
+  Plone site project [miohtama]
+
+* Bumped Plone 4 version to 4.0.5 [miohtama]
+
 2.19 - January 21, 2011
 --------------------------
 

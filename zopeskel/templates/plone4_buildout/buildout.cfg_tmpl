@@ -9,6 +9,7 @@ parts =
     instance
     zopepy
     i18ndude
+    paster
     zopeskel
     test
 \#    omelette
@@ -75,6 +76,18 @@ recipe = zc.recipe.testrunner
 defaults = ['--auto-color', '--auto-progress']
 eggs =
     \${instance:eggs}
+
+\# create paster command with Dexterity support
+[paster]
+recipe = zc.recipe.egg
+eggs =
+   ZopeSkel
+   PasteScript
+   PasteDeploy
+   zopeskel.dexterity
+   \${instance:eggs}
+entry-points = paster=paste.script.command:run
+
 
 \# create ZopeSkel command
 [zopeskel]
