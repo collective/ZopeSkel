@@ -123,9 +123,9 @@ class ATSchemaField(ArchetypeSubTemplate):
         print "Welcome to the ATSchema Builder. Field names/widgets can be specified in lowercase or upper case."
         print "NOTE: No need to add 'widget' or 'field' to the names. atschema does the work for you!"
         print "See "
-        print "    http://plone.org/documentation/manual/archetypes-developer-manual/fields/fields-reference/"
+        print "    http://plone.org/documentation/manual/developer-manual/archetypes/fields/fields-reference/"
         print "and "
-        print "    http://plone.org/documentation/manual/archetypes-developer-manual/fields/widgets-reference"
+        print "    http://plone.org/documentation/manual/developer-manual/archetypes/fields/widgets-reference/"
         print "for field and widget details"
 
         return super(ATSchemaField, self).check_vars(*args, **kwargs)
