@@ -48,6 +48,7 @@ verbose-security = on
 blob-storage = var/blobstorage
 
 eggs =
+        PIL
 	Plone
 
 \# Some pre-Plone 3.3 packages may need you to register the package name here in 
