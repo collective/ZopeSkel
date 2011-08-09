@@ -11,19 +11,13 @@ way to get an installation of Plone 3 is to use the appropriate installer,
 as these are all buildout-based since Plone 3.1)
 """
     pre_run_msg = """
-*** NOTE: You probably don't want to use this template!
-
-Since Plone 3.1, the preferred way to get a buildout-based setup for
-Plone is to use the standard installer for your operating system (the
-Windows installer, the Mac installer, or the Unified Installer for
-Linux/Unix/BSD). These give you a best-practice, widely-used
-setup with an isolated Python and a well-documented buildout.
-This template is here for older versions of Plone and for experts
-who explicitly want a raw, non-installer-based installation.
-
-(This message is particularly aimed at people following out-of-date
-books/documentation that suggest this is the right way to get
-a Plone-based buildout. This is no longer the case.)
+*** NOTE: This template is for developers.
+If you just want to install Plone, the preferred way to get a
+buildout-based setup for Plone is to use the standard installer for
+your operating system (the Windows installer, the Mac installer, or
+the Unified Installer for Linux/Unix/BSD). These give you a best-practice,
+widely-used setup with an isolated Python and a well-documented
+buildout.
 """
 
     post_run_msg = """
