@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '2.19'
+version = '2.20'
 
 tests_require = ['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript']
 

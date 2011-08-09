@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.20 - Unreleased
------------------
+2.20 - August 9, 2011
+---------------------
 
 * Remove buildout.threatlevel extension from plone4_buildout. [davisagli]
 
@@ -14,6 +14,10 @@ Changelog
   Plone site project [miohtama]
 
 * Bumped Plone 4 version to 4.0.5 [miohtama]
+
+* Edit plone3_buildout help text, fixes:
+  http://plone.org/products/zopeskel/issues/59
+  [aclark]
 
 2.19 - January 21, 2011
 --------------------------
