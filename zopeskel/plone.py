@@ -9,7 +9,7 @@ from zopeskel.vars import BooleanVar
 
 class Plone(BasicZope):
     _template_dir = 'templates/plone'
-    summary = "A project for Plone products"
+    summary = "A project for Plone add-ons"
     help = """
 This creates a Plone project (to create a Plone *site*, you probably
 want to use the one of the templates for a buildout).

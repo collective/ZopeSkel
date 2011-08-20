@@ -6,7 +6,7 @@ from zopeskel import abstract_zope
 
 class PloneApp(abstract_zope.AbstractNestedZope):
     _template_dir = 'templates/plone_app'
-    summary = "A project for Plone products with a nested namespace (2 dots in name)"
+    summary = "A project for Plone add-ons with a nested namespace (2 dots in name)"
     help = """
 This creates a Plone project (to create a Plone *site*, you probably
 want to use the one of the templates for a buildout).
