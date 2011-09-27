@@ -38,7 +38,7 @@ http://plone.org/products/zopeskel
     )
     
     # Set default Plone 4 version
-    vars[0].default = "4.1.1"
+    vars[0].default = "4.1"
     
     def pre(self, command, output_dir, vars):
         
