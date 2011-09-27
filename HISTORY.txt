@@ -1,6 +1,13 @@
 Changelog
 =========
 
+2.20 - current
+---------------------
+
+* Fixed plone4_buildout of trying to checkout collective.docs from the old location [miohtama]
+
+* Bumped Plone version to 4.1.1 [miohtama]
+
 2.20 - August 9, 2011
 ---------------------
 
