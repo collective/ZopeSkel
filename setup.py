@@ -1,4 +1,13 @@
 from setuptools import setup, find_packages
+import sys
+
+
+# PasteDeploy 1.5.0 is explicitly not python 2.4 compatible, if we are using
+# python 2.4, pin PasteDeploy to an earlier version
+paste_deploy = "PasteDeploy"
+if sys.version_info[1] < 5:
+    paste_deploy += "<1.5.0"
+
 
 version = '2.20'
 
@@ -25,13 +34,13 @@ setup(name='ZopeSkel',
       author='Daniel Nouri',
       author_email='daniel.nouri@gmail.com',
       maintainer='Cris Ewing',
-      maintainer_email="cewing@uw.edu",
+      maintainer_email="cris@crisewing.com",
       url='http://svn.plone.org/svn/collective/ZopeSkel/trunk',
       packages=find_packages(exclude=['ez_setup']),
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        "PasteDeploy<1.5.0",
+        paste_deploy,
         "PasteScript>=1.7.2",
         "Cheetah>1.0,<=2.2.1",
       ],
