@@ -9,10 +9,10 @@ development projects.
 ZopeSkel uses the `paster <http://pythonpaste.org/script/>`_ Python library
 internally.
 
-The ABCs of typical Plone site development
-==========================================
+The ABCs of typical Plone development
+=====================================
 
-For a typical Plone site development the following development path is
+For the typical developer working on a plone project, the following path is
 recommended:
 
 * Install ZopeSkel package to virtualenv, or otherwise
@@ -34,8 +34,8 @@ recommended:
 
 * Put created packages under source code sversion control (Subversion, Git).
 
-* Create a Plone installation on the production server. Plone Unified
-  installer is the preferred method.
+* Create a Plone installation on the production server. For this step the
+  Plone Unified installer is the preferred method of building a distribution.
 
 * Install your site customization packages on the production server.
 
@@ -238,19 +238,49 @@ More info
 
 * http://collective-docs.plone.org/tutorials/paste.html
 
+Developing ZopeSkel
+===================
+
+If you wish to contribute to the zopeskel project we welcome your
+contribution. Zopeskel is now distributed with its own built-in buildout, so
+to begin, all you need to do is check out the source, bootstrap with your
+desired version of python, and run bin/buildout. A couple of things to keep in
+mind while you work:
+
 Testing
-=======
+-------
 
-Since version 1.5, ZopeSkel has tests.  It's required to run these
-before you check in any changes you make. They can be run like so::
+Since version 1.5, ZopeSkel has tests. It's required to run these before you
+check in any changes you make. You should run the full test suite in both
+Python 2.4 and Python 2.6, as both versions are in common use among Zope and
+Plone developers. They can be run like so::
 
-    python setup.py test
+    bin/test -s zopeskel
+
+Please ensure that all tests pass in Python 2.4 and Python 2.6 before making
+any checkins to the trunk of zopeskel.
+
+Fixing Bugs
+-----------
+
+There are a number of open issues in the queue at
+http://plone.org/products/zopeskel/issues and your help is always welcome in
+closing any you feel competent to take on. Please note that there is a
+zopeskel mailing list, so if you have any questions about your approach to
+fixing a bug, you should post to the list first.
 
 Running trunk version
 ----------------------
 
-If you are developing ZopeSkel itself, instructions to run ZopeSkel from
-source check are in ``TRUNK.txt``.
+The easiest way to run the trunk of zopeskel is to check out the code,
+bootstrap the buildout with your favored version of Python, and run
+bin/buildout::
+
+    svn co http://svn.plone.org/svn/collective/ZopeSkel/trunk zopeskel
+    cd zopeskel
+    python2.6 bootstrap.py
+    ...
+    bin/buildout
 
 More info
 =========

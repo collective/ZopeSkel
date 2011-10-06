@@ -1,5 +1,5 @@
 Running Trunk ZopeSkel
---------------------------
+----------------------
 
 To execute ZopeSkel source code checkout ZopeSkel. In this folder run::
 

@@ -9,7 +9,7 @@ if sys.version_info[1] < 5:
     paste_deploy += "<1.5.0"
 
 
-version = '2.20'
+version = '2.21'
 
 tests_require = ['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript']
 
