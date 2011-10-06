@@ -9,8 +9,8 @@ development projects.
 ZopeSkel uses the `paster <http://pythonpaste.org/script/>`_ Python library
 internally.
 
-ABC of typical Plone site development
-=======================================
+The ABCs of typical Plone site development
+==========================================
 
 For a typical Plone site development the following development path is
 recommended:
@@ -71,30 +71,20 @@ Add to your ``buildout.cfg``::
 
     parts =
        ...
-       paster
        zopeskel
 
     [zopeskel]
+    # installs paster and Zopeskel
     recipe = zc.recipe.egg
     eggs =
-       ZopeSkel
-       ${instance:eggs}
-
-    [paster]
-    recipe = zc.recipe.egg
-    eggs =
-       ZopeSkel
        PasteScript
-       PasteDeploy
-       ${instance:eggs}
-    entry-points = paster=paste.script.command:run
-
+       ZopeSkel
 
 After re-running buildout, you will have ``zopeskel`` and ``paster``
 commands in the ``bin`` directory of your buildout.
 
 Virtualenv installation
------------------------------
+-----------------------
 
 First, install virtualenv into your system::
 

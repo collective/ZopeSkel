@@ -9,14 +9,13 @@ parts =
     instance
     zopepy
     i18ndude
-    paster
     zopeskel
     test
 \#    omelette
 
 extends = 
     http://dist.plone.org/release/${plone_version}/versions.cfg
-	
+
 \# Add additional egg download sources here. dist.plone.org contains archives
 \# of Plone packages.
 find-links =
@@ -28,7 +27,7 @@ extensions =
     buildout.dumppickedversions
 
 sources = sources
-	
+
 versions = versions
 
 \# Reference any folders where you have Python egg source code under development here 
@@ -48,8 +47,8 @@ verbose-security = on
 blob-storage = var/blobstorage
 
 eggs =
-        PIL
-	Plone
+    PIL
+    Plone
 
 \# Some pre-Plone 3.3 packages may need you to register the package name here in 
 \# order their configure.zcml to be run (http://plone.org/products/plone/roadmap/247)
@@ -78,25 +77,13 @@ defaults = ['--auto-color', '--auto-progress']
 eggs =
     \${instance:eggs}
 
-\# create paster command with Dexterity support
-[paster]
-recipe = zc.recipe.egg
-eggs =
-   ZopeSkel
-   PasteScript
-   PasteDeploy
-   zopeskel.dexterity
-   \${instance:eggs}
-entry-points = paster=paste.script.command:run
-
-
-\# create ZopeSkel command
+\# create ZopeSkel and paster commands with dexterity support
 [zopeskel]
-unzip = true
 recipe = zc.recipe.egg
 eggs =
     ZopeSkel
-    \${instance:eggs}
+    PasteScript
+    zopeskel.dexterity
 
 \# symlinks all Python source code to parts/omelette folder when buildout is run
 \# windows users will need to install additional software for this part to build 
@@ -107,9 +94,11 @@ eggs =
 \# eggs = \${instance:eggs}
 
 \# Put your mr.developer managed source code repositories here, see
-\# http://pypi.python.org/pypi/mr.developer for details on format for this part
+\# http://pypi.python.org/pypi/mr.developer for details on the format of
+\# this part
 [sources]
 \#collective.developermanual = git git://github.com/collective/collective.developermanual.git
 
-\# Version pindowns for new style products go here - this section extends one provided in http://dist.plone.org/release/
+\# Version pindowns for new style products go here - this section extends one 
+\# provided in http://dist.plone.org/release/
 [versions]
