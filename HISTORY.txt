@@ -1,10 +1,20 @@
 Changelog
 =========
 
-2.20 - current
----------------------
+2.20 - (unreleased)
+-------------------
 
-* Fixed plone4_buildout of trying to checkout collective.docs from the old location [miohtama]
+* Formatting changes, pep8 fixes, add buildout template warning to
+  plone4_buildout [cewing]
+
+* Updated default Plone 3 version to 3.3.6 [cewing]
+
+* Fixed some wording and made the instructions for using zopeskel in buildout
+  line up with the unified installer method.  We should reduce the number of
+  'conflicting' ways we have displayed in the wild.  [cewing]
+
+* Fixed plone4_buildout of trying to checkout collective.docs from the old 
+  location [miohtama]
 
 * Bumped Plone version to 4.1 [miohtama]
 
@@ -17,8 +27,8 @@ Changelog
 
 * Various references to Internet documentation [miohtama]
 
-* Created a recommended path how ZopeSkel templates should be used to create a new
-  Plone site project [miohtama]
+* Created a recommended path how ZopeSkel templates should be used to create 
+  a new Plone site project [miohtama]
 
 * Bumped Plone 4 version to 4.0.5 [miohtama]
 

@@ -12,12 +12,12 @@ as these are all buildout-based since Plone 3.1)
 """
     pre_run_msg = """
 *** NOTE: This template is for developers.
-If you just want to install Plone, the preferred way to get a
-buildout-based setup for Plone is to use the standard installer for
-your operating system (the Windows installer, the Mac installer, or
-the Unified Installer for Linux/Unix/BSD). These give you a best-practice,
-widely-used setup with an isolated Python and a well-documented
-buildout.
+
+If you just want to install Plone, the preferred way to get a buildout-based
+setup for Plone is to use the standard installer for your operating system
+(the Windows installer, the Mac installer, or the Unified Installer for
+Linux/Unix/BSD). These give you a best-practice, widely-used setup with an
+isolated Python and a well-documented buildout.
 """
 
     post_run_msg = """
