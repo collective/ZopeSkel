@@ -31,6 +31,7 @@ setup(name='ZopeSkel',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+        "PasteDeploy<1.5.0",
         "PasteScript>=1.7.2",
         "Cheetah>1.0,<=2.2.1",
       ],
