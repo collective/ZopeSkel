@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.21 - (unreleased)
--------------------
+2.21 - October 6, 2011
+----------------------
 
 * Formatting changes, pep8 fixes, add buildout template warning to
   plone4_buildout [cewing]
