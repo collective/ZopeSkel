@@ -2,20 +2,11 @@ from setuptools import setup, find_packages
 import sys
 
 
-# PasteDeploy 1.5.0 is explicitly not python 2.4 compatible, if we are using
-# python 2.4, pin PasteDeploy to an earlier version
-paste_deploy = "PasteDeploy"
-if sys.version_info[1] < 5:
-    paste_deploy += "<1.5.0"
-
-
 version = '3.0-dev'
-
-tests_require = ['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript']
 
 setup(name='ZopeSkel',
       version=version,
-      description="Templates and code generator for quickstarting Plone / Zope projects.",
+      description="Templates and code generator for quickstarting Python, Zope and Plone projects.",
       long_description=open('README.txt').read() + "\n" +
                        open('HISTORY.txt').read(),
       classifiers=[
@@ -46,67 +37,10 @@ setup(name='ZopeSkel',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        paste_deploy,
-        "PasteScript>=1.7.2",
-        "Cheetah>1.0,<=2.2.1",
+        "setuptools",
         "templer.core",
       ],
-      tests_require=tests_require,
-      extras_require=dict(
-        test=tests_require
-      ),
-      test_suite='zopeskel.tests.test_all.test_suite',
       entry_points="""
-      [paste.paster_create_template]
-      basic_zope = zopeskel:BasicZope
-      plone = zopeskel:Plone
-      plone_app = zopeskel:PloneApp
-      plone2_theme = zopeskel:Plone2Theme
-      plone2.5_theme = zopeskel:Plone25Theme
-      plone3_theme = zopeskel:Plone3Theme
-      plone2.5_buildout = zopeskel:Plone25Buildout
-      plone3_buildout = zopeskel:Plone3Buildout
-      plone4_buildout = zopeskel:Plone4Buildout
-      archetype = zopeskel:Archetype
-      plone3_portlet = zopeskel:Plone3Portlet
-      plone_hosting = zopeskel.hosting:StandardHosting
-      recipe = zopeskel:Recipe
-      silva_buildout = zopeskel:SilvaBuildout
-      plone_pas = zopeskel:PlonePas
-      kss_plugin = zopeskel:KssPlugin
-
-      [paste.paster_command]
-      addcontent = zopeskel.localcommands:ZopeSkelLocalCommand
-
-      [zopeskel.zopeskel_sub_template]
-      portlet = zopeskel.localcommands.plone:Portlet
-      view = zopeskel.localcommands.plone:View
-      zcmlmeta = zopeskel.localcommands.plone:ZCMLMetaDirective
-      i18nlocale = zopeskel.localcommands.plone:I18nLocale
-
-      contenttype = zopeskel.localcommands.archetype:ContentType
-      atschema = zopeskel.localcommands.archetype:ATSchemaField
-      form = zopeskel.localcommands.plone:Form
-      formfield = zopeskel.localcommands.plone:FormField
-      browserlayer = zopeskel.localcommands.plone:BrowserLayer
-
-      extraction_plugin = zopeskel.localcommands.plone_pas:ExtractionPlugin
-      authentication_plugin = zopeskel.localcommands.plone_pas:AuthenticationPlugin
-      challenge_plugin = zopeskel.localcommands.plone_pas:ChallengePlugin
-      credentials_reset_plugin = zopeskel.localcommands.plone_pas:CredentialsResetPlugin
-      user_adder_plugin = zopeskel.localcommands.plone_pas:UserAdderPlugin
-      role_assigner_plugin = zopeskel.localcommands.plone_pas:RoleAssignerPlugin
-      user_factory_plugin = zopeskel.localcommands.plone_pas:UserFactoryPlugin
-      anonymous_user_factory_plugin = zopeskel.localcommands.plone_pas:AnonymousUserFactoryPlugin
-      properties_plugin = zopeskel.localcommands.plone_pas:PropertiesPlugin
-      groups_plugin = zopeskel.localcommands.plone_pas:GroupsPlugin
-      roles_plugin = zopeskel.localcommands.plone_pas:RolesPlugin
-      update_plugin = zopeskel.localcommands.plone_pas:UpdatePlugin
-      validation_plugin = zopeskel.localcommands.plone_pas:ValidationPlugin
-      user_enumeration_plugin = zopeskel.localcommands.plone_pas:UserEnumerationPlugin
-      group_enumeration_plugin = zopeskel.localcommands.plone_pas:GroupEnumerationPlugin
-      role_enumeration_plugin = zopeskel.localcommands.plone_pas:RoleEnumerationPlugin
-
       [console_scripts]
       zopeskel = templer.core.zopeskel_script:run
       """,
