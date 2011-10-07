@@ -9,7 +9,7 @@ if sys.version_info[1] < 5:
     paste_deploy += "<1.5.0"
 
 
-version = '2.22-dev'
+version = '3.0-dev'
 
 tests_require = ['zope.testing', 'zc.buildout', 'Cheetah', 'PasteScript']
 
@@ -36,7 +36,8 @@ setup(name='ZopeSkel',
       maintainer='Cris Ewing',
       maintainer_email="cris@crisewing.com",
       url='http://svn.plone.org/svn/collective/ZopeSkel/trunk',
-      packages=find_packages(exclude=['ez_setup']),
+      packages=find_packages('src', exclude=['ez_setup']),
+      package_dir = {'': 'src'},
       include_package_data=True,
       zip_safe=False,
       install_requires=[
