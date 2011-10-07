@@ -4,7 +4,15 @@ Changelog
 2.22 - (Unreleased)
 -------------------
 
+2.21.2 - October 6, 2011
+------------------------
 
+* fixing bad bad release fixer [cewing]
+
+2.21.1 - October 6, 2011
+------------------------
+
+* fixing bad release [cewing]
 
 2.21 - October 6, 2011
 ----------------------
