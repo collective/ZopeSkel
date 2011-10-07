@@ -1,6 +1,6 @@
 import copy 
-from zopeskel.base import get_var
-from zopeskel.vars import var, BooleanVar
+from templer.core.base import get_var
+from templer.core.vars import var, BooleanVar
 from zopeskel import abstract_zope
 
 

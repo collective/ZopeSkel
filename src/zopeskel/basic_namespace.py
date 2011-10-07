@@ -1,7 +1,7 @@
 import copy
-from zopeskel.vars import var, DottedVar, StringVar, BooleanVar, TextVar
-from zopeskel.base import BaseTemplate
-from zopeskel.base import EASY, EXPERT
+from templer.core.vars import var, DottedVar, StringVar, BooleanVar, TextVar
+from templer.core.base import BaseTemplate
+from templer.core.vars import EASY, EXPERT
 
 class BasicNamespace(BaseTemplate):
     _template_dir = 'templates/basic_namespace'

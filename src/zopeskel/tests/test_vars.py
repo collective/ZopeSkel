@@ -2,9 +2,9 @@
 
 import unittest
 import sys
-from zopeskel.vars import var, BooleanVar, StringVar, TextVar, DottedVar,\
+from templer.core.vars import var, BooleanVar, StringVar, TextVar, DottedVar,\
     OnOffVar, IntVar, BoundedIntVar
-from zopeskel.vars import ValidationException
+from templer.core.vars import ValidationException
 
 class test_var(unittest.TestCase):
     """ test that there is no default implementation of the validation method

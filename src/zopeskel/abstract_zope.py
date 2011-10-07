@@ -1,7 +1,7 @@
 import copy
-from zopeskel.basic_namespace import BasicNamespace
-from zopeskel.nested_namespace import NestedNamespace
-from zopeskel.vars import BooleanVar
+from templer.core.basic_namespace import BasicNamespace
+from templer.core.nested_namespace import NestedNamespace
+from templer.core.vars import BooleanVar
 
 VAR_ZOPE2 = BooleanVar(
         'zope2product',

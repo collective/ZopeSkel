@@ -1,8 +1,8 @@
 import copy
 
 from zopeskel import abstract_buildout
-from zopeskel.base import var, EASY, EXPERT
-from zopeskel.vars import StringVar, StringChoiceVar
+from templer.core.vars import var, EASY, EXPERT
+from templer.core.vars import StringVar, StringChoiceVar
 
 
 class SilvaBuildout(abstract_buildout.AbstractBuildout):

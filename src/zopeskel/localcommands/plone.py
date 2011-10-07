@@ -1,7 +1,7 @@
 """
 Local templates that are generically useful for every plone related project.
 """
-from zopeskel.base import var
+from templer.core.vars import var
 from zopeskel.localcommands import ZopeSkelLocalTemplate
 
 class PloneSubTemplate(ZopeSkelLocalTemplate):

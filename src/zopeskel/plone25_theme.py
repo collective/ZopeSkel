@@ -3,7 +3,8 @@ import os
 
 from zopeskel.plone import Plone
 from zopeskel.plone2_theme import theme_vars
-from zopeskel.base import get_var, EXPERT
+from templer.core.base import get_var
+from templer.core.vars import EXPERT
 from zopeskel.plone2_theme import cleanupStylsheets
 
 class Plone25Theme(Plone):

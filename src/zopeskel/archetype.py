@@ -2,9 +2,9 @@ import os
 import copy
 
 from zopeskel.plone import Plone
-from zopeskel.base import get_var
-from zopeskel.base import var, EASY, EXPERT
-from zopeskel.vars import StringVar
+from templer.core.base import get_var
+from templer.core.vars import var, EASY, EXPERT
+from templer.core.vars import StringVar
 
 class Archetype(Plone):
     _template_dir = 'templates/archetype'

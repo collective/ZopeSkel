@@ -2,7 +2,8 @@ import copy
 import datetime
 
 from zopeskel.plone25_theme import Plone25Theme
-from zopeskel.base import get_var, EXPERT
+from templer.core.base import get_var
+from templer.core.vars import EXPERT
 
 class Plone3Theme(Plone25Theme):
     _template_dir = 'templates/plone3_theme'

@@ -1,7 +1,7 @@
 import copy
 
 from zopeskel import abstract_zope
-from zopeskel.base import get_var
+from templer.core.base import get_var
 
 class PlonePas(abstract_zope.AbstractNestedZope):
     _template_dir = 'templates/plone_pas'

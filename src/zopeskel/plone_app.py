@@ -1,7 +1,7 @@
 import copy
 
-from zopeskel.base import get_var
-from zopeskel.base import var
+from templer.core.base import get_var
+from templer.core.vars import var
 from zopeskel import abstract_zope
 
 class PloneApp(abstract_zope.AbstractNestedZope):

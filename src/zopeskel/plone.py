@@ -3,9 +3,9 @@ import shutil
 import os
 
 from zopeskel.basic_zope import BasicZope
-from zopeskel.base import get_var
-from zopeskel.base import var, EASY, EXPERT
-from zopeskel.vars import BooleanVar
+from templer.core.base import get_var
+from templer.core.vars import var, EASY, EXPERT
+from templer.core.vars import BooleanVar
 
 class Plone(BasicZope):
     _template_dir = 'templates/plone'

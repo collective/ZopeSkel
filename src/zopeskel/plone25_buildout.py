@@ -1,6 +1,6 @@
 import copy
 from zopeskel.plone3_buildout import Plone3Buildout
-from zopeskel.base import get_var
+from templer.core.base import get_var
 
 class Plone25Buildout(Plone3Buildout):
     _template_dir = 'templates/plone2.5_buildout'

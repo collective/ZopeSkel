@@ -1,9 +1,9 @@
 import copy
 
 from zopeskel.plone_app import PloneApp
-from zopeskel.base import get_var
-from zopeskel.base import var, EASY, EXPERT
-from zopeskel.vars import StringVar, DottedVar
+from templer.core.base import get_var
+from templer.core.vars import var, EASY, EXPERT
+from templer.core.vars import StringVar, DottedVar
 
 class Plone3Portlet(PloneApp):
     _template_dir = 'templates/plone3_portlet'

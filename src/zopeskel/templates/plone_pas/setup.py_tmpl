@@ -45,7 +45,7 @@ setup(name=${repr($project)},
       classifiers=[
         'Framework :: Plone',
         'Intended Audience :: Developers',
-        #from zopeskel.base import LICENSE_CATEGORIES
+        #from templer.core.base import LICENSE_CATEGORIES
         #if $license_name.strip() in $LICENSE_CATEGORIES
         $repr($LICENSE_CATEGORIES[$license_name.strip()]),
         #end if

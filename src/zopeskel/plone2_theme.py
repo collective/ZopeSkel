@@ -1,11 +1,11 @@
 import os
 import copy
 
-from zopeskel.base import BaseTemplate
-from zopeskel.base import get_var
-from zopeskel.base import var, EASY, EXPERT
-from zopeskel.base import BasicPackage
-from zopeskel.vars import StringVar, BooleanVar
+from paste.script.templates import BasicPackage
+from templer.core.base import BaseTemplate
+from templer.core.base import get_var
+from templer.core.vars import var, EASY, EXPERT
+from templer.core.vars import StringVar, BooleanVar
 
 TARGET_STYLESHEETS = (
     'base.css.dtml',

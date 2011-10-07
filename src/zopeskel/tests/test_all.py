@@ -10,9 +10,9 @@ def test_suite():
         is always added last
     """
     suite = unittest.TestSuite([
-        base_test_suite(),
-        vars_test_suite(),
-        script_test_suite(),
+        # base_test_suite(),
+        # vars_test_suite(),
+        # script_test_suite(),
         doc_test_suite(),
     ])
     return suite

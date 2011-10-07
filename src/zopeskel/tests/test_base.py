@@ -4,12 +4,12 @@ import unittest
 
 from paste.script.command import get_commands
 
-from zopeskel.base import BaseTemplate, get_var
-from zopeskel.vars import var, BooleanVar, StringVar, TextVar, DottedVar
-from zopeskel.vars import EXPERT, EASY
+from templer.core.base import BaseTemplate, get_var
+from templer.core.vars import var, BooleanVar, StringVar, TextVar, DottedVar
+from templer.core.vars import EXPERT, EASY
 from zopeskel.archetype import Archetype
 from zopeskel.plone import Plone
-from zopeskel.basic_namespace import BasicNamespace
+from templer.core.basic_namespace import BasicNamespace
 
 class test_base_template(unittest.TestCase):
     """ test for methods on the base template class

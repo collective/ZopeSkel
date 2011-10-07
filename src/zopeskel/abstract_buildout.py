@@ -1,8 +1,8 @@
 import copy
 
-from zopeskel.base import BaseTemplate
-from zopeskel.base import var, EASY, EXPERT
-from zopeskel.vars import StringVar, BooleanVar, IntVar, OnOffVar, BoundedIntVar
+from templer.core.base import BaseTemplate
+from templer.core.vars import var, EASY, EXPERT
+from templer.core.vars import StringVar, BooleanVar, IntVar, OnOffVar, BoundedIntVar
 
 VAR_PLONEVER = StringVar(
     'plone_version',

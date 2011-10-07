@@ -6,9 +6,10 @@ import sys
 import copy
 
 from paste.script import templates
-from zopeskel.base import BadCommand
-from zopeskel.base import BaseTemplate, EASY, EXPERT
-from zopeskel.vars import var, IntVar, BooleanVar, StringVar
+from paste.script import command
+from templer.core.base import BaseTemplate
+from templer.core.vars import EASY, EXPERT
+from templer.core.vars import var, IntVar, BooleanVar, StringVar
 from zopeskel import abstract_buildout
 
 plone25s = {
@@ -141,10 +142,10 @@ and run `python bootstrap.py` followed by `bin/buildout`.
             if e.args[0]==errno.ECONNREFUSED:
                 return 
 
-            raise BadCommand("Error checking port availability: %s" % e.args[1])
+            raise command.BadCommand("Error checking port availability: %s" % e.args[1])
 
         s.close()
-        raise BadCommand("Port %s is already in use" % port)
+        raise command.BadCommand("Port %s is already in use" % port)
 
 
     def check_vars(self, vars, cmd):
@@ -161,7 +162,7 @@ and run `python bootstrap.py` followed by `bin/buildout`.
             self._checkPortAvailable(result["proxy_port"])
 
         if vars["plone"] not in plone25s and not vars["plone"].startswith("3."):
-            raise BadCommand("Unknown plone version: %s" % vars["plone"])
+            raise command.BadCommand("Unknown plone version: %s" % vars["plone"])
 
         return result
 

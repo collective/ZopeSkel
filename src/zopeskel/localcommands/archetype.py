@@ -2,7 +2,7 @@
 Local templates for the archetype zopeskel project
 """
 import os
-from zopeskel.base import var
+from templer.core.vars import var
 from zopeskel.localcommands import ZopeSkelLocalTemplate
 
 from Cheetah.Template import Template as cheetah_template

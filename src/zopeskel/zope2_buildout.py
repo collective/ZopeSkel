@@ -1,8 +1,8 @@
 import copy
 
 from zopeskel import abstract_buildout
-from zopeskel.base import var, EASY, EXPERT
-from zopeskel.vars import StringVar
+from templer.core.vars import var, EASY, EXPERT
+from templer.core.vars import StringVar
 
 
 class Zope2Buildout(abstract_buildout.AbstractBuildout):
