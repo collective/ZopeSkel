@@ -1,8 +1,11 @@
 Changelog
 =========
 
-2.22 - (Unreleased)
--------------------
+3.0a1 - October 7, 2011
+-----------------------
+
+- depend on templer packages, remove all local templates, update README
+  [cewing]
 
 2.21.2 - October 6, 2011
 ------------------------
