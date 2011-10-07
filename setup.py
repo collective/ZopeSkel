@@ -38,6 +38,9 @@ setup(name='ZopeSkel',
       install_requires=[
         "setuptools",
         "templer.core",
+        "templer.buildout",
+        "templer.zope",
+        "templer.plone",
       ],
       entry_points="""
       [console_scripts]
