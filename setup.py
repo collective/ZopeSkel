@@ -19,15 +19,20 @@ setup(name='ZopeSkel',
       long_description=open('README.txt').read() + "\n" +
                        open('HISTORY.txt').read(),
       classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 3 - Alpha",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2.4",
+        "Programming Language :: Python :: 2.6",
         "Framework :: Zope2",
         "Framework :: Zope3",
         "Framework :: Plone",
+        "Framework :: Buildout",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+        "Topic :: Software Development :: Code Generators",
         ],
       license='MIT',
       keywords='web zope command-line skeleton project',
@@ -44,6 +49,7 @@ setup(name='ZopeSkel',
         paste_deploy,
         "PasteScript>=1.7.2",
         "Cheetah>1.0,<=2.2.1",
+        "templer.core",
       ],
       tests_require=tests_require,
       extras_require=dict(
@@ -52,8 +58,6 @@ setup(name='ZopeSkel',
       test_suite='zopeskel.tests.test_all.test_suite',
       entry_points="""
       [paste.paster_create_template]
-      basic_namespace = zopeskel:BasicNamespace
-      nested_namespace = zopeskel:NestedNamespace
       basic_zope = zopeskel:BasicZope
       plone = zopeskel:Plone
       plone_app = zopeskel:PloneApp
@@ -104,6 +108,6 @@ setup(name='ZopeSkel',
       role_enumeration_plugin = zopeskel.localcommands.plone_pas:RoleEnumerationPlugin
 
       [console_scripts]
-      zopeskel = zopeskel.zopeskel_script:run
+      zopeskel = templer.core.zopeskel_script:run
       """,
       )
