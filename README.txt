@@ -17,38 +17,8 @@ development projects.
 ZopeSkel uses the `paster <http://pythonpaste.org/script/>`_ Python library
 internally.
 
-The ABCs of typical Plone development
-=====================================
-
-For the typical developer working on a plone project, the following path is
-recommended:
-
-* Install ZopeSkel package to virtualenv, or otherwise
-  isolated from system Python installation, on your local computer.
-
-* Create a new Plone 4 development installation using the
-  ``plone4_buildout`` template.
-
-* Create a new logic package for the content types, forms and logic of the
-  site. This can be done using the
-  `Dexterity ZopeSkel template <http://collective-docs.plone.org/content/dexterity.html>`_
-  (included in ``plone4_buildout``).
-
-* Create a new theme package for the site. This can be done using the
-  `XDV template <http://collective-docs.plone.org/templates_css_and_javascripts/xdv.html>`_
-  (included in ``plone4_buildout``).
-
-* Test and develop on your local computer until everything is perfect.
-
-* Put created packages under source code sversion control (Subversion, Git).
-
-* Create a Plone installation on the production server. For this step the
-  Plone Unified installer is the preferred method of building a distribution.
-
-* Install your site customization packages on the production server.
-
 Installing ZopeSkel
-====================
+===================
 
 ZopeSkel can be installed in one of two ways: with `buildout
 <http://www.buildout.org/>`_ or with `virtualenv <http://virtualenv.org/>`_.
@@ -124,37 +94,13 @@ More info about how zopeskel works::
 Using Templates
 ===============
 
-Creating a Plone 4 buildout using virtualenv ZopeSkel installation::
+Creating a package using virtualenv ZopeSkel installation::
 
     source zopeskelenv/bin/activate
-    zopeskel plone4_buildout yourfoldername
+    zopeskel <template_name> <package_name>
 
-The folder created (``yourfoldername``) can be checked in to the versioning
-system of your choice.  It is now a portable, self-contained, ready-to-build
-Plone site.  You can build the system at any time using the following::
-
-    cd yourfoldername
-    python bootstrap.py
-    bin/buildout
-
-The ``plone4_buildout`` recipe results in a self-contained version of ZopeSkel
-installed via the buildout method described above. It thus provides the
-``zopeskel`` and ``paster`` commands inside its ``bin`` folder. You can use these
-commands inside the buildout to create packages for your new Plone site::
-
-    bin/zopeskel plone3_theme src/plonetheme.yourcompanyid
-
-The command will ask a few questions such as the desired package name and
-description, and output a complete package you can immediately start using.
-Interactive help is available by entering "?" as a response to any question.
-
-.. note ::
-
-    Because ZopeSkel is built on paster you can do anything we describe here
-    using the ``paster`` command directly.  If you do so, you can gain access to
-    certain features of ``paster`` that have been disabled for ``zopeskel``, but
-    you also will lose access to many of the nicer features of ``zopeskel``,
-    including validation and in-line help.
+The folder created (``<package_name>``) can be checked in to the versioning
+system of your choice.
 
 Local Commands
 ==============
