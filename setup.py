@@ -32,8 +32,7 @@ setup(name='ZopeSkel',
       maintainer='Cris Ewing',
       maintainer_email="cris@crisewing.com",
       url='http://svn.plone.org/svn/collective/ZopeSkel/trunk',
-      packages=find_packages('src', exclude=['ez_setup']),
-      package_dir = {'': 'src'},
+      packages=[]
       include_package_data=True,
       zip_safe=False,
       install_requires=[
