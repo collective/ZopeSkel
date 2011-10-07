@@ -1,5 +1,13 @@
 .. contents ::
 
+WARNING
+=======
+
+As of version 3.0, zopeskel is no longer a package of its own. All the
+templates that make it work have been moved into packages in the templer
+namespace. Some of the templates you may be expecting are no longer available.
+If you require older templates, please be sure to install ZopeSkel<3.0
+
 Introduction
 ============
 
@@ -151,92 +159,9 @@ Interactive help is available by entering "?" as a response to any question.
 Local Commands
 ==============
 
-In addition to project templates, the ZopeSkel system provides local commands.
-Local commands are context aware commands that help you to add more
-functionality to an existing ZopeSkel generated project.
-
-.. note ::
-
-    Local commands require using the ``paster`` command directly - the
-    ``zopeskel`` command does not support them yet.
-
-.. note ::
-
-    Not all ZopeSkel templates provide local commands.  In general, if local
-    commands are available, you will be informed of the fact as your new
-    package is generated.
-
-Using local commands to create a content type package
------------------------------------------------------
-
-To use local commands you need to first include the paster command in your ``buildout.cfg``
-as instructed above.
-
-Starting inside your Plone buildout, first create a new archetypes add-on::
-
-    cd src
-    ../bin/zopeskel archetype mycompanyid.mycustomcontenttypes
-
-Next, change directories into your new package and invoke ``paster`` to add a
-content type::
-
-    cd mycompanyid.mycustomcontenttypes
-    ../../bin/paster
-
-    Usage: ../../bin/paster COMMAND
-    usage: paster [paster_options] COMMAND [command_options]
-
-    ...
-
-    Commands:
-    ...
-
-    ... local commands:
-        addcontent   Adds plone content types to your project
-
-
-As you can see from the ``paster`` command output, your new package supports a
-local command called ``addcontent``. You can use the ``addcontent`` command
-to add new code to your package. As with both ``zopeskel`` and ``paster``,
-you can use the ``--list`` option to see what local commands are available
-in the context of the package you've created::
-
-    ../../bin/paster addcontent --list
-
-    Available templates:
-        atschema:      A handy AT schema builder
-        browserlayer:  A Plone browserlayer
-        contenttype:   A content type skeleton
-        form:          A form skeleton
-        formfield:     Schema field for a form
-        i18nlocale:    An i18n locale directory structure
-        portlet:       A Plone 3 portlet
-        view:          A browser view skeleton
-        zcmlmeta:      A ZCML meta directive skeleton
-
-You can add an archetypes content type for managing lectures::
-
-        ../../bin/paster addcontent -t contenttype LectureInfo
-
-Then you can add schema fields to that content type::
-
-        ../../bin/paster addcontent -t atschema
-
-Local commands can be run as many times as needed to create your package.
-You can iteratively develop your content type, other content types, and
-more.
-
-.. note ::
-
-    When changing your package code, local commands will often change
-    GenericSetup XML files (found in the in ``profiles/default`` folder of your
-    package). These changes will not appear in Plone/Zope simply by restarting your
-    instance. You will usually need to re-install your package in your development
-    Plone site if you run any local commands in a package you've already installed.
-
-More info
-
-* http://collective-docs.plone.org/tutorials/paste.html
+Local commands are not currently fully implemented. They will return soon. If
+you require templates with local commands, please install ZopeSkel<3.0 until
+this package reaches a final release
 
 Developing ZopeSkel
 ===================
@@ -244,8 +169,13 @@ Developing ZopeSkel
 If you wish to contribute to the zopeskel project we welcome your
 contribution. Zopeskel is now distributed with its own built-in buildout, so
 to begin, all you need to do is check out the source, bootstrap with your
-desired version of python, and run bin/buildout. A couple of things to keep in
-mind while you work:
+desired version of python, and run bin/buildout.
+
+Since all of the template that are provided by ZopeSkel are now in templer
+namespace packages, the ZopeSkel package uses mr.developer to provide access
+to all the templer packages required in the src directory of the buildout.
+Development should take place in those packages. There should be no templates
+in the ZopeSkel package at all.
 
 Testing
 -------
@@ -255,10 +185,10 @@ check in any changes you make. You should run the full test suite in both
 Python 2.4 and Python 2.6, as both versions are in common use among Zope and
 Plone developers. They can be run like so::
 
-    bin/test -s zopeskel
+    bin/test -s templer
 
 Please ensure that all tests pass in Python 2.4 and Python 2.6 before making
-any checkins to the trunk of zopeskel.
+any checkins to any templer package used by zopeskel.
 
 Fixing Bugs
 -----------
@@ -270,7 +200,7 @@ zopeskel mailing list, so if you have any questions about your approach to
 fixing a bug, you should post to the list first.
 
 Running trunk version
-----------------------
+---------------------
 
 The easiest way to run the trunk of zopeskel is to check out the code,
 bootstrap the buildout with your favored version of Python, and run

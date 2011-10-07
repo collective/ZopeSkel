@@ -1,8 +1,7 @@
-from setuptools import setup, find_packages
-import sys
+from setuptools import setup
 
 
-version = '3.0-dev'
+version = '3.0a1'
 
 setup(name='ZopeSkel',
       version=version,
