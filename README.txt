@@ -36,15 +36,6 @@ local ``buildout.cfg``.
 
 * You can use zopeskel to add new projects to your buildout ``src/`` folder.
 
-* You can use code skeleton local commands to add more content to your
-  package.
-
-.. note ::
-
-    The ``plone4_buildout`` template has ZopeSkel and paster support out of
-    the box and this is not needed if you used ``plone4_buildout`` to create
-    your ``buildout.cfg``.
-
 Add to your ``buildout.cfg``::
 
     parts =
