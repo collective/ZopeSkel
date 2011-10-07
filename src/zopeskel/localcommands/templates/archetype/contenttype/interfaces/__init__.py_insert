@@ -1,1 +1,0 @@
-from ${content_class_filename} import $(interface_name)

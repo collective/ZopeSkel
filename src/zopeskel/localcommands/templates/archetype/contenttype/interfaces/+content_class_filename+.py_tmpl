@@ -1,8 +1,0 @@
-from zope.interface import Interface
-# -*- Additional Imports Here -*-
-
-
-class $(interface_name)(Interface):
-    """$(contenttype_description)"""
-
-    # -*- schema definition goes here -*-
