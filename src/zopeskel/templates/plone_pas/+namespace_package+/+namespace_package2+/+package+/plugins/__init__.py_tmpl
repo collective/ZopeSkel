@@ -1,1 +1,0 @@
-# -*- implemented plugins -*-
