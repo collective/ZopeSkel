@@ -166,7 +166,7 @@ Source code
 
 Mailing List
 
-* https://lists.plone.org/mailman/listinfo/zopeskel
+* https://lists.plone.org/mailman/listinfo/plone-zopeskel
 
 Please contribute by submitting patches for what you consider 'best of
 breed' file layouts for starting Zope projects.
