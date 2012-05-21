@@ -96,9 +96,27 @@ system of your choice.
 Local Commands
 ==============
 
-Local commands are not currently fully implemented. They will return soon. If
-you require templates with local commands, please install ZopeSkel<3.0 until
-this package reaches a final release
+Local commands are available for the ``plone_basic`` and ``archetype``
+package templates.  If you create a package using one of these templates you
+will be provided with information about the presence of local commands.  
+
+To run a local command and add further features to your package, you will
+run the paster command ``add`` from within your package.  Your current working
+directory must be at or inside the directory where you find your package's 
+egg-info, so you can do the following::
+
+    $ bin/templer plone_basic my.package
+    ....
+    $ cd my.package/src
+    $ ../../bin/paster --help
+    ...
+    Templer local commands:
+      add  Allows the addition of further templates to an existing package
+    $ ../../bin/paster add --list
+    browserlayer:  A Plone browserlayer
+    browserview:   A browser view skeleton
+    $ ../../bin/paster add browserlayer
+    ...
 
 Developing ZopeSkel
 ===================
@@ -122,7 +140,7 @@ check in any changes you make. You should run the full test suite in both
 Python 2.4 and Python 2.6, as both versions are in common use among Zope and
 Plone developers. They can be run like so::
 
-    bin/test -s templer
+    bin/test
 
 Please ensure that all tests pass in Python 2.4 and Python 2.6 before making
 any checkins to any templer package used by zopeskel.

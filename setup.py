@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-version = '3.0a1'
+version = '3.0b1'
 
 setup(name='ZopeSkel',
       version=version,
@@ -39,7 +39,7 @@ setup(name='ZopeSkel',
         "templer.core",
         "templer.buildout",
         "templer.zope",
-        "templer.plone",
+        "templer.plone[localcommands]",
       ],
       entry_points="""
       [console_scripts]
