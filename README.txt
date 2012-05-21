@@ -132,6 +132,15 @@ to all the templer packages required in the src directory of the buildout.
 Development should take place in those packages. There should be no templates
 in the ZopeSkel package at all.
 
+To get started, simply clone the zopeskel repository to your local machine,
+bootstrap with your preferred python, and run the buildout::
+
+    git clone git@github.com:collective/ZopeSkel.git zopeskel
+    cd zopeskel
+    python2.6 bootstrap.py
+    ...
+    bin/buildout
+
 Testing
 -------
 
@@ -153,19 +162,6 @@ http://plone.org/products/zopeskel/issues and your help is always welcome in
 closing any you feel competent to take on. Please note that there is a
 zopeskel mailing list, so if you have any questions about your approach to
 fixing a bug, you should post to the list first.
-
-Running trunk version
----------------------
-
-The easiest way to run the trunk of zopeskel is to check out the code,
-bootstrap the buildout with your favored version of Python, and run
-bin/buildout::
-
-    svn co http://svn.plone.org/svn/collective/ZopeSkel/trunk zopeskel
-    cd zopeskel
-    python2.6 bootstrap.py
-    ...
-    bin/buildout
 
 More info
 =========
