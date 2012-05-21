@@ -1,0 +1,6 @@
+.installed.cfg
+.mr.developer.cfg
+*.egg-info
+bin
+src
+develop-eggs
