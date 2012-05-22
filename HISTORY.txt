@@ -1,6 +1,12 @@
 Changelog
 =========
 
+3.0b2 - May 22, 2012
+--------------------
+
+- fix package documentation error
+  [cewing]
+
 3.0b1 - May 22, 2012
 --------------------
 
