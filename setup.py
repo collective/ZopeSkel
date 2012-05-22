@@ -1,12 +1,12 @@
 from setuptools import setup
 
 
-version = '3.0b1'
+version = '3.0b2'
 
 setup(name='ZopeSkel',
       version=version,
       description="Templates and code generator for quickstarting Python, Zope and Plone projects.",
-      long_description=open('README.txt').read() + "\n" +
+      long_description=open('README.rst').read() + "\n" +
                        open('HISTORY.txt').read(),
       classifiers=[
         "Development Status :: 3 - Alpha",
@@ -34,7 +34,7 @@ setup(name='ZopeSkel',
       author_email='daniel.nouri@gmail.com',
       maintainer='Cris Ewing',
       maintainer_email="cris@crisewing.com",
-      url='http://svn.plone.org/svn/collective/ZopeSkel/trunk',
+      url='https://github.com/collective/zopeskel',
       packages=[],
       include_package_data=True,
       zip_safe=False,
