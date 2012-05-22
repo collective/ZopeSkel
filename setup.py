@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-version = '3.0b2'
+version = '3.0b3'
 
 setup(name='ZopeSkel',
       version=version,
