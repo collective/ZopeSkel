@@ -170,17 +170,13 @@ Issue tracker
 
 * http://plone.org/products/zopeskel/issues
 
-Plone and ZopeSkel related documentation
-
-* http://collective-docs.plone.org/tutorials/paste.html
-
 Source code
 
-* http://svn.plone.org/svn/collective/ZopeSkel/trunk
+* https://github.com/collective/zopeskel
 
 Mailing List
 
 * https://lists.plone.org/mailman/listinfo/plone-zopeskel
 
 Please contribute by submitting patches for what you consider 'best of
-breed' file layouts for starting Zope projects.
+breed' file layouts for starting Zope and Plone projects.
