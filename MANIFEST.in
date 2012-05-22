@@ -1,0 +1,5 @@
+include *.txt
+include *.rst
+recursive-include docs *
+global-exclude *.pyc
+global-exclude .gitignore
