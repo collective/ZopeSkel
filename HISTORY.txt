@@ -1,6 +1,16 @@
 Changelog
 =========
 
+3.0b1 - May 22, 2012
+--------------------
+
+- restore localcommands for ``plone_basic`` and ``archetypes`` templates
+  [cewing]
+
+- add ``plone_nested`` template, providing a simple nested-namespace package
+  suitable for Plone development
+  [cewing]
+
 3.0a1 - October 7, 2011
 -----------------------
 
