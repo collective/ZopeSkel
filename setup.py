@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 version = '3.0b3'
@@ -47,6 +47,6 @@ setup(name='ZopeSkel',
       ],
       entry_points="""
       [console_scripts]
-      zopeskel = templer.core.zopeskel_script:run
+      zopeskel = control_script:run
       """,
       )
