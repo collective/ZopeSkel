@@ -4,3 +4,4 @@
 bin
 src
 develop-eggs
+*.pyc
