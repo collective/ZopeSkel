@@ -14,6 +14,7 @@ class ZopeSkelRunner(Runner):
         method must exit by raising error or calling sys.exit
         """
         version_info = self._get_version_info()
+        print
         print self._format_version_info(version_info)
         sys.exit(0)
 
