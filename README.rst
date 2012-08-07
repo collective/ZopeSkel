@@ -3,7 +3,7 @@
 WARNING
 =======
 
-As of version 3.0, zopeskel is no longer a package of its own. All the
+As of version 3.0, ZopeSkel is no longer a package of its own. All the
 templates that make it work have been moved into packages in the templer
 namespace. Some of the templates you may be expecting are no longer available.
 If you require older templates, please be sure to install ZopeSkel<3.0
@@ -11,11 +11,17 @@ If you require older templates, please be sure to install ZopeSkel<3.0
 Introduction
 ============
 
-ZopeSkel provides a collection of project templates for Plone and Zope
-development projects.
+ZopeSkel provides a collection of `scaffolds <http://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-scaffold>`_
+(software project templates) for Plone and Zope development projects.
 
-ZopeSkel uses the `paster <http://pythonpaste.org/script/>`_ Python library
-internally.
+ZopeSkel uses the `Paster <http://pythonpaste.org/script/>`_ Python library
+internally. On the top of Paster there exist 
+`Templer <http://templer-manual.readthedocs.org/en/latest/index.html>`_ 
+code generation system.
+
+More information about ZopeSkel and Templater can be found
+in `Templer documentation <http://templer-manual.readthedocs.org/en/latest/index.html>`_
+
 
 Installing ZopeSkel
 ===================
@@ -74,6 +80,10 @@ commands in the ``bin`` directory inside your virtualenv.
 Available Templates
 ===================
 
+ZopeSkel internally consists of several ``templer.*`` packages
+which provide individual templates. When you install ZopeSkel
+you auomatically get these packages.
+
 To see details of the available templates::
 
     zopeskel --list
@@ -81,6 +91,12 @@ To see details of the available templates::
 More info about how zopeskel works::
 
     zopeskel --help
+
+
+.. note ::
+
+      If some templates are missing please see that you do not have old ZopeSkel versions
+      or packages infering in your PYTHONPATH.
 
 Using Templates
 ===============
@@ -117,6 +133,10 @@ egg-info, so you can do the following::
     browserview:   A browser view skeleton
     $ ../../bin/paster add browserlayer
     ...
+
+.. note ::
+
+    You need to be in src/ folder or below to make local commands available.
 
 Developing ZopeSkel
 ===================
