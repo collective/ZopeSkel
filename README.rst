@@ -44,16 +44,22 @@ local ``buildout.cfg``.
 
 Add to your ``buildout.cfg``::
 
+    # Add zopeskel to the last line of parts = section in buildout.cfg
     parts =
        ...
        zopeskel
 
+    # Add zopeskel section generating zopeskel command and 
+    # related scaffold packages
     [zopeskel]
-    # installs paster and Zopeskel
     recipe = zc.recipe.egg
+    unzip = true
+    dependent-scripts = true
     eggs =
-       PasteScript
-       ZopeSkel
+        Paste
+        ZopeSkel
+        templer.plone
+        templer.plone.localcommands
 
 After re-running buildout, you will have ``zopeskel`` and ``paster``
 commands in the ``bin`` directory of your buildout.
