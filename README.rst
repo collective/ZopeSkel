@@ -145,7 +145,10 @@ egg-info, so you can do the following::
 
 .. note ::
 
-    You need to be in src/ folder or below to make local commands available.
+    In order for local commands to be available, Paster needs to be able to find the ``egg-info`` 
+    directory for your package.  This means that you must be in src/ folder within the package or 
+    below.  If you are not, Paster will report that no local commands are available, or will omit
+    the ``add`` command provided by Templer.
 
 Developing ZopeSkel
 ===================
