@@ -11,58 +11,60 @@ If you require older templates, please be sure to install ZopeSkel<3.0
 Introduction
 ============
 
-ZopeSkel provides a collection of `scaffolds <http://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-scaffold>`_
+ZopeSkel provides a collection of 
+`scaffolds <http://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-scaffold>`_
 (software project templates) for Plone and Zope development projects.
 
-ZopeSkel uses the `Paster <http://pythonpaste.org/script/>`_ Python library
-internally. On the top of Paster there exist 
+ZopeSkel is an application built using the 
 `Templer <http://templer-manual.readthedocs.org/en/latest/index.html>`_ 
-code generation system.
+code generation framework.  Internally, Templer is an extension of the 
+`Paster <http://pythonpaste.org/script/>`_ Python library.
 
-More information about ZopeSkel and Templater can be found
-in `Templer documentation <http://templer-manual.readthedocs.org/en/latest/index.html>`_
+More information about Templer, and ZopeSkel as an example of a Templer application, can be found
+in the `Templer Manual <http://templer-manual.readthedocs.org/en/latest/index.html>`_
 
 
 Installing ZopeSkel
 ===================
 
 ZopeSkel can be installed in one of two ways: with `buildout
-<http://www.buildout.org/>`_ or with `virtualenv <http://virtualenv.org/>`_.
+<http://www.buildout.org/>`_ or in a `virtualenv <http://virtualenv.org/>`_.  When installing ZopeSkel, it is
+very important that you start with a clean Python environment, one that does not already include ZopeSkel or any
+other templer packages.  Package version conflicts can be the cause of many errors.  For this reason, it is 
+recommended that you work either with a clean virtualenv or a buildout that has been bootstrapped by a Python 
+installation that does not have ZopeSkel installed.
 
 .. note ::
 
-    Despite existing documentation to the contrary, it is not recommended to
+    Because of this, and despite any information to the contrary, it is strongly recommended never to
     install ZopeSkel in your system python.
 
 Buildout installation
 ---------------------------
 
-Here are instructions how to include ZopeSkel as a part of your
-local ``buildout.cfg``.
+It is possible to add ZopeSkel to a buildout, providing you with the ability to develop new packages
+directly in your project buildout environment.  Once you have added ZopeSkel, you can use it to add 
+new packages in the ``src/`` folder within your buildout.
 
-* You can use zopeskel to add new projects to your buildout ``src/`` folder.
+First, add the following to your ``buildout.cfg``::
 
-Add to your ``buildout.cfg``::
-
-    # Add zopeskel to the last line of parts = section in buildout.cfg
+    # Add zopeskel to the last line of the parts = section in the [buildout] part of buildout.cfg
     parts =
-       ...
-       zopeskel
+        ...
+        zopeskel
 
     # Add zopeskel section generating zopeskel command and 
     # related scaffold packages
     [zopeskel]
     recipe = zc.recipe.egg
     unzip = true
-    dependent-scripts = true
     eggs =
-        Paste
+        PasteScript
         ZopeSkel
-        templer.plone
-        templer.plone.localcommands
 
-After re-running buildout, you will have ``zopeskel`` and ``paster``
-commands in the ``bin`` directory of your buildout.
+After re-running buildout, you will have ``zopeskel`` and ``paster`` commands in the ``bin`` 
+directory of your buildout.  You can use these commands as described below to begin creating new 
+packages.
 
 Virtualenv installation
 -----------------------
@@ -81,14 +83,15 @@ environment::
     zopeskelenv/bin/easy_install zopeskel
 
 Once this is complete, you will be left with ``zopeskel`` and ``paster``
-commands in the ``bin`` directory inside your virtualenv.
+commands in the ``bin`` directory inside your virtualenv.  If your virtualenv is 'activated', then the 
+commands will be available directly.  
 
 Available Templates
 ===================
 
-ZopeSkel internally consists of several ``templer.*`` packages
-which provide individual templates. When you install ZopeSkel
-you auomatically get these packages.
+ZopeSkel internally consists of several ``templer.*`` packages which provide individual 
+templates. When you install ZopeSkel you automatically get all the packages that are 
+required to run ZopeSkel.
 
 To see details of the available templates::
 
